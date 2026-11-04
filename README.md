@@ -21,6 +21,8 @@ npm run build      # 빌드(dist/) + 빌드 뒤 검사(scripts/validate-build.mj
 | `PUBLIC_DEMO_URL` | 데모 신청 페이지 주소. 비면 데모 버튼 자리에 전화 상담 |
 | `SITE_URL` · `BASE_PATH` | 대표 주소 · 기준 경로 (Pages 미리보기는 워크플로가 채운다) |
 | `SITE_LOCALES` | 켤 언어(비우면 네 언어) |
+| `PUBLIC_OPEN_DATE` | 오픈일 `YYYY-MM-DD` — 개인정보처리방침 시행일. 비면 공개 빌드가 멈춘다 |
+| `PUBLIC_GA4_ID` | GA4 측정 ID. 비면 분석 · 쿠키 배너 · 분석 쿠키 절이 빠진다 |
 
 ## 배포
 

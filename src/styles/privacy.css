@@ -1,7 +1,6 @@
 /* 개인정보처리방침 — 시안 Docs/_design/mockups/privacy-2an.html (개인정보처리방침 2안 2차 시안, 2026-10-29)의 규칙을
    make_v8.py 원문(PRIV_CSS + priv2_css) 그대로 옮겼다 (2026-11-02, BD-001). 이동 경로 · 모바일 메뉴 규칙은 crumb.css · layout.css 에 있다.
    값은 tokens.css 변수로만 쓴다. 시안을 고치면 이 파일도 같이 고치고 parity.html 로 대조한다 */
-.draft{margin:0 0 var(--sp-6); padding:var(--sp-4) var(--sp-5); border-radius:var(--r-case); background:var(--surface); box-shadow:inset 3px 0 0 var(--s4), 0 0 0 1px var(--hair); font-size:var(--text-card)}
 .pv{padding-block:var(--sp-5)}
 .pv h2{font-size:20px; letter-spacing:-.02em; margin-bottom:var(--sp-3)}
 .pv__n{color:var(--muted); font-variant-numeric:tabular-nums}
@@ -24,6 +23,5 @@ body{background:var(--surface)}
 .doc2__body{max-width:720px}
 .doc2__body .pv{padding-block:var(--sp-6)}
 .doc2__body .pv h2{font-size:clamp(20px,1.8vw,24px)}
-.doc2 .draft{background:var(--bg)}
 @media (max-width:1080px){ .doc2{grid-template-columns:1fr} .doc2__toc{position:static} .doc2__toc ol{grid-template-columns:1fr 1fr} }
 @media (max-width:640px){ .doc2__toc ol{grid-template-columns:1fr} }

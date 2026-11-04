@@ -24,10 +24,10 @@
   },
   "mark": "Copilot",
   "lead": {
-    "ko": "Microsoft는 Dynamics 365·Power Platform·Microsoft 365 전반에 Copilot을 넣고 있습니다. Copilot이 쓸모 있는 답을 내려면 업무 데이터와 권한이 먼저 정리돼 있어야 합니다. 퀄리소프트는 데이터와 업무 흐름을 정리한 뒤, 필요한 곳에 Copilot 기능과 Copilot Studio 에이전트를 붙입니다.",
-    "en": "Microsoft is building Copilot into Dynamics 365, Power Platform and Microsoft 365. For Copilot to give useful answers, business data and permissions need to be in order first. Qualisoft organizes your data and workflows, then adds Copilot features and Copilot Studio agents where they help.",
-    "ja": "Microsoft は Dynamics 365・Power Platform・Microsoft 365 の全体に Copilot を組み込んでいます。Copilot が役に立つ答えを出すには、まず業務データと権限が整っている必要があります。Qualisoftはデータと業務フローを整えたうえで、必要な所に Copilot の機能と Copilot Studio のエージェントを加えます。",
-    "zh-hans": "Microsoft 正将 Copilot 融入 Dynamics 365、Power Platform 与 Microsoft 365。要让 Copilot 给出有用的回答，业务数据与权限必须先理顺。Qualisoft 先整理数据与业务流程，再在需要之处加入 Copilot 功能与 Copilot Studio 智能体。"
+    "ko": "Microsoft는 Dynamics 365·Power Platform·Microsoft 365 전반에 Copilot을 넣고 있습니다. Copilot이 쓸모 있는 답을 내려면 업무 데이터와 권한이 먼저 정리돼 있어야 합니다.",
+    "en": "Microsoft is building Copilot into Dynamics 365, Power Platform and Microsoft 365. For Copilot to give useful answers, business data and permissions need to be in order first.",
+    "ja": "Microsoft は Dynamics 365・Power Platform・Microsoft 365 の全体に Copilot を組み込んでいます。Copilot が役に立つ答えを出すには、まず業務データと権限が整っている必要があります。",
+    "zh-hans": "Microsoft 正将 Copilot 融入 Dynamics 365、Power Platform 与 Microsoft 365。要让 Copilot 给出有用的回答，业务数据与权限必须先理顺。"
   },
   "description": {
     "ko": "Microsoft는 Dynamics 365·Power Platform·Microsoft 365 전반에 Copilot을 넣고 있습니다.",
@@ -135,11 +135,6 @@
       "path": "copilot/products/copilot-studio"
     }
   ],
-  "pending": {
-    "headline": "Copilot 한 줄 미확정 · AI 서비스 범위 (08-brand-messaging 미결정)",
-    "lead": "끝 문장이 퀄리소프트 AI 역량 주장 · 근거 확인 전 (11-screen-spec 5-1)",
-    "we": "퀄리소프트 AI 역량 주장 · 근거 확인 전 (11-screen-spec 5-1)"
-  },
   "we": [
     {
       "ko": "Copilot을 적용할 업무와 기대 효과 진단",
@@ -152,12 +147,6 @@
       "en": "Getting data and permissions in order (Dataverse, Fabric)",
       "ja": "データと権限の整理（Dataverse・Fabric）",
       "zh-hans": "理顺数据与权限（Dataverse、Fabric）"
-    },
-    {
-      "ko": "Copilot Studio 에이전트 설계·구축",
-      "en": "Designing and building Copilot Studio agents",
-      "ja": "Copilot Studio エージェントの設計・構築",
-      "zh-hans": "设计并构建 Copilot Studio 智能体"
     },
     {
       "ko": "사용 현황 점검과 운영",

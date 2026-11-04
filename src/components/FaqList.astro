@@ -25,7 +25,7 @@ const t = useT(Astro.currentLocale);
                 : l.text}</li>
             ))}</L>
           )}
-          {i.todo && <p data-todo={i.todo.why}>{i.todo.text}</p>}
+          {i.note && <p>{i.note}</p>}
           {i.more && <p><a class="faq__more" href={i.more.href}>{i.more.text} <span aria-hidden="true">→</span></a></p>}
         </div>
       </details>

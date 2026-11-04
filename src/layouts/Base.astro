@@ -91,7 +91,7 @@ const org = {
   </main>
   <SiteFooter />
   <SupportFloat />
-  <CookieBanner />
+  {GA4_ID && <CookieBanner />}
   <script>import '../scripts/site.ts'; import '../scripts/ambient-dark.ts';</script>
 </body>
 </html>

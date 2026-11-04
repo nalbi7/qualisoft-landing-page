@@ -10,7 +10,8 @@
 #     SITE_URL         비우면 Pages 주소. 사용자 도메인을 붙이면 그 도메인이 저절로 들어온다
 #     PUBLIC_DEMO_URL  데모 신청 페이지 주소 (H-01). 비면 데모 버튼 자리에 전화 상담이 나온다
 #     SITE_LOCALES     비우면 네 언어 모두(ko · en · ja · zh-hans, D-024). 일 · 중을 끄려면 ko,en (M-01)
-#     PUBLIC_GA4_ID · PUBLIC_GSC_VERIFICATION · PUBLIC_NAVER_VERIFICATION · PUBLIC_BING_VERIFICATION
+#     PUBLIC_OPEN_DATE 오픈일 YYYY-MM-DD — 개인정보처리방침 시행일 (D-053). 비면 공개 빌드가 멈춘다
+#     PUBLIC_GA4_ID(비면 분석 · 쿠키 배너 없음) · PUBLIC_GSC_VERIFICATION · PUBLIC_NAVER_VERIFICATION · PUBLIC_BING_VERIFICATION
 #
 # 액션은 태그가 아니라 커밋으로 고정한다 — 태그는 옮겨질 수 있다. 판은 2026-11-02 조회, 올릴 때는 PR 하나에 하나씩 (17-dev-standard §5)
 name: build-deploy
@@ -64,6 +65,7 @@ jobs:
           ALLOW_TODO: ${{ vars.ALLOW_TODO || (vars.PUBLIC_NOINDEX != 'false' && '1' || '') }}
           PUBLIC_DEMO_URL: ${{ vars.PUBLIC_DEMO_URL }}
           SITE_LOCALES: ${{ vars.SITE_LOCALES }}
+          PUBLIC_OPEN_DATE: ${{ vars.PUBLIC_OPEN_DATE }}
           PUBLIC_GA4_ID: ${{ vars.PUBLIC_GA4_ID }}
           PUBLIC_GSC_VERIFICATION: ${{ vars.PUBLIC_GSC_VERIFICATION }}
           PUBLIC_NAVER_VERIFICATION: ${{ vars.PUBLIC_NAVER_VERIFICATION }}

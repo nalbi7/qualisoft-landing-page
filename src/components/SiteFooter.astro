@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 import NewWindow from './NewWindow.astro';
 import { useT } from '../i18n';
 import { url, lurl, pagePath, ROUTES, HAS_CASES, type SolutionSlug } from '../config/routes';
-import { COMPANY, LINKS, telFor, ceoFor } from '../config/site';
+import { COMPANY, LINKS, telFor, ceoFor, GA4_ID } from '../config/site';
 import { LOCALES } from '../config/locales.mjs';
 const loc = Astro.currentLocale;
 const t = useT(loc);
@@ -33,7 +33,7 @@ const sols = (await getCollection('solutions')).sort((a, b) => a.data.order - b.
         <li><a href={LINKS.blog} target="_blank" rel="noopener">{t('footer.blog')} <NewWindow /></a></li>
         <li><a href={LINKS.kakao} target="_blank" rel="noopener" data-ev="kakao_click">{t('footer.kakao')} <NewWindow /></a></li>
       </ul></div>
-      <div><h3>{t('footer.notice')}</h3><ul><li><a href={lurl(ROUTES.privacy, loc)}><b>{t('footer.privacy')}</b></a></li><li><button class="foot__btn" type="button" data-cookie-open>{t('footer.cookie')}</button></li></ul></div>
+      <div><h3>{t('footer.notice')}</h3><ul><li><a href={lurl(ROUTES.privacy, loc)}><b>{t('footer.privacy')}</b></a></li>{GA4_ID && <li><button class="foot__btn" type="button" data-cookie-open>{t('footer.cookie')}</button></li>}</ul></div>
     </div>
     <div class="foot__bottom">
       <span>© {t('common.company')}</span>

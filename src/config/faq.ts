@@ -18,7 +18,7 @@ export type FaqItem = {
   ordered?: boolean;
   after?: string;            // 목록 앞에 한 문장 더
   more?: FaqLink;            // 더 볼 곳
-  todo?: { text: string; why: string };   // 정해지지 않은 덧붙임 — 본문에만 data-todo 로, 구조화 데이터에는 넣지 않는다
+  note?: string;             // 목록 뒤에 한 문장 더 (예: 일 · 중 화면의 상담 언어)
 };
 
 const fill = (s: string, v: Record<string, string | number>) => s.replace(/\{(\w+)\}/g, (_, k) => String(v[k] ?? `{${k}}`));
@@ -52,7 +52,7 @@ export async function solutionFaq(sol: CollectionEntry<'solutions'>, locale?: st
   const s = sol.data;
   const name = s.name;
   const items: FaqItem[] = [];
-  // 정해지지 않은 값(pending — 본문에서는 data-todo 로 감싼 자리)은 FAQ 답으로 쓰지 않는다 — 미정 문장을 질문의 정답처럼 단정하지 않는다 (Copilot: lead · we)
+  // 정해지지 않은 값(pending — 본문에서는 data-todo 로 감싼 자리)은 FAQ 답으로 쓰지 않는다 — 미정 문장을 질문의 정답처럼 단정하지 않는다
   if (!s.pending?.lead) items.push({ q: fill(t('faq.sol.what.q'), { name }), a: tx(s.lead, loc) });
   if (!s.pending?.we) items.push({ q: fill(t('faq.sol.we.q'), { name }), a: fill(t('faq.sol.we.a'), { name }), list: s.we.map((w) => ({ text: tx(w, loc) })), ordered: true });
   // 「함께한 기업」과 같은 셈 — 이 솔루션의 사례 기사 고객 + 솔루션 파일의 고객 (components/solution/Customers.astro)
@@ -101,15 +101,15 @@ export async function homeFaq(locale?: string): Promise<FaqItem[]> {
   items.push({ q: t('faq.home.who.q'), a: t('faq.home.who.a') });
   items.push({
     q: t('faq.home.contact.q'), a: t('faq.home.contact.a'), list: channels,
-    // 일 · 중 화면의 상담 언어 안내 — 히어로 · 마감 띠와 같은 글, 확인 전(H-06)
-    ...(t.has('common.consult') ? { todo: { text: t('common.consult'), why: '상담 가능 언어 확인 (H-06)' } } : {}),
+    // 일 · 중 화면의 상담 언어 안내 — 히어로 · 마감 띠와 같은 글. 한국어 · 영어 상담 확인(H-06 해소, D-053)
+    ...(t.has('common.consult') ? { note: t('common.consult') } : {}),
   });
   return items;
 }
 
-// FAQPage 구조화 데이터 — 본문과 같은 글. 정해지지 않은 덧붙임(todo)은 넣지 않는다
+// FAQPage 구조화 데이터 — 본문과 같은 글
 export function faqJsonLd(items: FaqItem[]) {
-  const text = (i: FaqItem) => [i.a, i.after, ...(i.list ?? []).map((l) => l.text)].filter(Boolean).join('\n');
+  const text = (i: FaqItem) => [i.a, i.after, ...(i.list ?? []).map((l) => l.text), i.note].filter(Boolean).join('\n');
   return {
     '@context': 'https://schema.org', '@type': 'FAQPage',
     mainEntity: items.map((i) => ({ '@type': 'Question', name: i.q, acceptedAnswer: { '@type': 'Answer', text: text(i) } })),

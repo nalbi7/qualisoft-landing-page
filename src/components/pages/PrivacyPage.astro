@@ -1,49 +1,57 @@
 ---
-// 개인정보처리방침 본문 — 네 언어 한 틀 (pages/privacy/ · pages/[locale]/privacy/). 법무 검토는 한국어판 기준이다 (DLV-21). 제목 · 시행일 · 목차 · 본문 여섯 절 · 쿠키 설정 다시 열기 (11-screen-spec 4-10, 시안 privacy-2an.html 2안 2차).
-// 본문은 개정안 초안이다(DLV-21, 법무 검토 전). 정해지지 않은 값은 data-todo 로 표시해 둔다 — 공개 빌드는 이 표시가 남으면 멈춘다 (17-dev-standard §5)
+// 개인정보처리방침 본문 — 네 언어 한 틀 (pages/privacy/ · pages/[locale]/privacy/). 제목 · 시행일 · 목차 · 본문 · 쿠키 설정 다시 열기 (11-screen-spec 4-10, 시안 privacy-2an.html 2안 2차).
+// 법무 확인 끝(2026-11-04 사용자 전달, D-053) — 초안 안내 단락을 뺐다. 시행일은 오픈일이다: 빌드 변수 PUBLIC_OPEN_DATE(YYYY-MM-DD). 비어 있으면 data-todo 로 남아 공개 빌드를 막는다 (17-dev-standard §5)
+// 분석 쿠키(GA4) 절 · 거부와 철회 절은 GA4 를 켰을 때만 싣는다 — 아직 쓰지 않는다 (D-053). 절 번호는 실린 순서대로 매긴다
 import Base from '../../layouts/Base.astro';
 import Crumb from '../Crumb.astro';
 import '../../styles/privacy.css';
 import { useT } from '../../i18n';
 import { ROUTES } from '../../config/routes';
-import { COMPANY, telFor, ceoFor } from '../../config/site';
+import { COMPANY, GA4_ID, OPEN_DATE, telFor, ceoFor } from '../../config/site';
 const loc = Astro.currentLocale;
 const t = useT(loc);
-const titles = [1, 2, 3, 4, 5, 6].map((n) => t(`privacy.s${n}.title`));
-const EFFECTIVE_TODO = '시행일 — 개정안 확정 뒤 (DLV-21)';
+const LANG: Record<string, string> = { ko: 'ko-KR', en: 'en-US', ja: 'ja-JP', 'zh-hans': 'zh-CN' };
+const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(OPEN_DATE);
+const effective = m ? new Intl.DateTimeFormat(LANG[loc ?? 'ko'] ?? 'ko-KR', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }).format(new Date(Date.UTC(+m[1], +m[2] - 1, +m[3]))) : '';
+const EFFECTIVE_TODO = '시행일 — 오픈일. 빌드 변수 PUBLIC_OPEN_DATE(YYYY-MM-DD)를 넣는다 (D-053)';
+const secs = (GA4_ID ? [1, 2, 3, 4, 5, 6] : [1, 4, 5, 6]).map((s, i) => ({ s, n: i + 1, title: t(`privacy.s${s}.title`) }));
+const no = (s: number) => secs.find((x) => x.s === s)!.n;
 ---
-<Base title={t('privacy.meta.title')} description={t('privacy.meta.description')}>
+<Base title={t('privacy.meta.title')} description={t(GA4_ID ? 'privacy.meta.description' : 'privacy.meta.description_nocookie')}>
   <Crumb items={[{ label: t('common.home'), href: ROUTES.home }, { label: t('privacy.head.title') }]} />
   <div class="wrap doc2">
-    <header class="doc2__head" data-parity="privacy-head"><h1>{t('privacy.head.title')}</h1><p class="doc__meta">{t('common.company')} · {t('privacy.head.effective')} <span data-todo={EFFECTIVE_TODO}>{t('privacy.head.effective_pending')}</span></p></header>
-    <nav class="doc2__toc" aria-label={t('privacy.toc')}><ol>{titles.map((h, i) => <li><a href={`#p${i + 1}`}>{h}</a></li>)}</ol></nav>
+    <header class="doc2__head" data-parity="privacy-head"><h1>{t('privacy.head.title')}</h1><p class="doc__meta">{t('common.company')} · {t('privacy.head.effective')} {effective ? <time datetime={OPEN_DATE}>{effective}</time> : <span data-todo={EFFECTIVE_TODO}>{t('privacy.head.effective_pending')}</span>}</p></header>
+    <nav class="doc2__toc" aria-label={t('privacy.toc')}><ol>{secs.map((x) => <li><a href={`#p${x.s}`}>{x.title}</a></li>)}</ol></nav>
     <article class="doc2__body" data-parity="privacy-body">
-      <p class="draft" data-todo="개정안 초안 안내 — 법무 검토가 끝나면 이 단락을 지운다 (DLV-21)"><b>{t('privacy.draft.label')}</b> {t('privacy.draft.text')}</p>
-
-      <section class="pv" id="p1" aria-labelledby="p1-h"><h2 id="p1-h"><span class="pv__n">1.</span> {titles[0]}</h2>
+      <section class="pv" id="p1" aria-labelledby="p1-h"><h2 id="p1-h"><span class="pv__n">{no(1)}.</span> {t('privacy.s1.title')}</h2>
         <p>{t('privacy.s1.body')}</p>
       </section>
 
-      <section class="pv" id="p2" aria-labelledby="p2-h"><h2 id="p2-h"><span class="pv__n">2.</span> {titles[1]}</h2>
-        <p>{t('privacy.s2.body')}</p>
-        <table class="pt"><tbody>
-          <tr><th scope="row">{t('privacy.s2.items_h')}</th><td>{t('privacy.s2.items')}</td></tr>
-          <tr><th scope="row">{t('privacy.s2.purpose_h')}</th><td>{t('privacy.s2.purpose')}</td></tr>
-          <tr><th scope="row">{t('privacy.s2.retention_h')}</th><td><span data-todo="GA4 보관 기간 대표 확인 (M-05)">{t('privacy.s2.retention')}</span> — {t('privacy.s2.retention_note')}</td></tr>
-          <tr><th scope="row">{t('privacy.s2.processor_h')}</th><td><span data-todo="Google 위탁 · 국외 이전 고지 문구 — 법무 검토 (DLV-21)">{t('privacy.s2.processor')}</span></td></tr>
-        </tbody></table>
-      </section>
+      {GA4_ID && (
+        <section class="pv" id="p2" aria-labelledby="p2-h"><h2 id="p2-h"><span class="pv__n">{no(2)}.</span> {t('privacy.s2.title')}</h2>
+          <p>{t('privacy.s2.body')}</p>
+          <table class="pt"><tbody>
+            <tr><th scope="row">{t('privacy.s2.items_h')}</th><td>{t('privacy.s2.items')}</td></tr>
+            <tr><th scope="row">{t('privacy.s2.purpose_h')}</th><td>{t('privacy.s2.purpose')}</td></tr>
+            {/* 보관 기간은 GA4 를 켤 때 대표 확인을 받는다 (M-05) — 그때까지 공개 빌드를 막는다 */}
+            <tr><th scope="row">{t('privacy.s2.retention_h')}</th><td><span data-todo="GA4 보관 기간 대표 확인 (M-05)">{t('privacy.s2.retention')}</span> — {t('privacy.s2.retention_note')}</td></tr>
+            <tr><th scope="row">{t('privacy.s2.processor_h')}</th><td>{t('privacy.s2.processor')}</td></tr>
+          </tbody></table>
+        </section>
+      )}
 
-      <section class="pv" id="p3" aria-labelledby="p3-h"><h2 id="p3-h"><span class="pv__n">3.</span> {titles[2]}</h2>
-        <p>{t('privacy.s3.body')}</p>
-        <p><button class="btn btn-secondary btn-sm" type="button" data-cookie-open>{t('privacy.s3.cookie_open')}</button></p>
-      </section>
+      {GA4_ID && (
+        <section class="pv" id="p3" aria-labelledby="p3-h"><h2 id="p3-h"><span class="pv__n">{no(3)}.</span> {t('privacy.s3.title')}</h2>
+          <p>{t('privacy.s3.body')}</p>
+          <p><button class="btn btn-secondary btn-sm" type="button" data-cookie-open>{t('privacy.s3.cookie_open')}</button></p>
+        </section>
+      )}
 
-      <section class="pv" id="p4" aria-labelledby="p4-h"><h2 id="p4-h"><span class="pv__n">4.</span> {titles[3]}</h2>
+      <section class="pv" id="p4" aria-labelledby="p4-h"><h2 id="p4-h"><span class="pv__n">{no(4)}.</span> {t('privacy.s4.title')}</h2>
         <p>{t('privacy.s4.body')}</p>
       </section>
 
-      <section class="pv" id="p5" aria-labelledby="p5-h"><h2 id="p5-h"><span class="pv__n">5.</span> {titles[4]}</h2>
+      <section class="pv" id="p5" aria-labelledby="p5-h"><h2 id="p5-h"><span class="pv__n">{no(5)}.</span> {t('privacy.s5.title')}</h2>
         <table class="pt"><tbody>
           <tr><th scope="row">{t('privacy.s5.name_h')}</th><td>{ceoFor(loc)} · {t('privacy.s5.role')}</td></tr>
           {/* 대표 전화로 둔다 — 보호책임자용 번호를 따로 받으면 바꾼다 (시안 메모, D-016) */}
@@ -51,8 +59,8 @@ const EFFECTIVE_TODO = '시행일 — 개정안 확정 뒤 (DLV-21)';
         </tbody></table>
       </section>
 
-      <section class="pv" id="p6" aria-labelledby="p6-h"><h2 id="p6-h"><span class="pv__n">6.</span> {titles[5]}</h2>
-        <p><span data-todo={EFFECTIVE_TODO}>{t('privacy.head.effective_pending')}</span></p>
+      <section class="pv" id="p6" aria-labelledby="p6-h"><h2 id="p6-h"><span class="pv__n">{no(6)}.</span> {t('privacy.s6.title')}</h2>
+        <p>{effective ? <time datetime={OPEN_DATE}>{effective}</time> : <span data-todo={EFFECTIVE_TODO}>{t('privacy.head.effective_pending')}</span>}</p>
       </section>
     </article>
   </div>

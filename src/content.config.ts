@@ -30,7 +30,7 @@ const solutions = defineCollection({
     description: text,                // meta description — 설명의 첫 문장 (19-seo-spec §3)
     official: z.string(),             // Microsoft 공식 페이지 — microsoft.com/<언어>/ 뒤의 경로
     features: z.array(z.object({ title: text, text: text })).length(6),
-    we: z.array(text).length(4),      // 퀄리소프트가 하는 일
+    we: z.array(text).min(3).max(4),   // 퀄리소프트가 하는 일 — Copilot 은 셋 (D-053)
     products: z.array(z.object({ name: z.string(), icon: z.string(), path: z.string() })).min(1),   // path 는 official 과 같은 꼴
     customers: z.array(z.enum(logoIds)).optional(),               // 함께한 기업 — 대응표가 있는 솔루션만. 없으면 블록을 뺀다
     // 정해지지 않은 값 — 필드 이름 → 까닭. 그 자리를 data-todo 로 감싸 공개 빌드를 막는다 (validate-build ②)

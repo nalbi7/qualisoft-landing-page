@@ -35,6 +35,8 @@ export const DEMO_URL: string = import.meta.env.PUBLIC_DEMO_URL ?? '';
 
 export const GA4_ID: string = import.meta.env.PUBLIC_GA4_ID ?? '';
 export const NOINDEX = import.meta.env.PUBLIC_NOINDEX === 'true';
+// 오픈일(YYYY-MM-DD) — 개인정보처리방침 시행일로 쓴다 (D-053). 비어 있으면 시행일이 미정으로 남아 공개 빌드가 멈춘다
+export const OPEN_DATE: string = (import.meta.env.PUBLIC_OPEN_DATE ?? '').trim();
 export const VERIFICATION = {
   google: import.meta.env.PUBLIC_GSC_VERIFICATION ?? '',
   naver: import.meta.env.PUBLIC_NAVER_VERIFICATION ?? '',

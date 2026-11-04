@@ -4,7 +4,7 @@
   "faq.sep": ", ",
   "faq.sol.what.q": "What can a {name} implementation do?",
   "faq.sol.we.q": "What does Qualisoft do in a {name} implementation?",
-  "faq.sol.we.a": "Qualisoft takes on these four parts of a {name} implementation.",
+  "faq.sol.we.a": "Qualisoft takes on the following parts of a {name} implementation.",
   "faq.sol.cases.q": "Are there {name} implementation case studies?",
   "faq.sol.cases.a": "Yes. {count} customers have implemented {name} with Qualisoft.",
   "faq.sol.cases.a_few": "Yes. Customers have implemented {name} with Qualisoft.",
