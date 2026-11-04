@@ -94,9 +94,20 @@ html[data-theme="dark"] .ms-logo__d{opacity:1}
    끊김 줄이기 (D-050) — 이전에는 그림자 · 필터까지 모든 요소(홈 약 1,500개)에서 매 순간 다시 그렸다. 그림자는 바로 바뀌고,
    필터는 로고 그림에만 남긴다(흰 로고 ↔ 원래 로고가 바로 바뀌면 바탕과 같은 색이 돼 잠깐 사라진다).
    유리 흐림(backdrop-filter)은 뒤 배경이 바뀌는 매 순간 다시 계산하므로 바뀌는 동안만 끈다 — 끝나면 다시 켜진다 */
-html.theme-fade, html.theme-fade *, html.theme-fade *::before, html.theme-fade *::after{
-  transition:background-color var(--theme-dur,2.5s) ease, color var(--theme-dur,2.5s) ease, border-color var(--theme-dur,2.5s) ease,
-    fill var(--theme-dur,2.5s) ease, stroke var(--theme-dur,2.5s) ease, opacity var(--theme-dur,2.5s) ease !important;
+/* 글자색은 요소마다 전환하지 않고, 맨 위(html)에서 글자색 토큰만 서서히 바꾼다 (D-056).
+   이전에는 모든 요소에 color 전환을 걸었는데, 글자색은 물려받는 값이라 안쪽 요소가 바깥 요소의 「바뀌는 중인 색」을 매 순간 다시 쫓아갔다 —
+   감싼 층이 깊을수록 늦어지고(히어로 「공식 파트너」, 상세 제목 등), 전환이 끝나는 순간 남은 만큼 한 번에 튀었다. fill · stroke 도 같은 까닭으로 뺀다.
+   토큰을 쓰지 않는 글자색(리터럴)은 바로 바뀐다. @property 를 모르는 브라우저(iOS 16.3 이하)는 글자색이 처음에 바로 바뀐다 */
+@property --text{syntax:'<color>'; inherits:true; initial-value:#14142B}
+@property --muted{syntax:'<color>'; inherits:true; initial-value:#5C5B75}
+@property --muted-2{syntax:'<color>'; inherits:true; initial-value:#8B8AA3}
+@property --brand{syntax:'<color>'; inherits:true; initial-value:#4640DE}
+html.theme-fade{
+  transition:--text var(--theme-dur,2.5s) ease, --muted var(--theme-dur,2.5s) ease, --muted-2 var(--theme-dur,2.5s) ease, --brand var(--theme-dur,2.5s) ease,
+    background-color var(--theme-dur,2.5s) ease, border-color var(--theme-dur,2.5s) ease, opacity var(--theme-dur,2.5s) ease !important;
+}
+html.theme-fade *, html.theme-fade *::before, html.theme-fade *::after{
+  transition:background-color var(--theme-dur,2.5s) ease, border-color var(--theme-dur,2.5s) ease, opacity var(--theme-dur,2.5s) ease !important;
   -webkit-backdrop-filter:none !important; backdrop-filter:none !important;
 }
 html.theme-fade :is(.indcol img, .cogrid img, .cos img, .case__co, .scard__logo, .c2__logo, .logos__track img, .logo img){
