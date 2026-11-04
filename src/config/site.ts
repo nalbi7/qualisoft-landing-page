@@ -34,6 +34,9 @@ export const LINKS = {
 export const DEMO_URL: string = import.meta.env.PUBLIC_DEMO_URL ?? '';
 
 export const GA4_ID: string = import.meta.env.PUBLIC_GA4_ID ?? '';
+// 개인정보처리방침 — 지금은 숨긴다(사용자 지시 2026-11-04, D-055): 푸터 · 쿠키 배너의 링크를 빼고, 페이지는 빌드하지 않는다.
+// 다시 열려면 ① 이 값을 true ② src/pages/_privacy → privacy, src/pages/[locale]/_privacy → privacy 로 폴더 이름을 되돌린다(밑줄로 시작하면 Astro 가 빌드하지 않는다)
+export const SHOW_PRIVACY = false;
 export const NOINDEX = import.meta.env.PUBLIC_NOINDEX === 'true';
 // 오픈일(YYYY-MM-DD) — 개인정보처리방침 시행일로 쓴다 (D-053). 비어 있으면 시행일이 미정으로 남아 공개 빌드가 멈춘다
 export const OPEN_DATE: string = (import.meta.env.PUBLIC_OPEN_DATE ?? '').trim();
