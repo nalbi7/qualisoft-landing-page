@@ -1,0 +1,9 @@
+---
+// 바깥으로 나가는 링크 표시 — 데모 신청 버튼과 같은 대각선 화살표를 보이고 「새 창」을 읽어 준다 (13-accessibility-spec 「기대를 맞춘다」).
+// 「↗」 글자 대신 쓴다 (BD-012). 링크에 마우스를 올리면 데모 버튼처럼 화살표가 오른쪽 위로 빠지고 새 화살표가 들어온다 (layout.css .ext)
+import { useT } from '../i18n';
+const loc = Astro.currentLocale;
+const t = useT(loc);
+const arrow = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M6 4.5h5.5V10" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+---
+<span class="ext" aria-hidden="true"><span class="ext__a" set:html={arrow} /><span class="ext__b" set:html={arrow} /></span><span class="sr-only">{t('common.new_window')}</span>

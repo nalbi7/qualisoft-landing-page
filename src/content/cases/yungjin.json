@@ -1,0 +1,106 @@
+{
+  "order": 5,
+  "first": [],
+  "customer": "yungjin",
+  "industry": {
+    "ko": "제약",
+    "en": "Pharmaceuticals",
+    "ja": "製薬",
+    "zh-hans": "制药"
+  },
+  "solutions": [
+    "dynamics-365-crm"
+  ],
+  "products": [
+    "Dynamics CRM",
+    "Azure Functions"
+  ],
+  "period": {
+    "ko": "2020년 이전 구축 · 운영 지원",
+    "en": "Built before 2020 · ongoing support",
+    "ja": "2020年以前に構築・運用支援",
+    "zh-hans": "2020 年以前构建 · 持续运营支持"
+  },
+  "title": {
+    "ko": "제약 영업의 방문 · 계획 · 실적을\n한 CRM에서",
+    "en": "Pharma sales visits, plans and results\nin one CRM",
+    "ja": "製薬営業の訪問・計画・実績を\nひとつの CRM で",
+    "zh-hans": "医药销售的拜访、计划与业绩，\n统一在一个 CRM 中"
+  },
+  "sub": {
+    "ko": "모바일 방문 관리부터 ERP 실적 조회와 영업 분석까지 Dynamics CRM으로 구축했습니다",
+    "en": "From mobile visit management to ERP sales lookups and sales analysis, built on Dynamics CRM",
+    "ja": "モバイルの訪問管理から ERP 実績の照会、営業分析まで Dynamics CRM で構築しました",
+    "zh-hans": "从移动拜访管理到 ERP 业绩查询与销售分析，均基于 Dynamics CRM 构建"
+  },
+  "card": {
+    "task": {
+      "ko": "제약 영업에 맞춘 CRM",
+      "en": "A CRM built for pharma sales",
+      "ja": "製薬営業向けの CRM",
+      "zh-hans": "面向医药销售的 CRM"
+    },
+    "result": {
+      "ko": "모바일 방문 기록 · ERP 실적을 거래처별로",
+      "en": "Mobile visit logs, ERP sales by account",
+      "ja": "モバイル訪問記録・ERP 実績を取引先別に",
+      "zh-hans": "移动拜访记录 · 按客户查看 ERP 业绩"
+    }
+  },
+  "description": {
+    "ko": "제약사 영진약품의 방문 영업과 월간 계획, ERP 실적 조회, 영업 분석을 Dynamics CRM으로 구축하고 운영을 지원하는 사례입니다.",
+    "en": "How Yungjin Pharm runs field sales visits, monthly plans, ERP sales lookups and sales analysis on Dynamics CRM, with ongoing support from Qualisoft.",
+    "ja": "製薬会社の永進薬品の訪問営業と月間計画、ERP 実績の照会、営業分析を Dynamics CRM で構築し、運用を支援している事例です。",
+    "zh-hans": "为制药企业 Yungjin Pharm 基于 Dynamics CRM 构建拜访销售、月度计划、ERP 业绩查询与销售分析，并持续提供运营支持的案例。"
+  },
+  "challenge": [
+    {
+      "ko": "영진약품은 의약품을 만들고 판매하는 제약사입니다. 거래처를 찾아가는 방문 영업이 중심이라 방문 계획과 활동, 그리고 ERP에 있는 판매 실적을 함께 볼 수 있어야 했습니다.",
+      "en": "Yungjin Pharm makes and sells pharmaceuticals. Its sales centre on reps visiting their accounts, so visit plans, activities and the sales results held in ERP needed to be seen together.",
+      "ja": "永進薬品は医薬品を製造・販売する製薬会社です。取引先を訪問する営業が中心のため、訪問計画と活動、そして ERP にある販売実績をあわせて見られる必要がありました。",
+      "zh-hans": "Yungjin Pharm 是生产和销售药品的制药企业。业务以拜访客户的销售为核心，因此需要把拜访计划、活动与 ERP 中的销售业绩放在一起查看。"
+    }
+  ],
+  "work": [
+    {
+      "ko": "영업 담당자가 휴대폰으로 방문을 기록하는 모바일 방문 관리와 월간 계획을 Dynamics CRM에 만들었습니다. ERP의 판매 실적은 CRM에서 거래처별로 조회하게 하고, 영업 분석과 보고서도 함께 마련했습니다.",
+      "en": "Qualisoft built mobile visit management, where reps log visits on their phones, and monthly planning in Dynamics CRM. ERP sales results can be looked up by account in the CRM, alongside sales analysis and reports.",
+      "ja": "営業担当者が携帯電話で訪問を記録するモバイル訪問管理と月間計画を Dynamics CRM に構築しました。ERP の販売実績は CRM で取引先別に照会できるようにし、営業分析とレポートもあわせて用意しました。",
+      "zh-hans": "在 Dynamics CRM 中构建了销售代表用手机记录拜访的移动拜访管理与月度计划。ERP 中的销售业绩可在 CRM 中按客户查询，同时提供销售分析与报表。"
+    }
+  ],
+  "scope": [
+    {
+      "ko": "모바일 방문 관리 · 월간 계획",
+      "en": "Mobile visit management and monthly plans",
+      "ja": "モバイル訪問管理・月間計画",
+      "zh-hans": "移动拜访管理与月度计划"
+    },
+    {
+      "ko": "ERP 실적 조회",
+      "en": "ERP sales lookup",
+      "ja": "ERP 実績照会",
+      "zh-hans": "ERP 业绩查询"
+    },
+    {
+      "ko": "BI 보고서 · 영업 분석",
+      "en": "BI reports and sales analysis",
+      "ja": "BI レポート・営業分析",
+      "zh-hans": "BI 报表与销售分析"
+    },
+    {
+      "ko": "SFE(영업 효율) 관리",
+      "en": "Sales force effectiveness (SFE)",
+      "ja": "SFE（営業効率）管理",
+      "zh-hans": "SFE（销售效率）管理"
+    }
+  ],
+  "result": [
+    {
+      "ko": "영업 담당자는 현장에서 방문 활동을 바로 남기고, 팀장은 거래처별 실적을 CRM에서 확인합니다. 퀄리소프트는 지금도 운영을 함께하고 있습니다.",
+      "en": "Reps record their visits on the spot, and team leaders check results by account in the CRM. Qualisoft continues to support the system in operation.",
+      "ja": "営業担当者は現場で訪問活動をすぐに残し、チーム長は取引先別の実績を CRM で確認しています。クオリソフトは今も運用を支援しています。",
+      "zh-hans": "销售代表在现场即可记录拜访活动，团队负责人在 CRM 中查看各客户业绩。Qualisoft 至今仍在支持系统运营。"
+    }
+  ]
+}

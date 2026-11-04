@@ -1,0 +1,17 @@
+---
+// 솔루션 상세 — 한국어. 본문은 components/pages/SolutionPage.astro, 다른 언어는 pages/[locale]/solutions/[slug].astro
+import { getCollection, type CollectionEntry } from 'astro:content';
+import SolutionPage from '../../components/pages/SolutionPage.astro';
+import { SOLUTION_SLUGS } from '../../config/routes';
+
+export async function getStaticPaths() {
+  const sols = await getCollection('solutions');
+  // 주소 목록(routes.ts)과 콘텐츠 파일이 어긋나면 빌드를 멈춘다 — 헤더 · 푸터 링크가 빈 주소를 가리키지 않게
+  const have = sols.map((s) => s.id).sort().join();
+  if (have !== [...SOLUTION_SLUGS].sort().join()) throw new Error(`솔루션 콘텐츠(${have})가 SOLUTION_SLUGS 와 다르다`);
+  return sols.map((sol) => ({ params: { slug: sol.id }, props: { sol } }));
+}
+
+interface Props { sol: CollectionEntry<'solutions'> }
+---
+<SolutionPage sol={Astro.props.sol} />

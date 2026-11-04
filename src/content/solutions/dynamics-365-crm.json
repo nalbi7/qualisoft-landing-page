@@ -1,0 +1,189 @@
+{
+  "order": 1,
+  "name": "Dynamics 365 CRM",
+  "icon": "/assets/ms/d365.svg",
+  "color": "var(--s1)",
+  "short": {
+    "ko": "영업과 서비스를 한 고객 기록에",
+    "en": "Sales and service on one customer record",
+    "ja": "営業とサービスをひとつの顧客記録に",
+    "zh-hans": "销售与服务共用同一客户档案"
+  },
+  "area": {
+    "ko": "영업 및 고객관리",
+    "en": "Sales & customer management",
+    "ja": "営業・顧客管理",
+    "zh-hans": "销售与客户管理"
+  },
+  "art": "crm",
+  "hook": {
+    "ko": "영업과 고객 서비스를 하나의 고객 기록으로",
+    "en": "Sales and customer service on one customer record",
+    "ja": "営業と顧客サービスをひとつの顧客データで",
+    "zh-hans": "销售与客户服务共享同一客户档案"
+  },
+  "step": "D365 CRM",
+  "headline": {
+    "ko": "영업과 서비스를\n한 고객 기록에",
+    "en": "Sales and service\non one customer record",
+    "ja": "営業とサービスを\nひとつの顧客記録に",
+    "zh-hans": "销售与服务\n共用同一客户档案"
+  },
+  "family": "Dynamics 365",
+  "mark": "CRM",
+  "lead": {
+    "ko": "Dynamics 365 Sales로 리드부터 영업 기회·견적·주문까지 영업 과정을 관리하고, Dynamics 365 Customer Service로 문의와 서비스 케이스를 처리합니다. 두 앱이 같은 고객 데이터(Dataverse)를 쓰기 때문에 영업과 서비스가 한 고객을 같은 기록으로 봅니다. Outlook·Teams와 함께 쓰고, ERP 같은 사내 시스템과 연결합니다.",
+    "en": "Dynamics 365 Sales runs the sales process from lead to opportunity, quote and order, while Dynamics 365 Customer Service handles inquiries and service cases. Both apps share the same customer data (Dataverse), so sales and service see one customer the same way. They work alongside Outlook and Teams and connect to in-house systems such as ERP.",
+    "ja": "Dynamics 365 Sales でリードから営業案件・見積・受注までの営業プロセスを管理し、Dynamics 365 Customer Service で問い合わせとサービスケースを処理します。2つのアプリが同じ顧客データ（Dataverse）を使うため、営業とサービスがひとりの顧客を同じ記録で見られます。Outlook・Teams と一緒に使い、ERP などの社内システムとつなぎます。",
+    "zh-hans": "Dynamics 365 Sales 管理从线索、商机、报价到订单的销售流程，Dynamics 365 Customer Service 处理咨询与服务案例。两个应用使用同一份客户数据（Dataverse），销售与服务看到的是同一位客户的同一份记录。可与 Outlook、Teams 协同使用，并与 ERP 等内部系统连接。"
+  },
+  "description": {
+    "ko": "Dynamics 365 Sales로 리드부터 영업 기회·견적·주문까지 영업 과정을 관리하고, Dynamics 365 Customer Service로 문의와 서비스 케이스를 처리합니다.",
+    "en": "Dynamics 365 Sales runs the sales process from lead to opportunity, quote and order, while Dynamics 365 Customer Service handles inquiries and service cases.",
+    "ja": "Dynamics 365 Sales でリードから営業案件・見積・受注までの営業プロセスを管理し、Dynamics 365 Customer Service で問い合わせとサービスケースを処理します。",
+    "zh-hans": "Dynamics 365 Sales 管理从线索、商机、报价到订单的销售流程，Dynamics 365 Customer Service 处理咨询与服务案例。"
+  },
+  "official": "dynamics-365/products/sales",
+  "features": [
+    {
+      "title": {
+        "ko": "리드·영업 기회",
+        "en": "Leads & opportunities",
+        "ja": "リード・営業案件",
+        "zh-hans": "线索与商机"
+      },
+      "text": {
+        "ko": "비즈니스 프로세스 흐름으로 단계(검증·개발·제안·종료)를 정하고 다음 할 일을 이끕니다.",
+        "en": "Business process flows set the stages (qualify, develop, propose, close) and guide the next step.",
+        "ja": "ビジネスプロセスフローで段階（評価・開発・提案・クローズ）を定め、次の作業を導きます。",
+        "zh-hans": "通过业务流程定义阶段（资格审查、开发、提案、结束），引导下一步工作。"
+      }
+    },
+    {
+      "title": {
+        "ko": "견적·주문·송장",
+        "en": "Quotes, orders & invoices",
+        "ja": "見積・受注・請求書",
+        "zh-hans": "报价、订单与发票"
+      },
+      "text": {
+        "ko": "제품 카탈로그와 가격표로 견적을 내고 주문·송장까지 이어 갑니다.",
+        "en": "Build quotes from the product catalog and price lists, then carry them through to orders and invoices.",
+        "ja": "製品カタログと価格表で見積を作り、受注・請求書までつなげます。",
+        "zh-hans": "基于产品目录与价目表生成报价，并延续到订单与发票。"
+      }
+    },
+    {
+      "title": {
+        "ko": "활동과 협업",
+        "en": "Activities & collaboration",
+        "ja": "活動とコラボレーション",
+        "zh-hans": "活动与协作"
+      },
+      "text": {
+        "ko": "메일·일정·통화를 고객 기록에 남기고 Outlook·Teams에서 바로 씁니다.",
+        "en": "Emails, meetings and calls are logged on the customer record and used right inside Outlook and Teams.",
+        "ja": "メール・予定・通話を顧客記録に残し、Outlook・Teams からそのまま使います。",
+        "zh-hans": "邮件、日程与通话记录在客户档案中，并可直接在 Outlook、Teams 中使用。"
+      }
+    },
+    {
+      "title": {
+        "ko": "영업 예측과 대시보드",
+        "en": "Forecasts & dashboards",
+        "ja": "営業予測とダッシュボード",
+        "zh-hans": "销售预测与仪表板"
+      },
+      "text": {
+        "ko": "파이프라인과 예측을 팀·조직 단위로 보고 관리합니다.",
+        "en": "Track pipeline and forecasts by team and organization.",
+        "ja": "パイプラインと予測をチーム・組織単位で確認・管理します。",
+        "zh-hans": "按团队与组织查看并管理销售管道与预测。"
+      }
+    },
+    {
+      "title": {
+        "ko": "케이스·SLA",
+        "en": "Cases & SLAs",
+        "ja": "ケース・SLA",
+        "zh-hans": "案例与 SLA"
+      },
+      "text": {
+        "ko": "문의를 케이스로 받아 담당자에게 배정하고 처리 기한(SLA)을 지킵니다.",
+        "en": "Inquiries become cases, are routed to the right agent and tracked against service-level agreements.",
+        "ja": "問い合わせをケースとして受け付け、担当者に割り当てて対応期限（SLA）を守ります。",
+        "zh-hans": "将咨询转为案例并分配给负责人，确保在服务级别协议（SLA）期限内处理。"
+      }
+    },
+    {
+      "title": {
+        "ko": "지식 문서",
+        "en": "Knowledge articles",
+        "ja": "ナレッジ記事",
+        "zh-hans": "知识文章"
+      },
+      "text": {
+        "ko": "자주 쓰는 해결 방법을 지식 문서로 쌓아 상담원과 고객이 함께 씁니다.",
+        "en": "Proven answers are kept as knowledge articles that agents and customers both use.",
+        "ja": "よく使う解決方法をナレッジ記事として蓄積し、担当者と顧客が一緒に使います。",
+        "zh-hans": "将常用解决方法沉淀为知识文章，供客服与客户共同使用。"
+      }
+    }
+  ],
+  "products": [
+    {
+      "name": "Dynamics 365 Sales",
+      "icon": "/assets/ms/d365-sales.svg",
+      "path": "dynamics-365/products/sales"
+    },
+    {
+      "name": "Dynamics 365 Customer Service",
+      "icon": "/assets/ms/d365-customer-service.svg",
+      "path": "dynamics-365/products/customer-service"
+    }
+  ],
+  "we": [
+    {
+      "ko": "조직에 맞는 영업·서비스 프로세스와 권한·결재 흐름 설계",
+      "en": "Designing sales and service processes, permissions and approval flows that fit the organization",
+      "ja": "組織に合った営業・サービスプロセスと権限・決裁フローの設計",
+      "zh-hans": "设计契合组织的销售与服务流程、权限与审批流"
+    },
+    {
+      "ko": "구축형 CRM(CRM 2011·2016 등)의 Dynamics 365 클라우드 전환",
+      "en": "Moving on-premises CRM (CRM 2011, 2016 and others) to Dynamics 365 in the cloud",
+      "ja": "オンプレミス CRM（CRM 2011・2016 など）の Dynamics 365 クラウドへの移行",
+      "zh-hans": "将本地部署 CRM（CRM 2011、2016 等）迁移至云端 Dynamics 365"
+    },
+    {
+      "ko": "SAP·ERP·POS·그룹웨어와의 연계",
+      "en": "Integration with SAP, ERP, POS and groupware",
+      "ja": "SAP・ERP・POS・グループウェアとの連携",
+      "zh-hans": "与 SAP、ERP、POS 及协同办公系统的集成"
+    },
+    {
+      "ko": "오픈 이후 운영과 개선 지원",
+      "en": "Operations and continuous improvement after go-live",
+      "ja": "稼働後の運用と改善の支援",
+      "zh-hans": "上线后的运营与持续改进支持"
+    }
+  ],
+  "customers": [
+    "makino",
+    "mapei",
+    "gccell",
+    "hpsp",
+    "jeilmedix",
+    "ky",
+    "intellian",
+    "kukdo",
+    "yungbo",
+    "roka",
+    "glo",
+    "warevalley",
+    "sba",
+    "macromatrix",
+    "dnl",
+    "ts"
+  ]
+}

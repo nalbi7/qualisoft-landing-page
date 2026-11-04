@@ -1,0 +1,19 @@
+---
+// 이동 경로 — 솔루션 상세 · 개인정보처리방침 (시안 make_v8.py crumb · CRUMB_CSS). 마지막 항목은 지금 페이지
+import '../styles/crumb.css';
+import { useT } from '../i18n';
+import { lurl } from '../config/routes';
+// wrap={false} — 이미 .wrap 안에 놓일 때 (솔루션 상세 2안은 오른쪽 칸 안에 둔다: make_v8.py 의 .replace('crumb wrap', 'crumb'))
+interface Props { items: { label: string; href?: string }[]; wrap?: boolean }
+const { items, wrap = true } = Astro.props;
+const loc = Astro.currentLocale;
+const t = useT(loc);
+---
+<nav class={wrap ? 'crumb wrap' : 'crumb'} aria-label={t('common.crumb')} data-parity="crumb">
+  {items.map((it, i) => (
+    <Fragment>
+      {i > 0 && <span aria-hidden="true">›</span>}
+      {it.href ? <a href={lurl(it.href, loc)}>{it.label}</a> : <span aria-current="page">{it.label}</span>}
+    </Fragment>
+  ))}
+</nav>

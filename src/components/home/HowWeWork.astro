@@ -1,0 +1,38 @@
+---
+// 홈 화면 4 — 일하는 방식 (11-screen-spec 4-5, 시안 home-2an.html). 네 단계 이름 + 짧은 설명 (BD-014)
+// 스크롤 효과 「점선 여정」 (BD-013, Web-Transition-Lab 샌드박스 howMode dotted-path 를 보완해 옮김): 스크롤하면 곡선 점선이 채워지고
+// 점이 따라 움직이며 네 단계가 차례로 켜진다. 길 위에는 아이콘이(선이 아이콘 가운데를 지난다), 그 옆에 단계 이름 · 설명 글이 카드 없이 선다 (BD-017).
+// 모양은 home.css .howmap, 움직임은 scripts/how-path.ts.
+// 스크립트가 없으면 지금 같은 네 칸 목록 그대로다 — 그림 · 점은 꾸밈이라 화면 낭독에서 숨긴다
+import { useT } from '../../i18n';
+const loc = Astro.currentLocale;
+const t = useT(loc);
+const GLYPH = [
+  '<circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/>',
+  '<path d="M4 20h16M6 16V9l6-4 6 4v7"/>',
+  '<path d="M5 12.5 10 17l9-10"/>',
+  '<path d="M12 4v4M12 16v4M4 12h4M16 12h4"/><circle cx="12" cy="12" r="3"/>',
+];
+// 단계가 길 위 어디에 서는지 (0 = 길 시작, 1 = 끝) — 샌드박스 값
+const AT = [0.11, 0.37, 0.64, 0.9];
+// 단계마다 짧은 설명 — 길이 그 단계를 지나면 카드 안에서 서서히 드러난다 (사용자 요청 2026-11-02, BD-014. 화면 정의서 4-5 「설명 없음」을 바꿈)
+const desc = t('home.how.desc', true);
+---
+<section class="sec sec--flat" id="how" aria-labelledby="how-h" data-parity="how">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="how-h">{t('home.how.title')}</h2></div>
+    <div class="howmap" id="howmap">
+      <svg class="howmap__svg" viewBox="0 0 1000 240" preserveAspectRatio="none" aria-hidden="true">
+        <defs><mask id="howmap-mask" maskUnits="userSpaceOnUse" x="0" y="-20" width="1000" height="280"><path class="howmap__mask" fill="none" stroke="#fff" stroke-width="60" /></mask></defs>
+        <path class="howmap__ahead" />
+        <path class="howmap__done" mask="url(#howmap-mask)" />
+      </svg>
+      <span class="howmap__dot" aria-hidden="true"></span>
+      <ol class="how">
+        {t('home.how.steps', true).map((name, i) => (
+          <li data-at={AT[i]}><span class="step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={GLYPH[i]} /></span><span class="how__txt"><b><span class="step__n">{String(i + 1).padStart(2, '0')}</span>{name}</b><span class="how__d">{desc[i]}</span></span></li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>

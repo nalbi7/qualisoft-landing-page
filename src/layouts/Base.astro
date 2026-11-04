@@ -1,0 +1,97 @@
+---
+// 공통 머리 — 언어(lang · og:locale) · 메타 · canonical · hreflang · JSON-LD(Organization) · 머리글 · 푸터 · 떠 있는 요소 (Docs/19-seo-spec.md §3 · §5)
+import '../styles/tokens.css';
+import '../styles/components.css';
+import '../styles/layout.css';
+import '../styles/theme-dark.css';   // 다크 테크 — html[data-theme="dark"] 일 때만 (D-032)
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SupportFloat from '../components/SupportFloat.astro';
+import CookieBanner from '../components/CookieBanner.astro';
+import LangBanner from '../components/LangBanner.astro';
+import { getCollection } from 'astro:content';
+import { useT } from '../i18n';
+import { COMPANY, LINKS, GA4_ID, NOINDEX, VERIFICATION } from '../config/site';
+import { DEFAULT_LOCALE, LOCALES, X_DEFAULT } from '../config/locales.mjs';
+import { url, lurl, pagePath } from '../config/routes';
+
+// ogImage — public/ 아래 공유 그림(scripts/make-og.mjs, 글자 없는 1200×630). 없으면 공통 그림. ogType — 사례 기사만 article (19-seo-spec §3)
+interface Props { title: string; description: string; noindex?: boolean; jsonld?: object[]; ogImage?: string; ogImageAlt?: string; ogType?: 'website' | 'article' }
+const { title, description, noindex = false, jsonld = [], ogImage = '/assets/og/default.png', ogImageAlt, ogType = 'website' } = Astro.props;
+const loc = Astro.currentLocale ?? DEFAULT_LOCALE;
+const t = useT(loc);
+const L = LOCALES.find((l) => l.code === loc) ?? LOCALES[0];
+// 검색 제외(404 · 출시 전 미리보기) 페이지는 대표 주소를 내지 않는다 — 404 는 자기 주소가 없다
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const fullTitle = `${title} | ${t('common.company')}`;
+// 같은 페이지의 언어판 — 404 처럼 자기 주소가 없는 페이지는 잇지 않는다 (19-seo-spec §3 hreflang · IA §9)
+const page = pagePath(Astro.url.pathname);
+const alt = (code: string) => new URL(lurl(page, code), Astro.site).href;
+const langs = !noindex && LOCALES.length > 1;
+// 확인된 값만 (19-seo-spec §5) — 이메일 · 설립연도 · 인원은 넣지 않는다
+// @id — 회사 하나를 가리키는 고정 이름. 솔루션(Service) · 사례(Article)가 이 id 로 같은 회사를 잇는다 — AI · 검색이 한 회사로 묶는다 (19-seo-spec §9 ④, D-040)
+// knowsAbout — 이 사이트가 구축한다고 밝힌 솔루션 이름(콘텐츠의 여섯)만
+const orgId = new URL(url('/#org'), Astro.site).href;
+const solNames = (await getCollection('solutions')).sort((a, b) => a.data.order - b.data.order).map((s) => s.data.name);
+const ogAbs = new URL(url(ogImage), Astro.site).href;
+const org = {
+  '@context': 'https://schema.org', '@type': 'Organization', '@id': orgId,
+  name: t('common.company'), legalName: t('common.legal_name'), url: new URL(lurl('/', loc), Astro.site).href,
+  logo: new URL(url('/assets/brand/ver1-logo.png'), Astro.site).href,
+  telephone: COMPANY.telIntl,
+  sameAs: [LINKS.youtube, LINKS.blog, LINKS.kakao.replace(/\/chat$/, '')],
+  knowsAbout: solNames,
+  address: { '@type': 'PostalAddress', addressCountry: 'KR', addressRegion: COMPANY.addressParts.region, addressLocality: COMPANY.addressParts.locality, streetAddress: COMPANY.addressParts.street },
+};
+---
+<!doctype html>
+<html lang={L.lang} data-ga4={GA4_ID || undefined}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{fullTitle}</title>
+  <meta name="description" content={description}>
+  {!(noindex || NOINDEX) && <link rel="canonical" href={canonical}>}
+  {langs && LOCALES.map((l) => <link rel="alternate" hreflang={l.hreflang} href={alt(l.code)}>)}
+  {langs && <link rel="alternate" hreflang="x-default" href={alt(X_DEFAULT)}>}
+  {(noindex || NOINDEX) && <meta name="robots" content="noindex">}
+  <meta property="og:type" content={ogType}>
+  <meta property="og:site_name" content={t('common.company')}>
+  <meta property="og:locale" content={L.og}>
+  {langs && LOCALES.filter((l) => l.code !== loc).map((l) => <meta property="og:locale:alternate" content={l.og}>)}
+  <meta property="og:title" content={fullTitle}>
+  <meta property="og:description" content={description}>
+  {!(noindex || NOINDEX) && <meta property="og:url" content={canonical}>}
+  <meta property="og:image" content={ogAbs}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content={ogImageAlt ?? t('common.company')}>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content={ogAbs}>
+  {/* 파비콘 — 구 랜딩(dynamics365.co.kr)의 favicon.ico 그대로 (D-040, Microsoft 로고 — 상표 점검 M-08). 홈 화면용은 같은 그림을 흰 바탕 180px 로 */}
+  <link rel="icon" href={url('/favicon.ico')} sizes="any">
+  <link rel="apple-touch-icon" href={url('/apple-touch-icon.png')}>
+  {VERIFICATION.google && <meta name="google-site-verification" content={VERIFICATION.google}>}
+  {VERIFICATION.naver && <meta name="naver-site-verification" content={VERIFICATION.naver}>}
+  {VERIFICATION.bing && <meta name="msvalidate.01" content={VERIFICATION.bing}>}
+  <script type="application/ld+json" set:html={JSON.stringify([org, ...jsonld])} />
+  {/* 새로고침은 처음 연 것처럼 (D-038) — 이 탭에서 기억한 테마 · 다크 버튼 · 히어로 등장을 지우고, 주소에 #이 없으면 맨 위에서 연다.
+      페이지를 옮기거나 뒤로 가기는 그대로 이어진다.
+      다크 테크 — 이 탭에서 버튼으로 다크를 골랐으면 첫 그림 전에 붙여 밝게 깜빡이지 않게 (D-034 · D-035).
+      dark-arrive — 다크로 연 페이지에서 솔루션 판 그림이 서서히 나타나게 잠깐 붙인다 (D-041, theme-dark.css) */}
+  <script is:inline>try{var nv=performance.getEntriesByType('navigation')[0];if(nv&&nv.type==='reload'){['theme-choice','theme-btn','hero-intro'].forEach(function(k){sessionStorage.removeItem(k)});if(!location.hash){history.scrollRestoration='manual';addEventListener('load',function(){scrollTo(0,0);setTimeout(function(){history.scrollRestoration='auto'})})}}if(sessionStorage.getItem('theme-choice')==='dark'){document.documentElement.dataset.theme='dark';document.documentElement.classList.add('dark-arrive');setTimeout(function(){document.documentElement.classList.remove('dark-arrive')},1500)}}catch(e){}</script>
+  <slot name="head" />
+</head>
+<body>
+  <a class="skip" href="#main">{t('common.skip')}</a>
+  <SiteHeader />
+  {loc === DEFAULT_LOCALE && LOCALES.length > 1 && !noindex && <LangBanner />}
+  <main id="main">
+    <slot />
+  </main>
+  <SiteFooter />
+  <SupportFloat />
+  <CookieBanner />
+  <script>import '../scripts/site.ts'; import '../scripts/ambient-dark.ts';</script>
+</body>
+</html>

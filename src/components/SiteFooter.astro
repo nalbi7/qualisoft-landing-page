@@ -1,0 +1,43 @@
+---
+// 푸터 — Docs/14-information-architecture.md §5 「푸터」. 회사 정보는 config/site.ts 한 곳에서 (D-016)
+import { getCollection } from 'astro:content';
+import NewWindow from './NewWindow.astro';
+import { useT } from '../i18n';
+import { url, lurl, pagePath, ROUTES, HAS_CASES, type SolutionSlug } from '../config/routes';
+import { COMPANY, LINKS, telFor, ceoFor } from '../config/site';
+import { LOCALES } from '../config/locales.mjs';
+const loc = Astro.currentLocale;
+const t = useT(loc);
+// 회사 정보 — 상호는 언어별 표기, 주소는 한국어판만 한글이고 나머지는 영문 (M-12 표기 확인 전)
+const page = pagePath(Astro.url.pathname);
+const address = loc === 'ko' || !loc ? COMPANY.address : COMPANY.addressEn;
+const sols = (await getCollection('solutions')).sort((a, b) => a.data.order - b.data.order);
+---
+<footer data-parity="footer">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <img src={url('/assets/brand/ver1-logo.png')} alt={t('common.company')} width="106" height="30" loading="lazy">
+        <div class="foot__co">
+          <span>{t('common.company')} · {t('footer.ceo')} {ceoFor(loc)}</span>
+          <span>{t('footer.biz_reg_no')} {COMPANY.bizRegNo}</span>
+          <span>{t('footer.address')} {address}</span>
+          <span>{t('footer.tel')} <a href={COMPANY.telHref} data-ev="phone_click">{telFor(loc)}</a></span>
+          <span>{t('footer.partner')}</span>
+        </div>
+      </div>
+      <div><h3>{t('footer.solutions')}</h3><ul>{sols.map((s) => <li><a href={lurl(ROUTES.solution(s.id as SolutionSlug), loc)} translate="no">{s.data.name}</a></li>)}</ul></div>
+      <div><h3>{t('footer.company')}</h3><ul>
+        {HAS_CASES && <li><a href={lurl(ROUTES.customers, loc)}>{t('nav.customers')}</a></li>}
+        <li><a href={LINKS.youtube} target="_blank" rel="noopener">{t('footer.youtube')} <NewWindow /></a></li>
+        <li><a href={LINKS.blog} target="_blank" rel="noopener">{t('footer.blog')} <NewWindow /></a></li>
+        <li><a href={LINKS.kakao} target="_blank" rel="noopener" data-ev="kakao_click">{t('footer.kakao')} <NewWindow /></a></li>
+      </ul></div>
+      <div><h3>{t('footer.notice')}</h3><ul><li><a href={lurl(ROUTES.privacy, loc)}><b>{t('footer.privacy')}</b></a></li><li><button class="foot__btn" type="button" data-cookie-open>{t('footer.cookie')}</button></li></ul></div>
+    </div>
+    <div class="foot__bottom">
+      <span>© {t('common.company')}</span>
+      {LOCALES.length > 1 && <nav class="foot__langs" aria-label={t('nav.lang')}>{LOCALES.map((l) => <a aria-current={l.code === (loc ?? 'ko') ? 'true' : undefined} href={lurl(page, l.code)} hreflang={l.hreflang} lang={l.lang} data-lang-choice={l.code}>{l.label}</a>)}</nav>}
+    </div>
+  </div>
+</footer>

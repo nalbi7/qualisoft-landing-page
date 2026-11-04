@@ -1,0 +1,19 @@
+---
+// 데모 신청 — 2안 마감 버튼: 오른쪽 흰 동그라미 배지 안의 화살표가 새 창을 알린다 (D-020 ①, components.css .btn-go)
+// 데모 주소가 없으면 같은 자리에 전화 상담을 둔다 — 동작하지 않는 버튼을 두지 않는다 (16-tech-architecture §7 · H-01)
+import { useT, type Key } from '../i18n';
+import { COMPANY, DEMO_URL, telFor } from '../config/site';
+interface Props { small?: boolean; label?: Key; class?: string }
+const { small = false, label = 'common.demo', class: extra = '' } = Astro.props;
+const loc = Astro.currentLocale;
+const t = useT(loc);
+const cls = ['btn', 'btn-primary', small && 'btn-sm', extra].filter(Boolean).join(' ');
+const arrow = '<svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M6 4.5h5.5V10" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+---
+{DEMO_URL ? (
+  <a class={`${cls} btn-go`} href={DEMO_URL} target="_blank" rel="noopener" data-ev="demo_click">
+    {t(label)}<span class="go" aria-hidden="true"><span class="go__a" set:html={arrow} /><span class="go__b" set:html={arrow} /></span><span class="sr-only">{t('common.new_window')}</span>
+  </a>
+) : (
+  <a class={cls} href={COMPANY.telHref} data-ev="phone_click">{t('common.tel')} {telFor(loc)}</a>
+)}

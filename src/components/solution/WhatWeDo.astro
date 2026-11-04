@@ -1,0 +1,13 @@
+---
+// 퀄리소프트가 하는 일 — 네 줄, 번호를 단다 (11-screen-spec 5-1 ⑥, 시안 we2). 정해지지 않았으면 목록째 data-todo
+import type { CollectionEntry } from 'astro:content';
+import { useT, tx } from '../../i18n';
+interface Props { sol: CollectionEntry<'solutions'> }
+const s = Astro.props.sol.data;
+const loc = Astro.currentLocale;
+const t = useT(loc);
+---
+<h2 class="sp2__h2">{t('solution.we.title')}</h2>
+<ol class="we2" data-todo={s.pending?.we}>
+  {s.we.map((w, i) => <li><span class="we2__n">{String(i + 1).padStart(2, '0')}</span><span>{tx(w, loc)}</span></li>)}
+</ol>

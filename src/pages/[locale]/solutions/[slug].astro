@@ -1,0 +1,13 @@
+---
+// 솔루션 상세 — 영 · 일 · 중. 켠 언어 × 여섯 솔루션 (config/locales.mjs, D-024)
+import { getCollection, type CollectionEntry } from 'astro:content';
+import SolutionPage from '../../../components/pages/SolutionPage.astro';
+import { DEFAULT_LOCALE, LOCALES } from '../../../config/locales.mjs';
+
+export async function getStaticPaths() {
+  const sols = await getCollection('solutions');
+  return LOCALES.filter((l) => l.code !== DEFAULT_LOCALE).flatMap((l) => sols.map((sol) => ({ params: { locale: l.code, slug: sol.id }, props: { sol } })));
+}
+interface Props { sol: CollectionEntry<'solutions'> }
+---
+<SolutionPage sol={Astro.props.sol} />

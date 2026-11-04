@@ -1,0 +1,29 @@
+/* 자주 묻는 질문 (D-040 → D-043 접는 목록) — 솔루션 상세 「핵심 기능」(.accs · .acc)과 같은 말씨: 줄 사이 가는 선, 질문 19px 650, 오른쪽 「+」가 열리면 45° 돈다.
+   여닫기는 <details> 그대로. 열고 닫을 때 높이가 부드럽게 바뀌는 것은 지원하는 브라우저에서만(::details-content) — 아니면 바로 열린다 */
+.faq{display:grid; box-shadow:0 -1px 0 var(--line)}
+.faq__i{box-shadow:0 1px 0 var(--line)}
+.faq__s{display:flex; align-items:center; gap:var(--sp-4); min-height:64px; padding:14px 4px; cursor:pointer; list-style:none}
+.faq__s::-webkit-details-marker{display:none}
+.faq__q{margin:0; font-size:19px; font-weight:650; letter-spacing:-.02em; line-height:1.45; color:var(--text); text-wrap:pretty}
+.faq__plus{margin-left:auto; flex:none; font-size:22px; line-height:1; color:var(--muted); transition:transform .2s var(--ease-out)}
+.faq__i[open] .faq__plus{transform:rotate(45deg)}
+@media (hover:hover) and (pointer:fine){ .faq__s:hover .faq__q{color:var(--brand)} }
+.faq__a{padding:0 4px var(--sp-5); color:var(--muted); line-height:1.75}
+.faq__a p{margin:0 0 var(--sp-2)}
+.faq__a :is(ul, ol){margin:var(--sp-2) 0 0; padding-left:1.3em; display:grid; gap:4px}
+.faq__a a{color:var(--text); text-underline-offset:3px}
+.faq__a a:hover{color:var(--brand)}
+.faq__more{font-weight:600; text-decoration:none}
+@supports (interpolate-size:allow-keywords){
+  .faq{interpolate-size:allow-keywords}
+  .faq__i::details-content{block-size:0; overflow:clip; transition:block-size .28s var(--ease-out), content-visibility .28s allow-discrete}
+  .faq__i[open]::details-content{block-size:auto}
+}
+@media (prefers-reduced-motion:reduce){ .faq__plus{transition:none} .faq__i::details-content{transition:none} }
+@media (max-width:640px){ .faq__q{font-size:17px} }
+
+/* 메인의 자주 묻는 질문 — 따로 선 영역 (D-043): 면 바탕(밝은 화면 흰색 · 다크 #141414), 넓은 화면에서 왼쪽 제목 · 한 줄 안내, 오른쪽 접는 목록 */
+.faqsec{display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 1.7fr); gap:var(--sp-8); align-items:start}
+.faqsec__head h2{margin:0; font-size:var(--text-h2); line-height:1.2; letter-spacing:-.03em; font-weight:700}
+.faqsec__head p{margin:var(--sp-3) 0 0; color:var(--muted); line-height:1.7}
+@media (max-width:900px){ .faqsec{grid-template-columns:1fr; gap:var(--sp-5)} }

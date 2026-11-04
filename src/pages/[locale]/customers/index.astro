@@ -1,0 +1,10 @@
+---
+// 고객 사례 목록 — 영 · 일 · 중 (config/locales.mjs, D-024)
+import CustomersPage from '../../../components/pages/CustomersPage.astro';
+import { DEFAULT_LOCALE, LOCALES } from '../../../config/locales.mjs';
+
+export function getStaticPaths() {
+  return LOCALES.filter((l) => l.code !== DEFAULT_LOCALE).map((l) => ({ params: { locale: l.code } }));
+}
+---
+<CustomersPage />

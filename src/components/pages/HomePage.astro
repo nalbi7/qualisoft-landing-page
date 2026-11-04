@@ -1,0 +1,54 @@
+---
+// 홈 본문 — 언어마다 같은 틀 (pages/index.astro · pages/[locale]/index.astro). 1장 1단, 히어로 · 제품 · 고객사 · 일하는 방식 · 마지막 행동 (11-screen-spec 4장, 시안 home-2an.html 5차).
+// 「소식」(화면 5)은 config/news.json 의 손으로 고른 유튜브 · 블로그 글 — 0건이면 그리지 않는다 (IA 7항, BD-010)
+import Base from '../../layouts/Base.astro';
+import Hero from '../home/Hero.astro';
+import Products from '../home/Products.astro';
+import Customers from '../home/Customers.astro';
+import HowWeWork from '../home/HowWeWork.astro';
+import News from '../home/News.astro';
+import ClosingBand from '../ClosingBand.astro';
+import Faq from '../Faq.astro';
+import { homeFaq, faqJsonLd } from '../../config/faq';
+import Dock from '../home/Dock.astro';
+import '../../styles/journey-base.css';
+import '../../styles/journey.css';
+import '../../styles/home.css';
+import '../../styles/solutions-v7.css';
+import { useT } from '../../i18n';
+import { LOCALES } from '../../config/locales.mjs';
+import { lurl, url } from '../../config/routes';
+import NEWS from '../../config/news.json';
+const loc = Astro.currentLocale;
+const t = useT(loc);
+const L = LOCALES.find((l) => l.code === loc) ?? LOCALES[0];
+const website = { '@context': 'https://schema.org', '@type': 'WebSite', name: t('common.company'), url: new URL(lurl('/', loc), Astro.site).href, inLanguage: L.lang, publisher: { '@id': new URL(url('/#org'), Astro.site).href } };
+// 자주 묻는 질문 (AEO, D-040) — 회사 · 솔루션 · 진행 방식 · 사례 · 상담. 마지막 행동 띠 바로 위
+const faq = await homeFaq(loc);
+// 「CRM 알아보기」의 유튜브 카드 — 동영상 구조화 데이터 (VideoObject, D-047). 값은 카드와 같은 config/news.json 에서만:
+// 제목 · 올린 날짜 · 썸네일(저장소 사본) · 영상 주소. 영상은 한국어라 inLanguage ko, 올린 곳은 회사(@id)
+const orgId = new URL(url('/#org'), Astro.site).href;
+const videos = NEWS.filter((n) => n.source === 'youtube').map((n) => {
+  const id = new URL(n.href).searchParams.get('v');
+  return {
+    '@context': 'https://schema.org', '@type': 'VideoObject',
+    name: n.title.ko, description: n.title.ko, uploadDate: n.date, inLanguage: 'ko',   // 영상의 실제 제목(한국어)
+    thumbnailUrl: new URL(url(`/assets/news/${n.thumb}`), Astro.site).href,
+    url: n.href, ...(id ? { embedUrl: `https://www.youtube.com/embed/${id}` } : {}),
+    publisher: { '@id': orgId },
+  };
+});
+---
+<Base title={t('home.meta.title')} description={t('home.meta.description')} jsonld={[website, faqJsonLd(faq), ...videos]}>
+  <!-- 첫 방문 등장 효과 — 그리기 전에 붙여야 깜빡이지 않아 head 에 둔다. 세션마다 한 번, 움직임 줄이기면 없음 (D-020 ④ · M-10) -->
+  <script slot="head" is:inline>try{if(!sessionStorage.getItem('hero-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('intro');sessionStorage.setItem('hero-intro','1')}}catch(e){}</script>
+  <Hero />
+  <Products />
+  <Customers />
+  <HowWeWork />
+  <News />
+  <Faq items={faq} section />
+  <ClosingBand title="home.band.title" />
+  <Dock />
+</Base>
+<script>import '../../scripts/home.ts'; import '../../scripts/solutions-v7.js'; import '../../scripts/how-path.ts';</script>

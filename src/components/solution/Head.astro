@@ -1,0 +1,24 @@
+---
+// 솔루션 상세 머리 — 이동 경로 · 제품 이름 + 한 줄(h1) · [이 솔루션 상담하기] · [Microsoft 공식 페이지 ↗] · 설명 (11-screen-spec 5-1 ①②④)
+// [이 솔루션 상담하기]는 1차에 데모 신청과 같은 곳으로 간다 (H-01)
+import type { CollectionEntry } from 'astro:content';
+import Crumb from '../Crumb.astro';
+import DemoButton from '../DemoButton.astro';
+import NewWindow from '../NewWindow.astro';
+import Pending from './Pending.astro';
+import { msUrl } from './ms';
+import { useT, tx } from '../../i18n';
+import { url, ROUTES } from '../../config/routes';
+interface Props { sol: CollectionEntry<'solutions'> }
+const s = Astro.props.sol.data;
+const loc = Astro.currentLocale;
+const t = useT(loc);
+const lines = tx(s.headline, loc).split('\n');
+---
+<Crumb wrap={false} items={[{ label: t('common.home'), href: ROUTES.home }, { label: t('nav.solutions'), href: ROUTES.products }, { label: s.name }]} />
+<h1 class="sp2__h" data-parity="sol-hero"><span class="sp2__k" translate="no">{s.name}</span><Pending why={s.pending?.headline}>{lines.map((l, i) => <Fragment>{i > 0 && <br>}{l}</Fragment>)}</Pending></h1>
+<div class="sp2__acts">
+  <DemoButton label="solution.hero.ask" />
+  <a class="btn btn-secondary" href={msUrl(s.official, loc)} target="_blank" rel="noopener"><span class="ms-logo"><img class="ms-logo__l" src={url('/assets/ms/microsoft-logo.svg')} alt="Microsoft" width="66" height="14" style="height:14px;width:auto"><img class="ms-logo__d" src={url('/assets/ms/microsoft-logo-white.svg')} alt="" aria-hidden="true" width="66" height="14" style="height:14px;width:auto"></span>{t('solution.hero.official')} <NewWindow /></a>
+</div>
+<p class="sp2__lead"><Pending why={s.pending?.lead}>{tx(s.lead, loc)}</Pending></p>

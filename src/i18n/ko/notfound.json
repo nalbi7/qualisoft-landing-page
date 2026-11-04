@@ -1,0 +1,10 @@
+{
+  "notfound.meta.title": "페이지를 찾을 수 없습니다",
+  "notfound.meta.description": "주소가 바뀌었거나 없어진 페이지입니다. 홈이나 솔루션 목록에서 찾으시는 내용을 골라 주세요.",
+  "notfound.move.title": "새 주소로 이동합니다",
+  "notfound.move.link": "새 주소로 바로 가기",
+  "notfound.title": "페이지를 찾을 수 없습니다",
+  "notfound.title_en": "Page not found",
+  "notfound.lead": "주소가 바뀌었거나 없어진 페이지입니다. 아래에서 찾으시는 솔루션을 골라 주세요.",
+  "notfound.home": "홈으로"
+}

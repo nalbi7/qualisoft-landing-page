@@ -1,0 +1,33 @@
+---
+// 홈 화면 3 — 고객사 (11-screen-spec 4-4). 사례 카드 최대 3장(content/cases, BD-036) + 로고 띠. 사례가 0편이면 로고 띠만 (H-02 · IA 7항)
+// 로고는 시안 v7 의 고객 39곳(인포유앤컴퍼니 명의 4곳 제외, BD-035). 산업별 칸으로 나눠 칸마다 위아래로 흐른다 — 구 사이트 「Construction Case」 방식 (D-029).
+// 칸마다 두 벌을 이어 흐르게 하고 두 번째 벌은 화면 낭독에서 숨긴다. 정지 버튼 · 마우스 올림으로 멈추고, 움직임 줄이기면 멈춘 채 모두 보인다
+import CaseCard from '../CaseCard.astro';
+import { casesFor } from '../../config/cases';
+import { useT } from '../../i18n';
+import { lurl, ROUTES } from '../../config/routes';
+import { logosByIndustry, logoSrc, logoName } from '../../config/customers';   // 로고 목록 — sync-design.mjs 도 같은 json 을 읽는다
+const loc = Astro.currentLocale;
+const t = useT(loc);
+const cases = (await casesFor(loc)).slice(0, 3);
+---
+<section class="sec" id="cases" aria-labelledby="cases-h" data-parity="customers">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="cases-h">{t('home.cases.title')}</h2>{cases.length > 0 && <a class="more" href={lurl(ROUTES.customers, loc)}>{t('home.cases.more')} <span class="arrow" aria-hidden="true">→</span></a>}</div>
+    {cases.length > 0 && <div class="cases">{cases.map((c) => <CaseCard c={c} />)}</div>}
+    <div class="indcols" id="logos-home">
+      <div class="indcols__grid">
+        {logosByIndustry().map((g, i) => (
+          <div class:list={['indcol', { 'indcol--down': i % 2 === 1 }]} style={`--dur:${g.logos.length * 3}s`}>
+            <h3 class="indcol__h">{t(`ind.${g.ind}`)}</h3>
+            <div class="indcol__view"><div class="indcol__track">
+              <ul>{g.logos.map((l) => <li><img src={logoSrc(l)} width={l.w} height={l.h} alt={logoName(l, loc)} class:list={{ 'on-dark': l.onDark }} loading="lazy"></li>)}</ul>
+              <ul aria-hidden="true">{g.logos.map((l) => <li><img src={logoSrc(l)} width={l.w} height={l.h} alt="" class:list={{ 'on-dark': l.onDark }} loading="lazy"></li>)}</ul>
+            </div></div>
+          </div>
+        ))}
+      </div>
+      <button class="icon-btn indcols__pause" type="button" data-pause="logos-home" aria-label={t('home.cases.logos_pause')} data-label-pause={t('home.cases.logos_pause')} data-label-play={t('home.cases.logos_play')}>❚❚</button>
+    </div>
+  </div>
+</section>

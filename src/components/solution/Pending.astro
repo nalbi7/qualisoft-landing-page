@@ -1,0 +1,6 @@
+---
+// 정해지지 않은 값 — data-todo 로 감싸 공개 빌드를 막는다 (validate-build ②, 미리보기는 ALLOW_TODO=1). 까닭이 없으면 그대로 내보낸다
+interface Props { why?: string }
+const { why } = Astro.props;
+---
+{why ? <span data-todo={why}><slot /></span> : <slot />}

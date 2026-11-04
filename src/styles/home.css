@@ -1,0 +1,230 @@
+/* 홈 — 시안 Docs/_design/mockups/home-2an.html (홈 2안 5차 시안)의 규칙을 make_v8.py 원문 그대로 옮겼다 (2026-10-29, BD-001).
+   값은 tokens.css 변수로만 쓴다. 솔루션 목록의 펼침(+ · 설명) 규칙은 D-021 로 빼고 solutions-v7.css 가 맡는다. 시안을 고치면 이 파일도 같이 고치고 parity.html 로 대조한다 */
+/* v8 — 일시 정지 버튼을 장면 탭 앞에 둔다 (13-accessibility §5, v7에는 없었다) */
+.jctl{display:flex; align-items:center; gap:12px}
+.jctl .icon-btn{flex:none}
+.journey .jctl .steps{margin-top:0; flex:1; min-width:0}
+.hook{--hc:var(--s1); margin:0 0 var(--sp-5)}
+.hook__name{font-size:clamp(36px,4.4vw,60px); line-height:1.12; letter-spacing:-.03em; font-weight:700; color:var(--hc); white-space:nowrap; transition:color .45s ease}
+.hook__ic{display:inline-block; width:.78em; height:.78em; vertical-align:-.08em; margin-right:.24em}
+.hook__line{margin-top:12px; font-size:clamp(21px,2.2vw,30px); line-height:1.38; letter-spacing:-.02em; font-weight:600; text-wrap:balance}
+.hook .swap{display:inline-block; transition:opacity .3s ease, transform .55s var(--spring), filter .3s ease}
+.hook.out .swap{opacity:0; transform:translateY(-12px); filter:blur(6px); transition-duration:.22s}
+.hook.enter .swap{opacity:0; transform:translateY(14px); filter:blur(6px); transition:none}
+.hero__h{font-size:clamp(17px,1.5vw,20px); line-height:1.55; letter-spacing:-.01em; font-weight:600; margin:0 0 var(--sp-6)}
+@media (prefers-reduced-motion:reduce){ .hook .swap, .hook__name{transition:none} }
+.note-todo{margin:-28px 0 var(--sp-5); font-size:var(--text-card); color:var(--muted)}
+.sec--flat{background:var(--surface)}
+.how{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,1fr); gap:var(--sp-4)}
+.how li{display:flex; flex-direction:column; gap:var(--sp-4); padding:var(--sp-5); border-radius:var(--r-card); background:var(--bg)}
+.step__ic{display:grid; place-items:center; width:48px; height:48px; border-radius:14px; background:var(--surface); color:var(--brand); box-shadow:0 0 0 1px var(--hair)}
+.step__ic svg{width:24px; height:24px}
+.how b{display:flex; align-items:baseline; gap:10px; font-size:20px; letter-spacing:-.02em}
+.step__n{font-family:var(--mono); font-size:var(--text-tag); color:var(--muted); font-weight:500}
+.newses{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--sp-4)}
+.news{display:flex; flex-direction:column; gap:10px; text-decoration:none; color:var(--text)}
+.news__thumb{aspect-ratio:16/9; border-radius:var(--r-tile); background:linear-gradient(135deg, var(--brand-100), var(--bg)); box-shadow:0 0 0 1px var(--hair); padding:12px; display:flex; align-items:flex-start}
+.news__t{font-weight:600; line-height:1.45}
+.news__d{font-size:13px; color:var(--muted)}
+.news:hover .news__thumb{box-shadow:0 0 0 1px var(--hair), var(--e2)}
+@media (max-width:1080px){ .how{grid-template-columns:1fr 1fr} .newses{grid-template-columns:1fr} }
+@media (max-width:640px){ .note-todo{margin-top:-16px} }
+/* 메뉴와의 간격 — 128 → 88px (2026-10-29 의견) → 위 48px (2026-11-02 의견, BD-026) */
+.hero2{background:var(--surface); padding-block:var(--sp-7) var(--sp-9); text-align:center}
+/* 첫 방문 등장 — 위에서부터 0.12초 간격, 0.8초씩 — 마지막 예시 화면까지 약 1.3초 (D-030 — 사용자가 「조금 더 천천히」. D-028 의 0.06초 · 0.5초 · 약 0.75초와 이전 0.2초 · 1.15초 · 약 2초 사이). 시작 상태는 keyframes 에만 둔다:
+   스크립트가 없거나 애니메이션이 꺼지면 처음부터 보인다 */
+.intro .hero2 .rv{animation:rv .8s var(--ease-out) backwards; animation-delay:calc(var(--i) * .12s)}
+@keyframes rv{from{opacity:0; transform:translateY(14px); filter:blur(6px)}}
+.hero2 .ms-mark{justify-content:center}
+/* 흰 바탕에서는 솔루션 색이 옅어 글자색으로 못 쓴다 — 이름은 본문색. 솔루션 색은 옆 아이콘이 보인다 (형광펜 밑줄은 뺐다, D-028) */
+.hero2 .hook__name{font-size:clamp(40px,6vw,80px); letter-spacing:-.04em; color:var(--text)}
+.hero2 .hook__line{font-size:clamp(21px,2.4vw,32px)}
+.hero2 .hero__h{color:var(--muted)}
+.hero__acts{display:flex; gap:var(--sp-3); flex-wrap:wrap; justify-content:center}
+/* v7 창은 폭이 넓으면 칸 사이가 비어 보인다 — 880 → 760 */
+/* 버튼 ~ 예시 화면 64 → 48px (2026-11-02 의견, BD-030) */
+.hero2__vis{max-width:760px; margin:var(--sp-7) auto 0; display:grid; gap:var(--sp-4); text-align:left}
+/* v7 창과 장면 탭은 어두운 바탕용이다 — 흰 바탕에서는 그림자를 가볍게, 탭 글자를 어둡게 */
+.hero2 .journey .win{box-shadow:0 0 0 1px var(--hair), 0 40px 80px -40px rgba(20,20,43,.35)}
+.hero2 .journey .steps button{color:var(--muted)}
+.hero2 .journey .steps button[aria-current="true"]{color:var(--text); border-color:var(--line); background:var(--surface); box-shadow:var(--e1)}
+.hero2 .journey .steps button[aria-current="true"] b{color:var(--muted)}
+/* 장면 버튼 — 위 두 모서리만 둥글게, 고른 버튼을 알리는 움직이는 선은 각진 아래 가장자리에 (사용자 의견 2026-11-02, BD-008).
+   선의 위치 · 색은 home.ts 가 그대로 옮긴다. 640px 이하는 버튼이 두 줄이라 움직이는 선이 꺼져 있어 고른 버튼 아래에 같은 선을 고정한다 */
+.hero2 .journey .steps button{border-radius:10px 10px 0 0}
+.hero2 .journey .steps__ind{height:3px; border-radius:0; z-index:1}
+@media (max-width:640px){ .hero2 .journey .steps button[aria-current="true"]{box-shadow:inset 0 -3px 0 var(--sc), var(--e1)} }
+.hook-more{margin-left:auto; color:var(--brand); font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:6px; min-height:44px}
+.hook-more .arrow{transition:transform .2s var(--ease-out)} .hook-more:hover .arrow{transform:translateX(4px)}
+.prod2{display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-8); align-items:start}
+.big{font-size:var(--text-h2); line-height:1.12; letter-spacing:-.035em; font-weight:700; margin-bottom:var(--sp-6)}
+.plist{list-style:none; margin:0; padding:0; box-shadow:0 -1px 0 var(--line)}
+.plist li{box-shadow:0 1px 0 var(--line)}
+.prow{width:100%; display:flex; align-items:center; gap:var(--sp-3); min-height:68px; padding:0 4px; border:0; background:none;
+  font:inherit; color:var(--muted); cursor:pointer; text-align:left}
+.prow b{font-size:20px; letter-spacing:-.02em; font-weight:650}
+.prow[aria-current="true"]{color:var(--text)}
+.pnl{position:sticky; top:calc(var(--nav-h) + 24px); aspect-ratio:1/1.05; border-radius:var(--r-panel); padding:var(--sp-7);
+  display:flex; flex-direction:column; justify-content:flex-end; gap:var(--sp-2);
+  background:color-mix(in oklab, var(--pc, var(--s1)) 55%, white); color:var(--text); box-shadow:var(--hi); transition:background .45s ease}
+.pnl__ic{position:absolute; top:var(--sp-7); left:var(--sp-7); width:88px; height:88px; filter:drop-shadow(0 10px 18px rgba(20,20,43,.18))}
+/* 솔루션별 입체 그림 — 판의 빈 오른쪽 위를 채운다 (2026-10-29 의견). 떠 있는 부분만 천천히 오르내린다 */
+.pnl{overflow:hidden} .pnl__n, .pnl__l{position:relative}
+.pnl__art{position:absolute; top:6%; right:0; width:82%; pointer-events:none}
+.pnl__art .art{position:absolute; inset:0 0 auto; display:block; width:100%; height:auto; opacity:0; transform:translateY(8px) scale(.97);
+  transition:opacity .2s ease, transform .25s var(--ease-out)}
+.pnl__art .art.on{position:relative; opacity:1; transform:none}
+/* 떠 있는 부분 — 판이 바뀔 때 보이는 그림만 두 번(약 4초) 오르내리고 멈춘다. 5초 넘게 스스로 도는 움직임은 멈출 수단이 있어야 한다 (WCAG 2.2.2, D-028 — 이전 무한 반복) */
+.pnl__art .art.on .flt{animation:flt 2s ease-in-out 2} .pnl__art .art.on .flt2{animation:flt 2.6s ease-in-out .3s}
+@keyframes flt{50%{transform:translateY(-9px)}}
+@media (prefers-reduced-motion:reduce){ .art .flt, .art .flt2{animation:none} .pnl__art .art{transition:none} }
+.pnl__n{font-size:clamp(30px,3.6vw,52px); letter-spacing:-.035em; line-height:1.05}
+.pnl__l{font-size:18px; font-weight:500}
+.pnl--cop{background:var(--s5-grad)}
+.dock{position:fixed; left:50%; bottom:calc(20px + env(safe-area-inset-bottom,0px)); z-index:54; transform:translateX(-50%); display:flex; align-items:center; gap:var(--sp-3);
+  padding:8px 8px 8px 16px; border-radius:var(--r-pill); background:var(--ink-950); color:var(--on-dark); box-shadow:var(--hi-dark), var(--e3)}
+.dock__t{font-size:var(--text-card); font-weight:600; white-space:nowrap}
+.dock .btn-secondary{background:rgba(255,255,255,.1); color:var(--on-dark); box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+body.has-cookie .dock{bottom:110px}
+@media (max-width:1080px){ .prod2{grid-template-columns:1fr} .pnl{position:relative; top:auto; aspect-ratio:16/10} .pnl__art{top:6%; width:52%} }
+@media (max-width:640px){
+  .hero2{padding-block:var(--sp-6) var(--sp-8)} .hero__acts .btn{width:100%}
+  .prow b{font-size:17px} .prow{min-height:56px}
+  .pnl{display:none}
+  .dock{left:12px; right:12px; transform:none; justify-content:space-between} .dock__t,.dock__k,.dock .pi{display:none} .dock .btn{flex:1}
+  .float{--float-lift:64px}
+}
+/* 소식 썸네일 — 받아 둔 그림을 판 가득, 출처 표시는 그 위 (BD-010) */
+.news__thumb{position:relative; overflow:hidden}
+.news__thumb img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+.news__thumb .tag{position:relative}
+
+/* 이렇게 일합니다 — 점선 여정 (BD-013 · BD-017). 스크립트가 .howmap--path 를 붙여야 그림 · 점이 나온다 — 없으면 위의 네 칸 목록 그대로.
+   900px 이상: 단계 자리(li)가 길 위의 한 점 — 아이콘이 그 점 가운데에 서고(선이 아이콘을 지난다), 이름 · 설명 글은 카드 없이 위나 아래에.
+   아래: 세로 점선 위에 아이콘, 오른쪽에 글. 값은 토큰만 */
+.how__txt{display:flex; flex-direction:column; gap:var(--sp-2)}
+.howmap{position:relative}
+.howmap__svg, .howmap__dot{display:none}
+.howmap__ahead{fill:none; stroke:color-mix(in oklab, var(--text) 18%, transparent); stroke-width:3.5; stroke-dasharray:7 9; stroke-linecap:round; vector-effect:non-scaling-stroke}
+.howmap__done{fill:none; stroke:var(--brand); stroke-width:4; stroke-dasharray:7 9; stroke-linecap:round; vector-effect:non-scaling-stroke}
+/* 켜짐 — 아이콘은 회색 테두리 → 브랜드 색으로 채움, 이름은 흐림 → 또렷 */
+.howmap--path .how li{padding:0; border-radius:0; background:none}
+.howmap--path .step__ic{position:relative; z-index:3; color:var(--muted); transition:background-color .35s ease, color .35s ease, box-shadow .35s ease, transform .2s var(--ease-out)}
+.howmap--path .how li.on .step__ic{background:var(--brand); color:var(--surface); box-shadow:0 0 0 6px color-mix(in oklab, var(--brand) 18%, transparent), var(--e2); transform:scale(1.03)}
+/* 꺼진 단계 이름 — 흐림(opacity .45 ≈ 3.0:1) 대신 --muted 글자색 (BD-041) */
+.howmap--path .how b{color:var(--muted); transition:color .35s ease}
+.howmap--path .how li.on b{color:var(--text)}
+@media (min-width:900px){
+  .howmap--path{height:580px}
+  .howmap--path .howmap__svg{display:block; position:absolute; left:0; top:30%; width:100%; height:40%; overflow:visible}
+  .howmap--path .howmap__dot{display:block; position:absolute; left:0; top:0; z-index:2; width:16px; height:16px; border-radius:50%; background:var(--brand);
+    border:3px solid var(--surface); box-shadow:0 0 0 4px color-mix(in oklab, var(--brand) 20%, transparent); transform:translate(-50%,-50%); pointer-events:none}
+  .howmap--path .how{display:block; position:absolute; inset:0}
+  .howmap--path .how li{position:absolute; width:0; height:0; display:block}
+  .howmap--path .step__ic{position:absolute; left:0; top:0; translate:-50% -50%}
+  .howmap--path .how__txt{position:absolute; left:0; width:clamp(170px, 17vw, 220px); translate:calc(-50% + var(--tx, 0px)) 0; text-align:center; align-items:center}
+  .howmap--path .how li.up .how__txt{bottom:44px}
+  .howmap--path .how li.down .how__txt{top:44px}
+  .howmap--path .how b{font-size:18px}
+}
+@media (max-width:899px){
+  .howmap--path .how{grid-template-columns:1fr; gap:var(--sp-6); position:relative}
+  .howmap--path .how::before{content:""; position:absolute; left:22px; top:24px; bottom:24px; border-left:3px dashed color-mix(in oklab, var(--text) 18%, transparent)}
+  .howmap--path .how::after{content:""; position:absolute; left:22px; top:24px; width:3px; height:calc((100% - 48px) * var(--p, 0)); border-radius:3px; background:var(--brand)}
+  .howmap--path .how li{flex-direction:row; align-items:flex-start; gap:var(--sp-4)}
+  .howmap--path .step__ic{flex:none}
+  .howmap--path .how__txt{padding-top:10px}
+}
+/* 단계 설명 — 길이 그 단계를 지나면 1.4초에 걸쳐 서서히 (BD-014). 스크립트가 없으면 처음부터 보인다 */
+.how__d{font-size:13px; line-height:1.5; color:var(--muted)}
+.howmap--path .how__d{opacity:0; transform:translateY(6px); transition:opacity .3s ease, transform .3s var(--ease-out)}   /* D-028 — 이전 1.4초 · 지연 0.15초 (BD-014) */
+.howmap--path .how li.on .how__d{opacity:1; transform:none}
+/* 화면 고정 — 넓고 높은 화면에서 영역을 머리글 아래에 붙여 두고, 화면 높이 1.6배만큼의 스크롤로 길을 간다 (BD-014, how-path.ts 가 .how--pin 을 붙인다) */
+@media (min-width:900px) and (min-height:600px){
+  #how.how--pin{height:calc(100vh + 160vh); padding-block:0}
+  /* BD-026: 고정 화면 안 위아래 빈 곳을 줄인다 — 가운데 정렬 대신 위에서 48px, 지도 높이는 화면에 맞춰 줄인다 */
+  #how.how--pin > .wrap{position:sticky; top:var(--nav-h); height:calc(100vh - var(--nav-h)); display:flex; flex-direction:column; justify-content:flex-start; padding-top:var(--sp-7)}
+  #how.how--pin .howmap--path{height:clamp(400px, calc(100vh - var(--nav-h) - 190px), 560px)}
+}
+@media (prefers-reduced-motion:reduce){ .howmap--path .step__ic, .howmap--path .how b, .howmap--path .how__d{transition:none} }
+
+/* CRM 알아보기 — 좁은 화면은 작은 썸네일 카드를 가로 한 줄로, 손가락으로 밀어서 넘긴다 (BD-025) */
+@media (max-width:1080px){
+  .newses{display:flex; gap:var(--sp-3); overflow-x:auto; scroll-snap-type:x mandatory; overscroll-behavior-x:contain; padding-bottom:var(--sp-2); scrollbar-width:none}
+  .newses::-webkit-scrollbar{display:none}
+  /* position:relative — 카드 안 화면 낭독용 숨김 글자(.sr-only)가 가로 스크롤 영역 밖에 자리를 잡아 페이지를 넓히지 않게 */
+  .news{position:relative; flex:0 0 clamp(150px, 42vw, 210px); scroll-snap-align:start; gap:6px}
+  .news__thumb{padding:6px; border-radius:10px}
+  .news__t{font-size:13.5px; line-height:1.4}
+  .news__d{font-size:12px}
+}
+
+/* 「이렇게 일합니다」 · 「CRM 알아보기」 아래 여백 — 128(휴대폰 88) → 48px (BD-026). 고정하지 않을 때의 위 여백도 64px 로 */
+#how:not(.how--pin){padding-block:var(--sp-8) var(--sp-7)}
+.sec--news{padding-bottom:var(--sp-7)}
+/* 「CRM 알아보기」와 마지막 행동 띠 사이 — 48 + 128(휴대폰 88) → 48 + 24px (BD-027) */
+.sec--news + .band{padding-top:var(--sp-5)}
+/* 예시 창 일정표 머리 — 흰 면 10.5px 에 --muted-2(3.35:1)는 12 디자인 시스템이 막은 조합. journey.css 는 생성 파일이라 여기서 덮는다 (BD-041) */
+.journey .gantt .gantt__head{font-size:11px; color:var(--muted)}
+/* 예시 창 막대 — 신호등 점 셋을 뺀 자리에서 아이콘이 왼쪽 끝에 붙는다 (D-028, hallmark 47a) */
+.journey .win__bar .win__ic{margin-left:0}
+/* 고객사 로고 — 산업별 칸. 칸 위에 산업 이름, 그 아래 로고가 위아래로 흐른다(칸마다 방향을 번갈아). 구 사이트 「Construction Case」 (D-029) */
+.indcols{display:grid; margin-top:var(--sp-7)}
+.indcols__grid{display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:var(--sp-4)}
+.indcol{display:grid; gap:var(--sp-3); justify-items:center; min-width:0}
+.indcol__h{margin:0; padding:5px 12px; border-radius:var(--r-pill); background:var(--surface); box-shadow:0 0 0 1px var(--line); font-size:var(--text-tag); font-weight:650; white-space:nowrap}
+.indcol__view{width:100%; height:216px; overflow:hidden;
+  mask-image:linear-gradient(transparent, #000 18%, #000 82%, transparent); -webkit-mask-image:linear-gradient(transparent, #000 18%, #000 82%, transparent)}
+.indcol__track{animation:indcol var(--dur,24s) linear infinite}
+.indcol--down .indcol__track{animation-direction:reverse}
+.indcol ul{list-style:none; margin:0; padding:0}
+.indcol li{height:72px; display:grid; place-items:center; padding-inline:var(--sp-2)}
+.indcol img{max-height:30px; max-width:min(130px,100%); width:auto; height:auto; object-fit:contain}
+@keyframes indcol{to{transform:translateY(-50%)}}
+/* 정지 버튼을 누른 뒤에도 마우스 · 초점이 버튼에 남는다 — 멈춤 조건(올림 · 초점)은 로고 칸에만 걸어, 재생을 누르면 곧바로 흐른다 (BD-050) */
+.indcols.paused .indcol__track, .indcols__grid:hover .indcol__track, .indcols__grid:focus-within .indcol__track{animation-play-state:paused}
+.indcols__pause{justify-self:end; margin-top:var(--sp-3)}
+@media (max-width:1080px){ .indcols__grid{grid-template-columns:repeat(3,minmax(0,1fr)); row-gap:var(--sp-6)} }
+@media (max-width:640px){ .indcols__grid{grid-template-columns:repeat(2,minmax(0,1fr))} .indcol__view{height:180px} .indcol li{height:60px} .indcol img{max-height:26px} }
+/* 움직임 줄이기 — 멈춘 채 칸마다 로고를 모두 보인다(복제 묶음은 숨김) */
+@media (prefers-reduced-motion:reduce){
+  .indcol__view{height:auto; mask-image:none; -webkit-mask-image:none} .indcol__track{animation:none} .indcol ul[aria-hidden]{display:none} .indcols__pause{display:none}
+}
+/* 고객 사례 영역 등장 — 화면에 들어올 때 0.7초에 걸쳐 10px 위로 · 서서히 (BD-044). 클래스는 home.ts 가 붙인다 */
+#cases.rise{opacity:0; transform:translateY(10px); transition:opacity .7s var(--ease-out), transform .7s var(--ease-out)}
+#cases.rise.in{opacity:1; transform:none}
+/* 일시 정지 · 재생 버튼 — 다른 아이콘 버튼(32 · 휴대폰 44px)보다 작게 26 · 휴대폰 32px. 보조 조작이라 24px 이상이면 된다 (13 · 12 §15, BD-050) */
+#loop-btn, .indcols__pause{width:26px; height:26px; font-size:9px}
+@media (max-width:640px){ #loop-btn, .indcols__pause{width:32px; height:32px; font-size:10px} }
+/* 고객 사례 영역 아래 여백 128(휴대폰 88) → 64(휴대폰 48)px (BD-050) */
+#cases{padding-bottom:var(--sp-8)}
+@media (max-width:640px){ #cases{padding-bottom:var(--sp-7)} }
+
+/* 예시 화면 창 제목 — 원래 h4(journey.css 의 .journey .scr h4)였던 것을 문단으로 바꿨다(D-040, 제목 단계 건너뜀). 모양은 그 규칙을 그대로 옮긴다.
+   위 여백은 h4 기본값(1.33em)과 같게 */
+.journey .scr .scr__h{margin:1.33em 0 14px; font-size:15px; font-weight:700; display:flex; align-items:center; gap:10px; letter-spacing:-.01em}
+.journey .scr .scr__h .tag{font-family:var(--mono); font-size:10.5px; font-weight:500; padding:3px 8px; border-radius:6px; background:var(--brand-100); color:var(--brand)}
+.journey .scr .scr__h > span:first-child{min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.journey .scr .scr__h .act-btn{margin-left:auto}
+.journey .scr[data-step="5"] .scr__h{color:var(--on-dark)}
+
+/* 「CRM 알아보기」 아래 속성강의 목록 (D-048) — 유튜브 재생목록 여덟 편을 글자 링크로, 넓은 화면은 두 칸(번호 순서는 위에서 아래로) */
+.lectures{margin-top:var(--sp-7); padding-top:var(--sp-5); box-shadow:0 -1px 0 var(--line)}
+.lectures__head{display:flex; align-items:baseline; justify-content:space-between; gap:var(--sp-4); flex-wrap:wrap; margin-bottom:var(--sp-3)}
+.lectures__head h3{margin:0; font-size:18px; font-weight:700; letter-spacing:-.02em}
+.lectures__lang{font-size:13px; font-weight:500; color:var(--muted)}
+.lectures__head a{font-size:14px; font-weight:600; color:var(--muted); text-decoration:none}
+.lectures__head a:hover{color:var(--brand)}
+.lectures__list{list-style:none; margin:0; padding:0; columns:2; column-gap:var(--sp-7)}
+.lectures__list li{break-inside:avoid; box-shadow:0 1px 0 var(--line)}
+.lectures__list a{display:flex; align-items:center; gap:var(--sp-3); min-height:48px; padding:10px 4px; color:var(--text); text-decoration:none; line-height:1.4}
+.lectures__list a:hover{color:var(--brand)}
+.lectures__ep{flex:none; font-family:var(--mono); font-size:12px; color:var(--muted)}
+.lectures__list a .ext{margin-left:auto; flex:none}
+@media (max-width:760px){ .lectures__list{columns:1} }
+
+/* 소식 카드 (D-051) — 새 창 화살표는 제목 글 바로 뒤에 붙인다(사용자 지시 BD-078 — 이전에는 카드 오른쪽 끝에 떨어져 있었다).
+   아래 줄은 날짜 대신 주제 해시태그 */
+.news__t{display:block}
+.news__t .ext{margin-left:.3em; color:var(--muted)}
+.news__d{word-break:keep-all; overflow-wrap:anywhere}

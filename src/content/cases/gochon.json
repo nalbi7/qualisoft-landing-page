@@ -1,0 +1,106 @@
+{
+  "order": 6,
+  "first": [],
+  "customer": "gochon",
+  "industry": {
+    "ko": "비영리 재단 · 장학",
+    "en": "Nonprofit foundation · Scholarships",
+    "ja": "非営利財団・奨学",
+    "zh-hans": "非营利基金会 · 奖学金"
+  },
+  "solutions": [
+    "dynamics-365-crm"
+  ],
+  "products": [
+    "Dynamics CRM",
+    "Azure App Service"
+  ],
+  "period": {
+    "ko": "장학 CRM 구축 · 2023.09 포털 – 현재",
+    "en": "Scholarship CRM · portal Sep 2023 – present",
+    "ja": "奨学 CRM 構築・2023.09 ポータル – 現在",
+    "zh-hans": "奖学金 CRM 构建 · 2023.09 门户 – 至今"
+  },
+  "title": {
+    "ko": "장학생 선발부터 지급 · 멘토링까지,\n재단 사업을 한 CRM에서",
+    "en": "From selecting scholars to payments and mentoring,\nthe foundation’s work in one CRM",
+    "ja": "奨学生の選考から支給・メンタリングまで、\n財団の事業をひとつの CRM で",
+    "zh-hans": "从奖学生选拔到发放与辅导，\n基金会业务统一在一个 CRM 中"
+  },
+  "sub": {
+    "ko": "장학 업무를 Dynamics CRM으로 구축하고, 웹 신청서와 고촌홀 예약 포털을 CRM과 이었습니다",
+    "en": "Scholarship work built on Dynamics CRM, with web applications and the Gochon Hall booking portal connected to it",
+    "ja": "奨学業務を Dynamics CRM で構築し、Web 申請書と高村ホールの予約ポータルを CRM とつなぎました",
+    "zh-hans": "基于 Dynamics CRM 构建奖学金业务，并将网上申请表与高村会馆预约门户接入 CRM"
+  },
+  "card": {
+    "task": {
+      "ko": "장학 사업 통합 관리",
+      "en": "One system for scholarship programmes",
+      "ja": "奨学事業の統合管理",
+      "zh-hans": "奖学金项目统一管理"
+    },
+    "result": {
+      "ko": "웹 신청이 CRM으로 바로 · 홀 예약 포털",
+      "en": "Web applications go straight to CRM; hall booking portal",
+      "ja": "Web 申請が CRM へ直接・ホール予約ポータル",
+      "zh-hans": "网上申请直达 CRM · 会馆预约门户"
+    }
+  },
+  "description": {
+    "ko": "종근당고촌재단의 장학생 접수 · 심사 · 지급 · 멘토링과 재단 사업을 Dynamics CRM으로 구축하고, 웹 신청서와 고촌홀 예약 포털을 CRM과 이은 사례입니다.",
+    "en": "How the Chong Kun Dang Gochon Foundation runs scholarship applications, reviews, payments, mentoring and its programmes on Dynamics CRM, with web applications and the Gochon Hall booking portal connected to it.",
+    "ja": "鍾根堂高村財団の奨学生の受付・審査・支給・メンタリングと財団事業を Dynamics CRM で構築し、Web 申請書と高村ホールの予約ポータルを CRM とつないだ事例です。",
+    "zh-hans": "为钟根堂高村财团基于 Dynamics CRM 构建奖学生受理、评审、发放、辅导与基金会业务，并将网上申请表与高村会馆预约门户接入 CRM 的案例。"
+  },
+  "challenge": [
+    {
+      "ko": "종근당고촌재단은 장학 사업과 학사 지원을 하는 비영리 재단입니다. 장학생 접수에서 심사, 장학금 지급, 멘토링까지 이어지는 업무를 한 시스템에서 관리하고, 웹으로 받은 신청이 그대로 장학생 정보가 되게 하는 것이 과제였습니다.",
+      "en": "The Chong Kun Dang Gochon Foundation is a nonprofit that runs scholarship programmes and student housing support. The goal was to manage everything from applications and screening to scholarship payments and mentoring in one system, with online applications becoming scholar records as they arrive.",
+      "ja": "鍾根堂高村財団は奨学事業と学生寮の支援を行う非営利財団です。奨学生の受付から審査、奨学金の支給、メンタリングまで続く業務をひとつのシステムで管理し、ウェブで受け付けた申請がそのまま奨学生情報になるようにすることが課題でした。",
+      "zh-hans": "钟根堂高村财团是开展奖学金项目与学生宿舍支持的非营利基金会。挑战在于用一个系统管理从奖学生受理、评审、奖学金发放到导师辅导的全部业务，并让在线收到的申请直接成为奖学生信息。"
+    }
+  ],
+  "work": [
+    {
+      "ko": "장학생 접수와 심사, 지급, 멘토링, 재단 사업 관리를 Dynamics CRM에 구축했습니다. 웹 신청서는 CRM과 바로 연결했고, 고촌홀 예약과 교육 신청을 위한 포털도 함께 만들었습니다.",
+      "en": "Qualisoft built scholar applications, screening, payments, mentoring and programme management in Dynamics CRM. Online application forms feed straight into the CRM, and a portal was added for Gochon Hall bookings and course registration.",
+      "ja": "奨学生の受付と審査、支給、メンタリング、財団事業の管理を Dynamics CRM に構築しました。ウェブ申請書は CRM と直接つなぎ、高村ホールの予約と講座申し込みのためのポータルもあわせて作りました。",
+      "zh-hans": "在 Dynamics CRM 中构建了奖学生受理与评审、发放、导师辅导以及基金会项目管理。在线申请表直接连接 CRM，并同时开发了高村会馆预约与课程报名门户。"
+    }
+  ],
+  "scope": [
+    {
+      "ko": "장학생 접수 · 심사 · 통합 관리",
+      "en": "Scholar applications, screening and records",
+      "ja": "奨学生の受付・審査・統合管理",
+      "zh-hans": "奖学生受理、评审与统一管理"
+    },
+    {
+      "ko": "장학금 지급 · 멘토링 관리",
+      "en": "Scholarship payments and mentoring",
+      "ja": "奨学金支給・メンタリング管理",
+      "zh-hans": "奖学金发放与导师辅导管理"
+    },
+    {
+      "ko": "웹 신청서 CRM 연동",
+      "en": "Online application forms linked to the CRM",
+      "ja": "ウェブ申請書の CRM 連携",
+      "zh-hans": "在线申请表与 CRM 集成"
+    },
+    {
+      "ko": "고촌홀 예약 · 교육 신청 포털",
+      "en": "Gochon Hall booking and course portal",
+      "ja": "高村ホール予約・講座申し込みポータル",
+      "zh-hans": "高村会馆预约与课程报名门户"
+    }
+  ],
+  "result": [
+    {
+      "ko": "장학생 한 사람의 신청부터 지급, 멘토링까지의 이력이 한곳에 쌓입니다. 고촌홀 이용자는 웹에서 예약과 교육 신청을 직접 합니다.",
+      "en": "Each scholar’s history, from application to payments and mentoring, now builds up in one place. Gochon Hall visitors book rooms and sign up for courses themselves online.",
+      "ja": "奨学生一人ひとりの申請から支給、メンタリングまでの履歴が一か所に蓄積されます。高村ホールの利用者はウェブで予約と講座申し込みを自ら行っています。",
+      "zh-hans": "每位奖学生从申请到发放、导师辅导的记录都汇集在同一处。高村会馆的使用者可直接在网上预约并报名课程。"
+    }
+  ]
+}

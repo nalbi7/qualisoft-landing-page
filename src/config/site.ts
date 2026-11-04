@@ -1,0 +1,42 @@
+// 회사 정보 한 곳 — 푸터와 JSON-LD가 같이 읽는다 (Docs/16-tech-architecture.md §5 · D-014 · D-016)
+export const COMPANY = {
+  name: '퀄리소프트',
+  legalName: '(주)퀄리소프트',
+  ceo: '변유신',
+  ceoEn: 'Byun Yushin',   // 영 · 일 · 중 화면 — 사용자 지정 표기 (D-051, M-12 의 대표 이름)
+  bizRegNo: '824-87-03495',
+  address: '서울시 영등포구 선유로3길 10 하우스디비즈 906호',
+  // 영 · 일 · 중 푸터용 영문 주소 — 도로명 로마자 표기. 건물 이름 표기는 회사 확인 전 (M-12)
+  addressEn: '#906, House D Biz, 10 Seonyu-ro 3-gil, Yeongdeungpo-gu, Seoul, Korea',
+  // JSON-LD PostalAddress 용으로 나눈 값 — 위 주소와 같은 내용 (19-seo-spec §5)
+  addressParts: { region: '서울시', locality: '영등포구', street: '선유로3길 10 하우스디비즈 906호' },
+  tel: '02-6925-1279',
+  telIntl: '+82-2-6925-1279',
+  telHref: 'tel:+82269251279',
+} as const;
+
+// 언어별 표기 — 한국어는 국내 번호 · 한글 이름, 영 · 일 · 중은 국가 번호(+82)로 시작하는 번호 · 영문 이름 (D-051)
+const isKo = (loc?: string) => !loc || loc === 'ko';
+export const telFor = (loc?: string) => (isKo(loc) ? COMPANY.tel : COMPANY.telIntl);
+export const ceoFor = (loc?: string) => (isKo(loc) ? COMPANY.ceo : COMPANY.ceoEn);
+
+// 바깥 채널 — 구 사이트에 공개된 주소 (Docs/14-information-architecture.md §5)
+export const LINKS = {
+  kakao: 'https://pf.kakao.com/_yyefT/chat',
+  youtube: 'https://www.youtube.com/@dynamics365crm7',
+  blog: 'https://blog.naver.com/dynamics365',
+  // 「Dynamics 365 속성강의」 재생목록 — 첫 편(EP. 01)부터 재생목록으로 연다 (D-048 · BD-073, 사용자 지정 주소)
+  lectures: 'https://www.youtube.com/watch?v=uR3Yl3p8Ewk&list=PLPFOHc0o0ZXK4x4H192u8H25yWa5IVHU1',
+} as const;
+
+// 데모 신청 — 방식 A, 기존 데모 신청 페이지로 이동 (D-005). 주소는 빌드 변수로만 받는다 — 값은 저장소에 쓰지 않는다 (H-01).
+// 비어 있으면 데모 버튼 자리에 전화 상담을 둔다: 동작하지 않는 버튼을 두지 않는다 (16-tech-architecture §7)
+export const DEMO_URL: string = import.meta.env.PUBLIC_DEMO_URL ?? '';
+
+export const GA4_ID: string = import.meta.env.PUBLIC_GA4_ID ?? '';
+export const NOINDEX = import.meta.env.PUBLIC_NOINDEX === 'true';
+export const VERIFICATION = {
+  google: import.meta.env.PUBLIC_GSC_VERIFICATION ?? '',
+  naver: import.meta.env.PUBLIC_NAVER_VERIFICATION ?? '',
+  bing: import.meta.env.PUBLIC_BING_VERIFICATION ?? '',
+};

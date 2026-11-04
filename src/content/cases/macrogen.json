@@ -1,0 +1,112 @@
+{
+  "order": 4,
+  "first": [],
+  "customer": "macrogen",
+  "industry": {
+    "ko": "바이오 · 유전체 분석",
+    "en": "Biotech · Genomics",
+    "ja": "バイオ・ゲノム解析",
+    "zh-hans": "生物技术 · 基因组分析"
+  },
+  "solutions": [
+    "dynamics-365-crm"
+  ],
+  "products": [
+    "Dynamics CRM",
+    "Outlook"
+  ],
+  "period": {
+    "ko": "2015.04 – 2015.10",
+    "en": "Apr 2015 – Oct 2015",
+    "ja": "2015.04 – 2015.10",
+    "zh-hans": "2015.04 – 2015.10"
+  },
+  "title": {
+    "ko": "흩어진 고객 정보를 한 화면에,\n공통 메일까지 CRM에서",
+    "en": "Scattered customer data on one screen,\nshared mailboxes handled in the CRM",
+    "ja": "散らばった顧客情報をひとつの画面に、\n共通メールまで CRM で",
+    "zh-hans": "分散的客户信息汇于一屏，\n共享邮箱也在 CRM 中处理"
+  },
+  "sub": {
+    "ko": "유전체 분석 서비스의 고객 · 견적 · 수주를 Dynamics CRM으로 모으고 사내 시스템과 이었습니다",
+    "en": "Customers, quotes and orders for genomics services brought into Dynamics CRM and connected to in-house systems",
+    "ja": "ゲノム解析サービスの顧客・見積・受注を Dynamics CRM に集め、社内システムとつなぎました",
+    "zh-hans": "将基因组分析服务的客户、报价与订单汇集到 Dynamics CRM，并与内部系统打通"
+  },
+  "card": {
+    "task": {
+      "ko": "흩어진 고객 정보와 공통 메일 통합",
+      "en": "Unify scattered customer data and shared mail",
+      "ja": "散在する顧客情報と共通メールの統合",
+      "zh-hans": "整合分散的客户信息与共享邮箱"
+    },
+    "result": {
+      "ko": "고객 한 화면 · 메일 할당과 이력 추적",
+      "en": "One customer view, mail assigned and tracked",
+      "ja": "顧客を一画面で・メールの割り当てと履歴追跡",
+      "zh-hans": "客户一屏查看 · 邮件分派与历史追踪"
+    }
+  },
+  "description": {
+    "ko": "유전체 분석 기업 마크로젠의 흩어진 고객 · 견적 · 수주 정보를 Dynamics CRM 한 곳에 모으고, 공통 메일을 CRM에서 할당 · 추적하도록 구축한 사례입니다.",
+    "en": "How Macrogen, a genomics company, brought scattered customer, quote and order data into Dynamics CRM and began assigning and tracking shared-mailbox messages in the CRM.",
+    "ja": "ゲノム解析企業マクロジェンの散在していた顧客・見積・受注情報を Dynamics CRM に集約し、共通メールを CRM で割り当て・追跡できるよう構築した事例です。",
+    "zh-hans": "为基因组分析企业 Macrogen 将分散的客户、报价与订单信息汇集到 Dynamics CRM，并在 CRM 中分派和追踪共享邮箱邮件的案例。"
+  },
+  "challenge": [
+    {
+      "ko": "마크로젠은 국내외 연구자에게 유전체 분석 서비스를 제공합니다. 고객과 수주 · 매출 정보가 여러 시스템에 흩어져 있었고, 공통 메일로 들어온 문의를 누가 맡았는지 따라가기 어려웠습니다.",
+      "en": "Macrogen provides genomics services to researchers in Korea and abroad. Customer, order and revenue data was scattered across several systems, and it was hard to track who had picked up inquiries sent to shared mailboxes.",
+      "ja": "マクロジェンは国内外の研究者にゲノム解析サービスを提供しています。顧客と受注・売上の情報は複数のシステムに分散しており、共通メールに届いた問い合わせを誰が担当しているのか追いにくい状況でした。",
+      "zh-hans": "Macrogen 为国内外研究人员提供基因组分析服务。客户与订单、销售信息分散在多个系统中，通过公共邮箱收到的咨询也很难追踪由谁负责。"
+    }
+  ],
+  "work": [
+    {
+      "ko": "부서별 업무를 살펴 서비스 종류에 맞게 Dynamics CRM을 구성하고, 실험 정보 시스템(LIMS)과 ERP 같은 사내 시스템을 연결했습니다.",
+      "en": "After reviewing how each department worked, Qualisoft set up Dynamics CRM around Macrogen’s service lines and connected in-house systems such as the lab information system (LIMS) and ERP.",
+      "ja": "部署ごとの業務を確認してサービスの種類に合わせて Dynamics CRM を構成し、実験情報システム（LIMS）や ERP などの社内システムとつなぎました。",
+      "zh-hans": "在梳理各部门业务后，按服务类型配置了 Dynamics CRM，并连接了实验信息系统（LIMS）与 ERP 等内部系统。"
+    },
+    {
+      "ko": "공통 메일은 CRM으로 들어와 담당자에게 배정되고, 견적은 서비스별로 만들어 CRM에서 바로 보냅니다.",
+      "en": "Shared-mailbox messages now arrive in the CRM and are assigned to an owner, and quotes are built per service and sent straight from the CRM.",
+      "ja": "共通メールは CRM に取り込まれて担当者に割り当てられ、見積はサービスごとに作成して CRM からそのまま送ります。",
+      "zh-hans": "公共邮箱的邮件进入 CRM 后分配给负责人，报价按服务类型制作并直接从 CRM 发送。"
+    }
+  ],
+  "scope": [
+    {
+      "ko": "고객 통합 화면 — 매출 · 수주 · 견적 이력",
+      "en": "Single customer view — revenue, orders and quotes",
+      "ja": "顧客統合画面 — 売上・受注・見積の履歴",
+      "zh-hans": "客户统一视图 — 销售、订单与报价记录"
+    },
+    {
+      "ko": "LIMS · ERP 연동",
+      "en": "LIMS and ERP integration",
+      "ja": "LIMS・ERP 連携",
+      "zh-hans": "LIMS 与 ERP 集成"
+    },
+    {
+      "ko": "공통 메일 할당 · 이력 관리",
+      "en": "Shared-mailbox assignment and history",
+      "ja": "共通メールの割り当て・履歴管理",
+      "zh-hans": "公共邮件分配与记录管理"
+    },
+    {
+      "ko": "견적 · 대시보드",
+      "en": "Quotes and dashboards",
+      "ja": "見積・ダッシュボード",
+      "zh-hans": "报价与仪表板"
+    }
+  ],
+  "result": [
+    {
+      "ko": "영업 담당자는 고객 한 화면에서 수주와 견적, 매출 이력, 주고받은 메일까지 함께 봅니다. 문의는 놓치지 않고 담당자에게 이어집니다.",
+      "en": "Sales staff now see orders, quotes, revenue history and email correspondence together on one customer screen, and inquiries reach their owner without slipping through.",
+      "ja": "営業担当者は顧客ひとつの画面で受注と見積、売上の履歴、やり取りしたメールまでまとめて見ています。問い合わせは漏れなく担当者につながります。",
+      "zh-hans": "销售人员在同一个客户界面中即可查看订单、报价、销售记录以及往来邮件，咨询也能不遗漏地转到负责人。"
+    }
+  ]
+}

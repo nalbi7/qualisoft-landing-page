@@ -1,0 +1,176 @@
+{
+  "order": 4,
+  "name": "Power BI · Fabric",
+  "icon": "/assets/ms/power-bi.svg",
+  "color": "var(--s4)",
+  "short": {
+    "ko": "흩어진 데이터를 한 화면에",
+    "en": "Bring scattered data onto one screen",
+    "ja": "散在するデータを一画面に",
+    "zh-hans": "将分散的数据汇于一屏"
+  },
+  "area": {
+    "ko": "데이터 분석 및 시각화",
+    "en": "Data analytics & visualization",
+    "ja": "データ分析・可視化",
+    "zh-hans": "数据分析与可视化"
+  },
+  "art": "bi",
+  "hook": {
+    "ko": "흩어진 데이터는 한곳에, 경영 지표는 한 화면에",
+    "en": "Bring scattered data together. See the business on one screen.",
+    "ja": "散在するデータは一か所に、経営指標は一画面に",
+    "zh-hans": "分散的数据汇于一处，经营指标一屏掌握"
+  },
+  "step": "Power BI",
+  "headline": {
+    "ko": "흩어진 데이터를\n한 화면에",
+    "en": "Bring scattered data\nonto one screen",
+    "ja": "散在するデータを\n一画面に",
+    "zh-hans": "将分散的数据\n汇于一屏"
+  },
+  "family": "Power BI · Microsoft Fabric",
+  "mark": "Power BI · Fabric",
+  "lead": {
+    "ko": "Microsoft Fabric의 OneLake와 레이크하우스에 CRM·ERP·현장 시스템의 데이터를 모으고, 의미 체계 모델로 지표를 정리해 Power BI 보고서와 대시보드로 보여 줍니다. 부서·역할별로 볼 수 있는 데이터를 나누고, Teams와 CRM 화면 안에서도 보고서를 씁니다.",
+    "en": "Bring CRM, ERP and operational data together in OneLake and lakehouses on Microsoft Fabric, define metrics once in a semantic model, and present them in Power BI reports and dashboards. Data access is split by department and role, and reports are used inside Teams and CRM screens too.",
+    "ja": "Microsoft Fabric の OneLake とレイクハウスに CRM・ERP・現場システムのデータを集め、セマンティックモデルで指標を整理し、Power BI のレポートとダッシュボードで見せます。部門・役割ごとに見られるデータを分け、Teams や CRM の画面の中でもレポートを使います。",
+    "zh-hans": "将 CRM、ERP 与现场系统的数据汇入 Microsoft Fabric 的 OneLake 与湖仓，以语义模型统一定义指标，并通过 Power BI 报表与仪表板呈现。按部门与角色划分可见数据，也可在 Teams 与 CRM 界面中使用报表。"
+  },
+  "description": {
+    "ko": "Microsoft Fabric의 OneLake와 레이크하우스에 CRM·ERP·현장 시스템의 데이터를 모으고, 의미 체계 모델로 지표를 정리해 Power BI 보고서와 대시보드로 보여 줍니다.",
+    "en": "Bring CRM, ERP and operational data together in OneLake and lakehouses on Microsoft Fabric, define metrics once in a semantic model, and present them in Power BI reports and dashboards.",
+    "ja": "Microsoft Fabric の OneLake とレイクハウスに CRM・ERP・現場システムのデータを集め、セマンティックモデルで指標を整理し、Power BI のレポートとダッシュボードで見せます。",
+    "zh-hans": "将 CRM、ERP 与现场系统的数据汇入 Microsoft Fabric 的 OneLake 与湖仓，以语义模型统一定义指标，并通过 Power BI 报表与仪表板呈现。"
+  },
+  "official": "power-platform/products/power-bi",
+  "features": [
+    {
+      "title": {
+        "ko": "OneLake·레이크하우스",
+        "en": "OneLake & lakehouse",
+        "ja": "OneLake・レイクハウス",
+        "zh-hans": "OneLake 与湖仓"
+      },
+      "text": {
+        "ko": "여러 시스템의 데이터를 한 저장소에 모아 함께 씁니다.",
+        "en": "Keep data from many systems in one store and use it together.",
+        "ja": "複数システムのデータをひとつのストレージに集めて一緒に使います。",
+        "zh-hans": "将多个系统的数据汇入同一存储并共同使用。"
+      }
+    },
+    {
+      "title": {
+        "ko": "데이터 파이프라인",
+        "en": "Data pipelines",
+        "ja": "データパイプライン",
+        "zh-hans": "数据管道"
+      },
+      "text": {
+        "ko": "원천 시스템에서 데이터를 정해진 주기로 가져와 정리합니다.",
+        "en": "Pull and prepare data from source systems on a schedule.",
+        "ja": "ソースシステムから決まった周期でデータを取り込み、整えます。",
+        "zh-hans": "按设定周期从源系统获取并整理数据。"
+      }
+    },
+    {
+      "title": {
+        "ko": "의미 체계 모델",
+        "en": "Semantic model",
+        "ja": "セマンティック モデル",
+        "zh-hans": "语义模型"
+      },
+      "text": {
+        "ko": "매출·수주율 같은 지표를 한 번 정의해 모든 보고서가 같이 씁니다.",
+        "en": "Define metrics such as revenue and win rate once and reuse them in every report.",
+        "ja": "売上・受注率などの指標を一度定義し、すべてのレポートで共通に使います。",
+        "zh-hans": "销售额、赢单率等指标只需定义一次，所有报表共同使用。"
+      }
+    },
+    {
+      "title": {
+        "ko": "보고서·대시보드",
+        "en": "Reports & dashboards",
+        "ja": "レポート・ダッシュボード",
+        "zh-hans": "报表与仪表板"
+      },
+      "text": {
+        "ko": "부서별 대시보드에서 숫자를 보고 상세 보고서로 따라 들어갑니다.",
+        "en": "Read the numbers on department dashboards and drill into detailed reports.",
+        "ja": "部門別ダッシュボードで数字を確認し、詳細レポートへ掘り下げます。",
+        "zh-hans": "在部门仪表板查看数字，并深入到明细报表。"
+      }
+    },
+    {
+      "title": {
+        "ko": "행 수준 보안",
+        "en": "Row-level security",
+        "ja": "行レベルセキュリティ",
+        "zh-hans": "行级安全"
+      },
+      "text": {
+        "ko": "같은 보고서라도 사람마다 볼 수 있는 데이터를 나눕니다.",
+        "en": "The same report shows each person only the data they may see.",
+        "ja": "同じレポートでも、人によって見られるデータを分けます。",
+        "zh-hans": "同一报表也能按人员区分可见数据。"
+      }
+    },
+    {
+      "title": {
+        "ko": "업무 화면 안의 보고서",
+        "en": "Reports where work happens",
+        "ja": "業務画面の中のレポート",
+        "zh-hans": "嵌入业务界面的报表"
+      },
+      "text": {
+        "ko": "Teams·Excel·CRM 화면 안에 보고서를 넣어 씁니다.",
+        "en": "Embed reports in Teams, Excel and CRM screens.",
+        "ja": "Teams・Excel・CRM の画面にレポートを埋め込んで使います。",
+        "zh-hans": "将报表嵌入 Teams、Excel 与 CRM 界面中使用。"
+      }
+    }
+  ],
+  "products": [
+    {
+      "name": "Power BI",
+      "icon": "/assets/ms/power-bi.svg",
+      "path": "power-platform/products/power-bi"
+    },
+    {
+      "name": "Microsoft Fabric",
+      "icon": "/assets/ms/fabric.svg",
+      "path": "microsoft-fabric"
+    }
+  ],
+  "customers": [
+    "jeilmedix",
+    "gochon",
+    "bugaboo"
+  ],
+  "we": [
+    {
+      "ko": "POS·SAP·SFA·그룹웨어 등 사내 데이터 통합 설계",
+      "en": "Designing integration of in-house data such as POS, SAP, SFA and groupware",
+      "ja": "POS・SAP・SFA・グループウェアなど社内データの統合設計",
+      "zh-hans": "设计 POS、SAP、SFA、协同办公等内部数据的整合"
+    },
+    {
+      "ko": "기존 데이터 플랫폼의 Fabric 이관",
+      "en": "Migrating existing data platforms to Fabric",
+      "ja": "既存データ基盤の Fabric への移行",
+      "zh-hans": "将现有数据平台迁移至 Fabric"
+    },
+    {
+      "ko": "부서별 대시보드와 행 수준 보안 설계",
+      "en": "Department dashboards and row-level security design",
+      "ja": "部門別ダッシュボードと行レベルセキュリティの設計",
+      "zh-hans": "设计部门仪表板与行级安全"
+    },
+    {
+      "ko": "DAX 성능 개선과 보고서 운영 지원",
+      "en": "DAX performance tuning and report operations support",
+      "ja": "DAX の性能改善とレポート運用の支援",
+      "zh-hans": "DAX 性能优化与报表运营支持"
+    }
+  ]
+}

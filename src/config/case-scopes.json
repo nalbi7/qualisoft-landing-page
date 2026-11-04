@@ -1,0 +1,135 @@
+[
+  {
+    "customer": "ky",
+    "industry": { "ko": "제조 · 검사 장비", "en": "Manufacturing · Inspection equipment", "ja": "製造・検査装置", "zh-hans": "制造 · 检测设备" },
+    "product": "Dynamics CRM 2011",
+    "scope": [
+      { "ko": "CRM 3.0 영업 모듈로 시작", "en": "Started with the CRM 3.0 sales module", "ja": "CRM 3.0 の営業モジュールから開始", "zh-hans": "从 CRM 3.0 销售模块起步" },
+      { "ko": "수년에 걸친 제품 버전 업그레이드", "en": "Product upgrades over several years", "ja": "数年にわたる製品バージョンアップ", "zh-hans": "多年持续的产品版本升级" },
+      { "ko": "전 사업부로 CRM 모듈 확장 개발", "en": "CRM modules extended to every business unit", "ja": "全事業部への CRM モジュール拡張開発", "zh-hans": "CRM 模块扩展到所有事业部" }
+    ]
+  },
+  {
+    "customer": "glo",
+    "first": ["en"],
+    "industry": { "ko": "소비재 · 유통", "en": "Consumer goods · Retail", "ja": "消費財・流通", "zh-hans": "消费品 · 零售" },
+    "product": "Dynamics CRM",
+    "scope": [
+      { "ko": "통합 고객 관리", "en": "Unified customer management", "ja": "統合顧客管理", "zh-hans": "统一客户管理" },
+      { "ko": "POS 연동 매출 관리", "en": "Sales management linked to POS", "ja": "POS 連携の売上管理", "zh-hans": "对接 POS 的销售管理" },
+      { "ko": "카드 결제 내역 연동", "en": "Card payment data integration", "ja": "カード決済履歴の連携", "zh-hans": "对接银行卡支付记录" },
+      { "ko": "플래그십 회원 가입 · 계정 관리", "en": "Flagship member sign-up and accounts", "ja": "フラッグシップの会員登録・アカウント管理", "zh-hans": "旗舰店会员注册与账户管理" },
+      { "ko": "반품 관리", "en": "Returns management", "ja": "返品管理", "zh-hans": "退货管理" },
+      { "ko": "SAP 정산 관리 모듈", "en": "SAP settlement module", "ja": "SAP 精算管理モジュール", "zh-hans": "SAP 结算管理模块" }
+    ]
+  },
+  {
+    "customer": "kukdo",
+    "industry": { "ko": "화학", "en": "Chemicals", "ja": "化学", "zh-hans": "化工" },
+    "product": "Dynamics CRM",
+    "scope": [
+      { "ko": "ERP 연계 고객 통합 관리", "en": "Unified customer management linked to ERP", "ja": "ERP 連携の顧客統合管理", "zh-hans": "对接 ERP 的统一客户管理" },
+      { "ko": "잠재 고객 관리", "en": "Lead management", "ja": "見込み顧客管理", "zh-hans": "潜在客户管理" },
+      { "ko": "개발 요청 관리", "en": "Development request management", "ja": "開発依頼管理", "zh-hans": "开发需求管理" },
+      { "ko": "고객 불만 접수", "en": "Customer complaint intake", "ja": "顧客クレーム受付", "zh-hans": "客户投诉受理" },
+      { "ko": "영업 관리", "en": "Sales management", "ja": "営業管理", "zh-hans": "销售管理" },
+      { "ko": "사용자 일정 관리", "en": "User schedules", "ja": "ユーザーのスケジュール管理", "zh-hans": "用户日程管理" }
+    ]
+  },
+  {
+    "customer": "yungbo",
+    "industry": { "ko": "화학", "en": "Chemicals", "ja": "化学", "zh-hans": "化工" },
+    "product": "Dynamics CRM",
+    "scope": [
+      { "ko": "ERP 연계 고객 통합 관리", "en": "Unified customer management linked to ERP", "ja": "ERP 連携の顧客統合管理", "zh-hans": "对接 ERP 的统一客户管理" },
+      { "ko": "잠재 고객 관리", "en": "Lead management", "ja": "見込み顧客管理", "zh-hans": "潜在客户管理" },
+      { "ko": "신규 업체 실태 조사", "en": "New supplier and customer surveys", "ja": "新規取引先の実態調査", "zh-hans": "新客户实况调查" },
+      { "ko": "여신 한도 조사서", "en": "Credit limit assessments", "ja": "与信限度調査書", "zh-hans": "授信额度调查表" },
+      { "ko": "고객 불만 접수", "en": "Customer complaint intake", "ja": "顧客クレーム受付", "zh-hans": "客户投诉受理" },
+      { "ko": "영업 관리 · 사용자 일정 관리", "en": "Sales management and user schedules", "ja": "営業管理・ユーザーのスケジュール管理", "zh-hans": "销售管理 · 用户日程管理" }
+    ]
+  },
+  {
+    "customer": "ts",
+    "industry": { "ko": "엔지니어링 소프트웨어 · 기술 지원", "en": "Engineering software · Technical services", "ja": "エンジニアリングソフトウェア・技術支援", "zh-hans": "工程软件 · 技术支持" },
+    "product": "Dynamics CRM 2011",
+    "scope": [
+      { "ko": "글로벌 소프트웨어 한국 총판의 라이선스 판매", "en": "License sales for the Korean distributor of global software", "ja": "グローバルソフトウェア韓国総代理店のライセンス販売", "zh-hans": "全球软件韩国总代理的许可证销售" },
+      { "ko": "교육", "en": "Training", "ja": "トレーニング", "zh-hans": "培训" },
+      { "ko": "기술 지원", "en": "Technical support", "ja": "技術サポート", "zh-hans": "技术支持" },
+      { "ko": "영업 모듈 구축", "en": "Sales module build", "ja": "営業モジュールの構築", "zh-hans": "销售模块构建" }
+    ]
+  },
+  {
+    "customer": "sba",
+    "industry": { "ko": "공공기관", "en": "Public sector", "ja": "公共機関", "zh-hans": "公共机构" },
+    "product": "Dynamics CRM",
+    "scope": [
+      { "ko": "통합 고객 관리", "en": "Unified customer management", "ja": "統合顧客管理", "zh-hans": "统一客户管理" },
+      { "ko": "사업 관리", "en": "Programme management", "ja": "事業管理", "zh-hans": "项目管理" },
+      { "ko": "상담 관리", "en": "Consultation management", "ja": "相談管理", "zh-hans": "咨询管理" },
+      { "ko": "설문 관리", "en": "Survey management", "ja": "アンケート管理", "zh-hans": "问卷管理" }
+    ]
+  },
+  {
+    "customer": "roka",
+    "name": { "ko": "공군 제82항공정비창", "en": "ROKAF 82nd Aircraft Maintenance Depot", "ja": "大韓民国空軍 第82航空整備廠", "zh-hans": "大韩民国空军 第82航空维修厂" },
+    "industry": { "ko": "공공 · 국방", "en": "Public sector · Defence", "ja": "公共・国防", "zh-hans": "公共 · 国防" },
+    "product": "Dynamics CRM",
+    "scope": [
+      { "ko": "항공 공정 모니터링", "en": "Aircraft maintenance process monitoring", "ja": "航空整備工程のモニタリング", "zh-hans": "航空维修工序监控" },
+      { "ko": "정비사 혁신 포털 관리", "en": "Maintenance technician innovation portal", "ja": "整備士向けイノベーションポータル管理", "zh-hans": "维修人员创新门户管理" },
+      { "ko": "능력 개발 모니터링", "en": "Skills development monitoring", "ja": "能力開発のモニタリング", "zh-hans": "能力发展监控" }
+    ]
+  },
+  {
+    "customer": "warevalley",
+    "industry": { "ko": "IT · 소프트웨어", "en": "IT · Software", "ja": "IT・ソフトウェア", "zh-hans": "IT · 软件" },
+    "product": "Dynamics CRM",
+    "scope": [
+      { "ko": "통합 고객 관리", "en": "Unified customer management", "ja": "統合顧客管理", "zh-hans": "统一客户管理" },
+      { "ko": "견적 관리 · 견적서 양식", "en": "Quotes and quote templates", "ja": "見積管理・見積書フォーマット", "zh-hans": "报价管理 · 报价单模板" },
+      { "ko": "계약 관리", "en": "Contract management", "ja": "契約管理", "zh-hans": "合同管理" },
+      { "ko": "세금계산서 발행", "en": "Tax invoice issuing", "ja": "税金計算書の発行", "zh-hans": "税务发票开具" },
+      { "ko": "파트너 관리", "en": "Partner management", "ja": "パートナー管理", "zh-hans": "合作伙伴管理" },
+      { "ko": "파트너 기술 지원 사이트", "en": "Partner technical support site", "ja": "パートナー向け技術サポートサイト", "zh-hans": "合作伙伴技术支持网站" }
+    ]
+  },
+  {
+    "customer": "macromatrix",
+    "industry": { "ko": "광고 · 행사", "en": "Advertising · Events", "ja": "広告・イベント", "zh-hans": "广告 · 活动" },
+    "product": "Dynamics CRM",
+    "scope": [
+      { "ko": "고객 관리", "en": "Customer management", "ja": "顧客管理", "zh-hans": "客户管理" },
+      { "ko": "영업기회 관리", "en": "Opportunity management", "ja": "営業案件管理", "zh-hans": "商机管理" },
+      { "ko": "활동 관리", "en": "Activity management", "ja": "活動管理", "zh-hans": "活动管理" },
+      { "ko": "프로젝트 관리", "en": "Project management", "ja": "プロジェクト管理", "zh-hans": "项目管理" },
+      { "ko": "주간 업무 보고", "en": "Weekly work reports", "ja": "週次業務報告", "zh-hans": "每周工作报告" }
+    ]
+  },
+  {
+    "customer": "dnl",
+    "name": { "ko": "DNLKOREA", "en": "DNLKOREA", "ja": "DNLKOREA", "zh-hans": "DNLKOREA" },
+    "industry": { "ko": "제조 · 유통", "en": "Manufacturing · Distribution", "ja": "製造・流通", "zh-hans": "制造 · 流通" },
+    "product": "Dynamics CRM 2011",
+    "period": { "ko": "2011 – 2013", "en": "2011 – 2013", "ja": "2011 – 2013", "zh-hans": "2011 – 2013" },
+    "scope": [
+      { "ko": "고객 관리", "en": "Customer management", "ja": "顧客管理", "zh-hans": "客户管理" },
+      { "ko": "영업기회 관리", "en": "Opportunity management", "ja": "営業案件管理", "zh-hans": "商机管理" },
+      { "ko": "활동 관리", "en": "Activity management", "ja": "活動管理", "zh-hans": "活动管理" }
+    ]
+  },
+  {
+    "customer": "cutco",
+    "first": ["en"],
+    "name": { "ko": "컷코코리아", "en": "Cutco Korea", "ja": "Cutco Korea", "zh-hans": "Cutco Korea" },
+    "industry": { "ko": "소비재 · 직접 판매", "en": "Consumer goods · Direct sales", "ja": "消費財・直販", "zh-hans": "消费品 · 直销" },
+    "product": "CRM",
+    "scope": [
+      { "ko": "고객 · 잠재 고객 관리", "en": "Customer and lead management", "ja": "顧客・見込み顧客管理", "zh-hans": "客户与潜在客户管理" },
+      { "ko": "계약 관리", "en": "Contract management", "ja": "契約管理", "zh-hans": "合同管理" },
+      { "ko": "A/S 관리", "en": "After-sales service management", "ja": "アフターサービス管理", "zh-hans": "售后服务管理" },
+      { "ko": "캠페인 · 프로모션 관리", "en": "Campaign and promotion management", "ja": "キャンペーン・プロモーション管理", "zh-hans": "营销活动与促销管理" }
+    ]
+  }
+]

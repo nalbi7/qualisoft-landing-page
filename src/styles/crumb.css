@@ -1,0 +1,4 @@
+/* 이동 경로 — make_v8.py CRUMB_CSS 원문 그대로 (BD-001) */
+.crumb{display:flex; gap:8px; align-items:center; flex-wrap:wrap; padding-block:var(--sp-4) 0; font-size:13px; color:var(--muted)}
+.crumb a{display:inline-flex; align-items:center; justify-content:center; min-height:28px; min-width:24px; text-decoration:none}
+.crumb a:hover{text-decoration:underline; color:var(--text)}

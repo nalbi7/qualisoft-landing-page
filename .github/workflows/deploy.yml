@@ -1,0 +1,100 @@
+# 빌드 · 검사 · GitHub Pages 배포 — Docs/20-release-ops.md §4 · Docs/18-qa-test-plan.md §6 (BD-005)
+#   변경 요청(PR): 검사만 — 설치 → 타입 검사 → 빌드(경고도 실패) + 빌드 뒤 검사. 배포하지 않는다
+#   main 에 올리거나 손으로 실행: 같은 검사를 통과하면 Pages 에 배포한다
+#
+# 저장소에서 한 번 할 일 (H-03 으로 저장소가 정해지면)
+#   Settings → Pages → Source 를 「GitHub Actions」로
+#   Settings → Secrets and variables → Actions → Variables — 모두 HTML 에 실리는 공개값이다. 값은 문서에 쓰지 않는다
+#     PUBLIC_NOINDEX   비우면 true(출시 전 미리보기 — 검색 제외). 공개 당일 false 로 바꾼다 (20-release-ops §5)
+#     ALLOW_TODO       1 이면 정해지지 않은 값(data-todo)을 경고로 내린다 — PUBLIC_NOINDEX 가 true 일 때만 받는다. 비우면 미리보기는 1, 공개는 빈 값
+#     SITE_URL         비우면 Pages 주소. 사용자 도메인을 붙이면 그 도메인이 저절로 들어온다
+#     PUBLIC_DEMO_URL  데모 신청 페이지 주소 (H-01). 비면 데모 버튼 자리에 전화 상담이 나온다
+#     SITE_LOCALES     비우면 네 언어 모두(ko · en · ja · zh-hans, D-024). 일 · 중을 끄려면 ko,en (M-01)
+#     PUBLIC_GA4_ID · PUBLIC_GSC_VERIFICATION · PUBLIC_NAVER_VERIFICATION · PUBLIC_BING_VERIFICATION
+#
+# 액션은 태그가 아니라 커밋으로 고정한다 — 태그는 옮겨질 수 있다. 판은 2026-11-02 조회, 올릴 때는 PR 하나에 하나씩 (17-dev-standard §5)
+name: build-deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  ASTRO_TELEMETRY_DISABLED: 1
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pages: read          # 배포 주소 · 기준 경로를 읽는다 (configure-pages)
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      # 배포 주소 — 미리보기는 https://<조직>.github.io/<저장소>/, 사용자 도메인을 붙이면 그 도메인. PR 에서는 읽지 않는다
+      - id: pages
+        if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+
+      - name: 설치
+        run: npm ci
+
+      - name: 타입 검사
+        run: npx astro check
+
+      - name: 빌드 · 빌드 뒤 검사
+        shell: bash
+        env:
+          SITE_URL: ${{ vars.SITE_URL || steps.pages.outputs.origin }}
+          BASE_PATH: ${{ format('{0}/', steps.pages.outputs.base_path) }}
+          PUBLIC_NOINDEX: ${{ vars.PUBLIC_NOINDEX || 'true' }}
+          # 검색 제외 미리보기(PUBLIC_NOINDEX 가 false 가 아님)면 기본 1 — 저장소 변수를 따로 두지 않아도 미리보기가 빌드된다 (D-052). 공개 빌드는 지금처럼 막힌다
+          ALLOW_TODO: ${{ vars.ALLOW_TODO || (vars.PUBLIC_NOINDEX != 'false' && '1' || '') }}
+          PUBLIC_DEMO_URL: ${{ vars.PUBLIC_DEMO_URL }}
+          SITE_LOCALES: ${{ vars.SITE_LOCALES }}
+          PUBLIC_GA4_ID: ${{ vars.PUBLIC_GA4_ID }}
+          PUBLIC_GSC_VERIFICATION: ${{ vars.PUBLIC_GSC_VERIFICATION }}
+          PUBLIC_NAVER_VERIFICATION: ${{ vars.PUBLIC_NAVER_VERIFICATION }}
+          PUBLIC_BING_VERIFICATION: ${{ vars.PUBLIC_BING_VERIFICATION }}
+        run: |
+          npm run build 2>&1 | tee build.log
+          # 빌드 경고도 실패로 본다 (18-qa-test-plan §6 ④)
+          if grep -q '\[WARN\]' build.log; then
+            echo "::error::빌드 경고가 있다 — build.log 의 [WARN] 줄을 본다"
+            exit 1
+          fi
+
+      - if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write         # Pages 에 올린다
+      id-token: write      # 배포 인증용 ID 토큰
+    # 배포는 한 번에 하나만 — 도는 배포를 끊지 않고 다음 것이 기다린다
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

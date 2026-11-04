@@ -1,0 +1,322 @@
+/* 홈 솔루션 영역 — v7 스크롤 규칙 + 2안 디자인 + 3D 모델. Web-Transition-Lab sandbox/Docs/_design/lab-sandbox.css (2026-10-30 판)
+   382~414행 · 447~697행을 그대로 옮겼다 (D-021, BD-002). 원본의 원시 색 값(rgba · #4640de 대체값)도 그대로 두었다 — build-rules §6 */
+/* Soft 3D Solution Icons inside #products (2안 #pnl .pnl__art & 1안 .tiles .tile) */
+.pnl.qlab-products-3d .pnl__art {
+  top: 4%;
+  right: 1%;
+  width: 70%;
+  aspect-ratio: 340 / 300;
+  pointer-events: none;
+}
+
+.pnl.qlab-products-3d .pnl__art > svg.art {
+  display: none !important;
+}
+
+.qlab-pnl-3d-layer {
+  display: none;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 340 / 300;
+  filter: drop-shadow(0 26px 36px rgba(20, 20, 43, 0.16));
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  will-change: clip-path, transform;
+}
+
+.pnl.qlab-products-3d .qlab-pnl-3d-layer {
+  display: block;
+}
+
+.qlab-pnl-3d-layer canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* ==========================================================================
+   v7 STICKY SCROLL SOLUTIONS MODE (home-v7.html scroll logic + 2안 Design + 3D)
+   Preserves 2안 layout (left: .plist accordion, right: #pnl with soft 3D icon)
+   Applies:
+   - Sticky scroll track (#products.qlab-v7-scroll)
+   - Vertical indicator line (.qlab-sol-bar) with animated fill scaled by scroll progress
+   - Solution font color highlighting (active item uses its brand color --c)
+   - Translated active title and rotated plus indicator
+   - Smooth muted inactive states
+   ========================================================================== */
+
+#products.qlab-v7-scroll {
+  position: relative;
+  min-height: 340vh;
+  padding-block: 0 !important;
+  --cur: #4640de;
+}
+
+/* Base .prod2 & .pnl styles for both 1안 and 2안 */
+#products .prod2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-8, 48px);
+  align-items: start;
+}
+
+#products .pnl {
+  position: relative;
+  aspect-ratio: 1 / 1.05;
+  border-radius: var(--r-panel, 28px);
+  padding: var(--sp-7, 36px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--sp-2, 8px);
+  background: color-mix(in oklab, var(--pc, var(--s1)) 55%, white);
+  color: var(--text, #14142b);
+  box-shadow: var(--hi, 0 16px 36px rgba(20, 20, 43, 0.08));
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease, background 0.45s ease;
+}
+
+#products .pnl.pnl--cop {
+  background: var(--s5-grad) !important;
+}
+
+#products .pnl:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 44px rgba(20, 20, 43, 0.14);
+}
+
+#products .pnl__ic {
+  position: absolute;
+  top: var(--sp-7, 36px);
+  left: var(--sp-7, 36px);
+  width: 88px;
+  height: 88px;
+  filter: drop-shadow(0 10px 18px rgba(20, 20, 43, 0.18));
+}
+
+#products .pnl__n {
+  position: relative;
+  font-size: clamp(30px, 3.6vw, 52px);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+#products .pnl__l {
+  position: relative;
+  font-size: 16px;
+  color: var(--text, #14142b);
+  opacity: 0.88;
+}
+
+@media (min-width: 900px) and (min-height: 600px) {
+  #products.qlab-v7-scroll .prod2 {
+    position: sticky;
+    top: calc(var(--nav-h, 72px) + 20px);
+    min-height: 520px;
+    padding-block: 28px;
+    will-change: transform;
+  }
+
+  #products.qlab-v7-scroll .pnl {
+    top: auto;
+  }
+
+  /* 사이트: 다음 영역(#cases, 고객 사례)은 처음부터 보인다 — 원본은 마지막 솔루션에 닿을 때까지 투명 · 흐림 · 28px 아래로 숨겼다.
+     실제 고객 증거가 트랙 끝까지 가려지지 않게 (D-028). qlab-revealed 클래스는 스크립트가 그대로 붙이지만 모양은 바꾸지 않는다 */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #products.qlab-v7-scroll ~ #cases,
+  #products.qlab-v7-scroll ~ #cases.qlab-revealed {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+    pointer-events: auto !important;
+  }
+}
+
+/* Vertical indicator line beside the solution list */
+.qlab-plist-wrap {
+  position: relative;
+  padding-left: 24px;
+}
+
+.qlab-sol-bar {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  border-radius: 999px;
+  background: rgba(20, 20, 43, 0.1);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.qlab-sol-bar i {
+  position: absolute;
+  inset: 0;
+  background: var(--cur, #4640de);
+  transform-origin: top;
+  transform: scaleY(0.166);
+  border-radius: 999px;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.4s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qlab-sol-bar i {
+    transition: none;
+  }
+}
+
+/* 사이트: 고정 트랙이 없는 폭 — 막대 전체가 아니라 고른 솔루션 줄 옆 한 칸만 칠한다. 높이 · 위치는 스크립트가 줄에 맞춘다 (BD-044) */
+.qlab-sol-bar i.seg {
+  bottom: auto;
+  transition: transform 0.25s var(--ease-out), background-color 0.4s ease;
+}
+
+/* Solution list styling: clean non-expanding items without dividers or plus icons */
+#products .plist,
+#products .plist li {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#products .prow__plus,
+#products .prow__body {
+  display: none !important;
+}
+
+#products .plist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#products .prow {
+  width: 100%;
+  min-height: 52px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 0;
+  background: transparent !important;
+  font: inherit;
+  opacity: 1;   /* 사이트: 원본 .42 는 글자 대비 약 1.9:1 — 꺼진 줄은 --muted 글자색으로만 구분한다 (BD-041) */
+  cursor: pointer;
+  text-align: left;
+  transition: opacity 0.25s ease;
+}
+
+#products .prow b {
+  font-size: 19px;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  color: var(--muted, #5c5b75);
+  transition: font-size 0.24s cubic-bezier(0.22, 1, 0.36, 1), color 0.24s ease, opacity 0.24s ease;
+  transform-origin: left center;
+}
+
+#products .prow .pi {
+  opacity: 0.55;
+  transition: opacity 0.24s ease;
+}
+
+/* Zero hover effects on solution items or font */
+#products .prow:hover {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+#products .prow:not([aria-current="true"]):hover {
+  opacity: 1 !important;
+  background: transparent !important;
+}
+
+#products .prow:hover b {
+  transform: none !important;
+}
+
+#products .prow:not([aria-current="true"]):hover b {
+  color: var(--muted, #5c5b75) !important;
+  transform: none !important;
+}
+
+/* Active item: distinguished by enlarged font size and the original home-2an font color (var(--text)) */
+#products .prow[aria-current="true"] {
+  opacity: 1 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+#products .prow[aria-current="true"] b {
+  font-size: 23px !important;
+  font-weight: 750 !important;
+  letter-spacing: -0.025em !important;
+  color: var(--text, #14142b) !important;
+  transform: none !important;
+}
+
+#products .prow[aria-current="true"] .pi {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+/* ── 사이트에서 더한 것 (BD-002) ── */
+/* 안내 한 줄 — 원본 home-2an.html 의 인라인 style 값 그대로 */
+.prod2__lead{color:var(--muted); font-size:16.5px; line-height:1.6; margin:-12px 0 24px; max-width:32em}
+/* 판을 누르면 그 솔루션 상세로 — 원본의 스크립트 클릭 대신 판 전체를 덮는 진짜 링크 (19-seo-spec §4) */
+.pnl__link{position:absolute; inset:0; z-index:2; border-radius:inherit}
+/* 판이 overflow:hidden 이라 바깥 링은 잘린다 — 안쪽으로 그린다 (BD-041) */
+.pnl__link:focus-visible{outline:3px solid var(--brand); outline-offset:-6px}
+/* 900px 아래(또는 600px 낮은 창)는 고정 트랙이 돌지 않는다 — 원본 샌드박스는 데스크톱만 다듬어져 있어
+   340vh 빈 공간과 두 칸 압축이 남는다. 사이트는 2안 반응형을 따른다: 보통 높이 · 한 칸 · 목록 아래 판(링크가 있는 곳) 16:10 */
+@media not ((min-width: 900px) and (min-height: 600px)) {
+  #products.qlab-v7-scroll { min-height: 0; padding-block: var(--section-y) !important; }
+  #products .prod2 { grid-template-columns: 1fr; }
+  #products .pnl { aspect-ratio: 16 / 10; }
+  #products .pnl.qlab-products-3d .pnl__art { width: 52%; top: 6%; }
+}
+@media (max-width: 640px) {
+  #products .pnl { display: flex; aspect-ratio: 4 / 3; padding: var(--sp-5); }
+  #products .pnl__ic { top: var(--sp-5); left: var(--sp-5); width: 56px; height: 56px; }
+}
+
+/* Copilot 판 색 전환 (BD-009) — Copilot 색은 그라데이션이라 단색 판과 사이에서 중간 단계가 없어 한 번에 바뀌었다.
+   판 뒤에 그라데이션 층을 깔아 두고 투명도만 0.45초에 바꾼다. 바탕 단색은 Copilot 일 때 그라데이션 가운데 보라(#B69CFF, --s5-grad 의 55% 지점)로
+   1~5번과 같은 규칙(55% 섞기)으로 옮겨 가 — 층이 반쯤 보일 때도 색이 튀지 않는다. 위의 원본 .pnl--cop 규칙을 덮는다 */
+#products .pnl::before{content:""; position:absolute; inset:0; border-radius:inherit; background:var(--s5-grad); opacity:0; transition:opacity .45s ease; pointer-events:none}
+#products .pnl.pnl--cop{background:color-mix(in oklab, #B69CFF 55%, white) !important}
+#products .pnl.pnl--cop::before{opacity:1}
+@media (prefers-reduced-motion:reduce){ #products .pnl, #products .pnl::before{transition:none} }
+
+/* 고정 트랙이 없는 폭(900px 아래 또는 낮은 창) — 판을 목록 아래가 아니라 오른쪽에 (BD-025).
+   제목 · 안내는 두 칸을 가로지르고, 목록(왼쪽)과 판(오른쪽)을 나란히 둔다. 판 · 이름 글자를 줄여 좁은 폭에 맞춘다 */
+@media not ((min-width: 900px) and (min-height: 600px)) {
+  /* BD-026: 목록과 판을 1:1 로, 판 높이는 목록 높이에 맞춘다(같은 줄에서 늘인다) */
+  #products .prod2 { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--sp-4); row-gap: 0; align-items: stretch; }
+  #products .prod2 > div:first-child { display: contents; }
+  #products .prod2 h2, #products .prod2__lead { grid-column: 1 / -1; }
+  #products .qlab-plist-wrap { grid-column: 1; padding-left: 14px; }
+  #products .pnl { grid-column: 2; aspect-ratio: auto; min-height: 0; padding: var(--sp-4); align-self: stretch; border-radius: 16px; }  /* 모서리 28 → 16px (BD-027) */
+  /* 솔루션 영역 아래 여백 — 128(휴대폰 88) → 48px (BD-027) */
+  #products.qlab-v7-scroll { padding-bottom: var(--sp-7) !important; }
+  #products.qlab-v7-scroll ~ #cases { padding-top: var(--sp-6); }  /* 이어지는 고객 로고 영역 위 88 → 32px — 둘을 합쳐 80px */
+  #products .pnl__ic { top: var(--sp-4); left: var(--sp-4); width: 40px; height: 40px; }
+  #products .pnl__n { font-size: clamp(18px, 4.6vw, 28px); }
+  #products .pnl__l { font-size: 12.5px; line-height: 1.4; }
+  #products .pnl.qlab-products-3d .pnl__art, #products .pnl__art { width: 64%; top: 10%; }
+  #products .plist { gap: 2px; }
+  #products .prow { min-height: 42px; padding: 6px 4px; gap: 8px; }
+  #products .prow b { font-size: clamp(15px, 4.2vw, 17px); }
+  #products .prow[aria-current="true"] b { font-size: clamp(17px, 4.8vw, 19px) !important; }  /* 원본이 !important 라 같이 */
+  #products .prow .pi { width: 20px; height: 20px; }
+}

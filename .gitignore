@@ -1,0 +1,10 @@
+node_modules/
+dist/
+dist-parity/
+dist-artifact/
+dist-artifact-rel/
+.astro/
+# 비밀값 · 로컬 설정 — 커밋하지 않는다 (Docs/16-tech-architecture.md §8)
+.env
+.env.*
+!.env.example

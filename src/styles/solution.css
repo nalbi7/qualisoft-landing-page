@@ -1,0 +1,77 @@
+/* 솔루션 상세 — 시안 Docs/_design/mockups/solution-crm-2an.html (솔루션 상세 CRM 2안 2차 시안)의 규칙을 make_v8.py sol2_css 원문 그대로 옮겼다 (2026-11-02, BD-001).
+   모바일 메뉴(MNAV_CSS)는 layout.css, 이동 경로(CRUMB_CSS)는 crumb.css 에 이미 있어 뺐다. 값은 tokens.css 변수로만 쓴다. 시안을 고치면 이 파일도 같이 고치고 parity.html 로 대조한다 */
+body{background:var(--surface)}
+.sp2{display:grid; grid-template-columns:minmax(300px, .82fr) 1.18fr; gap:var(--sp-8); padding-block:var(--sp-6) var(--sp-8); align-items:start}
+.sp2 > *, .sp2__side > *{min-width:0}
+.sp2__side{position:sticky; top:calc(var(--nav-h) + 24px); display:grid; gap:var(--sp-4)}
+.sp2__panel{position:relative; display:flex; flex-direction:column; justify-content:flex-end; min-height:min(420px, calc(100dvh - var(--nav-h) - 300px));
+  padding:var(--sp-6); border-radius:var(--r-panel); background:color-mix(in oklab, var(--c) 60%, white); box-shadow:var(--hi)}
+.sp2__ic{position:absolute; top:var(--sp-6); left:var(--sp-6); width:72px; height:72px; filter:drop-shadow(0 10px 18px rgba(20,20,43,.18))}
+.sp2__fam{margin:0; font-weight:650; font-size:18px}
+.sp2__name{margin:0; font-size:clamp(56px,7vw,104px); line-height:.95; letter-spacing:-.05em; font-weight:700}
+.sp2__nav ul{list-style:none; margin:0; padding:0; display:grid; gap:2px}
+.sp2__nav a{display:flex; align-items:center; gap:10px; min-height:44px; padding:0 12px; border-radius:12px; text-decoration:none; color:var(--muted); font-weight:500}
+.sp2__nav a:hover{background:var(--tint); color:var(--text)}
+.sp2__nav a[aria-current]{color:var(--text); font-weight:700; background:var(--bg)}
+.sp2__nav .cur{margin-left:auto; visibility:hidden} .sp2__nav a[aria-current] .cur{visibility:visible}
+.sp2__h{font-size:var(--text-detail); line-height:1.1; letter-spacing:-.04em; margin:var(--sp-6) 0 var(--sp-6)}
+.sp2__k{display:block; font-size:var(--text-tag); font-family:var(--mono); letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:var(--sp-4); font-weight:500}
+.sp2__lead{margin:var(--sp-7) 0 0; font-size:18px; line-height:1.8; color:var(--muted); max-width:62ch}
+.sp2__acts{display:flex; gap:var(--sp-3); flex-wrap:wrap}
+.sp2__h2{font-size:var(--text-h2-detail); letter-spacing:-.03em; margin:var(--sp-9) 0 var(--sp-5)}
+.accs{list-style:none; margin:0; padding:0; box-shadow:0 -1px 0 var(--line)}
+.accs li{box-shadow:0 1px 0 var(--line)}
+.acc{width:100%; display:flex; align-items:center; min-height:64px; padding:0 4px; border:0; background:none; font:inherit; font-size:19px; font-weight:650; letter-spacing:-.02em; color:var(--text); cursor:pointer; text-align:left}
+.acc__plus{margin-left:auto; font-size:22px; color:var(--muted); transition:transform .2s var(--ease-out)}
+.acc[aria-expanded="true"] .acc__plus{transform:rotate(45deg)}
+.acc__body p{margin:0 4px var(--sp-5); color:var(--muted); line-height:1.7}
+.we2{list-style:none; margin:0; padding:0; display:grid; gap:var(--sp-4)}
+.we2 li{display:grid; grid-template-columns:56px 1fr; gap:var(--sp-3); align-items:baseline; font-size:18px; font-weight:600; letter-spacing:-.01em}
+.we2__n{font-family:var(--mono); font-size:var(--text-tag); color:var(--brand); font-weight:500}
+.pcards{display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-3)}
+.pcard{display:grid; gap:6px; padding:var(--sp-5); border-radius:var(--r-tile); background:var(--bg); text-decoration:none; transition:transform .2s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){ .pcard:hover{transform:translateY(-2px)} }
+.pcard img{width:48px; height:48px; margin-bottom:var(--sp-2)} .pcard b{font-size:17px} .pcard span{font-size:var(--text-card); color:var(--muted)}
+.cos{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:var(--sp-4) var(--sp-5); align-items:center}
+/* 기사가 있는 고객 로고는 그 기사로 (BD-048) — 고객 사례 페이지 로고와 같은 반응 */
+.cos a{display:block; border-radius:8px; transition:transform .2s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){ .cos a:hover{transform:translateY(-2px)} }
+.cos img{height:26px; width:100%; object-fit:contain}
+.muted-p{color:var(--muted); font-size:var(--text-card)}
+@media (max-width:1080px){
+  .sp2{grid-template-columns:1fr; gap:var(--sp-5)} .sp2__side{position:static}
+  .sp2__panel{min-height:0; flex-direction:row; align-items:center; gap:var(--sp-4); padding:var(--sp-4) var(--sp-5)}
+  .sp2__ic{position:static; width:48px; height:48px} .sp2__name{font-size:40px} .sp2__fam{order:3; margin-left:auto; font-size:14px}
+  .sp2__nav ul{display:flex; overflow-x:auto; gap:6px; scrollbar-width:none; -webkit-mask-image:linear-gradient(90deg,#000 85%,transparent); mask-image:linear-gradient(90deg,#000 85%,transparent)}
+  .sp2__nav a{white-space:nowrap; box-shadow:inset 0 0 0 1px var(--hair); border-radius:var(--r-pill)} .sp2__nav .cur{display:none}
+}
+@media (max-width:640px){ .sp2__ic{width:40px; height:40px} .sp2__name{font-size:32px}
+  .sp2__acts .btn{flex:1 1 100%} .pcards{grid-template-columns:1fr} .cos{grid-template-columns:repeat(3,minmax(0,1fr))} .acc{font-size:17px} }
+/* ── 시안에 없는 보완 (2026-11-02) — 시안은 CRM 한 장뿐이라 Copilot 판 색이 없다. Copilot 색은 그라데이션이라 color-mix 에 못 넣는다.
+   홈 솔루션 판(home.css .pnl--cop)과 같은 값을 쓴다 */
+.sp2__panel--cop{background:var(--s5-grad)}
+/* 낱말이 여럿인 큰 글자(Project Operations · Customer Insights · Power BI · Fabric · Power Platform) — 시안 크기(최대 104px)로는
+   판 너비를 넘어 낱말이 쪼개지고 위의 아이콘과 겹친다. 두 칸 배치(1081px 이상)에서만 줄인다. 그 아래는 시안의 40px · 32px 그대로 */
+@media (min-width:1081px){ .sp2__name--long{font-size:clamp(40px,4.2vw,60px)} }
+
+/* 솔루션 상세 사이 이동 — 브라우저의 페이지 전환(View Transitions, 같은 사이트 안 이동)으로 왼쪽 색 판이 다음 솔루션 색으로 서서히 바뀐다 (BD-009).
+   두 페이지가 모두 이 규칙을 가져야 돈다 — 솔루션 상세끼리만. 지원하지 않는 브라우저는 지금처럼 바로 바뀐다. 움직임 줄이기면 끈다 */
+@view-transition{navigation:auto}
+@media (prefers-reduced-motion:reduce){ @view-transition{navigation:none} }
+.sp2__panel{view-transition-name:sol-panel}
+.nav{view-transition-name:site-nav}
+::view-transition-group(sol-panel), ::view-transition-old(sol-panel), ::view-transition-new(sol-panel){animation-duration:.3s; animation-timing-function:var(--ease-in-out)}   /* D-028 — 이전 .45s ease */
+::view-transition-old(root), ::view-transition-new(root){animation-duration:.25s}
+
+/* 핵심 기능의 화면 그림 (BD-034) — 펼친 줄의 설명 아래에 Microsoft Learn 화면을 둔다. 한 번에 한 줄만 펼친다(scripts/solution.ts).
+   펼칠 때 글은 살짝 내려오며, 그림은 조금 늦게 떠오르며 나타난다. 세로로 긴 그림은 화면 높이 안에 들게 줄인다 */
+.shot{margin:0 4px var(--sp-6); display:grid; gap:10px}
+.shot__frame{border-radius:12px; overflow:hidden; background:var(--bg); box-shadow:0 0 0 1px var(--hair), 0 12px 32px rgba(20,20,43,.10)}
+.shot__frame img{display:block; width:100%; height:auto; max-height:min(560px, 70vh); object-fit:contain}
+.shot figcaption{font-size:13px; color:var(--muted)}
+.shot figcaption a{color:inherit; text-underline-offset:3px}
+.acc__body:not([hidden]){animation:acc-in .2s var(--ease-out)}
+.acc__body:not([hidden]) .shot__frame{animation:shot-in .25s var(--ease-out) both}
+@keyframes acc-in{from{opacity:0; transform:translateY(-4px)}}
+@keyframes shot-in{from{opacity:0; transform:translateY(8px)}}
+@media (prefers-reduced-motion:reduce){ .acc__body:not([hidden]), .acc__body:not([hidden]) .shot__frame{animation:none} }

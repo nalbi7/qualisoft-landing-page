@@ -1,0 +1,147 @@
+/* 모바일 메뉴 — 시안 Docs/_design/mockups/home-2an.html (홈 2안 5차 시안)의 규칙을 make_v8.py 원문 그대로 옮겼다 (2026-10-29, BD-001).
+   값은 tokens.css 변수로만 쓴다. 시안을 고치면 이 파일도 같이 고치고 parity.html 로 대조한다 */
+.mnav{position:absolute; left:0; right:0; top:100%; max-height:calc(100dvh - var(--nav-h)); overflow:auto; background:var(--surface); box-shadow:0 1px 0 var(--hair), var(--e3); padding-block:var(--sp-4) var(--sp-6)}
+.mnav ul{list-style:none; margin:0 0 var(--sp-3); padding:0}
+.mnav li a{display:flex; align-items:center; gap:12px; min-height:48px; font-size:17px; font-weight:600; text-decoration:none}
+.mnav .btn{width:100%}
+
+/* 언어 메뉴 · 첫 방문 언어 배너 · 상담 언어 안내 — 시안에 그린 판이 없어 사이트에서 새로 둔다 (D-024, BD-007).
+   값은 tokens.css 변수만 쓰고, 떠 있는 창은 솔루션 드롭다운(.dd__menu)과 같은 유리 면 · 열림 동작을 따른다 */
+.lang{position:relative}
+.lang__menu{position:absolute; top:calc(100% + 10px); right:0; min-width:168px; margin:0; padding:6px; list-style:none;
+  border-radius:calc(14px * var(--k)); background:rgba(255,255,255,.96);
+  -webkit-backdrop-filter:var(--glass-fx); backdrop-filter:var(--glass-fx); box-shadow:0 0 0 1px var(--hair), var(--e3);
+  opacity:0; visibility:hidden; transform:translateY(-6px) scale(.97); transform-origin:100% 0;
+  transition:opacity .15s ease, transform .2s var(--ease-out), visibility 0s linear .15s}
+.lang__menu.open{opacity:1; visibility:visible; transform:none; transition:opacity .15s ease, transform .2s var(--ease-out), visibility 0s}
+.lang__menu a{display:flex; align-items:center; min-height:40px; padding:0 12px; border-radius:calc(10px * var(--k)); text-decoration:none; color:var(--text); font-size:15px}
+.lang__menu a:hover{background:var(--tint)}
+.lang__menu [aria-current]{color:var(--brand); font-weight:650}
+.lang-btn[aria-expanded="true"] svg:not(.globe){transform:rotate(180deg)}
+/* 지구본 — 언어 버튼 · 시트 제목 앞 (BD-052) */
+.globe{flex:none; width:16px; height:16px; color:var(--muted)}
+.lang-btn__cur{color:var(--muted); font-size:13px}
+@media (max-width:1080px){ .nav__end .lang{display:none} }
+
+.langbar{background:var(--tint); box-shadow:inset 0 -1px 0 var(--hair)}
+.langbar__in{display:flex; align-items:center; gap:var(--sp-3); min-height:52px; padding-block:6px}
+.langbar__in p{margin:0 auto 0 0; font-size:15px; color:var(--text)}
+@media (max-width:640px){ .langbar__in{flex-wrap:wrap} .langbar__in p{flex:1 1 100%} }
+
+.hero__consult{margin:var(--sp-3) 0 0; text-align:center; font-size:14px; color:var(--muted)}
+.band__consult{flex:1 1 100%; margin:0; font-size:14px; opacity:.8}
+
+/* 새 창 화살표 — 데모 신청 버튼(.btn-go .go)과 같은 화살표 · 같은 빠지고 들어오는 움직임, 원 배지만 없다 (BD-012) */
+.ext{position:relative; display:inline-grid; place-items:center; width:.95em; height:.95em; overflow:hidden; vertical-align:-.1em; flex:none}
+.ext > span{grid-area:1/1; display:grid; place-items:center; transition:transform .2s var(--ease-out)}
+.ext svg{width:.8em; height:.8em}
+.ext__b{transform:translate(-150%, 150%)}
+a:hover .ext__a, a:focus-visible .ext__a{transform:translate(150%, -150%)}
+a:hover .ext__b, a:focus-visible .ext__b{transform:none}
+@media (prefers-reduced-motion:reduce){ .ext > span{transition:none} }
+
+/* 솔루션 드롭다운 (BD-024) — 시안의 두 칸 · 설명 · 회색 알약 대신: 세로 한 줄에 아이콘 + 이름, 모서리 12px, 유리 면.
+   마우스를 올리면 배경 없이 이름만 굵어지고 칸 안에서 조금 커진다(자리를 밀지 않게 transform). 원본 components.css 의 .dd__menu 를 덮는다 */
+.dd__menu{width:max-content; min-width:260px; grid-template-columns:1fr; gap:0; padding:8px; border-radius:12px;
+  background:rgba(255,255,255,.62); border:1px solid rgba(255,255,255,.7);
+  box-shadow:0 8px 28px rgba(20,20,43,.14), 0 0 0 1px var(--hair)}
+.dd__item{padding:8px 14px 8px 8px; border-radius:8px}
+.dd__item:hover, .dd__item:focus-visible{background:none}
+.dd__item b{font-weight:550; transform-origin:0 50%; transition:transform .2s ease}
+.dd__item:hover b, .dd__item:focus-visible b{font-weight:750; transform:scale(1.06)}
+.dd__item .pm-box{width:34px; height:34px}
+@media (prefers-reduced-motion:reduce){ .dd__item b{transition:none} }
+
+/* 모바일 메뉴 (BD-025) — 솔루션은 「솔루션」 줄을 눌러 펼친다(<details>), 언어는 웹 머리글과 같은 드롭다운, 데모 신청은 최대 360px.
+   메뉴 안 .lang__menu 는 버튼 아래 왼쪽에 붙고 위로 열리지 않는다 */
+.mnav__sec{margin:0 0 var(--sp-3)}
+.mnav__sum{display:flex; align-items:center; gap:8px; min-height:48px; font-size:17px; font-weight:650; cursor:pointer; list-style:none}
+.mnav__sum::-webkit-details-marker{display:none}
+/* 꺾쇠는 「솔루션」 바로 왼쪽 — 접혀 있으면 오른쪽을, 펼치면 아래를 본다 (BD-026) */
+.mnav__sum svg{width:14px; height:14px; color:var(--muted); transform:rotate(-90deg); transition:transform .2s var(--ease-out)}
+.mnav__sec[open] .mnav__sum svg{transform:none}
+.mnav__sec ul{margin:0 0 var(--sp-2); padding-left:var(--sp-2)}
+.mnav__sec li a{font-size:16px; font-weight:550; min-height:44px}
+.mnav__foot{display:flex; align-items:center; justify-content:space-between; gap:var(--sp-3); margin-top:var(--sp-3)}
+.mnav__foot .btn{width:100%; max-width:360px; flex:1 1 auto}
+/* 언어 고르기 창 — 머리글 드롭다운과 같은 유리 면 · 글자, 화면 가운데 (BD-026). 지금은 파일 끝에서 바텀 시트로 덮는다 (BD-052) */
+.langdlg{width:min(320px, calc(100vw - 32px)); padding:8px; border:1px solid rgba(255,255,255,.7); border-radius:14px;
+  background:rgba(255,255,255,.86); -webkit-backdrop-filter:var(--glass-fx); backdrop-filter:var(--glass-fx);
+  box-shadow:0 18px 48px rgba(20,20,43,.22), 0 0 0 1px var(--hair); color:var(--text)}
+.langdlg::backdrop{background:rgba(20,20,43,.35)}
+.langdlg__head{display:flex; align-items:center; justify-content:space-between; padding:6px 6px 6px 12px; font-size:14px; color:var(--muted)}
+.langdlg ul{list-style:none; margin:0; padding:0}
+.langdlg a{display:flex; align-items:center; min-height:48px; padding:0 12px; border-radius:10px; text-decoration:none; color:var(--text); font-size:16px}
+.langdlg a:hover{background:var(--tint)}
+.langdlg [aria-current]{color:var(--brand); font-weight:650}
+@media (prefers-reduced-motion:reduce){ .mnav__sum svg{transition:none} }
+/* 넓이를 꽉 채우던 데모 신청 · 카카오 버튼은 최대 360px (BD-025) */
+@media (max-width:640px){ .hero__acts .btn, .band__acts .btn{max-width:360px} }
+
+/* 언어 고르기 — 솔루션 드롭다운(BD-024)과 같은 유리 면 · 모서리 · 호버 · 열림 움직임 (BD-028).
+   머리글 드롭다운(.lang__menu)과 모바일 창(.langdlg) 모두: 반투명 흰색 62% + 흐림, 모서리 12px, 호버는 배경 없이 굵게 + 6% 확대 */
+.lang__menu, .langdlg{border-radius:12px; background:rgba(255,255,255,.62); border:1px solid rgba(255,255,255,.7);
+  -webkit-backdrop-filter:var(--glass-fx); backdrop-filter:var(--glass-fx); box-shadow:0 8px 28px rgba(20,20,43,.14), 0 0 0 1px var(--hair)}
+.lang__menu{padding:8px}
+.lang__menu a, .langdlg a{border-radius:8px}
+.lang__menu a:hover, .lang__menu a:focus-visible, .langdlg a:hover, .langdlg a:focus-visible{background:none}
+.lang__menu a span, .langdlg a span{display:inline-block; font-weight:550; transform-origin:0 50%; transition:transform .2s ease}
+/* 마우스 올림 — 너무 커 보인다는 의견으로 750 · 1.06배 → 650 · 1.02배 (BD-050) */
+.lang__menu a:hover span, .lang__menu a:focus-visible span, .langdlg a:hover span, .langdlg a:focus-visible span{font-weight:650; transform:scale(1.02)}
+.lang__menu [aria-current] span, .langdlg [aria-current] span{font-weight:700}
+/* 모바일 창 — 드롭다운처럼 살짝 위에서 작게 시작했다. 지금은 파일 끝의 바텀 시트가 아래에서 올라온다 (BD-052) */
+.langdlg[open]{animation:langdlg-in .2s var(--ease-out)}
+.langdlg[open]::backdrop{animation:langdlg-fade .2s ease}
+@keyframes langdlg-in{from{opacity:0; transform:translateY(-6px) scale(.97)}}
+@keyframes langdlg-fade{from{opacity:0}}
+@media (prefers-reduced-motion:reduce){ .lang__menu a span, .langdlg a span{transition:none} .langdlg[open], .langdlg[open]::backdrop{animation:none} }
+
+/* 머리글 메뉴 (BD-029) — 「솔루션」과 화살표를 붙이고, 호버 · 누름 때 생기던 알약 모양 음영을 모두 뺀다(글자색만 진해진다).
+   언어 버튼의 화살표도 솔루션 화살표처럼 열리면 0.3초 스프링으로 돈다(모바일은 창이 열려 있는 동안) */
+.nav__links .dd > a{padding-right:2px}
+.nav__links .chev{padding:0 6px}
+.nav__links a:hover, .nav__links button:hover, .nav__links a:active, .nav__links button:active,
+.lang-btn:hover, .lang-btn:active, .menu-btn:hover, .menu-btn:active{background:none}
+.lang-btn:hover{color:var(--text)}
+.nav a, .nav button, .mnav__sum{-webkit-tap-highlight-color:transparent}
+.lang-btn svg:not(.globe){transition:transform .2s var(--ease-out)}
+@media (prefers-reduced-motion:reduce){ .lang-btn svg{transition:none} }
+
+/* 고객지원 창 (BD-033) — 솔루션 드롭다운(BD-024)과 같은 유리 면 · 모서리 12px · 열림 움직임. 항목 호버는 배경 없이 제목이 굵게 · 6% 확대 */
+.support__panel{border-radius:12px; padding:8px; background:rgba(255,255,255,.62); border:1px solid rgba(255,255,255,.7);
+  box-shadow:0 8px 28px rgba(20,20,43,.14), 0 0 0 1px var(--hair); transform-origin:100% 100%}
+.support__panel:not([hidden]){animation:supp-in .2s var(--ease-out)}
+@keyframes supp-in{from{opacity:0; transform:translateY(6px) scale(.97)}}
+.support__item{border-radius:8px}
+a.support__item:hover, a.support__item:focus-visible{background:none}
+.support__item b{display:inline-block; transform-origin:0 50%; transition:transform .2s ease}
+a.support__item:hover b, a.support__item:focus-visible b{font-weight:750; transform:scale(1.02)}   /* 1.06배 → 1.02배 (BD-050). 이름은 원래 굵어서(700) 굵기는 그대로 */
+
+/* 맨 위로 (BD-033) — 데모 신청 배지(.go)와 같은 움직임: 올리거나 누르면 바탕이 브랜드 색 · 화살표가 흰색으로 바뀌고,
+   화살표가 위로 빠지며 아래에서 새 화살표가 들어온다 */
+.totop{display:grid; place-items:center; color:var(--text); transition:background-color .15s ease, color .15s ease, box-shadow .15s ease}
+.totop .tt{position:relative; display:grid; width:18px; height:18px; overflow:hidden}
+.totop .tt > span{grid-area:1/1; display:grid; place-items:center; transition:transform .2s var(--ease-out)}
+.totop .tt__b{transform:translateY(150%)}
+.totop:hover, .totop:focus-visible, .totop:active{background:var(--brand); color:#fff; box-shadow:0 6px 18px color-mix(in oklab, var(--brand) 35%, transparent)}
+.totop:hover .tt__a, .totop:focus-visible .tt__a, .totop:active .tt__a{transform:translateY(-150%)}
+.totop:hover .tt__b, .totop:focus-visible .tt__b, .totop:active .tt__b{transform:none}
+@media (prefers-reduced-motion:reduce){ .support__panel:not([hidden]){animation:none} .support__item b, .totop, .totop .tt > span{transition:none} }
+
+/* 흰 로고(지씨셀 · 영진약품 · DL케미칼)는 밝은 바탕에서 보이지 않는다 — 시안 v7 처럼 검게 칠해 옅게 (BD-035) */
+img.on-dark{filter:brightness(0) opacity(.78)}
+
+/* 모바일 언어 고르기 — 화면 가운데 창 대신 아래에서 올라오는 목록(바텀 시트) (BD-052).
+   <dialog> 를 그대로 쓴다(Esc · 바깥 누르기로 닫힘, 초점 가둠). 위 .langdlg 규칙(가운데 창 · 유리 면)을 덮는다 */
+.langdlg{position:fixed; inset:auto 0 0; margin:0; width:100%; max-width:100%; max-height:min(72dvh, 560px);
+  padding:6px 16px calc(16px + env(safe-area-inset-bottom, 0px)); border:0; border-radius:18px 18px 0 0;
+  background:var(--surface); -webkit-backdrop-filter:none; backdrop-filter:none; box-shadow:0 -12px 40px rgba(20,20,43,.18)}
+.langdlg__grip{display:block; width:40px; height:4px; margin:4px auto 6px; border-radius:var(--r-pill); background:var(--line)}
+.langdlg__head{padding:6px 0 10px; font-size:15px; color:var(--text)}
+.langdlg__head b{display:inline-flex; align-items:center; gap:8px}
+.langdlg ul{display:grid}
+.langdlg li + li{box-shadow:0 -1px 0 var(--hair)}
+.langdlg a{min-height:52px; padding:0 4px; font-size:17px}
+.langdlg[open]{animation:langdlg-up .28s var(--ease-out)}
+@keyframes langdlg-up{from{transform:translateY(100%)}}
+@media (prefers-reduced-motion:reduce){ .langdlg[open]{animation:none} }

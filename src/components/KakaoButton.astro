@@ -1,0 +1,13 @@
+---
+// 카카오 상담 — 카카오톡 브랜드 색 (D-020 ②, components.css .btn-kakao).
+// 말풍선은 시안용으로 그린 것 — 공개 전 카카오가 제공하는 심볼 파일로 바꾼다 (M-09)
+import NewWindow from './NewWindow.astro';
+import { useT } from '../i18n';
+import { LINKS } from '../config/site';
+interface Props { small?: boolean; class?: string }
+const { small = false, class: extra = '' } = Astro.props;
+const loc = Astro.currentLocale;
+const t = useT(loc);
+const cls = ['btn', 'btn-kakao', small && 'btn-sm', extra].filter(Boolean).join(' ');
+---
+<a class={cls} href={LINKS.kakao} target="_blank" rel="noopener" data-ev="kakao_click"><svg class="kk" viewBox="0 0 18 18" width="18" height="18" aria-hidden="true"><path fill="#000" d="M9 2.4C4.86 2.4 1.5 5 1.5 8.2c0 2.06 1.38 3.87 3.46 4.9l-.72 2.66c-.07.25.21.45.43.3l3.17-2.1c.38.04.76.06 1.16.06 4.14 0 7.5-2.6 7.5-5.82S13.14 2.4 9 2.4z"/></svg>{t('common.kakao')} <NewWindow /></a>

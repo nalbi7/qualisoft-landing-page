@@ -1,0 +1,95 @@
+/* 고객 사례 목록 · 사례 기사 — 시안 Docs/_design/mockups/customers-2an.html · case-2an.html 의 규칙을 옮겼다 (BD-036).
+   시안 안내(.note-todo) · 빈 상태(.empty) · 인용(.c2__q)은 지금 쓰지 않아 뺐다 — 인용은 고객 동의가 있을 때만 (N-06). 값은 tokens.css 변수로만 쓴다 */
+body{background:var(--surface)}
+/* 목록 */
+.ph2{text-align:center; padding-block:var(--sp-9) var(--sp-7)}
+.ph2 h1{font-size:clamp(34px,3.9vw,56px); line-height:1.05; letter-spacing:-.045em}
+.ph2__l{margin:var(--sp-4) 0 0; font-size:20px; color:var(--muted)}
+.list2{padding-bottom:var(--sp-8)}
+.big2{font-size:var(--text-h2); letter-spacing:-.035em; margin-bottom:var(--sp-7); text-align:center}
+.cogrid{list-style:none; margin:0 0 var(--sp-4); padding:0; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:var(--sp-6) var(--sp-5); align-items:center}
+.cogrid img{height:34px; width:100%; object-fit:contain}
+.cogrid a{display:block; border-radius:8px; transition:transform .2s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){ .cogrid a:hover{transform:translateY(-2px)} }
+.muted-p{color:var(--muted); font-size:var(--text-card)}
+@media (max-width:1080px){ .cogrid{grid-template-columns:repeat(4,minmax(0,1fr))} }
+@media (max-width:640px){ .ph2{padding-block:var(--sp-7) var(--sp-6)} .cogrid{grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--sp-5) var(--sp-4)} .cogrid img{height:28px} }
+/* 기사 */
+.c2__hero{text-align:center; padding-block:var(--sp-9) var(--sp-7)}
+.c2__hero .tags{display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin-bottom:var(--sp-5)}
+.c2__hero h1{font-size:var(--text-detail); line-height:1.12; letter-spacing:-.045em; text-wrap:balance}
+.c2__sub{margin:var(--sp-4) auto 0; max-width:60ch; color:var(--muted); font-size:18px}
+.c2__meta{display:flex; justify-content:center; flex-wrap:wrap; gap:var(--sp-3) var(--sp-7); margin:var(--sp-7) 0 0}
+.c2__meta div{text-align:left} .c2__meta dt{font-size:12.5px; color:var(--muted)} .c2__meta dd{margin:0; font-weight:650}
+.c2__logo{display:block; height:30px; width:auto; max-width:140px; margin-top:4px}
+.c2__w{max-width:880px}
+/* 본문 세 단 — 번호 칸을 없애고 한 단으로, 소제목은 크게 내세우지 않는다 (D-051 — 이전: 번호 01~03 · h2 대제목 크기) */
+.c2__sec{padding-block:var(--sp-7) 0}
+.c2__sec > div{min-width:0}
+.c2__sec h2{font-size:19px; font-weight:700; letter-spacing:-.02em; line-height:1.4; margin-bottom:var(--sp-2)}
+.c2__sec p{margin:0 0 var(--sp-4); font-size:18px; line-height:1.85}
+.c2__sec h3{font-size:15px; margin:var(--sp-5) 0 var(--sp-3); color:var(--muted); font-weight:600}
+.c2__scope{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:10px var(--sp-5)}
+.c2__scope li{position:relative; padding-left:18px; line-height:1.6}
+.c2__scope li::before{content:""; position:absolute; left:2px; top:.62em; width:7px; height:7px; border-radius:2px; background:var(--brand)}
+.c2__rel{margin-top:var(--sp-9)}
+.c2__rel h2{font-size:clamp(20px,1.8vw,24px); letter-spacing:-.03em; margin-bottom:var(--sp-4)}
+.c2__cards{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--sp-3)}
+.pcard{display:grid; gap:6px; padding:var(--sp-5); border-radius:var(--r-tile); background:var(--bg); text-decoration:none; transition:transform .2s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){ .pcard:hover{transform:translateY(-2px)} }
+.pcard img{width:48px; height:48px; margin-bottom:var(--sp-2)} .pcard b{font-size:17px} .pcard span{font-size:var(--text-card); color:var(--muted)}
+.c2__others{margin-block:var(--sp-9) var(--sp-8)}
+.c2__others h2{font-size:clamp(20px,1.8vw,24px); letter-spacing:-.03em; margin-bottom:var(--sp-4)}
+.c2__others .cases{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:640px){ .c2__hero{padding-block:var(--sp-7) var(--sp-6)} .c2__sec{padding-top:var(--sp-6)} .c2__sec p{font-size:16.5px}
+  .c2__meta{justify-content:flex-start; gap:var(--sp-3) var(--sp-5)} .c2__scope, .c2__cards, .c2__others .cases{grid-template-columns:1fr} }
+/* 구축 사례 카드 — 기사가 있는 고객과 구축 범위만 있는 고객을 한 모양으로 (D-029, 이전 D-027 의 두 줄 · 카드 갈래).
+   기사가 있으면 카드 전체가 링크 — 「기사」 표시 · 아래 「사례 기사 읽기 →」 · 올림 */
+.scards{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--sp-4)}
+.scards > li{display:flex; scroll-margin-top:calc(var(--nav-h) + 24px)}
+.scard{flex:1; min-width:0; display:flex; flex-direction:column; gap:var(--sp-3); padding:var(--sp-5); border-radius:var(--r-case); background:var(--surface); box-shadow:0 0 0 1px var(--line); color:var(--text)}
+.scards > li:target .scard{box-shadow:0 0 0 2px var(--brand)}
+.scard--story{text-decoration:none; transition:transform .2s var(--ease-out), box-shadow .2s ease}
+@media (hover:hover) and (pointer:fine){ .scard--story:hover{transform:translateY(-2px); box-shadow:0 0 0 1px var(--brand), var(--e2)} }
+.scard--story:active{transform:scale(.98); transition-duration:.12s}
+.scard__h{display:flex; align-items:center; gap:var(--sp-4)}
+.scard__h > div{min-width:0; display:grid; gap:6px; justify-items:start}
+.scard__logo{flex:none; width:72px; height:32px; object-fit:contain; object-position:left}
+.scard__t{font-size:17px; letter-spacing:-.02em; margin:0}
+.scard__tags{display:flex; flex-wrap:wrap; gap:6px}
+.tag--story{background:var(--brand-100); color:var(--brand)}
+.scard__p{margin:0; font-size:var(--text-tag); color:var(--muted)}
+.scard__l{list-style:none; margin:0; padding:0; display:grid; gap:6px; font-size:var(--text-card); line-height:1.55}
+.scard__l li{position:relative; padding-left:14px}
+.scard__l li::before{content:""; position:absolute; left:1px; top:.6em; width:6px; height:6px; border-radius:2px; background:var(--brand)}
+.scard__l .scard__more{padding-left:14px; color:var(--muted)} .scard__l .scard__more::before{content:none}
+.scard__go{margin-top:auto; padding-top:var(--sp-2); font-size:var(--text-card); font-weight:600; color:var(--brand)}
+.scard__go span{display:inline-block; transition:transform .2s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){ .scard--story:hover .scard__go span{transform:translateX(4px)} }
+@media (max-width:1080px){ .scards{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:640px){ .scards{grid-template-columns:1fr} }
+/* 함께한 기업 — 산업별로 묶는다: 왼쪽 산업 이름, 오른쪽 로고 (D-029, 구 사이트 「Construction Case」) */
+.cogroups{display:grid; margin-bottom:var(--sp-5); box-shadow:0 -1px 0 var(--line)}
+.cogroup{display:grid; grid-template-columns:200px minmax(0,1fr); gap:var(--sp-5); align-items:center; padding-block:var(--sp-5); box-shadow:0 1px 0 var(--line)}
+.cogroup__h{margin:0; font-size:15px; font-weight:650; letter-spacing:-.01em}
+.cogroup .cogrid{margin:0}
+@media (max-width:760px){ .cogroup{grid-template-columns:1fr; gap:var(--sp-3)} }
+/* 산업 · 솔루션 알약 필터 (D-031) — 고른 알약은 진한 바탕. 스크립트가 켤 때만 보인다 */
+.cfilter{display:grid; gap:var(--sp-3); margin-bottom:var(--sp-6)}
+.cfilter__row{display:flex; flex-wrap:wrap; align-items:center; gap:var(--sp-2)}
+.cfilter__k{min-width:72px; font-size:var(--text-tag); font-weight:600; color:var(--muted)}
+.pill{display:inline-flex; align-items:center; gap:6px; min-height:34px; padding:0 14px; border:0; border-radius:var(--r-pill);
+  background:var(--surface); box-shadow:inset 0 0 0 1px var(--line); font:inherit; font-size:var(--text-card); color:var(--text); cursor:pointer;
+  transition:background-color .15s ease, color .15s ease, box-shadow .15s ease}
+.pill img{width:16px; height:16px}
+@media (hover:hover) and (pointer:fine){ .pill:hover{box-shadow:inset 0 0 0 1px var(--muted-2)} }
+.pill[aria-pressed="true"]{background:var(--text); color:var(--surface); box-shadow:none}
+.pill:active{transform:scale(.97)}
+.cfilter__n{margin:0; font-size:var(--text-tag); color:var(--muted)}
+.cfilter__empty{margin:0; padding-block:var(--sp-7); text-align:center; color:var(--muted)}
+.cfilter__reset{padding:0; border:0; background:none; font:inherit; color:var(--brand); text-decoration:underline; text-underline-offset:3px; cursor:pointer}
+@media (max-width:640px){
+  .cfilter__row{flex-wrap:nowrap; overflow-x:auto; padding:6px 6px; margin-inline:-6px; scrollbar-width:none}   /* 휴대폰 — 알약 줄을 옆으로 밀어 본다. 위아래 · 옆 6px 은 초점 테두리가 잘리지 않게 */
+  .cfilter__row::-webkit-scrollbar{display:none}
+  .cfilter__k{min-width:auto; flex:none} .pill{flex:none; min-height:40px}
+}

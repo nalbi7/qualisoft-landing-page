@@ -1,0 +1,24 @@
+{
+  "name": "quali-website",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "sync:design": "node scripts/sync-design.mjs",
+    "dev": "astro dev",
+    "check": "astro check",
+    "build": "astro build && node scripts/validate-build.mjs",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "3.7.4",
+    "astro": "7.4.2",
+    "three": "0.160.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.12",
+    "typescript": "6.0.3"
+  }
+}

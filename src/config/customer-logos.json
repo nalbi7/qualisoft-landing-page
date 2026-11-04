@@ -1,0 +1,331 @@
+[
+ {
+  "file": "bmw.svg",
+  "name": "BMW",
+  "en": "BMW",
+  "ind": "mfg",
+  "w": 120,
+  "h": 120
+ },
+ {
+  "file": "amway.svg",
+  "name": "한국암웨이",
+  "en": "Amway Korea",
+  "ja": "韓国アムウェイ",
+  "zh-hans": "韩国安利",
+  "ind": "retail",
+  "w": 512,
+  "h": 174
+ },
+ {
+  "file": "glo.png",
+  "name": "BAT코리아",
+  "en": "BAT Korea",
+  "ind": "retail",
+  "w": 390,
+  "h": 192
+ },
+ {
+  "file": "ls.png",
+  "name": "LS전선",
+  "en": "LS Cable & System",
+  "ind": "mfg",
+  "w": 155,
+  "h": 47
+ },
+ {
+  "file": "ems.svg",
+  "name": "EMS",
+  "en": "E.M.S. Electro Medical Systems",
+  "ind": "pharma",
+  "w": 500,
+  "h": 120
+ },
+ {
+  "file": "makino.svg",
+  "name": "마키노",
+  "en": "Makino",
+  "ja": "牧野フライス製作所",
+  "zh-hans": "牧野机床",
+  "ind": "mfg",
+  "w": 595,
+  "h": 203
+ },
+ {
+  "file": "mapei.png",
+  "name": "마페이",
+  "en": "MAPEI",
+  "ind": "chem",
+  "w": 408,
+  "h": 120
+ },
+ {
+  "file": "merial.svg",
+  "name": "메리알",
+  "en": "Merial",
+  "ind": "pharma",
+  "w": 1024,
+  "h": 775
+ },
+ {
+  "file": "cutco.png",
+  "name": "컷코",
+  "en": "Cutco",
+  "ind": "retail",
+  "w": 1001,
+  "h": 361
+ },
+ {
+  "file": "bugaboo.svg",
+  "name": "부가부코리아",
+  "en": "Bugaboo Korea",
+  "ind": "retail",
+  "w": 616,
+  "h": 120
+ },
+ {
+  "file": "roka.png",
+  "name": "대한민국 공군",
+  "en": "Republic of Korea Air Force",
+  "ja": "大韓民国空軍",
+  "zh-hans": "大韩民国空军",
+  "ind": "public",
+  "w": 245,
+  "h": 50
+ },
+ {
+  "file": "dl.svg",
+  "name": "DL케미칼",
+  "en": "DL Chemical",
+  "ind": "chem",
+  "onDark": true,
+  "w": 143,
+  "h": 30
+ },
+ {
+  "file": "ky.png",
+  "name": "고영테크놀로지",
+  "en": "Koh Young Technology",
+  "ind": "mfg",
+  "w": 300,
+  "h": 144
+ },
+ {
+  "file": "gccell.png",
+  "name": "지씨셀",
+  "en": "GC Cell",
+  "ind": "pharma",
+  "onDark": true,
+  "w": 330,
+  "h": 81
+ },
+ {
+  "file": "macrogen.svg",
+  "name": "마크로젠",
+  "en": "Macrogen",
+  "ind": "pharma",
+  "w": 171,
+  "h": 64
+ },
+ {
+  "file": "intellian.png",
+  "name": "인텔리안",
+  "en": "Intellian",
+  "ind": "mfg",
+  "w": 330,
+  "h": 84
+ },
+ {
+  "file": "kukdo.svg",
+  "name": "국도화학",
+  "en": "Kukdo Chemical",
+  "ind": "chem",
+  "w": 499,
+  "h": 106
+ },
+ {
+  "file": "hpsp.png",
+  "name": "HPSP",
+  "en": "HPSP",
+  "ind": "mfg",
+  "w": 200,
+  "h": 54
+ },
+ {
+  "file": "yungjin.png",
+  "name": "영진약품",
+  "en": "Yungjin Pharm",
+  "ind": "pharma",
+  "onDark": true,
+  "w": 148,
+  "h": 62
+ },
+ {
+  "file": "jeilmedix.png",
+  "name": "제일메딕스약품",
+  "en": "Jeil Medix",
+  "ind": "pharma",
+  "w": 463,
+  "h": 133
+ },
+ {
+  "file": "sba.png",
+  "name": "서울경제진흥원",
+  "en": "Seoul Business Agency (SBA)",
+  "ja": "ソウル経済振興院",
+  "zh-hans": "首尔经济振兴院",
+  "ind": "public",
+  "w": 241,
+  "h": 33
+ },
+ {
+  "file": "hyundai.png",
+  "name": "현대경제연구원",
+  "en": "Hyundai Research Institute",
+  "ja": "現代経済研究院",
+  "zh-hans": "现代经济研究院",
+  "ind": "public",
+  "w": 446,
+  "h": 52
+ },
+ {
+  "file": "asean.png",
+  "name": "한-아세안센터",
+  "en": "ASEAN-Korea Centre",
+  "ja": "韓・ASEAN センター",
+  "zh-hans": "韩国—东盟中心",
+  "ind": "public",
+  "w": 520,
+  "h": 68
+ },
+ {
+  "file": "gochon.png",
+  "name": "종근당고촌재단",
+  "en": "Chong Kun Dang Gochon Foundation",
+  "ja": "鍾根堂高村財団",
+  "zh-hans": "钟根堂高村财团",
+  "ind": "public",
+  "w": 618,
+  "h": 130
+ },
+ {
+  "file": "ts.png",
+  "name": "태성에스앤이",
+  "en": "Taesung S&E",
+  "ind": "it",
+  "w": 191,
+  "h": 90
+ },
+ {
+  "file": "functionbay.svg",
+  "name": "펑션베이",
+  "en": "FunctionBay",
+  "ind": "it",
+  "w": 216,
+  "h": 39
+ },
+ {
+  "file": "alt.png",
+  "name": "알트소프트",
+  "en": "Altsoft",
+  "ind": "it",
+  "w": 100,
+  "h": 50
+ },
+ {
+  "file": "winners.png",
+  "name": "위너스오토메이션",
+  "en": "Winners Automation",
+  "ind": "mfg",
+  "w": 500,
+  "h": 140
+ },
+ {
+  "file": "spi.png",
+  "name": "SPI",
+  "en": "SPI",
+  "ind": "mfg",
+  "w": 100,
+  "h": 48
+ },
+ {
+  "file": "dnl.png",
+  "name": "D&L",
+  "en": "D&L",
+  "ind": "mfg",
+  "w": 253,
+  "h": 138
+ },
+ {
+  "file": "yungbo.png",
+  "name": "영보화학",
+  "en": "Youngbo Chemical",
+  "ind": "chem",
+  "w": 872,
+  "h": 346
+ },
+ {
+  "file": "cosmocos.png",
+  "name": "코스모코스",
+  "en": "Cosmocos",
+  "ind": "chem",
+  "w": 196,
+  "h": 25
+ },
+ {
+  "file": "warevalley.svg",
+  "name": "웨어밸리데이타",
+  "en": "WareValley",
+  "ind": "it",
+  "w": 360,
+  "h": 120
+ },
+ {
+  "file": "macromatrix.png",
+  "name": "매크로매트릭스",
+  "en": "Macromatrix",
+  "ind": "it",
+  "w": 83,
+  "h": 100
+ },
+ {
+  "file": "cnthoth.png",
+  "name": "씨앤토트",
+  "en": "C&Thoth",
+  "ind": "it",
+  "w": 170,
+  "h": 47
+ },
+ {
+  "file": "prestige.png",
+  "name": "프레스티지바이오",
+  "en": "Prestige BioPharma",
+  "ind": "pharma",
+  "w": 1405,
+  "h": 376
+ },
+ {
+  "file": "neurophet.svg",
+  "name": "뉴로핏",
+  "en": "Neurophet",
+  "ind": "pharma",
+  "w": 397,
+  "h": 120
+ },
+ {
+  "file": "ffok.png",
+  "name": "미래나눔재단",
+  "en": "Future Foundation of Korea",
+  "ind": "public",
+  "w": 268,
+  "h": 120
+ },
+ {
+  "file": "haemalgeum.png",
+  "name": "해맑음보호작업시설",
+  "en": "Haemalgeum Sheltered Workshop",
+  "ind": "public",
+  "w": 1000,
+  "h": 243
+ }
+]

@@ -1,0 +1,9 @@
+---
+// 개인정보처리방침 — 영 · 일 · 중 (IA §9 번역 범위). 번역본이고 법무 검토는 한국어판 기준이다
+import PrivacyPage from '../../../components/pages/PrivacyPage.astro';
+import { DEFAULT_LOCALE, LOCALES } from '../../../config/locales.mjs';
+export function getStaticPaths() {
+  return LOCALES.filter((l) => l.code !== DEFAULT_LOCALE).map((l) => ({ params: { locale: l.code } }));
+}
+---
+<PrivacyPage />

@@ -1,0 +1,15 @@
+{
+  "solution.meta.title": "{name} implementation",
+  "solution.hero.ask": "Talk to us about this",
+  "solution.hero.official": "Official page",
+  "solution.features.title": "Key capabilities",
+  "solution.features.copilot_title": "Copilot in each solution",
+  "solution.features.copilot_note": "Copilot features vary by product, license and region, and some are still in preview.",
+  "solution.shot.source": "Source",
+  "solution.we.title": "What Qualisoft does",
+  "solution.products.title": "Products",
+  "solution.products.link": "Microsoft product page",
+  "solution.customers.title": "Customers",
+  "solution.customers.note": "A selection of the customers we have worked with.",
+  "solution.band.title": "See {name} on screen first"
+}

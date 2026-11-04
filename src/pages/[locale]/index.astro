@@ -1,0 +1,9 @@
+---
+// 홈 — 영 · 일 · 중 (/en/ · /ja/ · /zh-hans/). 켠 언어만 만든다 (config/locales.mjs, D-024)
+import HomePage from '../../components/pages/HomePage.astro';
+import { DEFAULT_LOCALE, LOCALES } from '../../config/locales.mjs';
+export function getStaticPaths() {
+  return LOCALES.filter((l) => l.code !== DEFAULT_LOCALE).map((l) => ({ params: { locale: l.code } }));
+}
+---
+<HomePage />

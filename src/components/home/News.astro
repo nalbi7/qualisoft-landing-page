@@ -1,0 +1,47 @@
+---
+// 홈 화면 5 — 소식 「지금 하고 있는 일」 (11-screen-spec 4-6, 시안 home-2an.html news). 유튜브 · 블로그(CRM 분야별 자료) 글을 손으로 고른 목록 (config/news.json).
+// 0건이면 영역을 그리지 않는다. 썸네일은 저장소에 받아 둔 사본(public/assets/news/) — 바깥 그림을 부르지 않는다(동의 전 바깥 요청 0건).
+// 제목 · 해시태그는 언어별로 쓴다(D-051 — 이전에는 한국어 원문 그대로). 영상 · 글 자체는 한국어라 다른 언어 화면에는 「한국어」 표시를 단다 (BD-010).
+// 카드 아래 줄은 날짜 대신 주제 해시태그(유튜브 · 블로그는 썸네일 배지가 이미 알린다), 새 창 화살표는 제목 오른쪽 (D-051)
+import NewWindow from '../NewWindow.astro';
+import { useT, tx } from '../../i18n';
+import { url } from '../../config/routes';
+import NEWS from '../../config/news.json';
+// 「Dynamics 365 속성강의」 — 구 랜딩(dynamics365.co.kr)에 있던 유튜브 재생목록 여덟 편의 제목을 글자 링크로 (D-048). 제목은 언어별 (D-051)
+// 구 랜딩은 이 제목들을 페이지 글(링크 · 그림 대체 글)로 실었다 — 검색 신호를 잇는다. 바깥 그림은 부르지 않는다
+import LECTURES from '../../config/lectures.json';
+import { LINKS } from '../../config/site';
+const loc = Astro.currentLocale;
+const t = useT(loc);
+const foreign = loc && loc !== 'ko';
+const tags = (n: (typeof NEWS)[number]) => (n.tags as Record<string, string[]>)[loc ?? 'ko'] ?? n.tags.ko;
+---
+{NEWS.length > 0 && (
+  <section class="sec sec--news" aria-labelledby="news-h" data-parity="news">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="news-h">{t('home.news.title')}</h2></div>
+      <div class="newses">
+        {NEWS.map((n) => (
+          <a class="news" href={n.href} target="_blank" rel="noopener">
+            <span class="news__thumb"><img src={url(`/assets/news/${n.thumb}`)} alt="" loading="lazy" width="480" height="270"><span class="tag">{t(`home.news.${n.source}`)}</span></span>
+            <span class="news__t"><span>{tx(n.title, loc)}</span><NewWindow /></span>
+            <span class="news__d">{tags(n).join(' ')}{foreign && <Fragment> · {t('home.news.in_korean')}</Fragment>}</span>
+          </a>
+        ))}
+      </div>
+      {LECTURES.length > 0 && (
+        <div class="lectures">
+          <div class="lectures__head">
+            <h3>{t('home.news.lectures')}{foreign && <span class="lectures__lang"> · {t('home.news.in_korean')}</span>}</h3>
+            <a href={LINKS.lectures} target="_blank" rel="noopener">{t('home.news.lectures_all')} <NewWindow /></a>
+          </div>
+          <ol class="lectures__list">
+            {LECTURES.map((l) => (
+              <li><a href={l.href} target="_blank" rel="noopener"><span class="lectures__ep">EP. {l.ep}</span><span>{tx(l.title, loc)}</span><NewWindow /></a></li>
+            ))}
+          </ol>
+        </div>
+      )}
+    </div>
+  </section>
+)}

@@ -1,0 +1,10 @@
+---
+// 첫 화면을 지나면 아래에 떠 있는 데모 신청 막대 (시안 home-2an.html dock). 마지막 행동 띠가 보이면 숨는다
+import DemoButton from '../DemoButton.astro';
+import KakaoButton from '../KakaoButton.astro';
+import { useT } from '../../i18n';
+import { url } from '../../config/routes';
+const loc = Astro.currentLocale;
+const t = useT(loc);
+---
+<div class="dock on-dark" id="dock" hidden><img class="pi" src={url('/assets/ms/d365.svg')} alt="" width="20" height="20"><span class="dock__t">{t('home.dock.title')}</span><DemoButton small /><KakaoButton small class="dock__k" /></div>

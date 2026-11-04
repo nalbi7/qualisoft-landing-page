@@ -1,0 +1,24 @@
+---
+// 떠 있는 요소 — 맨 위로 · 고객지원 (Docs/14-information-architecture.md §5, R-16). 스크립트가 없으면 창만 열리지 않는다
+import { useT } from '../i18n';
+import { COMPANY, LINKS, telFor } from '../config/site';
+import { url } from '../config/routes';
+import { learnUrl } from './solution/ms';
+import NewWindow from './NewWindow.astro';
+const loc = Astro.currentLocale;
+const t = useT(loc);
+const up = '<svg viewBox="0 0 16 16" width="16" height="16"><path d="M8 13V3.5M3.8 7.6 8 3.4l4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+---
+<div class="float">
+  {/* 맨 위로 — 데모 신청 배지처럼 올리면 화살표가 위로 빠지고 아래에서 새 화살표가 들어온다, 바탕은 브랜드 색으로 (BD-033) */}
+  <button class="totop" type="button" aria-label={t('support.totop')} hidden><span class="tt" aria-hidden="true"><span class="tt__a" set:html={up} /><span class="tt__b" set:html={up} /></span></button>
+  <div style="position:relative">
+    <div class="support__panel" id="support-panel" role="dialog" aria-labelledby="support-h" hidden>
+      <div class="support__head"><span id="support-h">{t('support.title')}</span><button class="icon-btn" id="support-x" type="button" aria-label={t('common.close')}>✕</button></div>
+      <div class="support__item"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><b>{t('support.tel')}</b><span><a href={COMPANY.telHref} data-ev="phone_click">{telFor(loc)}</a></span></div>
+      <a class="support__item" href={LINKS.kakao} target="_blank" rel="noopener" data-ev="kakao_click"><span class="ic ic--kakao" aria-hidden="true"><svg class="kk" viewBox="0 0 18 18" width="18" height="18" aria-hidden="true"><path fill="#000" d="M9 2.4C4.86 2.4 1.5 5 1.5 8.2c0 2.06 1.38 3.87 3.46 4.9l-.72 2.66c-.07.25.21.45.43.3l3.17-2.1c.38.04.76.06 1.16.06 4.14 0 7.5-2.6 7.5-5.82S13.14 2.4 9 2.4z"/></svg></span><b>{t('support.kakao')} <NewWindow /></b><span>{t('support.kakao_sub')}</span></a>
+      <a class="support__item" href={learnUrl(loc)} target="_blank" rel="noopener"><span class="ic" aria-hidden="true"><img src={url('/assets/ms/d365.svg')} alt="" width="22" height="22"></span><b>{t('support.manual')} <NewWindow /></b><span>{t('support.manual_sub')}</span></a>
+    </div>
+    <button class="support__btn" id="support-btn" type="button" aria-expanded="false" aria-controls="support-panel"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg><span class="label">{t('support.open')}</span></button>
+  </div>
+</div>

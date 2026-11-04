@@ -1,0 +1,18 @@
+---
+// 제품 구성 — 공식 아이콘 + 제품 이름 → Microsoft 제품 페이지 (새 창) (11-screen-spec 5-1 ⑧, 시안 pcards)
+import type { CollectionEntry } from 'astro:content';
+import NewWindow from '../NewWindow.astro';
+import { msUrl } from './ms';
+import { useT } from '../../i18n';
+import { url } from '../../config/routes';
+interface Props { sol: CollectionEntry<'solutions'> }
+const s = Astro.props.sol.data;
+const loc = Astro.currentLocale;
+const t = useT(loc);
+---
+<h2 class="sp2__h2">{t('solution.products.title')}</h2>
+<div class="pcards" data-parity="sol-products">
+  {s.products.map((p) => (
+    <a class="pcard" href={msUrl(p.path, loc)} target="_blank" rel="noopener"><img src={url(p.icon)} alt="" width="48" height="48"><b>{p.name}</b><span>{t('solution.products.link')} <NewWindow /></span></a>
+  ))}
+</div>

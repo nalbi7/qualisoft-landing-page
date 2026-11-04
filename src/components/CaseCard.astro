@@ -1,0 +1,23 @@
+---
+// 사례 카드 — 홈 화면 3 · 고객 사례 목록 · 솔루션 상세 「관련 사례」 · 기사 「다른 사례」가 같이 쓴다 (11-screen-spec 4-4 「사례 카드」, components.css .case)
+// 업종 태그 · 대표 솔루션 · 고객 로고 · 제목 · 「과제 → 결과」. 숫자는 근거가 있는 것만 (N-06)
+import type { CollectionEntry } from 'astro:content';
+import { getEntry } from 'astro:content';
+import { useT, tx } from '../i18n';
+import { url, lurl, ROUTES } from '../config/routes';
+import { logoById, logoSrc, logoName } from '../config/customers';
+import '../styles/case-card.css';
+interface Props { c: CollectionEntry<'cases'> }
+const { c } = Astro.props;
+const d = c.data;
+const loc = Astro.currentLocale;
+const t = useT(loc);
+const sol = await getEntry('solutions', d.solutions[0]);
+const logo = logoById(d.customer);
+---
+<a class="case" href={lurl(ROUTES.case(c.id), loc)} data-todo={d.pending}>
+  <div class="tags"><span class="tag">{tx(d.industry, loc)}</span>{sol && <span class="tag"><img class="pi" src={url(sol.data.icon)} alt="" width="24" height="24">{sol.data.name}</span>}</div>
+  <img class:list={['case__co', { 'on-dark': logo.onDark }]} src={logoSrc(logo)} width={logo.w} height={logo.h} alt={logoName(logo, loc)} loading="lazy">
+  <h3>{tx(d.title, loc).replace('\n', ' ')}</h3>
+  <dl class="flow"><dt>{t('case.task')}</dt><dd>{tx(d.card.task, loc)}</dd><dt>{t('case.result')}</dt><dd>{tx(d.card.result, loc)}</dd></dl>
+</a>

@@ -1,0 +1,387 @@
+{
+  "dynamics-365-crm": [
+    {
+      "page": "dynamics365/sales/move-opportunity-stages",
+      "file": "dynamics-365-crm-0.png",
+      "alt": {
+        "ko": "영업 기회 화면 — 영업 프로세스 막대의 검증 단계와 단계별 확인 항목, 다음 단계 버튼",
+        "en": "Opportunity form with the sales process bar at the Qualify stage, its checklist and the Next Stage button",
+        "ja": "営業案件の画面 — 営業プロセスバーの評価段階とチェック項目、次のステージボタン",
+        "zh-hans": "商机界面 — 销售流程栏的资格审查阶段、检查项与下一阶段按钮"
+      }
+    },
+    {
+      "page": "dynamics365/sales/create-edit-quote-sales",
+      "file": "dynamics-365-crm-1.png",
+      "alt": {
+        "ko": "견적서를 PDF로 내보내는 창 — 서식을 고르고 견적서 미리 보기",
+        "en": "Export to PDF pane for a quote, with a template picker and quote preview",
+        "ja": "見積書を PDF にエクスポートする画面 — テンプレートの選択と見積書のプレビュー",
+        "zh-hans": "将报价导出为 PDF 的窗格 — 选择模板并预览报价单"
+      }
+    },
+    {
+      "page": "power-apps/maker/model-driven-apps/set-up-timeline-control",
+      "file": "dynamics-365-crm-2.png",
+      "files": {
+        "ja": "dynamics-365-crm-2.ja.png"
+      },
+      "alt": {
+        "ko": "거래처 화면의 타임라인 — 약속·메모·메일·통화 기록",
+        "en": "Account form with a timeline of appointments, notes, emails and phone calls",
+        "ja": "取引先画面のタイムライン — 予定・メモ・メール・通話の記録",
+        "zh-hans": "客户界面的时间线 — 约会、备注、邮件与通话记录"
+      }
+    },
+    {
+      "page": "dynamics365/sales/view-forecasts",
+      "file": "dynamics-365-crm-3.png",
+      "alt": {
+        "ko": "팀별 영업 예측 표 — 할당량·파이프라인·최상 시나리오·확정·수주 금액",
+        "en": "Forecast grid by team showing quota, pipeline, best case, committed and won amounts",
+        "ja": "チーム別の営業予測グリッド — ノルマ・パイプライン・最良ケース・確定・受注額",
+        "zh-hans": "按团队的销售预测表 — 配额、管道、最佳情况、承诺与赢单金额"
+      }
+    },
+    {
+      "page": "dynamics365/customer-service/use/customer-service-hub-user-guide-create-a-case",
+      "file": "dynamics-365-crm-4.png",
+      "alt": {
+        "ko": "케이스 화면 — 처리 단계 막대, 큐 추가·배정 명령, SLA 탭과 타임라인",
+        "en": "Case form with a process bar, Add to Queue and Assign commands, an SLA tab and timeline",
+        "ja": "ケース画面 — 処理段階バー、キューに追加・割り当てコマンド、SLA タブとタイムライン",
+        "zh-hans": "案例界面 — 流程栏、添加到队列与分配命令、SLA 选项卡与时间线"
+      }
+    },
+    {
+      "page": "dynamics365/customer-service/use/search-knowledge-articles-csh",
+      "file": "dynamics-365-crm-5.png",
+      "alt": {
+        "ko": "상담원 화면의 지식 검색 창 — 케이스를 보며 관련 지식 문서를 제안받는다",
+        "en": "Knowledge search pane in the agent workspace suggesting articles beside a case",
+        "ja": "担当者画面のナレッジ検索ウィンドウ — ケースを見ながら関連ナレッジ記事が提案される",
+        "zh-hans": "客服工作区的知识搜索窗格 — 查看案例时推荐相关知识文章"
+      }
+    }
+  ],
+  "copilot": [
+    {
+      "page": "dynamics365/sales/copilot-summarize-records",
+      "file": "copilot-0.png",
+      "alt": {
+        "ko": "리드 화면 위쪽의 Copilot 요약",
+        "en": "Copilot summary across the top of a lead record",
+        "ja": "リード画面上部の Copilot 要約",
+        "zh-hans": "潜在客户记录顶部的 Copilot 摘要"
+      }
+    },
+    {
+      "page": "training/modules/get-started-copilot-project-operations/task-plans",
+      "file": "copilot-1.png",
+      "files": {
+        "ja": "copilot-1.ja.png",
+        "zh-hans": "copilot-1.zh-hans.png"
+      },
+      "alt": {
+        "ko": "Project Operations 프로젝트 화면 — AI로 만든 작업 계획 안내와 Copilot 명령",
+        "en": "Project Operations project page with the Copilot command and a notice that task plans were created with AI",
+        "ja": "Project Operations のプロジェクト画面 — AI で作成したタスク計画の案内と Copilot コマンド",
+        "zh-hans": "Project Operations 项目页面 — AI 生成任务计划的提示与 Copilot 命令"
+      }
+    },
+    {
+      "page": "dynamics365/customer-insights/journeys/real-time-marketing-natural-language-segments",
+      "file": "copilot-2.png",
+      "alt": {
+        "ko": "세그먼트 편집기의 Query Assist — 말로 쓴 설명을 세그먼트 조건으로 바꾼다",
+        "en": "Segment editor with Query Assist turning a plain-language description into conditions",
+        "ja": "セグメントエディターの Query Assist — 文章で書いた説明をセグメント条件に変換",
+        "zh-hans": "细分编辑器中的 Query Assist — 将自然语言描述转换为细分条件"
+      }
+    },
+    {
+      "page": "power-bi/explore-reports/copilot-pane-summarize-content",
+      "file": "copilot-3.png",
+      "alt": {
+        "ko": "Power BI Copilot의 보고서 요약 — 차트·표와 질문 입력란",
+        "en": "Power BI Copilot returning a report summary with charts, a table and a question box",
+        "ja": "Power BI Copilot のレポート要約 — グラフ・表と質問入力欄",
+        "zh-hans": "Power BI Copilot 的报表摘要 — 图表、表格与提问框"
+      }
+    },
+    {
+      "page": "power-automate/create-cloud-flow-using-copilot",
+      "file": "copilot-4.png",
+      "alt": {
+        "ko": "Power Automate 디자이너의 Copilot 창 — 설명으로 흐름을 만든다",
+        "en": "Power Automate designer with the Copilot pane building a flow from a description",
+        "ja": "Power Automate デザイナーの Copilot ウィンドウ — 説明からフローを作成",
+        "zh-hans": "Power Automate 设计器中的 Copilot 窗格 — 根据描述创建流"
+      }
+    },
+    {
+      "page": "microsoft-copilot-studio/fundamentals-get-started",
+      "file": "copilot-5.png",
+      "alt": {
+        "ko": "Copilot Studio 에이전트 개요 — 지침·모델·지식 원본",
+        "en": "Copilot Studio agent overview with instructions, model and knowledge sources",
+        "ja": "Copilot Studio のエージェント概要 — 指示・モデル・ナレッジソース",
+        "zh-hans": "Copilot Studio 智能体概览 — 说明、模型与知识源"
+      }
+    }
+  ],
+  "project-operations": [
+    {
+      "page": "dynamics365/project-operations/psa/basic-quote-lines",
+      "file": "project-operations-0.png",
+      "alt": {
+        "ko": "프로젝트 견적 줄 화면 — 청구 방식(시간·자재), 견적 금액, 청구 주기",
+        "en": "Project quote line with billing method (time and material), quoted amount and invoice frequency",
+        "ja": "プロジェクト見積明細の画面 — 請求方法（時間と材料）、見積金額、請求頻度",
+        "zh-hans": "项目报价行 — 计费方式（时间和材料）、报价金额与开票频率"
+      }
+    },
+    {
+      "page": "dynamics365/project-operations/project-management/navigate-ui",
+      "file": "project-operations-1.png",
+      "alt": {
+        "ko": "프로젝트 작업 표 — 단계·작업, 담당자, 기간, 시작·종료일, 선행 작업",
+        "en": "Project task grid with phases, tasks, owners, duration, dates and dependencies",
+        "ja": "プロジェクトタスクのグリッド — フェーズ・タスク、担当者、期間、開始・終了日、依存関係",
+        "zh-hans": "项目任务网格 — 阶段与任务、负责人、工期、起止日期与依赖关系"
+      }
+    },
+    {
+      "page": "dynamics365/project-operations/resource-management/book-named-resource-po",
+      "file": "project-operations-2.png",
+      "alt": {
+        "ko": "일정 도우미 — 사람별 가용 시간 표와 예약 만들기 창",
+        "en": "Schedule Assistant with a per-day availability grid and the Create Booking pane",
+        "ja": "スケジュールアシスタント — 担当者ごとの空き時間グリッドと予約作成ウィンドウ",
+        "zh-hans": "日程助理 — 按人员的可用时间网格与创建预订窗格"
+      }
+    },
+    {
+      "page": "dynamics365/project-operations/approvals/approvals-agent-intro",
+      "file": "project-operations-3.png",
+      "alt": {
+        "ko": "검토가 필요한 시간 입력 목록 — 검토 상태와 승인 준비 여부",
+        "en": "List of time entries with review status and readiness for approval",
+        "ja": "レビューが必要な時間入力の一覧 — レビュー状態と承認準備の状況",
+        "zh-hans": "待审核的工时记录列表 — 审核状态与是否可审批"
+      }
+    },
+    {
+      "page": "dynamics365/project-operations/psa/review-invoicing-backlog",
+      "file": "project-operations-4.png",
+      "alt": {
+        "ko": "시간·자재 청구 대기 목록 — 청구 준비 표시",
+        "en": "Time and material billing backlog with Ready to invoice commands",
+        "ja": "時間と材料の請求バックログ — 請求準備の表示",
+        "zh-hans": "时间和材料计费积压 — 可开票标记"
+      }
+    },
+    {
+      "page": "dynamics365/project-operations/project-management/navigate-ui",
+      "file": "project-operations-5.png",
+      "alt": {
+        "ko": "프로젝트 요약 탭 — 예상 원가와 실제 원가, 일정·원가 실적",
+        "en": "Project summary tab comparing estimated and actual cost with schedule and cost performance",
+        "ja": "プロジェクト概要タブ — 見積原価と実績原価、スケジュール・原価の実績",
+        "zh-hans": "项目摘要选项卡 — 预估与实际成本、进度与成本绩效"
+      }
+    }
+  ],
+  "customer-insights": [
+    {
+      "page": "dynamics365/customer-insights/data/data-unification-map-tables",
+      "file": "customer-insights-0.png",
+      "alt": {
+        "ko": "데이터 통합 화면 — 고객 데이터, 중복 제거 규칙, 일치 규칙, 통합 데이터 보기",
+        "en": "Unify page with customer data, deduplication rules, matching rules and unified data view",
+        "ja": "データ統合画面 — 顧客データ、重複除去ルール、一致ルール、統合データビュー",
+        "zh-hans": "数据统一页面 — 客户数据、去重规则、匹配规则与统一数据视图"
+      }
+    },
+    {
+      "page": "dynamics365/customer-insights/data/customer-profiles",
+      "file": "customer-insights-1.png",
+      "alt": {
+        "ko": "고객 프로필 카드 — 기본 정보, 활동 타임라인, 누적 구매·포인트 지표",
+        "en": "Customer profile card with identity details, an activity timeline and lifetime spend and loyalty KPIs",
+        "ja": "顧客プロファイルカード — 基本情報、活動タイムライン、累計購入・ポイント指標",
+        "zh-hans": "客户资料卡 — 基本信息、活动时间线、累计消费与积分指标"
+      }
+    },
+    {
+      "page": "dynamics365/customer-insights/journeys/unified-profile-segment-creation",
+      "file": "customer-insights-2.png",
+      "alt": {
+        "ko": "세그먼트 만들기 — 속성 조건과 측정값 목록",
+        "en": "Segment builder with attribute conditions and the list of measures",
+        "ja": "セグメントの作成 — 属性条件とメジャーの一覧",
+        "zh-hans": "细分生成器 — 属性条件与度量值列表"
+      }
+    },
+    {
+      "page": "dynamics365/customer-insights/journeys/real-time-marketing-overview",
+      "file": "customer-insights-3.png",
+      "alt": {
+        "ko": "트리거 기반 여정 — 트리거, 조건 분기, A/B 테스트와 목표 달성 지표",
+        "en": "Trigger-based journey with a trigger, if/then branch, A/B test and goal analytics",
+        "ja": "トリガーベースのジャーニー — トリガー、条件分岐、A/B テストと目標達成の指標",
+        "zh-hans": "基于触发器的旅程 — 触发器、条件分支、A/B 测试与目标分析"
+      }
+    },
+    {
+      "page": "dynamics365/customer-insights/journeys/real-time-marketing-email",
+      "file": "customer-insights-4.png",
+      "alt": {
+        "ko": "이메일 디자이너 — 장바구니 안내 메일과 요소 도구 상자",
+        "en": "Email designer with an abandoned-cart email and the element toolbox",
+        "ja": "メールデザイナー — カート案内メールと要素ツールボックス",
+        "zh-hans": "电子邮件设计器 — 购物车提醒邮件与元素工具箱"
+      }
+    },
+    {
+      "page": "dynamics365/customer-insights/journeys/event-registration-count-pending-registrations",
+      "file": "customer-insights-5.png",
+      "alt": {
+        "ko": "행사 화면의 등록·참석 탭 — 등록자와 등록 상태",
+        "en": "Event record with the registration and attendance tab listing registrants and their status",
+        "ja": "イベント画面の登録・出席タブ — 登録者と登録状態",
+        "zh-hans": "活动记录的注册与出席选项卡 — 注册人与注册状态"
+      }
+    }
+  ],
+  "power-bi-fabric": [
+    {
+      "page": "fabric/data-engineering/navigate-lakehouse-explorer",
+      "file": "power-bi-fabric-0.png",
+      "alt": {
+        "ko": "Fabric 레이크하우스 탐색기 — 테이블 목록과 데이터 미리 보기",
+        "en": "Fabric lakehouse explorer with the table list and a data preview",
+        "ja": "Fabric レイクハウスエクスプローラー — テーブル一覧とデータのプレビュー",
+        "zh-hans": "Fabric 湖仓资源管理器 — 表列表与数据预览"
+      }
+    },
+    {
+      "page": "fabric/data-factory/create-first-pipeline-with-sample-data",
+      "file": "power-bi-fabric-1.png",
+      "alt": {
+        "ko": "Fabric 파이프라인 — 데이터 복사 작업과 일정 실행 설정",
+        "en": "Fabric pipeline with a Copy data activity and the schedule settings",
+        "ja": "Fabric パイプライン — データコピーのアクティビティとスケジュール実行の設定",
+        "zh-hans": "Fabric 管道 — 复制数据活动与计划运行设置"
+      }
+    },
+    {
+      "page": "power-bi/transform-model/service-edit-data-models",
+      "file": "power-bi-fabric-2.png",
+      "alt": {
+        "ko": "웹 모델 보기 — 테이블 관계도와 새 측정값의 DAX 수식",
+        "en": "Web model view with the table relationship diagram and a new DAX measure",
+        "ja": "Web のモデルビュー — テーブルのリレーション図と新しいメジャーの DAX 式",
+        "zh-hans": "Web 模型视图 — 表关系图与新度量值的 DAX 公式"
+      }
+    },
+    {
+      "page": "power-bi/explore-reports/end-user-dashboards",
+      "file": "power-bi-fabric-3.png",
+      "alt": {
+        "ko": "Power BI 대시보드 — 지표 타일과 여러 차트",
+        "en": "Power BI dashboard with KPI tiles and several charts",
+        "ja": "Power BI ダッシュボード — 指標タイルと複数のグラフ",
+        "zh-hans": "Power BI 仪表板 — 指标磁贴与多个图表"
+      }
+    },
+    {
+      "page": "power-bi/transform-model/service-edit-data-models",
+      "file": "power-bi-fabric-4.png",
+      "alt": {
+        "ko": "보안 역할 관리 — 지역 등 조건으로 볼 수 있는 행을 정한다",
+        "en": "Manage security roles dialog with filter rules such as region",
+        "ja": "セキュリティロールの管理 — 地域などの条件で表示できる行を決める",
+        "zh-hans": "管理安全角色 — 按区域等条件限定可见的行"
+      }
+    },
+    {
+      "page": "power-bi/collaborate-share/office-integration/service-embed-report-microsoft-teams",
+      "file": "power-bi-fabric-5.png",
+      "alt": {
+        "ko": "Teams 채널 탭에 넣은 Power BI 보고서와 대화 창",
+        "en": "Power BI report in a Microsoft Teams channel tab with the conversation panel",
+        "ja": "Teams チャネルのタブに追加した Power BI レポートと会話ウィンドウ",
+        "zh-hans": "嵌入 Teams 频道选项卡的 Power BI 报表与对话窗格"
+      }
+    }
+  ],
+  "power-platform": [
+    {
+      "page": "power-apps/maker/model-driven-apps/model-driven-app-overview",
+      "file": "power-platform-0.png",
+      "alt": {
+        "ko": "모델 기반 앱 대시보드 — 차트와 활동 목록",
+        "en": "Model-driven app dashboard with charts and activity lists",
+        "ja": "モデル駆動型アプリのダッシュボード — グラフと活動一覧",
+        "zh-hans": "模型驱动应用仪表板 — 图表与活动列表"
+      }
+    },
+    {
+      "page": "power-automate/approvals-howto",
+      "file": "power-platform-1.png",
+      "files": {
+        "ja": "power-platform-1.ja.png"
+      },
+      "alt": {
+        "ko": "Outlook에서 받은 승인 요청 메일 — 응답 버튼으로 바로 승인",
+        "en": "Approval request email in Outlook with response buttons",
+        "ja": "Outlook で受け取った承認依頼メール — 応答ボタンでそのまま承認",
+        "zh-hans": "Outlook 中收到的审批请求邮件 — 通过响应按钮直接审批"
+      }
+    },
+    {
+      "page": "power-pages/introduction",
+      "file": "power-platform-2.png",
+      "alt": {
+        "ko": "Power Pages로 만든 고객용 웹사이트 — 노트북과 휴대폰 화면",
+        "en": "Customer website built with Power Pages, shown on a laptop and a phone",
+        "ja": "Power Pages で作成した顧客向け Web サイト — ノート PC とスマートフォンの画面",
+        "zh-hans": "使用 Power Pages 构建的客户网站 — 笔记本电脑与手机界面"
+      }
+    },
+    {
+      "page": "microsoft-copilot-studio/knowledge-add-sharepoint",
+      "file": "power-platform-3.png",
+      "alt": {
+        "ko": "Copilot Studio 지식 추가 — SharePoint·웹사이트·Dataverse 등 원본",
+        "en": "Copilot Studio Add knowledge dialog with sources such as SharePoint, websites and Dataverse",
+        "ja": "Copilot Studio のナレッジ追加 — SharePoint・Web サイト・Dataverse などのソース",
+        "zh-hans": "Copilot Studio 添加知识 — SharePoint、网站、Dataverse 等知识源"
+      }
+    },
+    {
+      "page": "power-apps/maker/data-platform/create-edit-entities-portal",
+      "file": "power-platform-4.png",
+      "files": {
+        "ja": "power-platform-4.ja.png"
+      },
+      "alt": {
+        "ko": "Dataverse 테이블 목록과 새 테이블 만들기",
+        "en": "Dataverse table list with options to create a new table",
+        "ja": "Dataverse のテーブル一覧と新しいテーブルの作成",
+        "zh-hans": "Dataverse 表列表与新建表选项"
+      }
+    },
+    {
+      "page": "power-platform/admin/prevent-data-loss",
+      "file": "power-platform-5.png",
+      "alt": {
+        "ko": "관리 센터의 데이터 정책 — 커넥터를 업무용·비업무용·차단으로 나눈다",
+        "en": "Data policy in the admin center assigning connectors to business, non-business and blocked",
+        "ja": "管理センターのデータポリシー — コネクタを業務用・非業務用・ブロックに分ける",
+        "zh-hans": "管理中心的数据策略 — 将连接器分为业务、非业务与已阻止"
+      }
+    }
+  ]
+}

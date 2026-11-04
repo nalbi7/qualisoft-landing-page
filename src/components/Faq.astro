@@ -1,0 +1,23 @@
+---
+// 자주 묻는 질문 — 접힌 목록(FaqList, D-043). 질문은 h3, 답은 첫 문장부터 바로 (D-040).
+// 항목은 config/faq.ts 가 콘텐츠에서 엮는다. 메인은 따로 선 영역(면 바탕 · 제목과 안내 한 줄 + 목록), 솔루션 상세는 본문 h2 아래에
+import FaqList from './FaqList.astro';
+import type { FaqItem } from '../config/faq';
+import { useT } from '../i18n';
+interface Props { items: FaqItem[]; section?: boolean }
+const { items, section = false } = Astro.props;
+const t = useT(Astro.currentLocale);
+---
+{section ? (
+  <section class="sec sec--flat sec--faq" id="faq" aria-labelledby="faq-h" data-parity="faq">
+    <div class="wrap faqsec">
+      <div class="faqsec__head"><h2 id="faq-h">{t('faq.title')}</h2><p>{t('faq.lead')}</p></div>
+      <FaqList items={items} />
+    </div>
+  </section>
+) : (
+  <Fragment>
+    <h2 class="sp2__h2" id="faq">{t('faq.title')}</h2>
+    <FaqList items={items} />
+  </Fragment>
+)}

@@ -1,0 +1,123 @@
+---
+// 고객 사례 목록 — 네 언어를 한 틀로 (pages/customers/index.astro · pages/[locale]/customers/index.astro). 11-screen-spec 4-9, 시안 customers-2an.html
+// 구축 사례 카드(한 가지 모양) → 함께한 기업 로고(산업별) → 마지막 행동 (D-029).
+// 카드는 기사가 있는 고객과 구축 범위만 있는 고객(case-scopes.json, D-027)을 같은 모양으로 — 기사가 있으면 카드 전체가 기사로 가는 링크이고 「기사」 표시와 「사례 기사 읽기」가 붙는다
+// 로고는 그 고객의 카드로 이어진다 (기사가 있으면 기사로)
+// 카드 위에 산업 · 솔루션 알약 필터(D-031) — 산업은 로고의 ind, 솔루션은 기사의 solutions 와 솔루션 파일의 customers(「함께한 기업」, BD-048 · BD-049)를 합친 것.
+// 필터는 스크립트(scripts/customers.ts)가 켠다 — 스크립트가 없으면 필터 줄 없이 카드가 모두 보인다
+import { getCollection } from 'astro:content';
+import { casesFor, scopesFor, scopeName } from '../../config/cases';
+import Base from '../../layouts/Base.astro';
+import Crumb from '../Crumb.astro';
+import ClosingBand from '../ClosingBand.astro';
+import { useT, tx } from '../../i18n';
+import { url, lurl, ROUTES } from '../../config/routes';
+import { logoId, logoById, logoSrc, logoName, logosByIndustry, INDUSTRIES, type Logo } from '../../config/customers';
+import '../../styles/cases.css';
+const loc = Astro.currentLocale;
+const t = useT(loc);
+const SHOW = 4;   // 카드에 보이는 구축 범위 줄 수 — 나머지는 「외 N개」
+type Row = { id: string; name: string; logo: Logo; industry: string; product: string; period?: string; scope: string[]; href?: string; pending?: string; sols: string[] };
+const SOLS = (await getCollection('solutions')).sort((a, b) => a.data.order - b.data.order);
+const solsOf = (id: string, own: string[] = []) => [...new Set([...own, ...SOLS.filter((x) => (x.data.customers ?? []).includes(id as never)).map((x) => x.id)])];
+const rows: Row[] = [
+  // 이 언어의 지역 사례가 맨 앞 (D-026)
+  ...(await casesFor(loc)).map((c) => {
+    const logo = logoById(c.data.customer);
+    return {
+      id: c.data.customer, name: logoName(logo, loc), logo, industry: tx(c.data.industry, loc),
+      product: c.data.products.join(' · '), period: tx(c.data.period, loc), scope: c.data.scope.map((x) => tx(x, loc)),
+      href: lurl(ROUTES.case(c.id), loc), pending: c.data.pending, sols: solsOf(c.data.customer, c.data.solutions as string[]),
+    };
+  }),
+  ...scopesFor(loc).map((s) => ({
+    id: s.customer, name: scopeName(s, loc), logo: s.logo, industry: tx(s.industry, loc),
+    product: s.product, period: s.period && tx(s.period, loc), scope: s.scope.map((x) => tx(x, loc)), sols: solsOf(s.customer),
+  })),
+];
+// 필터 알약 — 카드가 하나라도 있는 산업 · 솔루션만, 순서는 INDUSTRIES · 솔루션 order
+const indOpts = INDUSTRIES.filter((ind) => rows.some((r) => r.logo.ind === ind));
+const solOpts = SOLS.filter((x) => rows.some((r) => r.sols.includes(x.id)));
+// 구조화 데이터 — 사례 기사 목록(CollectionPage + ItemList). 기사가 있는 고객만, 화면 순서대로 (D-040)
+const caseList = await casesFor(loc);
+const collection = {
+  '@context': 'https://schema.org', '@type': 'CollectionPage',
+  name: t('customers.meta.title'), description: t('customers.meta.description'), url: new URL(lurl(ROUTES.customers, loc), Astro.site).href,
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: caseList.map((c, i) => ({
+      '@type': 'ListItem', position: i + 1,
+      url: new URL(lurl(ROUTES.case(c.id), loc), Astro.site).href,
+      name: `${logoName(logoById(c.data.customer), loc)} — ${tx(c.data.title, loc).replace('\n', ' ')}`,
+    })),
+  },
+};
+const hrefOf = (id: string) => {
+  const r = rows.find((x) => x.id === id);
+  return r ? (r.href ?? `#s-${id}`) : undefined;
+};
+---
+<Base title={t('customers.meta.title')} description={t('customers.meta.description')} jsonld={[collection]}>
+  <Crumb items={[{ label: t('common.home'), href: ROUTES.home }, { label: t('customers.title') }]} />
+  <section class="ph2 wrap" aria-labelledby="ph-h">
+    <h1 id="ph-h">{t('customers.title')}</h1>
+    <p class="ph2__l">{t('customers.lead')}</p>
+  </section>
+  <section class="wrap list2" aria-label={t('customers.list.title')}>
+    <div class="cfilter" id="cfilter" hidden>
+      <div class="cfilter__row" role="group" aria-labelledby="cf-ind"><span class="cfilter__k" id="cf-ind">{t('customers.filter.industry')}</span>
+        <button type="button" class="pill" data-f="ind" data-v="" aria-pressed="true">{t('customers.filter.all')}</button>
+        {indOpts.map((ind) => <button type="button" class="pill" data-f="ind" data-v={ind} aria-pressed="false">{t(`ind.${ind}`)}</button>)}
+      </div>
+      <div class="cfilter__row" role="group" aria-labelledby="cf-sol"><span class="cfilter__k" id="cf-sol">{t('customers.filter.solution')}</span>
+        <button type="button" class="pill" data-f="sol" data-v="" aria-pressed="true">{t('customers.filter.all')}</button>
+        {solOpts.map((x) => <button type="button" class="pill" data-f="sol" data-v={x.id} aria-pressed="false"><img src={url(x.data.icon)} alt="" width="16" height="16"><span translate="no">{x.data.name}</span></button>)}
+      </div>
+      <p class="cfilter__n" id="cfilter-n" aria-live="polite" data-tpl={t('customers.filter.count')}></p>
+    </div>
+    <ul class="scards">
+      {rows.map((r) => {
+        const more = r.scope.length - SHOW;
+        const body = (
+          <Fragment>
+            <div class="scard__h">
+              <img class:list={['scard__logo', { 'on-dark': r.logo.onDark }]} src={logoSrc(r.logo)} width={r.logo.w} height={r.logo.h} alt="" loading="lazy">
+              <div><h2 class="scard__t">{r.name}</h2><span class="scard__tags"><span class="tag">{r.industry}</span>{r.href && <span class="tag tag--story">{t('customers.case.badge')}</span>}</span></div>
+            </div>
+            <p class="scard__p">{r.product}{r.period && ` · ${r.period}`}</p>
+            <ul class="scard__l">{r.scope.slice(0, SHOW).map((x) => <li>{x}</li>)}{more > 0 && <li class="scard__more">{t('customers.scope.more').replace('{n}', String(more))}</li>}</ul>
+            {r.href && <span class="scard__go">{t('customers.case.read')} <span aria-hidden="true">→</span></span>}
+          </Fragment>
+        );
+        return (
+          <li id={`s-${r.id}`} data-todo={r.pending} data-ind={r.logo.ind} data-sol={r.sols.join(' ')}>
+            {r.href ? <a class="scard scard--story" href={r.href}>{body}</a> : <div class="scard">{body}</div>}
+          </li>
+        );
+      })}
+    </ul>
+    <p class="cfilter__empty" id="cfilter-empty" hidden>{t('customers.filter.empty')} <button type="button" class="cfilter__reset" data-reset>{t('customers.filter.reset')}</button></p>
+  </section>
+  <section class="sec" id="companies" aria-labelledby="co-h">
+    <div class="wrap">
+      <h2 id="co-h" class="big2">{t('customers.companies')}</h2>
+      <div class="cogroups">
+        {logosByIndustry().map((g) => (
+          <div class="cogroup">
+            <h3 class="cogroup__h">{t(`ind.${g.ind}`)}</h3>
+            <ul class="cogrid">
+              {g.logos.map((l) => {
+                const href = hrefOf(logoId(l));
+                const img = <img class:list={{ 'on-dark': l.onDark }} src={logoSrc(l)} width={l.w} height={l.h} alt={logoName(l, loc)} loading="lazy">;
+                return <li>{href ? <a href={href}>{img}</a> : img}</li>;
+              })}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <p class="muted-p">{t('customers.note')}</p>
+    </div>
+  </section>
+  <ClosingBand title="case.band.title" />
+</Base>
+<script>import '../../scripts/customers.ts';</script>

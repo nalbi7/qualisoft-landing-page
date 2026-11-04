@@ -1,0 +1,56 @@
+[
+  {
+    "source": "youtube",
+    "title": {
+      "ko": "[CRM 속성강의 EP. 08] Excel 데이터 연동하기",
+      "en": "[CRM crash course EP. 08] Connecting Excel data",
+      "ja": "[CRM 速習講座 EP. 08] Excel データ連携",
+      "zh-hans": "[CRM 速成课程 EP. 08] Excel 数据集成"
+    },
+    "tags": {
+      "ko": ["#Dynamics365", "#Excel연동", "#CRM강의"],
+      "en": ["#Dynamics365", "#Excel", "#CRMtutorial"],
+      "ja": ["#Dynamics365", "#Excel連携", "#CRM講座"],
+      "zh-hans": ["#Dynamics365", "#Excel集成", "#CRM教程"]
+    },
+    "date": "2023-06-26",
+    "href": "https://www.youtube.com/watch?v=UiCZqEO5URM",
+    "thumb": "yt-UiCZqEO5URM.jpg"
+  },
+  {
+    "source": "blog",
+    "title": {
+      "ko": "[Dynamics 365 Sales] 편리한 영업 관리, 맞춤 CRM과 함께!",
+      "en": "[Dynamics 365 Sales] Easier sales management with a tailored CRM",
+      "ja": "[Dynamics 365 Sales] 便利な営業管理を、自社に合わせた CRM で",
+      "zh-hans": "[Dynamics 365 Sales] 借助定制 CRM，轻松管理销售"
+    },
+    "tags": {
+      "ko": ["#Dynamics365Sales", "#영업관리", "#맞춤CRM"],
+      "en": ["#Dynamics365Sales", "#SalesManagement", "#CustomCRM"],
+      "ja": ["#Dynamics365Sales", "#営業管理", "#カスタムCRM"],
+      "zh-hans": ["#Dynamics365Sales", "#销售管理", "#定制CRM"]
+    },
+    "date": "2023-03-10",
+    "href": "https://blog.naver.com/dynamics365/223040594721",
+    "thumb": "blog-223040594721.jpg"
+  },
+  {
+    "source": "blog",
+    "title": {
+      "ko": "[Dynamics 365 Sales] 링크드인의 스마트한 CRM 활용 사례",
+      "en": "[Dynamics 365 Sales] How LinkedIn uses CRM smartly",
+      "ja": "[Dynamics 365 Sales] LinkedIn のスマートな CRM 活用事例",
+      "zh-hans": "[Dynamics 365 Sales] LinkedIn 巧用 CRM 的案例"
+    },
+    "tags": {
+      "ko": ["#Dynamics365Sales", "#링크드인", "#CRM활용사례"],
+      "en": ["#Dynamics365Sales", "#LinkedIn", "#CRMusecase"],
+      "ja": ["#Dynamics365Sales", "#LinkedIn", "#CRM活用事例"],
+      "zh-hans": ["#Dynamics365Sales", "#LinkedIn", "#CRM应用案例"]
+    },
+    "date": "2023-02-23",
+    "href": "https://blog.naver.com/dynamics365/223025281697",
+    "thumb": "blog-223025281697.jpg"
+  }
+]

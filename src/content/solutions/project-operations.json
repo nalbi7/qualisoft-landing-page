@@ -1,0 +1,169 @@
+{
+  "order": 2,
+  "name": "Project Operations",
+  "icon": "/assets/ms/d365-project-operations.svg",
+  "color": "var(--s2)",
+  "short": {
+    "ko": "견적부터 청구까지 한 흐름으로",
+    "en": "From quote to billing in one flow",
+    "ja": "見積から請求までひとつの流れで",
+    "zh-hans": "从报价到开票，一个流程贯穿始终"
+  },
+  "area": {
+    "ko": "프로젝트 및 청구 관리",
+    "en": "Project & billing management",
+    "ja": "プロジェクト・請求管理",
+    "zh-hans": "项目与计费管理"
+  },
+  "art": "po",
+  "hook": {
+    "ko": "견적부터 프로젝트 수행⁠·⁠청구까지 한 흐름으로",
+    "en": "From quote to project delivery and billing in one flow",
+    "ja": "見積からプロジェクト遂行⁠・⁠請求までひとつの流れで",
+    "zh-hans": "从报价到项目执行与开票，一个流程贯穿始终"
+  },
+  "step": "Project Ops",
+  "headline": {
+    "ko": "견적부터 청구까지\n한 흐름으로",
+    "en": "From quote to billing\nin one flow",
+    "ja": "見積から請求まで\nひとつの流れで",
+    "zh-hans": "从报价到开票，\n一个流程贯穿始终"
+  },
+  "family": "Dynamics 365",
+  "mark": "Project Operations",
+  "lead": {
+    "ko": "영업 기회에서 프로젝트 견적과 계약을 만들고, 작업 분할 구조(WBS)로 일정을 짜고, 필요한 인력을 예약하고, 시간·경비를 입력·승인해 청구까지 이어 갑니다. 영업·프로젝트 관리·재무가 같은 데이터를 보므로, 프로젝트 단위로 일하는 IT·엔지니어링·컨설팅 조직에 맞습니다.",
+    "en": "Create project quotes and contracts from opportunities, plan schedules with a work breakdown structure (WBS), book the people you need, then enter and approve time and expenses all the way to invoicing. Sales, project management and finance share the same data, which suits IT, engineering and consulting organizations that work project by project.",
+    "ja": "営業案件からプロジェクトの見積と契約を作り、作業分解構成（WBS）でスケジュールを組み、必要な人員を予約し、時間・経費を入力・承認して請求までつなげます。営業・プロジェクト管理・財務が同じデータを見るため、プロジェクト単位で働く IT・エンジニアリング・コンサルティング組織に向いています。",
+    "zh-hans": "从商机生成项目报价与合同，用工作分解结构（WBS）编排进度，预订所需人员，录入并审批工时与费用，一直延续到开票。销售、项目管理与财务共享同一份数据，适合以项目为单位运作的 IT、工程与咨询组织。"
+  },
+  "description": {
+    "ko": "영업 기회에서 프로젝트 견적과 계약을 만들고, 작업 분할 구조(WBS)로 일정을 짜고, 필요한 인력을 예약하고, 시간·경비를 입력·승인해 청구까지 이어 갑니다.",
+    "en": "Create project quotes and contracts from opportunities, plan schedules with a work breakdown structure (WBS), book the people you need, then enter and approve time and expenses all the way to invoicing.",
+    "ja": "営業案件からプロジェクトの見積と契約を作り、作業分解構成（WBS）でスケジュールを組み、必要な人員を予約し、時間・経費を入力・承認して請求までつなげます。",
+    "zh-hans": "从商机生成项目报价与合同，用工作分解结构（WBS）编排进度，预订所需人员，录入并审批工时与费用，一直延续到开票。"
+  },
+  "official": "dynamics-365/products/project-operations",
+  "features": [
+    {
+      "title": {
+        "ko": "프로젝트 견적·계약",
+        "en": "Project quotes & contracts",
+        "ja": "プロジェクトの見積・契約",
+        "zh-hans": "项目报价与合同"
+      },
+      "text": {
+        "ko": "역할별 단가와 예상 공수로 견적을 내고 계약으로 이어 갑니다.",
+        "en": "Estimate with role-based rates and effort, then turn quotes into contracts.",
+        "ja": "役割別の単価と想定工数で見積を作り、契約へつなげます。",
+        "zh-hans": "按角色单价与预计工时报价，并转为合同。"
+      }
+    },
+    {
+      "title": {
+        "ko": "WBS 일정",
+        "en": "WBS scheduling",
+        "ja": "WBS スケジュール",
+        "zh-hans": "WBS 进度计划"
+      },
+      "text": {
+        "ko": "작업을 나누고 기간·선후 관계·담당을 정해 간트로 관리합니다.",
+        "en": "Break down tasks, set durations, dependencies and owners, and manage them on a Gantt chart.",
+        "ja": "作業を分解し、期間・前後関係・担当を決めてガントで管理します。",
+        "zh-hans": "拆分任务、设定工期、前后关系与负责人，并以甘特图管理。"
+      }
+    },
+    {
+      "title": {
+        "ko": "리소스 예약",
+        "en": "Resource booking",
+        "ja": "リソースの予約",
+        "zh-hans": "资源预订"
+      },
+      "text": {
+        "ko": "역할·역량·가용 시간을 보고 사람을 프로젝트에 배정합니다.",
+        "en": "Assign people to projects based on role, skills and availability.",
+        "ja": "役割・スキル・空き時間を見て人員をプロジェクトに割り当てます。",
+        "zh-hans": "依据角色、技能与可用时间为项目分配人员。"
+      }
+    },
+    {
+      "title": {
+        "ko": "시간·경비 입력과 승인",
+        "en": "Time & expense approval",
+        "ja": "時間・経費の入力と承認",
+        "zh-hans": "工时与费用的录入和审批"
+      },
+      "text": {
+        "ko": "투입 시간과 경비를 입력하고 프로젝트 관리자가 승인합니다.",
+        "en": "Team members enter time and expenses; project managers approve them.",
+        "ja": "投入時間と経費を入力し、プロジェクト管理者が承認します。",
+        "zh-hans": "成员录入工时与费用，由项目经理审批。"
+      }
+    },
+    {
+      "title": {
+        "ko": "청구",
+        "en": "Billing",
+        "ja": "請求",
+        "zh-hans": "开票"
+      },
+      "text": {
+        "ko": "승인된 시간·경비나 마일스톤을 기준으로 송장을 만듭니다.",
+        "en": "Create invoices from approved time and expenses or from milestones.",
+        "ja": "承認済みの時間・経費やマイルストーンをもとに請求書を作成します。",
+        "zh-hans": "依据已审批的工时、费用或里程碑生成发票。"
+      }
+    },
+    {
+      "title": {
+        "ko": "원가·수익 분석",
+        "en": "Cost & profitability",
+        "ja": "原価・収益の分析",
+        "zh-hans": "成本与收益分析"
+      },
+      "text": {
+        "ko": "예산 대비 실적과 프로젝트 수익성을 봅니다.",
+        "en": "Compare actuals with budgets and see project profitability.",
+        "ja": "予算対実績とプロジェクトの収益性を確認します。",
+        "zh-hans": "对比预算与实际，掌握项目盈利能力。"
+      }
+    }
+  ],
+  "products": [
+    {
+      "name": "Dynamics 365 Project Operations",
+      "icon": "/assets/ms/d365-project-operations.svg",
+      "path": "dynamics-365/products/project-operations"
+    }
+  ],
+  "customers": [
+    "ls"
+  ],
+  "we": [
+    {
+      "ko": "프로젝트 유형과 청구 방식(시간·재료비, 정액·마일스톤) 설계",
+      "en": "Designing project types and billing models (time & material, fixed price, milestones)",
+      "ja": "プロジェクトの種類と請求方式（タイム＆マテリアル、固定額・マイルストーン）の設計",
+      "zh-hans": "设计项目类型与计费方式（工时与材料、固定价格、里程碑）"
+    },
+    {
+      "ko": "ERP·전자결재와의 연계",
+      "en": "Integration with ERP and e-approval systems",
+      "ja": "ERP・電子決裁との連携",
+      "zh-hans": "与 ERP 及电子审批系统的集成"
+    },
+    {
+      "ko": "다국어·다법인 운영 구성",
+      "en": "Multi-language, multi-entity setup",
+      "ja": "多言語・複数法人での運用構成",
+      "zh-hans": "多语言、多法人运营配置"
+    },
+    {
+      "ko": "프로젝트 현황 대시보드 구축",
+      "en": "Project status dashboards",
+      "ja": "プロジェクト状況ダッシュボードの構築",
+      "zh-hans": "项目状态仪表板建设"
+    }
+  ]
+}

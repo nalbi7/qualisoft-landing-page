@@ -1,0 +1,174 @@
+{
+  "order": 3,
+  "name": "Customer Insights",
+  "icon": "/assets/ms/d365-customer-insights.svg",
+  "color": "var(--s3)",
+  "short": {
+    "ko": "고객 데이터로 마케팅을 자동으로",
+    "en": "Automate marketing with customer data",
+    "ja": "顧客データでマーケティングを自動化",
+    "zh-hans": "用客户数据实现营销自动化"
+  },
+  "area": {
+    "ko": "고객 데이터 및 마케팅",
+    "en": "Customer data & marketing",
+    "ja": "顧客データ・マーケティング",
+    "zh-hans": "客户数据与营销"
+  },
+  "art": "ci",
+  "hook": {
+    "ko": "고객 데이터를 모아 마케팅 여정을 자동으로",
+    "en": "Unify customer data, automate marketing journeys",
+    "ja": "顧客データを集めて、マーケティングジャーニーを自動化",
+    "zh-hans": "整合客户数据，自动化营销旅程"
+  },
+  "step": "Customer Insights",
+  "headline": {
+    "ko": "고객 데이터로\n마케팅을 자동으로",
+    "en": "Automate marketing\nwith customer data",
+    "ja": "顧客データで\nマーケティングを自動化",
+    "zh-hans": "用客户数据\n实现营销自动化"
+  },
+  "family": "Dynamics 365",
+  "mark": "Customer Insights",
+  "lead": {
+    "ko": "Customer Insights – Data로 CRM·웹·행사 등 흩어진 고객 데이터를 하나의 고객 프로필로 통합하고 세그먼트를 만듭니다. Customer Insights – Journeys로는 고객의 행동을 계기로 시작하는 이메일·문자 여정을 설계해 자동으로 보내고, 반응한 고객을 영업 담당에게 넘깁니다.",
+    "en": "Customer Insights – Data unifies scattered customer data from CRM, the web, events and more into one customer profile and builds segments. Customer Insights – Journeys designs email and text journeys triggered by customer actions, sends them automatically and hands engaged customers to sales.",
+    "ja": "Customer Insights – Data で CRM・Web・イベントなどに散らばった顧客データをひとつの顧客プロファイルに統合し、セグメントを作ります。Customer Insights – Journeys では顧客の行動をきっかけに始まるメール・SMS のジャーニーを設計して自動で送り、反応した顧客を営業担当に引き継ぎます。",
+    "zh-hans": "Customer Insights – Data 将分散在 CRM、网站、活动等处的客户数据整合为统一的客户档案并建立细分；Customer Insights – Journeys 设计由客户行为触发的邮件与短信旅程并自动发送，再将有回应的客户转交给销售。"
+  },
+  "description": {
+    "ko": "Customer Insights – Data로 CRM·웹·행사 등 흩어진 고객 데이터를 하나의 고객 프로필로 통합하고 세그먼트를 만듭니다.",
+    "en": "Customer Insights – Data unifies scattered customer data from CRM, the web, events and more into one customer profile and builds segments.",
+    "ja": "Customer Insights – Data で CRM・Web・イベントなどに散らばった顧客データをひとつの顧客プロファイルに統合し、セグメントを作ります。",
+    "zh-hans": "Customer Insights – Data 将分散在 CRM、网站、活动等处的客户数据整合为统一的客户档案并建立细分。"
+  },
+  "official": "dynamics-365/products/customer-insights",
+  "features": [
+    {
+      "title": {
+        "ko": "데이터 통합",
+        "en": "Data unification",
+        "ja": "データ統合",
+        "zh-hans": "数据整合"
+      },
+      "text": {
+        "ko": "여러 원본의 고객 데이터를 일치·중복 제거해 하나로 합칩니다.",
+        "en": "Match and deduplicate customer data from many sources into one.",
+        "ja": "複数ソースの顧客データを照合・重複排除してひとつにまとめます。",
+        "zh-hans": "对多来源客户数据进行匹配与去重，合而为一。"
+      }
+    },
+    {
+      "title": {
+        "ko": "통합 고객 프로필",
+        "en": "Unified customer profiles",
+        "ja": "統合顧客プロファイル",
+        "zh-hans": "统一客户档案"
+      },
+      "text": {
+        "ko": "구매·활동·반응 이력을 한 사람의 프로필에서 봅니다.",
+        "en": "See purchases, activities and responses on one person’s profile.",
+        "ja": "購買・活動・反応の履歴をひとりのプロファイルで確認します。",
+        "zh-hans": "在同一份档案中查看购买、活动与回应记录。"
+      }
+    },
+    {
+      "title": {
+        "ko": "세그먼트",
+        "en": "Segment",
+        "ja": "セグメント",
+        "zh-hans": "细分"
+      },
+      "text": {
+        "ko": "조건과 측정값으로 대상 고객 묶음을 만들고 계속 갱신합니다.",
+        "en": "Build audiences from conditions and measures and keep them up to date.",
+        "ja": "条件とメジャーで対象顧客のまとまりを作り、継続的に更新します。",
+        "zh-hans": "依据条件与度量建立目标客群并持续更新。"
+      }
+    },
+    {
+      "title": {
+        "ko": "트리거 기반 여정",
+        "en": "Trigger-based journeys",
+        "ja": "トリガーベースのジャーニー",
+        "zh-hans": "触发式旅程"
+      },
+      "text": {
+        "ko": "방문·신청 같은 행동을 계기로 메시지와 분기를 자동으로 이어 갑니다.",
+        "en": "Actions such as visits or sign-ups automatically start messages and branches.",
+        "ja": "訪問・申込などの行動をきっかけに、メッセージと分岐を自動でつなげます。",
+        "zh-hans": "以访问、报名等行为为契机，自动推进消息与分支。"
+      }
+    },
+    {
+      "title": {
+        "ko": "이메일·문자 채널",
+        "en": "Email & text channels",
+        "ja": "メール・SMS チャネル",
+        "zh-hans": "邮件与短信渠道"
+      },
+      "text": {
+        "ko": "이메일과 문자 메시지를 디자인하고 보냅니다.",
+        "en": "Design and send email and text messages.",
+        "ja": "メールと SMS をデザインして送信します。",
+        "zh-hans": "设计并发送邮件与短信。"
+      }
+    },
+    {
+      "title": {
+        "ko": "이벤트와 수신 동의",
+        "en": "Events & consent",
+        "ja": "イベントと受信同意",
+        "zh-hans": "活动与订阅同意"
+      },
+      "text": {
+        "ko": "행사 등록·참석과 고객별 수신 동의를 관리합니다.",
+        "en": "Manage event registration and attendance as well as each customer’s consent.",
+        "ja": "イベントの登録・参加と顧客ごとの受信同意を管理します。",
+        "zh-hans": "管理活动报名与出席，以及每位客户的订阅同意。"
+      }
+    }
+  ],
+  "products": [
+    {
+      "name": "Customer Insights – Data",
+      "icon": "/assets/ms/d365-customer-insights.svg",
+      "path": "dynamics-365/products/customer-insights"
+    },
+    {
+      "name": "Customer Insights – Journeys",
+      "icon": "/assets/ms/d365-customer-insights.svg",
+      "path": "dynamics-365/products/customer-insights"
+    }
+  ],
+  "customers": [
+    "ems"
+  ],
+  "we": [
+    {
+      "ko": "데이터 원본 연결과 통합 규칙 설계",
+      "en": "Connecting data sources and designing unification rules",
+      "ja": "データソースの接続と統合ルールの設計",
+      "zh-hans": "连接数据源并设计整合规则"
+    },
+    {
+      "ko": "국내 발송 채널(SMS·카카오톡) 연동",
+      "en": "Integrating local channels in Korea (SMS, KakaoTalk)",
+      "ja": "韓国国内の配信チャネル（SMS・KakaoTalk）との連携",
+      "zh-hans": "对接韩国本地发送渠道（短信、KakaoTalk）"
+    },
+    {
+      "ko": "여정·세그먼트 설계와 운영",
+      "en": "Designing and running journeys and segments",
+      "ja": "ジャーニー・セグメントの設計と運用",
+      "zh-hans": "设计并运营旅程与细分"
+    },
+    {
+      "ko": "반응한 고객을 영업에 넘기는 흐름(리드 배정) 구성",
+      "en": "Handing engaged customers to sales (lead assignment)",
+      "ja": "反応した顧客を営業に引き継ぐ流れ（リード割り当て）の構成",
+      "zh-hans": "配置将有回应客户转交销售的流程（线索分配）"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+---
+// 사례 기사 — 한국어. 본문은 components/pages/CasePage.astro, 다른 언어는 pages/[locale]/customers/[slug].astro
+import { getCollection, type CollectionEntry } from 'astro:content';
+import CasePage from '../../components/pages/CasePage.astro';
+
+export async function getStaticPaths() {
+  return (await getCollection('cases')).map((c) => ({ params: { slug: c.id }, props: { c } }));
+}
+interface Props { c: CollectionEntry<'cases'> }
+---
+<CasePage c={Astro.props.c} />

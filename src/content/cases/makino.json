@@ -1,0 +1,115 @@
+{
+  "order": 2,
+  "first": [
+    "ja",
+    "zh-hans"
+  ],
+  "customer": "makino",
+  "industry": {
+    "ko": "제조 · 공작기계",
+    "en": "Manufacturing · Machine tools",
+    "ja": "製造・工作機械",
+    "zh-hans": "制造 · 机床"
+  },
+  "solutions": [
+    "dynamics-365-crm"
+  ],
+  "products": [
+    "Dynamics 365",
+    "Azure Functions"
+  ],
+  "period": {
+    "ko": "2022.06 – 2023.06",
+    "en": "Jun 2022 – Jun 2023",
+    "ja": "2022.06 – 2023.06",
+    "zh-hans": "2022.06 – 2023.06"
+  },
+  "title": {
+    "ko": "영업과 현장 서비스를 한 CRM에,\n일본 본사의 기계 정보까지",
+    "en": "Sales and field service in one CRM,\nwith machine data from headquarters in Japan",
+    "ja": "営業と現場サービスをひとつの CRM に、\n日本本社の機械情報まで",
+    "zh-hans": "销售与现场服务统一在一个 CRM 中，\n并接入日本总部的设备信息"
+  },
+  "sub": {
+    "ko": "공작기계의 영업 · A/S 업무를 Dynamics 365로 옮기고 본사 시스템과 이었습니다",
+    "en": "Machine tool sales and after-sales service moved to Dynamics 365 and connected to headquarters systems",
+    "ja": "工作機械の営業・アフターサービス業務を Dynamics 365 に移し、本社システムとつなぎました",
+    "zh-hans": "将机床销售与售后服务迁移到 Dynamics 365，并与总部系统打通"
+  },
+  "card": {
+    "task": {
+      "ko": "영업 · 현장 서비스 CRM과 본사 연동",
+      "en": "Sales and field service CRM linked to HQ",
+      "ja": "営業・現場サービス CRM と本社連携",
+      "zh-hans": "销售与现场服务 CRM 对接总部"
+    },
+    "result": {
+      "ko": "시리얼 번호로 본사 기계 상태 조회",
+      "en": "Machine status from HQ by serial number",
+      "ja": "シリアル番号で本社の機械状態を照会",
+      "zh-hans": "按序列号查询总部设备状态"
+    }
+  },
+  "description": {
+    "ko": "마키노코리아의 공작기계 영업과 현장 서비스(A/S)를 Dynamics 365 CRM으로 구축하고, 일본 본사의 기계 가동 정보를 CRM 화면에서 조회하도록 연동한 사례입니다.",
+    "en": "How Makino Korea runs machine tool sales and field service on Dynamics 365 CRM, with machine status from headquarters in Japan available on the CRM screen.",
+    "ja": "マキノコリアの工作機械の営業と現場サービス（アフターサービス）を Dynamics 365 CRM で構築し、日本本社の機械稼働情報を CRM 画面で照会できるよう連携した事例です。",
+    "zh-hans": "为 Makino 韩国构建基于 Dynamics 365 CRM 的机床销售与现场服务（售后）系统，并接入日本总部的设备运行信息，可在 CRM 界面中查询。"
+  },
+  "challenge": [
+    {
+      "ko": "마키노코리아는 공작기계를 판매하고 고객 현장에 설치된 기계의 A/S를 맡습니다. 영업과 현장 서비스, 기계 정보를 한곳에서 다루고, 일본 본사에 있는 기계 가동 정보를 한국에서도 바로 볼 수 있어야 했습니다.",
+      "en": "Makino Korea sells machine tools and services the machines installed at customer sites. It needed sales, field service and machine data in one place, with the machine status held at headquarters in Japan visible from Korea as well.",
+      "ja": "マキノコリアは工作機械を販売し、顧客の現場に設置された機械のアフターサービスを担っています。営業と現場サービス、機械の情報を一か所で扱い、日本本社にある機械の稼働情報を韓国からもすぐに見られる必要がありました。",
+      "zh-hans": "Makino 韩国销售机床，并负责客户现场已安装设备的售后服务。需要在同一处处理销售、现场服务与设备信息，并能在韩国直接查看日本总部掌握的设备运行信息。"
+    }
+  ],
+  "work": [
+    {
+      "ko": "영업과 서비스 업무를 Dynamics 365 위에 함께 구축했습니다. 영업은 활동 보고를, 서비스는 출장 작업 보고서와 주문서를 CRM에서 바로 처리합니다.",
+      "en": "Sales and service were built together on Dynamics 365. Sales reports its activities and service handles field work reports and orders directly in the CRM.",
+      "ja": "営業とサービスの業務を Dynamics 365 上にあわせて構築しました。営業は活動報告を、サービスは出張作業報告書と注文書を CRM でそのまま処理します。",
+      "zh-hans": "在 Dynamics 365 上同时构建了销售与服务业务。销售在 CRM 中提交活动报告，服务人员则直接在 CRM 中处理出差作业报告与订单。"
+    },
+    {
+      "ko": "일본 본사 시스템과는 가벼운 중계 서비스를 두고 연결해, CRM에서 기계를 조회하면 본사의 가동 정보가 함께 나타나게 했습니다.",
+      "en": "A lightweight relay service connects the CRM to the system in Japan, so looking up a machine also shows its operating status from headquarters.",
+      "ja": "日本本社のシステムとは軽量な中継サービスを介して接続し、CRM で機械を照会すると本社の稼働情報があわせて表示されるようにしました。",
+      "zh-hans": "通过轻量的中转服务与日本总部系统相连，在 CRM 中查询设备时会同时显示总部的运行信息。"
+    }
+  ],
+  "scope": [
+    {
+      "ko": "영업 CRM · 활동 보고",
+      "en": "Sales CRM and activity reports",
+      "ja": "営業 CRM・活動報告",
+      "zh-hans": "销售 CRM 与活动报告"
+    },
+    {
+      "ko": "현장 서비스(A/S) CRM",
+      "en": "Field service (after-sales) CRM",
+      "ja": "現場サービス（アフターサービス）CRM",
+      "zh-hans": "现场服务（售后）CRM"
+    },
+    {
+      "ko": "출장 작업 보고서 · 주문서",
+      "en": "Field work reports and orders",
+      "ja": "出張作業報告書・注文書",
+      "zh-hans": "出差作业报告与订单"
+    },
+    {
+      "ko": "일본 본사 기계 정보 연동",
+      "en": "Integration with machine data in Japan",
+      "ja": "日本本社の機械情報との連携",
+      "zh-hans": "与日本总部设备信息的集成"
+    }
+  ],
+  "result": [
+    {
+      "ko": "서비스 담당자는 CRM 화면에서 기계의 가동 상태까지 확인하고, 영업과 서비스는 같은 시스템 안에서 고객과 기계를 함께 봅니다.",
+      "en": "Service staff now check a machine’s operating status right in the CRM, and sales and service see customers and machines together in one system.",
+      "ja": "サービス担当者は CRM の画面で機械の稼働状態まで確認でき、営業とサービスは同じシステムの中で顧客と機械をあわせて見ています。",
+      "zh-hans": "服务人员在 CRM 界面即可确认设备的运行状态，销售与服务在同一个系统中共同查看客户与设备。"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "order": 1,
+  "first": [
+    "ko"
+  ],
+  "customer": "ls",
+  "industry": {
+    "ko": "제조 · 전선",
+    "en": "Manufacturing · Cable",
+    "ja": "製造・電線",
+    "zh-hans": "制造 · 电缆"
+  },
+  "solutions": [
+    "project-operations",
+    "power-platform"
+  ],
+  "products": [
+    "Dynamics 365 Project Operations",
+    "Power Automate",
+    "SharePoint"
+  ],
+  "period": {
+    "ko": "2025.02 – 2026.11",
+    "en": "Feb 2025 – Nov 2026",
+    "ja": "2025.02 – 2026.11",
+    "zh-hans": "2025.02 – 2026.11"
+  },
+  "title": {
+    "ko": "해외 시공 프로젝트의 공정부터 손익까지,\nProject Operations 한 곳에서",
+    "en": "From schedule to profit for global cable projects,\nall in Project Operations",
+    "ja": "海外施工プロジェクトの工程から損益まで、\nProject Operations ひとつで",
+    "zh-hans": "海外施工项目从工程计划到损益，\n统一在 Project Operations 中管理"
+  },
+  "sub": {
+    "ko": "지중 · 해저 케이블 시공 프로젝트를 Dynamics 365 Project Operations 위에서 관리합니다",
+    "en": "Underground and submarine cable projects run on Dynamics 365 Project Operations",
+    "ja": "地中・海底ケーブルの施工プロジェクトを Dynamics 365 Project Operations で管理します",
+    "zh-hans": "在 Dynamics 365 Project Operations 上管理地下与海底电缆施工项目"
+  },
+  "card": {
+    "task": {
+      "ko": "해외 시공 프로젝트 전 주기 관리",
+      "en": "End-to-end global project management",
+      "ja": "海外施工プロジェクトの全工程管理",
+      "zh-hans": "海外施工项目全周期管理"
+    },
+    "result": {
+      "ko": "공정~손익 37개 화면 · SAP 매일 연동",
+      "en": "37 screens from schedule to profit, daily SAP sync",
+      "ja": "工程〜損益の37画面・SAP と毎日連携",
+      "zh-hans": "从工程到损益 37 个界面 · 每日与 SAP 同步"
+    }
+  },
+  "description": {
+    "ko": "LS전선의 지중 · 해저 케이블 시공 프로젝트를 Dynamics 365 Project Operations 위에서 공정 계획부터 예산 · 구매 · 실적 · 손익까지 한 흐름으로 관리하도록 구축한 사례입니다.",
+    "en": "How LS Cable & System runs underground and submarine cable projects on Dynamics 365 Project Operations, from schedule planning to budget, purchasing, actuals and profit.",
+    "ja": "LS電線の地中・海底ケーブル施工プロジェクトを、Dynamics 365 Project Operations 上で工程計画から予算・購買・実績・損益までひとつの流れで管理できるよう構築した事例です。",
+    "zh-hans": "LS 电缆在 Dynamics 365 Project Operations 上，以同一流程管理地下与海底电缆施工项目，从工程计划到预算、采购、实绩与损益。"
+  },
+  "challenge": [
+    {
+      "ko": "LS전선은 지중 · 해저 케이블 시공 프로젝트를 국내외 여러 법인에서 함께 수행합니다. 견적과 수주에서 시작해 공정, 예산, 구매, 실적, 손익까지 한 프로젝트 안에서 많은 일이 이어집니다. 과제는 이 흐름 전체를 하나의 시스템에서 보고, 회계와 구매를 맡는 SAP와 같은 데이터를 보는 것이었습니다.",
+      "en": "LS Cable & System delivers underground and submarine cable projects through several entities in Korea and abroad. Each project runs from quotes and orders through schedule, budget, purchasing, actuals and profit. The goal was to see that whole flow in one system, working from the same data as SAP, which handles accounting and purchasing.",
+      "ja": "LS電線は地中・海底ケーブルの施工プロジェクトを国内外の複数法人で進めています。見積と受注に始まり、工程、予算、購買、実績、損益まで、ひとつのプロジェクトの中で多くの業務がつながります。課題は、この流れ全体をひとつのシステムで把握し、会計と購買を担う SAP と同じデータを見ることでした。",
+      "zh-hans": "LS 电缆由国内外多个法人共同执行地下与海底电缆施工项目。一个项目从报价、订单开始，贯穿工程、预算、采购、实绩直至损益。挑战在于在同一个系统中掌握这一完整流程，并与负责会计和采购的 SAP 使用同一份数据。"
+    }
+  ],
+  "work": [
+    {
+      "ko": "퀄리소프트는 Dynamics 365 Project Operations의 표준 기능을 바탕에 두고, 그 위에 시공 업무에 맞춘 화면을 더했습니다. 공정 계획과 예산, 구매는 승인을 거쳐 SAP와 오가고, 실적은 SAP에서 자동으로 들어옵니다.",
+      "en": "Qualisoft built on the standard capabilities of Dynamics 365 Project Operations and added screens shaped around construction work. Schedules, budgets and purchasing pass through approvals and flow to and from SAP, while actuals arrive from SAP automatically.",
+      "ja": "クオリソフトは Dynamics 365 Project Operations の標準機能を土台に、施工業務に合わせた画面を加えました。工程計画、予算、購買は承認を経て SAP とやり取りし、実績は SAP から自動で取り込まれます。",
+      "zh-hans": "Qualisoft 以 Dynamics 365 Project Operations 的标准功能为基础，增加了贴合施工业务的界面。工程计划、预算与采购经审批后与 SAP 往来，实绩则从 SAP 自动导入。"
+    },
+    {
+      "ko": "프로젝트가 만들어지면 산출물을 보관할 문서 폴더도 함께 준비돼, 현장의 결과물이 정해진 자리에 모입니다.",
+      "en": "When a project is created, its document folders are set up at the same time, so deliverables from the field land in the right place.",
+      "ja": "プロジェクトを作成すると成果物を保管する文書フォルダーも同時に用意され、現場の成果物が決まった場所に集まります。",
+      "zh-hans": "项目创建时，存放交付物的文档文件夹也会同步准备好，现场成果会汇集到固定位置。"
+    }
+  ],
+  "scope": [
+    {
+      "ko": "공정 계획 · 예산 · 구매 관리",
+      "en": "Schedule, budget and purchasing management",
+      "ja": "工程計画・予算・購買管理",
+      "zh-hans": "工程计划、预算与采购管理"
+    },
+    {
+      "ko": "SAP 연동",
+      "en": "SAP integration",
+      "ja": "SAP 連携",
+      "zh-hans": "SAP 集成"
+    },
+    {
+      "ko": "공사 현황 대시보드 · 손익 전망",
+      "en": "Project status dashboard and profit outlook",
+      "ja": "工事状況ダッシュボード・損益見通し",
+      "zh-hans": "工程现况仪表板与损益预测"
+    },
+    {
+      "ko": "산출물 관리 · 영문 화면",
+      "en": "Deliverable management and English screens",
+      "ja": "成果物管理・英語画面",
+      "zh-hans": "交付物管理与英文界面"
+    }
+  ],
+  "result": [
+    {
+      "ko": "이제 공정에서 손익까지 프로젝트의 모든 단계가 하나의 시스템 안에서 이어집니다. 국내외 법인은 같은 기록을 바탕으로 각자의 프로젝트를 관리하고, 해외 법인은 영문 화면으로 씁니다.",
+      "en": "Every stage of a project, from schedule to profit, now connects inside one system. Entities in Korea and abroad manage their own projects from the same records, and overseas teams work in English.",
+      "ja": "今では工程から損益まで、プロジェクトのすべての段階がひとつのシステムの中でつながります。国内外の法人は同じ記録をもとに自らのプロジェクトを管理し、海外法人は英語画面で利用しています。",
+      "zh-hans": "如今从工程到损益，项目的每个阶段都在同一个系统中衔接。国内外法人基于同一份记录管理各自的项目，海外法人使用英文界面。"
+    }
+  ]
+}

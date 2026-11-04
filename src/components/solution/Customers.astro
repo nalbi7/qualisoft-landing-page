@@ -1,0 +1,31 @@
+---
+// 함께한 기업 — 이 솔루션을 쓴 고객사 로고 (11-screen-spec 5-1 ⑨, 시안 cos). 0곳이면 블록째 뺀다 (15-content-model §6). 로고는 config/customer-logos.json 에서 고른다 (BD-035)
+// 이 솔루션의 사례 기사 고객을 먼저(언어별 순서, D-026) 넣고, 솔루션 파일의 customers(시안 make_v8.py CRM_CO 대응표)를 잇는다 —
+// 「관련 사례」에 기사가 있는데 「함께한 기업」에 그 고객이 없던 어긋남을 막는다 (BD-048). 기사가 있는 로고는 그 기사로 이어진다
+import type { CollectionEntry } from 'astro:content';
+import { casesFor } from '../../config/cases';
+import { useT } from '../../i18n';
+import { lurl, ROUTES } from '../../config/routes';
+import { logoById, logoSrc, logoName } from '../../config/customers';
+interface Props { sol: CollectionEntry<'solutions'> }
+const { sol } = Astro.props;
+const loc = Astro.currentLocale;
+const t = useT(loc);
+const related = (await casesFor(loc)).filter((c) => (c.data.solutions as string[]).includes(sol.id));
+const ids = [...new Set([...related.map((c) => c.data.customer), ...(sol.data.customers ?? [])])];
+const caseOf = (id: string) => related.find((c) => c.data.customer === id);
+const logos = ids.map(logoById);
+---
+{logos.length > 0 && (
+  <Fragment>
+    <h2 class="sp2__h2">{t('solution.customers.title')}</h2>
+    <ul class="cos" data-parity="sol-customers">
+      {logos.map((l, i) => {
+        const c = caseOf(ids[i]);
+        const img = <img src={logoSrc(l)} width={l.w} height={l.h} alt={logoName(l, loc)} class:list={{ 'on-dark': l.onDark }} loading="lazy">;
+        return <li>{c ? <a href={lurl(ROUTES.case(c.id), loc)}>{img}</a> : img}</li>;
+      })}
+    </ul>
+    <p class="muted-p">{t('solution.customers.note')}</p>
+  </Fragment>
+)}

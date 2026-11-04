@@ -1,0 +1,18 @@
+[
+  { "ep": "01", "href": "https://www.youtube.com/watch?v=uR3Yl3p8Ewk",
+    "title": { "ko": "SharePoint 첨부파일 연동 관리", "en": "Managing attachments with SharePoint", "ja": "SharePoint 添付ファイル連携の管理", "zh-hans": "SharePoint 附件集成管理" } },
+  { "ep": "02", "href": "https://www.youtube.com/watch?v=1qQWYQPgnCc",
+    "title": { "ko": "내 보기, 차트 만들기", "en": "Creating personal views and charts", "ja": "個人ビューとグラフの作成", "zh-hans": "创建个人视图与图表" } },
+  { "ep": "03", "href": "https://www.youtube.com/watch?v=9fftEKzgtc4",
+    "title": { "ko": "양식 기능 알아보기 — 탭, 섹션, 필드, 하위표", "en": "Forms explained — tabs, sections, fields and subgrids", "ja": "フォーム機能 — タブ、セクション、フィールド、サブグリッド", "zh-hans": "表单功能 — 选项卡、节、字段与子网格" } },
+  { "ep": "04", "href": "https://www.youtube.com/watch?v=greX6IeNfiA",
+    "title": { "ko": "보기 열에 관련 테이블 추가하기", "en": "Adding related-table columns to a view", "ja": "ビューの列に関連テーブルを追加する", "zh-hans": "在视图列中添加相关表" } },
+  { "ep": "05", "href": "https://www.youtube.com/watch?v=mb1A3wsH74w",
+    "title": { "ko": "대시보드 만들기", "en": "Creating dashboards", "ja": "ダッシュボードの作成", "zh-hans": "创建仪表板" } },
+  { "ep": "06", "href": "https://www.youtube.com/watch?v=hzr1db6r8fY",
+    "title": { "ko": "Microsoft Teams 연동하기", "en": "Integrating Microsoft Teams", "ja": "Microsoft Teams との連携", "zh-hans": "集成 Microsoft Teams" } },
+  { "ep": "07", "href": "https://www.youtube.com/watch?v=wwmhS3KpZC8",
+    "title": { "ko": "Power BI 연동하기", "en": "Integrating Power BI", "ja": "Power BI との連携", "zh-hans": "集成 Power BI" } },
+  { "ep": "08", "href": "https://www.youtube.com/watch?v=UiCZqEO5URM",
+    "title": { "ko": "Excel 데이터 연동하기", "en": "Connecting Excel data", "ja": "Excel データ連携", "zh-hans": "Excel 数据集成" } }
+]

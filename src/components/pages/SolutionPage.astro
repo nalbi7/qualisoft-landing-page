@@ -1,0 +1,61 @@
+---
+// 솔루션 상세 본문 — 여섯 쪽 · 네 언어를 한 틀로 (pages/solutions/[slug].astro · pages/[locale]/solutions/[slug].astro). (11-screen-spec 5-1, 시안 solution-crm-2an.html 2안 2차). 글은 content/solutions/<slug>.json
+// 시안에서 뺀 블록: 「이 솔루션의 Copilot」(근거 확인 전 — 5-1 ⑦). 자주 묻는 질문은 콘텐츠에서 엮어 맨 끝에 (D-040, config/faq.ts)
+import type { CollectionEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ClosingBand from '../ClosingBand.astro';
+import Side from '../solution/Side.astro';
+import Head from '../solution/Head.astro';
+import Features from '../solution/Features.astro';
+import WhatWeDo from '../solution/WhatWeDo.astro';
+import Products from '../solution/Products.astro';
+import Customers from '../solution/Customers.astro';
+import Cases from '../solution/Cases.astro';
+import Faq from '../Faq.astro';
+import { solutionFaq, faqJsonLd } from '../../config/faq';
+import { url } from '../../config/routes';
+import '../../styles/solution.css';
+import { useT, tx } from '../../i18n';
+import { lurl, ROUTES, type SolutionSlug } from '../../config/routes';
+
+interface Props { sol: CollectionEntry<'solutions'> }
+const { sol } = Astro.props;
+const s = sol.data;
+const loc = Astro.currentLocale;
+const t = useT(loc);
+const description = tx(s.description, loc);
+const topic = t('solution.meta.title').replaceAll('{name}', s.name);
+// 구조화 데이터 — Service · BreadcrumbList. 가격 · 평점 · 후기는 넣지 않는다 (19-seo-spec §5)
+const abs = (p: string) => new URL(lurl(p, loc), Astro.site).href;
+const self = abs(ROUTES.solution(sol.id as SolutionSlug));
+const service = {
+  '@context': 'https://schema.org', '@type': 'Service',
+  name: topic, serviceType: s.name, description, url: self,
+  provider: { '@type': 'Organization', '@id': new URL(url('/#org'), Astro.site).href, name: t('common.company') },
+};
+const faq = await solutionFaq(sol, loc);
+const breadcrumb = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: t('common.home'), item: abs(ROUTES.home) },
+    { '@type': 'ListItem', position: 2, name: t('nav.solutions'), item: abs(ROUTES.products) },
+    { '@type': 'ListItem', position: 3, name: s.name, item: self },
+  ],
+};
+---
+<Base title={topic} description={description} jsonld={[service, breadcrumb, faqJsonLd(faq)]} ogImage={`/assets/og/${sol.id}.png`} ogImageAlt={s.name}>
+  <div class="wrap sp2">
+    <Side sol={sol} />
+    <div class="sp2__main">
+      <Head sol={sol} />
+      <Features sol={sol} />
+      <WhatWeDo sol={sol} />
+      <Products sol={sol} />
+      <Customers sol={sol} />
+      <Cases sol={sol} />
+      <Faq items={faq} />
+    </div>
+  </div>
+  <ClosingBand title="solution.band.title" vars={{ name: s.name }} kakao={false} />
+</Base>
+<script>import '../../scripts/solution.ts';</script>

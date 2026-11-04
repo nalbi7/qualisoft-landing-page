@@ -1,0 +1,28 @@
+---
+// 404 — 없는 주소 안내 + 구 주소 이동 (11-screen-spec 4-11 · 19-seo-spec §6 · M-03, 시안 404-2an.html 2안 2차). 언어 공용 한 장, noindex.
+// 한국어 제목 아래 영어 제목을 함께 둔다 — 스크립트 없이도 두 말로 읽힌다. 구 주소면 scripts/legacy-redirect.ts 가 안내를 바꾸고 옮긴다
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import DemoButton from '../components/DemoButton.astro';
+import '../styles/notfound.css';
+import { useT } from '../i18n';
+import { url, ROUTES, type SolutionSlug } from '../config/routes';
+const t = useT();
+const sols = (await getCollection('solutions')).sort((a, b) => a.data.order - b.data.order);
+---
+<Base title={t('notfound.meta.title')} description={t('notfound.meta.description')} noindex>
+  <section class="nf2 wrap" aria-labelledby="nf-h" data-parity="notfound">
+    <div class="nf__move" id="nf-move" role="status" hidden><p class="nf__movet">{t('notfound.move.title')}</p><p><a id="nf-to" href={url(ROUTES.home)}>{t('notfound.move.link')} <span aria-hidden="true">→</span></a></p></div>
+    <div id="nf-not">
+      <p class="nf__code" aria-hidden="true">404</p>
+      <h1 id="nf-h">{t('notfound.title')}</h1>
+      <p class="nf__en" lang="en">{t('notfound.title_en')}</p>
+      <p class="nf__l">{t('notfound.lead')}</p>
+      <div class="nf__acts"><DemoButton /><a class="btn btn-secondary" href={url(ROUTES.home)}>{t('notfound.home')}</a></div>
+      <ul class="nf__sols">
+        {sols.map((s) => <li><a href={url(ROUTES.solution(s.id as SolutionSlug))}><img class="pi" src={url(s.data.icon)} alt="" width="24" height="24"><span>{s.data.name}</span></a></li>)}
+      </ul>
+    </div>
+  </section>
+</Base>
+<script>import '../scripts/legacy-redirect.ts';</script>

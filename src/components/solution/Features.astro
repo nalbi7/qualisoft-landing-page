@@ -1,0 +1,45 @@
+---
+// 핵심 기능 — 「+」로 펼치는 여섯 줄, 첫 줄만 펼친 채 (11-screen-spec 5-1 ⑤, 시안 accs). 여닫기는 scripts/solution.ts
+// Copilot 페이지는 같은 자리에 「솔루션별 Copilot」 여섯과 제공 범위 안내 한 줄 (11-screen-spec 5-1 Copilot)
+// 펼친 줄에는 그 기능의 실제 화면 — Microsoft Learn 문서의 그림을 언어판대로 (BD-034). 그림 목록은 config/learn-shots.json,
+// 파일은 src/assets/learn/ (빌드가 WebP 로 줄인다). 언어판 그림이 영어판과 같으면 한 장만 둔다. 출처는 그림 아래에 밝힌다(CC BY 4.0)
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import NewWindow from '../NewWindow.astro';
+import { learnPage } from './ms';
+import SHOTS from '../../config/learn-shots.json';
+import { useT, tx } from '../../i18n';
+interface Props { sol: CollectionEntry<'solutions'> }
+const { sol } = Astro.props;
+const s = sol.data;
+const loc = Astro.currentLocale;
+const t = useT(loc);
+const cop = s.kind === 'copilot';
+type Shot = { page: string; file: string; files?: Record<string, string>; alt: { ko: string } & Record<string, string> };
+const imgs = import.meta.glob<ImageMetadata>('../../assets/learn/*', { eager: true, import: 'default' });
+const shots = ((SHOTS as Record<string, (Shot | null)[]>)[sol.id] ?? []);
+const pick = (sh: Shot) => {
+  const f = sh.files?.[loc ?? 'ko'] ?? sh.file;
+  const img = imgs[`../../assets/learn/${f}`];
+  if (!img) throw new Error(`learn-shots: 「${f}」 그림이 src/assets/learn/ 에 없다 (${sol.id})`);
+  return img;
+};
+---
+<h2 class="sp2__h2">{t(cop ? 'solution.features.copilot_title' : 'solution.features.title')}</h2>
+<ul class="accs" data-parity="sol-features">
+  {s.features.map((f, i) => {
+    const sh = shots[i];
+    return (
+      <li><button type="button" class="acc" aria-expanded={i === 0 ? 'true' : 'false'} aria-controls={`acc-${i}`}>{tx(f.title, loc)}<span class="acc__plus" aria-hidden="true">+</span></button><div class="acc__body" id={`acc-${i}`} hidden={i !== 0}><p>{tx(f.text, loc)}</p>
+        {sh && (
+          <figure class="shot">
+            <div class="shot__frame"><Image src={pick(sh)} alt={tx(sh.alt, loc)} widths={[640, 960, 1280]} sizes="(max-width: 1080px) calc(100vw - 32px), 680px" format="webp" quality={82} /></div>
+            <figcaption>{t('solution.shot.source')} · <a href={learnPage(sh.page, loc)} target="_blank" rel="noopener">Microsoft Learn <NewWindow /></a> · © Microsoft</figcaption>
+          </figure>
+        )}
+      </div></li>
+    );
+  })}
+</ul>
+{cop && <p class="muted-p">{t('solution.features.copilot_note')}</p>}

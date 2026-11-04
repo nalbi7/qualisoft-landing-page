@@ -1,0 +1,89 @@
+---
+// 사례 기사 본문 — 네 언어를 한 틀로 (pages/customers/[slug].astro · pages/[locale]/customers/[slug].astro). 11-screen-spec 5-2, 시안 case-2an.html
+// 「과제 → 한 일 → 달라진 것」(IA 고객 사례). 글은 content/cases/<slug>.json — TeamWiki · 원천에 근거한 것만 쓰고, 인용 · 수치는 고객 동의가 있을 때만 (N-06)
+// 대표 그림 칸은 뺐다 — 고객 정보를 가린 실제 화면과 화면 공개 동의가 생기면 넣는다 (시안 c2__fig). 게재 확인 전이면 기사 전체를 data-todo 로 감싼다
+import { getEntry, type CollectionEntry } from 'astro:content';
+import { casesFor } from '../../config/cases';
+import Base from '../../layouts/Base.astro';
+import Crumb from '../Crumb.astro';
+import ClosingBand from '../ClosingBand.astro';
+import CaseCard from '../CaseCard.astro';
+import { useT, tx } from '../../i18n';
+import { url, lurl, ROUTES, type SolutionSlug } from '../../config/routes';
+import { logoById, logoSrc, logoName } from '../../config/customers';
+import '../../styles/cases.css';
+interface Props { c: CollectionEntry<'cases'> }
+const { c } = Astro.props;
+const d = c.data;
+const loc = Astro.currentLocale;
+const t = useT(loc);
+const logo = logoById(d.customer);
+const title = tx(d.title, loc);
+const flat = title.replace('\n', ' ');
+const sols = (await Promise.all(d.solutions.map((s) => getEntry('solutions', s)))).filter((s) => !!s);
+const others = (await casesFor(loc)).filter((x) => x.id !== c.id).slice(0, 2);
+// 구조화 데이터 — Article · BreadcrumbList. 평점 · 후기는 넣지 않는다 (19-seo-spec §5)
+const abs = (p: string) => new URL(lurl(p, loc), Astro.site).href;
+const orgId = new URL(url('/#org'), Astro.site).href;
+// 공유 그림 — 대표 솔루션의 그림 (scripts/make-og.mjs)
+const ogImage = `/assets/og/${d.solutions[0]}.png`;
+// <title> — 「고객사 + 대표 솔루션 + 구축 사례」로 짧게 (D-040, 국문 15~32자 안팎 권고). 긴 문장 제목은 h1 · 설명 · og:description 이 그대로 싣는다
+const metaTitle = t('case.meta.title').replaceAll('{customer}', logoName(logo, loc)).replaceAll('{solution}', sols[0]?.data.name ?? '');
+const article = {
+  '@context': 'https://schema.org', '@type': 'Article',
+  headline: flat, description: tx(d.description, loc), url: abs(ROUTES.case(c.id)),
+  about: { '@type': 'Organization', name: logoName(logo, loc) },
+  // 쓴 회사 · 낸 회사 — 같은 회사 id 로 잇는다 (D-040). 날짜는 콘텐츠에 없어 넣지 않는다 — 지어내지 않는다
+  author: { '@type': 'Organization', '@id': orgId, name: t('common.company') },
+  publisher: { '@type': 'Organization', '@id': orgId, name: t('common.company') },
+  image: new URL(url(ogImage), Astro.site).href,
+};
+const breadcrumb = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: t('common.home'), item: abs(ROUTES.home) },
+    { '@type': 'ListItem', position: 2, name: t('customers.title'), item: abs(ROUTES.customers) },
+    { '@type': 'ListItem', position: 3, name: flat, item: abs(ROUTES.case(c.id)) },
+  ],
+};
+// 본문 세 단 — 번호(01 · 02 · 03)를 달지 않고, 소제목은 본문보다 조금 굵은 이름표 정도로 (D-051, 기사 피드백)
+const secs = [
+  { h: t('case.sec.challenge'), ps: d.challenge, scope: undefined },
+  { h: t('case.sec.work'), ps: d.work, scope: d.scope },
+  { h: t('case.sec.result'), ps: d.result, scope: undefined },
+];
+---
+<Base title={metaTitle} description={tx(d.description, loc)} jsonld={[article, breadcrumb]} ogType="article" ogImage={ogImage} ogImageAlt={sols[0]?.data.name}>
+  <Crumb items={[{ label: t('common.home'), href: ROUTES.home }, { label: t('customers.title'), href: ROUTES.customers }, { label: logoName(logo, loc) }]} />
+  <article class="c2" data-todo={d.pending}>
+    <header class="c2__hero wrap">
+      <div class="tags"><span class="tag">{tx(d.industry, loc)}</span>{sols.map((s) => <span class="tag"><img class="pi" src={url(s.data.icon)} alt="" width="24" height="24">{s.data.name}</span>)}</div>
+      <h1>{title.split('\n').map((l, i) => <Fragment>{i > 0 && <br>}{l}</Fragment>)}</h1>
+      <p class="c2__sub">{tx(d.sub, loc)}</p>
+      <dl class="c2__meta">
+        <div><dt>{t('case.meta.customer')}</dt><dd><img class:list={['c2__logo', { 'on-dark': logo.onDark }]} src={logoSrc(logo)} width={logo.w} height={logo.h} alt={logoName(logo, loc)}></dd></div>
+        <div><dt>{t('case.meta.industry')}</dt><dd>{tx(d.industry, loc)}</dd></div>
+        <div><dt>{t('case.meta.products')}</dt><dd>{d.products.join(' · ')}</dd></div>
+        <div><dt>{t('case.meta.period')}</dt><dd>{tx(d.period, loc)}</dd></div>
+      </dl>
+    </header>
+    <div class="wrap c2__w">
+      {secs.map((s) => (
+        <section class="c2__sec"><div>
+          <h2>{s.h}</h2>
+          {s.ps.map((p) => <p>{tx(p, loc)}</p>)}
+          {s.scope && <Fragment><h3>{t('case.sec.scope')}</h3><ul class="c2__scope">{s.scope.map((x) => <li>{tx(x, loc)}</li>)}</ul></Fragment>}
+        </div></section>
+      ))}
+      <aside class="c2__rel" aria-labelledby="rel-h"><h2 id="rel-h">{t('case.rel.solutions')}</h2>
+        <div class="c2__cards">{sols.map((s) => <a class="pcard" href={lurl(ROUTES.solution(s.id as SolutionSlug), loc)}><img src={url(s.data.icon)} alt="" width="48" height="48"><b translate="no">{s.data.name}</b><span>{tx(s.data.short, loc)} <span aria-hidden="true">→</span></span></a>)}</div>
+      </aside>
+      {others.length > 0 && (
+        <aside class="c2__others" aria-labelledby="others-h"><h2 id="others-h">{t('case.rel.others')}</h2>
+          <div class="cases">{others.map((o) => <CaseCard c={o} />)}</div>
+        </aside>
+      )}
+    </div>
+  </article>
+  <ClosingBand title="case.band.title" />
+</Base>

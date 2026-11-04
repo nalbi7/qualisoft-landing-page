@@ -1,0 +1,42 @@
+---
+// 홈 화면 2 — 솔루션 (D-021): Web-Transition-Lab sandbox 의 home-2an.html(2026-10-30 판) 구성을 그대로 따른다.
+//  왼쪽 — 제목 · 안내 한 줄 · 진행 막대 · 아이콘 + 이름만 있는 목록. 오른쪽 — 솔루션 판(3D 모델, 없으면 SVG 입체 그림).
+//  움직임은 solutions-v7.js: v7 스크롤 규칙(한 번 굴리면 한 솔루션) · 판 동기화 · 3D. 스크립트가 없으면 첫 솔루션 판과 그 링크만 보인다
+import { getCollection } from 'astro:content';
+import artHtml from '../art3d.html?raw';
+import { useT, tx } from '../../i18n';
+import { url, lurl, ROUTES, type SolutionSlug } from '../../config/routes';
+const loc = Astro.currentLocale;
+const t = useT(loc);
+const sols = (await getCollection('solutions')).sort((a, b) => a.data.order - b.data.order);
+const first = sols[0];
+const art = artHtml.replace('class="art"', 'class="art on"');
+const href = (id: string) => lurl(ROUTES.solution(id as SolutionSlug), loc);
+---
+<section class="sec" id="products" aria-labelledby="prod-h" data-parity="products">
+  <div class="wrap prod2">
+    <div>
+      <h2 id="prod-h" class="big">{t('home.products.title_a')}<br>{t('home.products.title_b')}</h2>
+      <p class="lead prod2__lead">{t('home.products.lead')}</p>
+      <div class="qlab-plist-wrap">
+        <span class="qlab-sol-bar" aria-hidden="true"><i id="qlabSolBarFill"></i></span>
+        <ul class="plist">
+          {sols.map((s, i) => (
+            <li>
+              <button type="button" class="prow" aria-current={i === 0 ? 'true' : undefined} aria-controls="pnl" data-p={i}
+                data-name={s.data.name} data-line={tx(s.data.short, loc)} data-color={s.data.color} data-icon={url(s.data.icon)} data-href={href(s.id)}>
+                <img class="pi pi--md" src={url(s.data.icon)} alt="" width="24" height="24"><b translate="no">{s.data.name}</b>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+    <div class="pnl" id="pnl" style={`--pc:${first.data.color}`} data-parity="panel">
+      <div class="pnl__art" aria-hidden="true" set:html={art} />
+      <img class="pnl__ic" id="pnl-ic" src={url(first.data.icon)} alt="" width="88" height="88">
+      <b class="pnl__n" id="pnl-n" translate="no">{first.data.name}</b><span class="pnl__l" id="pnl-l">{tx(first.data.short, loc)}</span>
+      <a class="pnl__link" id="pnl-link" href={href(first.id)} data-label={t('home.products.panel_link')} aria-label={`${first.data.name} — ${t('home.products.panel_link')}`}></a>
+    </div>
+  </div>
+</section>

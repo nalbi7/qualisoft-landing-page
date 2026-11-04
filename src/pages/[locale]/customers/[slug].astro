@@ -1,0 +1,13 @@
+---
+// 사례 기사 — 영 · 일 · 중. 켠 언어 × 사례 (config/locales.mjs, D-024)
+import { getCollection, type CollectionEntry } from 'astro:content';
+import CasePage from '../../../components/pages/CasePage.astro';
+import { DEFAULT_LOCALE, LOCALES } from '../../../config/locales.mjs';
+
+export async function getStaticPaths() {
+  const cases = await getCollection('cases');
+  return LOCALES.filter((l) => l.code !== DEFAULT_LOCALE).flatMap((l) => cases.map((c) => ({ params: { locale: l.code, slug: c.id }, props: { c } })));
+}
+interface Props { c: CollectionEntry<'cases'> }
+---
+<CasePage c={Astro.props.c} />

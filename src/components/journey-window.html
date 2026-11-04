@@ -1,0 +1,95 @@
+<!-- 히어로 예시 화면 — 시안 v7 창을 시안 home-2an.html(홈 2안 5차)에서 그대로 옮겼다 (BD-001). 제품 화면을 그린 그림이라 화면 낭독에서 숨긴다.
+     {BASE} 는 Journey.astro 가 기준 경로로 바꾼다. 글자는 그림의 일부 — {{win.키}} 자리를 Hero.astro 가 지금 언어의 i18n/<언어>/window.json 글로 채운다 (번역은 v7 사전에서) -->
+<div class="win" data-illustration aria-hidden="true">
+        <div class="win__bar"><img class="win__ic" id="win-ic" src="{BASE}assets/ms/d365-sales.svg" alt="" width="16" height="16"><b id="win-app">Dynamics 365 Sales</b><span class="sample">{{win.sample}}</span></div>
+        <div class="stage" data-s="0">
+          <div class="shape" aria-hidden="true"></div>
+          <!-- 01 Sales — 영업 기회 양식: 머리글 필드 + 비즈니스 프로세스 흐름(검증→개발→제안→종료), 「다음 단계」로 넘긴다 -->
+          <div class="scr on" data-step="0" data-app="Dynamics 365 Sales" data-icon="{BASE}assets/ms/d365-sales.svg">
+            <h4><span>{{win.h1.h}}</span><span class="tag">OPPORTUNITY</span></h4>
+            <div class="fields">
+              <div><small>{{win.h1.f1}}</small><b>₩ 480,000,000</b></div>
+              <div><small>{{win.h1.f2}}</small><b>2026-12-18</b></div>
+              <div><small>{{win.h1.f3}}</small><b>60%</b></div>
+            </div>
+            <div class="bpf">
+              <ol>
+                <li class="done"><i></i><span>{{win.h1.b1}}</span></li>
+                <li class="done"><i></i><span>{{win.h1.b2}}</span></li>
+                <li class="cur"><i></i><span>{{win.h1.b3}}</span></li>
+                <li><i></i><span>{{win.h1.b4}}</span></li>
+              </ol>
+              <span class="bpf__next" data-click><span>{{win.h1.next}}</span> ›</span>
+            </div>
+            <div class="linked"><small>{{win.h1.acc}}</small><b>{{win.h1.accv}}</b><small>{{win.h1.sync}}</small><span>SAP ERP</span><span>Outlook</span><span>Teams</span></div>
+            <div class="cpl"><img src="{BASE}assets/brand/copilot.svg" alt="" width="16" height="15"><b>Copilot</b><span>{{win.h1.cp}}</span></div>
+          </div>
+          <!-- 02 Project Operations — 프로젝트 일정(WBS 간트) + 실제 공수 · 송장 준비(Ready to Invoice) → 「송장 만들기」 -->
+          <div class="scr" data-step="1" data-app="Dynamics 365 Project Operations" data-icon="{BASE}assets/ms/d365-project-operations.svg">
+            <h4><span>{{win.h2.h}}</span><span class="tag">PROJECT</span></h4>
+            <div class="gantt" aria-hidden="true">
+              <div class="gantt__head"><span></span><span>08</span><span>09</span><span>10</span><span>11</span><span>12</span></div>
+              <div class="gantt__row"><span>{{win.h2.t1}}</span><div><i style="--s:0; --e:1.5; --p:100%"></i></div></div>
+              <div class="gantt__row"><span>{{win.h2.t2}}</span><div><i style="--s:1.3; --e:3.6; --p:64%"></i></div></div>
+              <div class="gantt__row"><span>{{win.h2.t3}}</span><div><i style="--s:3.3; --e:4.4; --p:0%"></i></div></div>
+              <div class="gantt__row"><span>{{win.h2.t4}}</span><div><em style="--s:4.55"></em></div></div>
+              <span class="gantt__today" style="--t:2.55"></span>
+            </div>
+            <div class="po-foot">
+              <div><b>1,280<small>/ 2,000h</small></b><small>{{win.h2.m1}}</small></div>
+              <div><b>₩ 86,400,000</b><small>{{win.h2.m2}}</small></div>
+              <span class="act-btn" data-click>{{win.h2.inv}}</span>
+            </div>
+            <div class="cpl"><img src="{BASE}assets/brand/copilot.svg" alt="" width="16" height="15"><b>Copilot</b><span>{{win.h2.cp}}</span></div>
+          </div>
+          <!-- 03 Customer Insights — 통합 고객 프로필 → 트리거 기반 여정(트리거 → 이메일 보내기 → if/then 분기) → 「게시」 -->
+          <div class="scr" data-step="2" data-app="Dynamics 365 Customer Insights" data-icon="{BASE}assets/ms/d365-customer-insights.svg">
+            <h4><span>{{win.h3.h}}</span><span class="tag">JOURNEY</span><span class="act-btn" data-click>{{win.h3.pub}}</span></h4>
+            <div class="unify"><span>CRM</span><span>{{win.h3.u2}}</span><span>{{win.h3.u3}}</span><i>→</i><b><span>{{win.h3.u4}}</span> 12,480</b></div>
+            <div class="jflow">
+              <div class="jn jn--trig"><em>{{win.h3.k1}}</em><b>{{win.h3.n1}}</b></div>
+              <div class="jn"><em>{{win.h3.k2}}</em><b>{{win.h3.n2}}</b></div>
+              <div class="jn"><em>{{win.h3.k3}}</em><b>{{win.h3.n3}}</b></div>
+              <div class="jbr">
+                <div class="jn jn--yes"><em>{{win.h3.y}}</em><b>{{win.h3.n4}}</b></div>
+                <div class="jn jn--no"><em>{{win.h3.no}}</em><b>{{win.h3.n5}}</b></div>
+              </div>
+            </div>
+            <div class="cpl"><img src="{BASE}assets/brand/copilot.svg" alt="" width="16" height="15"><b>Copilot</b><span>{{win.h3.cp}}</span></div>
+          </div>
+          <!-- 04 Power BI · Fabric — 보고서(KPI 카드 · 월별 막대) + OneLake 계보 → 막대를 눌러 교차 필터 -->
+          <div class="scr" data-step="3" data-app="Power BI · Microsoft Fabric" data-icon="{BASE}assets/ms/power-bi.svg">
+            <h4><span>{{win.h4.h}}</span><span class="tag">REPORT</span></h4>
+            <div class="kpis">
+              <div><small><span>{{win.h4.k1}}</span><em>▲ 18%</em></small><b>{{win.h4.v1}}</b></div>
+              <div><small>{{win.h4.k2}}</small><b>{{win.h4.v2}}</b></div>
+              <div><small>{{win.h4.k3}}</small><b>32%</b></div>
+            </div>
+            <div class="bars" aria-hidden="true">
+              <i style="--h:38%"></i><i style="--h:46%"></i><i style="--h:41%"></i><i style="--h:55%"></i><i style="--h:52%"></i><i style="--h:64%"></i><i style="--h:70%"></i><i class="on" data-click style="--h:88%"><span>10 · ₩21.6B</span></i><i style="--h:60%" class="fc"></i><i style="--h:66%" class="fc"></i>
+            </div>
+            <div class="lineage"><span>ERP · CRM</span><i>→</i><span>{{win.h4.l2}}</span><i>→</i><span>{{win.h4.l3}}</span><i>→</i><span class="now">{{win.h4.l4}}</span></div>
+            <div class="cpl"><img src="{BASE}assets/brand/copilot.svg" alt="" width="16" height="15"><b>Copilot</b><span>{{win.h4.cp}}</span></div>
+          </div>
+          <!-- 05 Power Automate — 클라우드 흐름(Dataverse 트리거 → 승인 → 조건 → Teams) + Teams 승인 카드 → 「승인」 -->
+          <div class="scr" data-step="4" data-app="Power Automate" data-icon="{BASE}assets/ms/power-automate.svg">
+            <h4><span>{{win.h5.h}}</span><span class="tag">FLOW</span></h4>
+            <div class="pa">
+              <ol class="pa__flow">
+                <li><i style="--k:#088142">D</i><b>{{win.h5.n1}}</b><small>Dataverse</small></li>
+                <li><i style="--k:#0F6CBD">✓</i><b>{{win.h5.n2}}</b><small>Approvals</small></li>
+                <li><i style="--k:#5C5B75"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M3.5 1.5v9M3.5 4.5c0 2 5 1.5 5 4v2" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></i><b>{{win.h5.n3}}</b><small>{{win.h5.n3s}}</small></li>
+                <li><i style="--k:#5B5FC7">T</i><b>{{win.h5.n4}}</b><small>Teams</small></li>
+              </ol>
+              <div class="pa__card">
+                <small><span class="tm">T</span><span>{{win.h5.c0}}</span></small>
+                <b>{{win.h5.c1}}</b>
+                <span>₩ 480,000,000</span>
+                <div class="pa__btns"><span class="act-btn" data-click>{{win.h5.ok}}</span><span>{{win.h5.rej}}</span></div>
+              </div>
+            </div>
+            <div class="cpl"><img src="{BASE}assets/brand/copilot.svg" alt="" width="16" height="15"><b>Copilot</b><span>{{win.h5.cp}}</span></div>
+          </div>
+        </div>
+        <div class="cursor" aria-hidden="true"><svg width="20" height="22" viewBox="0 0 20 22"><path d="M3 2l14 8.2-6.3 1.4-2.9 6.4z" fill="#14142B" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+      </div>

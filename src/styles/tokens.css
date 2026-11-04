@@ -1,0 +1,182 @@
+/* ──────────────────────────────────────────────────────────────
+   디자인 토큰 — 단일 출처 · Quali-Website 2차 사이트 (시안 v8~)
+   Docs/_design/tokens.css
+
+   값의 근거: 승인된 시안 v7(home-v7.html :root 12행 · 852행 · 1041행)과
+   2단계 디자인 가이드(Docs/12-design-system.md §4~§13). 새로 지은 값은
+   "v8 새로"라고 적었다. 바꿀 때는 change-log.md 에 DS- 항목을 남긴다.
+
+   모든 시안이 이 파일을 링크한다. 시안 안에 값을 복사하지 않는다.
+   글꼴은 외부에서 불러오지 않는다 — 시안은 설치된 글꼴로 보이고,
+   실제 사이트는 자체 호스팅 부분 글꼴로 싣는다(12-design-system §5-1).
+   ────────────────────────────────────────────────────────────── */
+:root{
+  /* ── 바탕 · 글자 (§4-1) ── */
+  --bg:#F7F7FA;            /* 페이지 바탕 */
+  --surface:#FFFFFF;       /* 카드 · 헤더 · 푸터 */
+  --text:#14142B;          /* 본문 */
+  --muted:#5C5B75;         /* 보조 글 */
+  --muted-2:#8B8AA3;       /* 큰 글자만 — 흰 면 3.35 */
+  --line:#E4E4EE;
+  --line-2:#D5D5E3;
+  --ink-950:#0B0B1E;       /* 어두운 구간 바탕 (히어로 · 상담 띠) */
+  --ink-900:#121230;
+  --ink-800:#1D1C45;
+  --ink-700:#2B2A63;
+  --on-dark:#F2F1FF;
+  --on-dark-muted:#A8A7C6;
+  --line-dark:rgba(255,255,255,.10);
+
+  /* ── 행동 · 상태 (§4-2) ── */
+  --brand:#4640DE;         /* 주 버튼 · 링크 · 밝은 바탕 포커스 */
+  --brand-hover:#3631C4;
+  --brand-100:#EDECFF;
+  --brand-200:#D9D7FF;
+  --brand-300:#A9A6FF;     /* 어두운 바탕 강조 · 어두운 바탕 포커스. 밝은 바탕 금지 */
+  --lime:#C9F25B;          /* 어두운 바탕의 작은 강조만 */
+  --ok:#1F9D6B;            /* 큰 글자 · 아이콘만 */
+
+  /* ── 제품 색 (§4-3, v7 최종값) — 어두운 바탕에서만 글자로 ── */
+  --s1:#A99BFF;  --sol-crm:var(--s1);
+  --s2:#FF8AD8;  --sol-po:var(--s2);
+  --s3:#5ED0FF;  --sol-ci:var(--s3);
+  --s4:#FFD15C;  --sol-bi:var(--s4);
+  --s5:#7EF0C1;  --sol-pp:var(--s5);
+  --s5-grad:linear-gradient(90deg,#7DE3FF,#B69CFF 55%,#FF9ECF);   /* Copilot · 어두운 바탕 */
+  --cop-grad-light:linear-gradient(90deg,#3E8FD8,#7B5BE0 55%,#D2508F); /* Copilot · 흰 면 큰 글자만 */
+  --cop-solid:#6A4FD8;     /* Copilot · 흰 면 작은 글자 (5.64) */
+
+  /* ── 투명 면 (§4-4) ── */
+  --tint:rgba(20,20,43,.05);
+  --tint-2:rgba(20,20,43,.08);
+  --hair:rgba(20,20,43,.09);
+  --glass:rgba(255,255,255,.9);
+  --glass-fx:blur(24px) saturate(180%);
+
+  /* ── 글꼴 (§5-1) ── */
+  --font-latin:"Instrument Sans";
+  --font-cjk:"Noto Sans KR";
+  --font:var(--font-latin),var(--font-cjk),"Apple SD Gothic Neo","Malgun Gothic","Hiragino Sans","PingFang SC","Microsoft YaHei",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+
+  /* ── 글자 크기 (§5-2) ── */
+  --text-hero:clamp(38px,4.9vw,66px);
+  --text-hero-xl:clamp(40px,6.4vw,88px);   /* v8 새로 — 2안(토스식 큰 제목) */
+  --text-detail:clamp(28px,3.3vw,48px);      /* 상세 · 기사 제목 — 1440 에서 48 (D-029, 이전 54) */
+  --text-h2:clamp(26px,2.8vw,40px);          /* 구간 제목 — 1440 에서 40 (D-029, 이전 48) */
+  --text-h2-detail:clamp(22px,2vw,28px);     /* 상세 안 소제목 — 1440 에서 28 (D-029, 이전 40) */
+  --text-band:clamp(22px,2.2vw,28px);        /* 상담 띠 제목 — 1440 에서 28 (D-029, 이전 32) */
+  --text-lead:clamp(16.5px,1.4vw,18.5px);
+  --text-body:16px;
+  --text-card:14.5px;
+  --text-tag:12.5px;
+  --text-foot:13px;
+
+  /* ── 간격 (§6 — v7에 흩어진 값을 단계로 줄였다, v8 새로) ── */
+  --sp-1:4px;  --sp-2:8px;  --sp-3:12px; --sp-4:16px; --sp-5:24px;
+  --sp-6:32px; --sp-7:48px; --sp-8:64px; --sp-9:88px; --sp-10:128px;
+  --max:1200px;
+  --gutter:24px;
+  --nav-h:68px;
+  --section-y:var(--sp-10);
+
+  /* ── 모양 (§7-1) ── */
+  --k:1;
+  --r-pill:999px;
+  --r-tag:6px;
+  --r-field:10px;
+  --r-product:4px;
+  --r-card:calc(24px * var(--k));
+  --r-panel:calc(28px * var(--k));
+  --r-tile:calc(18px * var(--k));
+  --r-case:calc(14px * var(--k));   /* 사례 카드 — 20 → 14 (BD-050 · DS-018) */
+  --r-win:calc(16px * var(--k));
+
+  /* ── 그림자 (§7-2) ── */
+  --e1:0 1px 2px rgba(20,20,43,.05);
+  --e2:0 1px 2px rgba(20,20,43,.06),0 14px 30px -16px rgba(20,20,43,.26);
+  --e3:0 2px 6px rgba(20,20,43,.07),0 30px 64px -22px rgba(20,20,43,.36);
+  --hi:inset 0 1px 0 rgba(255,255,255,.7);
+  --hi-dark:inset 0 1px 0 rgba(255,255,255,.09);
+  --shadow-primary:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(0,0,0,.14),0 1px 2px rgba(20,20,43,.2),0 8px 18px -8px rgba(70,64,222,.6);
+
+  /* ── 움직임 (§13) ── */
+  --spring:cubic-bezier(.34,1.32,.64,1);   /* 넘쳤다 돌아오는 곡선 — 히어로 장면에만 (D-028) */
+  --ease-out:cubic-bezier(.23,1,.32,1);     /* UI 상태 — 메뉴 · 회전 · 화살표 · 카드 · 누름 (D-028) */
+  --ease-in-out:cubic-bezier(.77,0,.175,1); /* 화면 위에서 모양이 바뀌는 이동 (D-028) */
+
+  --tap:44px;
+
+  /* ── 스킬 도구(styleguide.html · audit.html)가 읽는 별칭 — 값은 위 토큰을 따른다 ── */
+  --ink:var(--text);
+  --ink-secondary:var(--muted);
+  --ink-muted:var(--muted);
+  --bg-subtle:var(--bg);
+  --line-strong:var(--line-2);
+  --accent:var(--brand);
+}
+@supports (corner-shape: squircle){ :root{ --k:1.5 } }
+
+/* ── 바탕 규칙 ── */
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none !important}   /* 컴포넌트의 display 지정이 hidden 을 덮어쓰지 않게 */
+/* 가로 넘침을 페이지 전체에서 막는다 — clip 은 스크롤 상자를 만들지 않아 sticky 가 그대로 돈다 (BD-041) */
+html, body{overflow-x:clip}
+html{scroll-padding-top:84px; -webkit-text-size-adjust:100%}
+/* 아래에 떠 있는 쿠키 배너 · 데모 막대가 초점 받은 요소를 가리지 않게 (13 §5 2.4.11, BD-041) */
+html:has(body.has-cookie), html:has(#dock:not([hidden])){scroll-padding-bottom:170px}
+body{margin:0; background:var(--bg); color:var(--text); font-family:var(--font);
+  font-size:var(--text-body); line-height:1.65; word-break:keep-all; overflow-wrap:break-word;
+  -webkit-font-smoothing:antialiased}
+html:lang(en) body{word-break:normal}
+html:lang(ja) body, html:lang(zh-Hans) body{word-break:normal; line-break:strict}
+h1,h2,h3{text-wrap:balance; margin:0}
+img{max-width:100%; height:auto}
+a{color:inherit}
+.wrap{max-width:var(--max); margin:0 auto; padding-inline:max(var(--gutter), env(safe-area-inset-left,0px))}
+@media (max-width:640px){ :root{ --gutter:16px; --section-y:var(--sp-9) } }
+
+.kicker{font-family:var(--mono); font-size:var(--text-tag); font-weight:500; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--brand); margin:0 0 var(--sp-3)}
+
+/* 버튼 — 알약 (§9) */
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:48px;
+  padding:0 24px; border-radius:var(--r-pill); font-size:15px; font-weight:600; letter-spacing:-.01em;
+  text-decoration:none; border:0; cursor:pointer; white-space:nowrap;
+  transition:background-color .15s, color .15s, transform .16s var(--ease-out)}
+.btn:active{transform:scale(.97); transition-duration:.1s}
+.btn .arrow{transition:transform .2s var(--ease-out)}
+.btn:hover .arrow{transform:translateX(4px)}
+.btn-primary{background:var(--brand); color:#fff; box-shadow:var(--shadow-primary)}
+.btn-primary:hover{background:var(--brand-hover)}
+.btn-secondary{background:var(--surface); color:var(--text); box-shadow:0 0 0 1px var(--hair), var(--e1)}
+.btn-secondary:hover{background:#EEEEF6}
+.btn-ghost{background:rgba(255,255,255,.08); color:var(--on-dark); box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.btn-ghost:hover{background:rgba(255,255,255,.13)}
+.btn-sm{min-height:38px; padding:0 16px; font-size:14px}
+
+/* 포커스 — 밝은 바탕 --brand, 어두운 바탕 --brand-300 (v7의 대비 부족을 고친다, §15) */
+:focus-visible{outline:2px solid var(--brand); outline-offset:3px}
+/* 모서리가 없는 요소(글 링크 등)만 둥글게 — :where 로 특이도 0, 알약 버튼 · 카드의 모서리를 덮지 않는다 (BD-041) */
+:where(:focus-visible){border-radius:6px}
+.on-dark :focus-visible{outline-color:var(--brand-300)}
+
+.sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+.skip{position:absolute; left:16px; top:-60px; z-index:100; padding:10px 16px; border-radius:var(--r-pill);
+  background:var(--surface); color:var(--text); box-shadow:var(--e3); text-decoration:none; font-weight:600}
+.skip:focus{top:12px}
+
+/* 시안임을 화면에 명시한다 — 실제 서비스로 오인되면 안 된다 */
+.mockup-flag{position:fixed; left:12px; bottom:12px; z-index:99; padding:6px 12px; border-radius:999px;
+  background:var(--text); color:#fff; font-size:12px; letter-spacing:.02em}
+/* 대표 확인이 필요한 자리 — 시안에서만 보인다 */
+.todo{display:inline-block; padding:1px 8px; border-radius:var(--r-tag); background:#FFF4D6; color:#6B4E00;
+  font-size:12.5px; font-weight:600; vertical-align:middle}
+
+/* 움직임 줄이기 — 자리 이동 · 크기 변화는 끄고(전환 · 애니메이션 끝 상태로 바로), 투명도 · 색 전환은 0.15초로 남긴다.
+   「줄이기」는 「없애기」가 아니다 — 메뉴 · 창이 깜빡이듯 나타나지 않게 (D-028, 이전: 모든 전환 .01ms) */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-property:opacity, color, background-color, border-color, box-shadow, visibility !important;
+    transition-duration:.15s !important; transition-delay:0s !important;
+    animation-duration:.01ms !important; animation-iteration-count:1 !important}
+}

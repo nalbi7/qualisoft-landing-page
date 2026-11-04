@@ -1,0 +1,16 @@
+/* 404 — 시안 Docs/_design/mockups/404-2an.html (404 2안 2차 시안, 2026-10-29)의 규칙을
+   make_v8.py 원문(NF_CSS + 404-2an.html 의 page() 인자 글자) 그대로 옮겼다 (2026-11-02, BD-001). 모바일 메뉴 규칙은 layout.css 에 있다.
+   값은 tokens.css 변수로만 쓴다. 시안을 고치면 이 파일도 같이 고치고 parity.html 로 대조한다 */
+.nf__code{margin:0; font-weight:700; letter-spacing:-.04em; color:var(--brand)}
+.nf__en{margin:var(--sp-1) 0 0; color:var(--muted); font-size:var(--text-card)}
+.nf__l{margin:var(--sp-5) 0 var(--sp-5); color:var(--muted); max-width:46ch}
+.nf__acts{display:flex; gap:var(--sp-3); flex-wrap:wrap; margin-bottom:var(--sp-7)}
+.nf__sols{list-style:none; margin:0 0 var(--sp-5); padding:0; display:grid; grid-template-columns:repeat(3,1fr); gap:var(--sp-2)}
+.nf__sols a{display:flex; align-items:center; gap:10px; min-height:52px; padding:0 14px; border-radius:var(--r-tile); background:var(--surface); box-shadow:0 0 0 1px var(--hair), var(--e1); text-decoration:none; font-weight:600}
+.nf__sols a:hover{box-shadow:0 0 0 1px var(--hair), var(--e2)}
+.nf__move a{color:var(--brand); font-weight:650}
+.nf__movet{margin:0 0 var(--sp-3); font-size:var(--text-h2); font-weight:700; letter-spacing:-.03em}
+.muted-p{color:var(--muted); font-size:var(--text-card)} .muted-p a{color:var(--brand)}
+@media (max-width:1080px){ .nf__sols{grid-template-columns:1fr 1fr} }
+@media (max-width:640px){ .nf__sols{grid-template-columns:1fr} .nf__acts .btn{flex:1 1 100%} }
+body{background:var(--surface)} .nf2{padding-block:var(--sp-9); text-align:center; min-height:56vh} .nf2 .nf__code{font-size:clamp(96px,16vw,200px); line-height:.9} .nf2 h1{font-size:clamp(28px,3.4vw,44px); letter-spacing:-.035em; margin-top:var(--sp-4)} .nf2 .nf__l{margin-inline:auto} .nf2 .nf__acts{justify-content:center} .nf2 .nf__sols{max-width:840px; margin-inline:auto; text-align:left}

@@ -1,0 +1,11 @@
+---
+// 쿠키 동의 — 동의 전에는 분석 스크립트를 싣지 않는다 (R-17 · N-03 · 20-release-ops §18). 「동의」 · 「거부」를 같은 무게로
+import { useT } from '../i18n';
+import { lurl, ROUTES } from '../config/routes';
+const loc = Astro.currentLocale;
+const t = useT(loc);
+---
+<div class="cookie" id="cookie" role="region" aria-label={t('cookie.region')} hidden>
+  <p>{t('cookie.text')} <a href={lurl(ROUTES.privacy, loc)}>{t('cookie.privacy')}</a></p>
+  <div class="cookie__acts"><button class="btn btn-secondary btn-sm" type="button" data-consent="no">{t('cookie.deny')}</button><button class="btn btn-secondary btn-sm" type="button" data-consent="yes">{t('cookie.accept')}</button></div>
+</div>

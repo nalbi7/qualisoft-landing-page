@@ -1,0 +1,117 @@
+{
+  "order": 3,
+  "first": [
+    "en"
+  ],
+  "customer": "ems",
+  "industry": {
+    "ko": "의료기기 · 치과",
+    "en": "Medical devices · Dental",
+    "ja": "医療機器・歯科",
+    "zh-hans": "医疗器械 · 牙科"
+  },
+  "solutions": [
+    "customer-insights",
+    "dynamics-365-crm",
+    "power-bi-fabric"
+  ],
+  "products": [
+    "Dynamics 365 Sales",
+    "Dynamics 365 Customer Insights – Journeys",
+    "Power BI"
+  ],
+  "period": {
+    "ko": "2025.03 – 2026.12",
+    "en": "Mar 2025 – Dec 2026",
+    "ja": "2025.03 – 2026.12",
+    "zh-hans": "2025.03 – 2026.12"
+  },
+  "title": {
+    "ko": "스위스 본사의 Dynamics 365를\n아시아 · 중동 여러 나라에서 운영",
+    "en": "One Swiss headquarters system,\nrun across Asia-Pacific and IMEA",
+    "ja": "スイス本社の Dynamics 365 を\nアジア・中東の各国で運用",
+    "zh-hans": "瑞士总部的 Dynamics 365，\n在亚太与 IMEA 多国运营"
+  },
+  "sub": {
+    "ko": "EMS의 APAC-IMEA 지역 CRM 운영 파트너로 영업 · 마케팅 자동화 · 보고를 지원했습니다",
+    "en": "As EMS’s CRM agency for APAC-IMEA, we supported sales, marketing automation and reporting",
+    "ja": "EMS の APAC-IMEA 地域 CRM 運用パートナーとして、営業・マーケティング自動化・レポートを支援しました",
+    "zh-hans": "作为 EMS 亚太及 IMEA 地区的 CRM 运营伙伴，支持销售、营销自动化与报表"
+  },
+  "card": {
+    "task": {
+      "ko": "본사 CRM의 다국가 운영 지원",
+      "en": "Multi-country support for an HQ CRM",
+      "ja": "本社 CRM の多国展開運用支援",
+      "zh-hans": "总部 CRM 的多国运营支持"
+    },
+    "result": {
+      "ko": "한국에서 APAC · IMEA로 지원 확대",
+      "en": "Support grew from Korea to APAC and IMEA",
+      "ja": "韓国から APAC・IMEA へ支援を拡大",
+      "zh-hans": "支持范围从韩国扩展至亚太与 IMEA"
+    }
+  },
+  "description": {
+    "ko": "스위스 치과 장비 제조사 EMS가 본사에서 운영하는 Dynamics 365를 퀄리소프트가 APAC-IMEA 지역 CRM 파트너로서 영업 · 마케팅 저니 · 보고까지 지원한 사례입니다.",
+    "en": "How Qualisoft, as EMS’s CRM agency for APAC-IMEA, supported the Swiss dental equipment maker’s headquarters Dynamics 365 across sales, marketing journeys and reporting.",
+    "ja": "スイスの歯科機器メーカー EMS が本社で運用する Dynamics 365 を、クオリソフトが APAC-IMEA 地域の CRM パートナーとして営業・マーケティングジャーニー・レポートまで支援した事例です。",
+    "zh-hans": "Qualisoft 作为瑞士牙科设备制造商 EMS 在亚太及 IMEA 地区的 CRM 合作伙伴，支持其总部运营的 Dynamics 365，涵盖销售、营销旅程与报表。"
+  },
+  "challenge": [
+    {
+      "ko": "EMS는 치과 장비를 만드는 스위스 기업으로, 여러 나라가 본사의 Dynamics 365 하나로 영업과 마케팅을 함께 씁니다. 언어와 요구가 저마다 다른 아시아 · 중동 지역에서는 본사 시스템 안에서 각 나라의 요청을 맡아 줄 현지 파트너가 필요했습니다.",
+      "en": "EMS is a Swiss maker of dental equipment whose teams in many countries share a single Dynamics 365 for sales and marketing, run by headquarters. Across Asia and the Middle East, where languages and needs differ from country to country, it needed a local partner to handle each country’s requests inside the headquarters system.",
+      "ja": "EMS は歯科機器を製造するスイス企業で、各国が本社のひとつの Dynamics 365 で営業とマーケティングを共有しています。言語や要望が国ごとに異なるアジア・中東地域では、本社システムの中で各国の要望を引き受ける現地パートナーが必要でした。",
+      "zh-hans": "EMS 是生产牙科设备的瑞士企业，各国共用总部的同一套 Dynamics 365 开展销售与营销。在语言与需求各不相同的亚洲和中东地区，需要一家能在总部系统内承接各国需求的本地合作伙伴。"
+    }
+  ],
+  "work": [
+    {
+      "ko": "퀄리소프트는 EMS의 APAC-IMEA 지역 CRM 파트너로서 한국에서 시작해 지원 지역을 넓혀 왔습니다. 요청은 티켓으로 받고, 본사 · 각 지역과 정기적으로 소통합니다.",
+      "en": "As EMS’s CRM partner for APAC-IMEA, Qualisoft started in Korea and has steadily widened the regions it supports. Requests come in as tickets, and the team keeps in regular contact with headquarters and each region.",
+      "ja": "クオリソフトは EMS の APAC-IMEA 地域 CRM パートナーとして、韓国から始めて支援地域を広げてきました。依頼はチケットで受け付け、本社や各地域と定期的にやり取りしています。",
+      "zh-hans": "Qualisoft 作为 EMS 的 APAC-IMEA 地区 CRM 合作伙伴，从韩国起步并逐步扩大支持地区。需求通过工单受理，并与总部及各地区保持定期沟通。"
+    },
+    {
+      "ko": "마케팅에서는 Customer Insights로 고객 여정을 자동화하고, 영업 현황은 대시보드와 Power BI 보고서로 보이게 했습니다.",
+      "en": "In marketing, Customer Insights automates customer journeys, and sales performance is visible through dashboards and Power BI reports.",
+      "ja": "マーケティングでは Customer Insights で顧客ジャーニーを自動化し、営業状況はダッシュボードと Power BI レポートで見えるようにしました。",
+      "zh-hans": "在营销方面，通过 Customer Insights 实现客户旅程自动化；销售现况则通过仪表板与 Power BI 报表呈现。"
+    }
+  ],
+  "scope": [
+    {
+      "ko": "APAC-IMEA 지역 CRM 운영 지원",
+      "en": "APAC-IMEA regional CRM support",
+      "ja": "APAC-IMEA 地域の CRM 運用支援",
+      "zh-hans": "APAC-IMEA 地区 CRM 运营支持"
+    },
+    {
+      "ko": "Customer Insights 고객 여정 · 세그먼트",
+      "en": "Customer Insights journeys and segments",
+      "ja": "Customer Insights のジャーニー・セグメント",
+      "zh-hans": "Customer Insights 客户旅程与细分"
+    },
+    {
+      "ko": "나라별 마케팅 폼",
+      "en": "Marketing forms by country",
+      "ja": "国別のマーケティングフォーム",
+      "zh-hans": "各国营销表单"
+    },
+    {
+      "ko": "영업 현황 대시보드 · Power BI 보고서",
+      "en": "Sales dashboards and Power BI reports",
+      "ja": "営業状況ダッシュボード・Power BI レポート",
+      "zh-hans": "销售现况仪表板与 Power BI 报表"
+    }
+  ],
+  "result": [
+    {
+      "ko": "여러 나라의 서로 다른 요청이 하나의 본사 시스템 안에서 처리됩니다. 퀄리소프트는 지역에서 생긴 문제를 풀고, 본사가 결정할 일은 근거와 함께 전달합니다.",
+      "en": "Different requests from many countries are now handled inside the one headquarters system. Qualisoft resolves issues in the region and passes decisions that belong to headquarters along with the evidence behind them.",
+      "ja": "多くの国から寄せられる異なる要望が、ひとつの本社システムの中で処理されています。クオリソフトは地域で起きた問題を解決し、本社が判断すべきことは根拠とともに伝えています。",
+      "zh-hans": "来自多个国家的不同需求，如今都在同一套总部系统中处理。Qualisoft 解决地区内出现的问题，需要总部决定的事项则附上依据一并转交。"
+    }
+  ]
+}

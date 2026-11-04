@@ -1,0 +1,17 @@
+---
+// 관련 사례 — 이 솔루션을 대표 · 관련 솔루션으로 단 사례 기사 카드 (11-screen-spec 5-1 ⑩, BD-036). 0편이면 블록째 뺀다
+import type { CollectionEntry } from 'astro:content';
+import { casesFor } from '../../config/cases';
+import CaseCard from '../CaseCard.astro';
+import { useT } from '../../i18n';
+interface Props { sol: CollectionEntry<'solutions'> }
+const { sol } = Astro.props;
+const t = useT(Astro.currentLocale);
+const cases = (await casesFor(Astro.currentLocale)).filter((c) => (c.data.solutions as string[]).includes(sol.id));
+---
+{cases.length > 0 && (
+  <Fragment>
+    <h2 class="sp2__h2">{t('solution.cases.title')}</h2>
+    <div class="cases cases--sol">{cases.map((c) => <CaseCard c={c} />)}</div>
+  </Fragment>
+)}

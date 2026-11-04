@@ -1,0 +1,189 @@
+{
+  "order": 5,
+  "name": "Power Platform",
+  "icon": "/assets/ms/power-platform.svg",
+  "color": "var(--s5)",
+  "short": {
+    "ko": "표준에 없는 업무는 앱으로",
+    "en": "Apps for work that’s not out of the box",
+    "ja": "標準にない業務はアプリで",
+    "zh-hans": "标准功能之外的业务，用应用来实现"
+  },
+  "area": {
+    "ko": "업무 앱 및 자동화",
+    "en": "Business apps & automation",
+    "ja": "業務アプリ・自動化",
+    "zh-hans": "业务应用与自动化"
+  },
+  "art": "pp",
+  "hook": {
+    "ko": "표준에 없는 업무는 앱과 자동화로",
+    "en": "Apps and automation for what’s not out of the box",
+    "ja": "標準にない業務は、アプリと自動化で",
+    "zh-hans": "标准功能之外的业务，用应用与自动化补足"
+  },
+  "step": "Power Platform",
+  "headline": {
+    "ko": "표준에 없는 업무는\n앱으로",
+    "en": "Apps for work\nthat’s not out of the box",
+    "ja": "標準にない業務は\nアプリで",
+    "zh-hans": "标准功能之外的业务，\n用应用来实现"
+  },
+  "family": "Microsoft Power Platform",
+  "mark": "Power Platform",
+  "lead": {
+    "ko": "Power Apps로 현장·업무 앱을, Power Automate로 결재·알림 같은 반복 업무를, Power Pages로 고객·파트너용 웹 포털을 만듭니다. Copilot Studio로는 사내 데이터에 답하는 에이전트를 만듭니다. 모두 Dynamics 365와 같은 Dataverse 위에서 움직여 데이터와 권한을 한곳에서 관리합니다.",
+    "en": "Power Apps builds field and business apps, Power Automate handles repetitive work such as approvals and notifications, and Power Pages creates web portals for customers and partners. Copilot Studio builds agents that answer from your company data. Everything runs on the same Dataverse as Dynamics 365, so data and permissions are managed in one place.",
+    "ja": "Power Apps で現場・業務アプリを、Power Automate で決裁や通知などの繰り返し業務を、Power Pages で顧客・パートナー向けの Web ポータルを作ります。Copilot Studio では社内データに答えるエージェントを作ります。すべて Dynamics 365 と同じ Dataverse の上で動くため、データと権限を一か所で管理できます。",
+    "zh-hans": "用 Power Apps 构建现场与业务应用，用 Power Automate 自动化审批、通知等重复工作，用 Power Pages 为客户与合作伙伴搭建门户网站，再用 Copilot Studio 构建基于企业数据作答的智能体。它们都运行在与 Dynamics 365 相同的 Dataverse 上，数据与权限集中管理。"
+  },
+  "description": {
+    "ko": "Power Apps로 현장·업무 앱을, Power Automate로 결재·알림 같은 반복 업무를, Power Pages로 고객·파트너용 웹 포털을 만듭니다.",
+    "en": "Power Apps builds field and business apps, Power Automate handles repetitive work such as approvals and notifications, and Power Pages creates web portals for customers and partners.",
+    "ja": "Power Apps で現場・業務アプリを、Power Automate で決裁や通知などの繰り返し業務を、Power Pages で顧客・パートナー向けの Web ポータルを作ります。",
+    "zh-hans": "用 Power Apps 构建现场与业务应用，用 Power Automate 自动化审批、通知等重复工作，用 Power Pages 为客户与合作伙伴搭建门户网站。"
+  },
+  "official": "power-platform",
+  "features": [
+    {
+      "title": {
+        "ko": "업무 앱",
+        "en": "Business apps",
+        "ja": "業務アプリ",
+        "zh-hans": "业务应用"
+      },
+      "text": {
+        "ko": "모바일·태블릿에서 쓰는 현장 앱과 사내 업무 앱을 만듭니다.",
+        "en": "Build field apps for phones and tablets as well as internal business apps.",
+        "ja": "スマートフォン・タブレットで使う現場アプリと社内業務アプリを作ります。",
+        "zh-hans": "构建在手机、平板上使用的现场应用与内部业务应用。"
+      }
+    },
+    {
+      "title": {
+        "ko": "흐름과 승인",
+        "en": "Flows & approvals",
+        "ja": "フローと承認",
+        "zh-hans": "流程与审批"
+      },
+      "text": {
+        "ko": "결재·알림·데이터 전달을 클라우드 흐름으로 자동화하고 Teams·Outlook에서 승인합니다.",
+        "en": "Automate approvals, notifications and data hand-offs with cloud flows, and approve in Teams or Outlook.",
+        "ja": "決裁・通知・データ連携をクラウドフローで自動化し、Teams・Outlook で承認します。",
+        "zh-hans": "用云端流自动化审批、通知与数据传递，并在 Teams、Outlook 中审批。"
+      }
+    },
+    {
+      "title": {
+        "ko": "외부 포털",
+        "en": "External portals",
+        "ja": "外部ポータル",
+        "zh-hans": "外部门户"
+      },
+      "text": {
+        "ko": "고객·파트너가 로그인해 요청하고 조회하는 웹사이트를 만듭니다.",
+        "en": "Create websites where customers and partners sign in to submit and track requests.",
+        "ja": "顧客・パートナーがログインして依頼・照会できる Web サイトを作ります。",
+        "zh-hans": "搭建客户与合作伙伴可登录提交与查询请求的网站。"
+      }
+    },
+    {
+      "title": {
+        "ko": "에이전트",
+        "en": "Agents",
+        "ja": "エージェント",
+        "zh-hans": "智能体"
+      },
+      "text": {
+        "ko": "Copilot Studio로 사내 문서와 데이터에 답하는 에이전트를 만듭니다.",
+        "en": "Build agents with Copilot Studio that answer from company documents and data.",
+        "ja": "Copilot Studio で社内文書とデータに答えるエージェントを作ります。",
+        "zh-hans": "用 Copilot Studio 构建基于企业文档与数据作答的智能体。"
+      }
+    },
+    {
+      "title": {
+        "ko": "Dataverse",
+        "en": "Dataverse",
+        "ja": "Dataverse",
+        "zh-hans": "Dataverse"
+      },
+      "text": {
+        "ko": "앱과 흐름이 쓰는 데이터를 보안·감사 기능과 함께 한곳에 둡니다.",
+        "en": "Keep the data your apps and flows use in one place, with security and auditing.",
+        "ja": "アプリとフローが使うデータを、セキュリティ・監査機能とともに一か所に置きます。",
+        "zh-hans": "将应用与流程所用数据集中存放，并附带安全与审计功能。"
+      }
+    },
+    {
+      "title": {
+        "ko": "관리와 거버넌스",
+        "en": "Management & governance",
+        "ja": "管理とガバナンス",
+        "zh-hans": "管理与治理"
+      },
+      "text": {
+        "ko": "환경과 데이터 정책으로 누가 무엇을 만들고 쓰는지 관리합니다.",
+        "en": "Environments and data policies govern who builds and uses what.",
+        "ja": "環境とデータポリシーで、誰が何を作り使うかを管理します。",
+        "zh-hans": "通过环境与数据策略管理谁可以构建和使用什么。"
+      }
+    }
+  ],
+  "products": [
+    {
+      "name": "Power Apps",
+      "icon": "/assets/ms/power-apps.svg",
+      "path": "power-platform/products/power-apps"
+    },
+    {
+      "name": "Power Automate",
+      "icon": "/assets/ms/power-automate.svg",
+      "path": "power-platform/products/power-automate"
+    },
+    {
+      "name": "Power Pages",
+      "icon": "/assets/ms/power-pages.svg",
+      "path": "power-platform/products/power-pages"
+    },
+    {
+      "name": "Copilot Studio",
+      "icon": "/assets/ms/copilot-studio.svg",
+      "path": "copilot/products/copilot-studio"
+    },
+    {
+      "name": "Dataverse",
+      "icon": "/assets/ms/dataverse.svg",
+      "path": "power-platform"
+    }
+  ],
+  "customers": [
+    "ts"
+  ],
+  "we": [
+    {
+      "ko": "현장 앱(방문 일지·오프라인 지원) 개발",
+      "en": "Field apps (visit logs, offline support)",
+      "ja": "現場アプリ（訪問日誌・オフライン対応）の開発",
+      "zh-hans": "开发现场应用（拜访日志、离线支持）"
+    },
+    {
+      "ko": "파트너·고객 포털 구축",
+      "en": "Partner and customer portals",
+      "ja": "パートナー・顧客ポータルの構築",
+      "zh-hans": "搭建合作伙伴与客户门户"
+    },
+    {
+      "ko": "결재·알림 자동화와 Teams 연동",
+      "en": "Approval and notification automation with Teams",
+      "ja": "決裁・通知の自動化と Teams 連携",
+      "zh-hans": "审批与通知自动化及 Teams 集成"
+    },
+    {
+      "ko": "환경·보안·데이터 정책 등 거버넌스 설계",
+      "en": "Governance design: environments, security and data policies",
+      "ja": "環境・セキュリティ・データポリシーなどガバナンスの設計",
+      "zh-hans": "设计环境、安全与数据策略等治理体系"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "_note": "구 주소 → 새 주소 대응표 (Docs/19-seo-spec.md §6 · M-03). 404 페이지의 scripts/legacy-redirect.ts 가 읽는다. 열쇠는 사이트 기준 경로(BASE_PATH 를 뺀 것, 끝 슬래시 포함), 값은 사이트 기준 새 주소 — 스크립트가 BASE_PATH 를 붙인다. 쿼리로만 갈리는 구 주소는 「경로?쿼리」 그대로 적는다. 지금은 IA로 정한 한 줄뿐(/solutions/ 목록 페이지 없음, 14-IA §3) — 전체 구 주소 목록은 콘텐츠 인벤토리(DLV-02)를 넓혀 채운다, TODO(owner) 유은성",
+  "rules": {
+    "/solutions/": "/#products"
+  }
+}
