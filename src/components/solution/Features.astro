@@ -31,14 +31,14 @@ const pick = (sh: Shot) => {
   {s.features.map((f, i) => {
     const sh = shots[i];
     return (
-      <li><button type="button" class="acc" aria-expanded={i === 0 ? 'true' : 'false'} aria-controls={`acc-${i}`}>{tx(f.title, loc)}<span class="acc__plus" aria-hidden="true">+</span></button><div class="acc__body" id={`acc-${i}`} hidden={i !== 0}><p>{tx(f.text, loc)}</p>
+      <li><details class="acc__item" name="solution-features" open={i === 0}><summary class="acc">{tx(f.title, loc)}<span class="acc__plus" aria-hidden="true">+</span></summary><div class="acc__body"><p>{tx(f.text, loc)}</p>
         {sh && (
           <figure class="shot">
             <div class="shot__frame"><Image src={pick(sh)} alt={tx(sh.alt, loc)} widths={[640, 960, 1280]} sizes="(max-width: 1080px) calc(100vw - 32px), 680px" format="webp" quality={82} /></div>
             <figcaption>{t('solution.shot.source')} · <a href={learnPage(sh.page, loc)} target="_blank" rel="noopener">Microsoft Learn <NewWindow /></a> · © Microsoft</figcaption>
           </figure>
         )}
-      </div></li>
+      </div></details></li>
     );
   })}
 </ul>
