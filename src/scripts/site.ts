@@ -148,6 +148,14 @@ if (ck) {
   else if (c === null) show(true);
 }
 
+// 자주 묻는 질문 — 하나를 열면 같은 목록의 다른 것은 닫는다 (BD-084). <details name> 을 아는 브라우저는 이미 그렇게 하고, 이건 모르는 브라우저용이다
+document.querySelectorAll<HTMLDetailsElement>('.faq__i').forEach((d) => {
+  d.addEventListener('toggle', () => {
+    if (!d.open) return;
+    d.closest('.faq')?.querySelectorAll<HTMLDetailsElement>('.faq__i[open]').forEach((o) => { if (o !== d) o.open = false; });
+  });
+});
+
 // 클릭 이벤트 — 데모 · 카카오 · 전화 링크를 문서 한 곳에서 잡는다. 이름은 20-release-ops §14. 개인정보를 담지 않는다
 document.addEventListener('click', (e) => {
   const a = (e.target as Element).closest<HTMLElement>('[data-ev]');

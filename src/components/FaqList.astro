@@ -1,6 +1,7 @@
 ---
 // 자주 묻는 질문 항목 — 접힌 채로 질문(h3)만 보이고, 누르면 답이 펼쳐진다 (D-043, 이전 D-040 은 모두 펼침).
 // <details> 라 답은 처음부터 HTML 안에 있다 — 검색엔진 · AI 는 접혀 있어도 그대로 읽는다(누를 때 불러오는 글이 아니다). 스크립트 없이 열고 닫힌다.
+// 한 번에 하나만 열린다 — 다른 질문을 누르면 열려 있던 것은 닫힌다(사용자 지시 2026-11-04, BD-084). <details name> 이 브라우저에서 해 주고, 모르는 브라우저는 site.ts 가 같은 일을 한다
 // 모양은 솔루션 상세 「핵심 기능」의 「+」 줄과 같은 말씨 (faq.css). Faq.astro 가 감싼다
 import type { FaqItem } from '../config/faq';
 import { useT } from '../i18n';
@@ -13,7 +14,7 @@ const t = useT(Astro.currentLocale);
   {items.map((i) => {
     const L = i.ordered ? 'ol' : 'ul';
     return (
-      <details class="faq__i">
+      <details class="faq__i" name="faq">
         <summary class="faq__s"><h3 class="faq__q">{i.q}</h3><span class="faq__plus" aria-hidden="true">+</span></summary>
         <div class="faq__a">
           <p>{i.a}</p>
