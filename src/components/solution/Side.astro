@@ -1,5 +1,5 @@
 ---
-// 솔루션 상세 왼쪽 — 제품 색 판(붙어 있음) + 여섯 솔루션 이동 목록 (11-screen-spec 5-1 ③, 시안 solution-crm-2an.html sp2__side)
+// 솔루션 상세 왼쪽 — 제품 색 판 + 여섯 솔루션 이동 목록, 지나면 상단 선택 바로 전환 (11-screen-spec 5-1 ③, 시안 solution-crm-2an.html sp2__side)
 // 판의 큰 글자는 장식이라 화면 낭독에서 숨긴다 — 같은 이름을 h1 이 준다. 낱말이 여럿이면 판 안에 들게 줄인다 (solution.css 끝 보완)
 // Copilot 은 색이 그라데이션이라 --c 대신 sp2__panel--cop 로 칠한다
 import { getCollection, type CollectionEntry } from 'astro:content';
@@ -24,3 +24,10 @@ const s = sol.data;
     ))}
   </ul></nav>
 </aside>
+<nav class="solution-bar" aria-label={t('nav.solutions')} hidden>
+  <div class="wrap"><ul>
+    {sols.map((x) => (
+      <li><a href={lurl(ROUTES.solution(x.id as SolutionSlug), loc)} aria-current={x.id === sol.id ? 'page' : undefined}><img src={url(x.data.icon)} alt="" width="24" height="24"><span translate="no">{x.data.name}</span></a></li>
+    ))}
+  </ul></div>
+</nav>

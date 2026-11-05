@@ -3,10 +3,10 @@
 // (switchPnl3DIcon · ensurePnl3DWidget · applyV7ScrollSolutions, 2026-10-30 판)을 옮겼다. 원본과 다른 곳만 「사이트:」로 적는다.
 //  - 사이트: 솔루션 값(이름 · 한 줄 · 색 · 아이콘 · 주소)은 목록 버튼의 data-* 에서 읽는다 (원본은 PROD2_SOLUTIONS 고정 배열)
 //  - 사이트: three 는 CDN 이 아니라 패키지를 늦게 불러온다 — 영역이 가까워질 때 한 번. 동의 전 바깥 요청 0건 (16-tech-architecture §11)
-//  - 사이트: WebGL 이 없거나 움직임 줄이기 설정이면 3D 를 띄우지 않고 SVG 입체 그림(art3d)을 그대로 둔다
+//  - 사이트: 움직임 줄이기에서도 현재 3D 모델을 정지 렌더링한다. WebGL이 없을 때만 SVG로 대체한다.
 //  - 사이트: 판을 누르면 가는 곳은 판 안의 진짜 링크(#pnl-link)다 — 스크립트 클릭 대신 <a href> (19-seo-spec §4)
 //  - 사이트: 판이 화면 밖이면 3D 그리기를 멈춘다
-//  - 사이트: 3D 는 데스크톱(고정 트랙이 도는 폭)에서만. 그 아래는 2안 반응형 배치와 SVG 그림 (solutions-v7.css 끝)
+//  - 사이트: 움직이는 3D는 데스크톱에서만, 움직임 줄이기의 정지 3D는 모바일에서도 표시한다.
 import { buildSoftSolutionIcons } from './solution-icons-3d.js';
 
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -32,7 +32,7 @@ function switchPnl3DIcon(nextIdx) {
     grp.position.y = 0;
   });
   // 사이트: 판이 바뀌면 약 4초만 움직이고 멈춘다 (WCAG 2.2.2, D-028 — 원본은 무한 반복)
-  pnl3D.liveUntil = performance.now() + 4000;
+  pnl3D.liveUntil = reduce ? 0 : performance.now() + 4000;
   pnl3D.kick?.();
 }
 
@@ -95,6 +95,7 @@ function ensurePnl3DWidget(THREE, activeIdx) {
 
   // 사이트: 커서 따라 기울기는 판 위에서만 — 판을 벗어나면 제자리로 (D-028, 원본은 영역 전체)
   pnl.addEventListener('pointermove', (e) => {
+    if (reduce) return;
     const r = pnl.getBoundingClientRect();
     if (r.width > 0 && r.height > 0) {
       pnl3D.targetPointerX = Math.max(-0.55, Math.min(0.55, ((e.clientX - r.left) / r.width - 0.5) * 0.55));
@@ -102,13 +103,14 @@ function ensurePnl3DWidget(THREE, activeIdx) {
       pnl3D.kick?.();
     }
   }, { passive: true });
-  pnl.addEventListener('pointerleave', () => { pnl3D.targetPointerX = 0; pnl3D.targetPointerY = 0; pnl3D.kick?.(); });
+  pnl.addEventListener('pointerleave', () => { if (reduce) return; pnl3D.targetPointerX = 0; pnl3D.targetPointerY = 0; pnl3D.kick?.(); });
   addEventListener('resize', () => {
     const r = layer.getBoundingClientRect();
     if (r.width > 0 && r.height > 0) {
       camera.aspect = r.width / r.height;
       camera.updateProjectionMatrix();
       renderer.setSize(r.width, r.height);
+      if (reduce) renderer.render(scene, camera);
     }
   });
 
@@ -140,7 +142,10 @@ function ensurePnl3DWidget(THREE, activeIdx) {
     const settled = amp === 0 && Math.abs(pnl3D.targetPointerX - pnl3D.pointerX) < 1e-3 && Math.abs(pnl3D.targetPointerY - pnl3D.pointerY) < 1e-3 && Math.abs(pnl3D.offset) < 1e-3;
     if (settled) { cancelAnimationFrame(pnl3D.rafId); pnl3D.rafId = 0; }
   };
-  const start = () => { if (!pnl3D.rafId && pnl3D.visible) { pnl3D.lastTime = performance.now(); pnl3D.rafId = requestAnimationFrame(tick); } };
+  const start = () => {
+    if (reduce) { renderer.render(scene, camera); return; }
+    if (!pnl3D.rafId && pnl3D.visible) { pnl3D.lastTime = performance.now(); pnl3D.rafId = requestAnimationFrame(tick); }
+  };
   pnl3D.kick = start;
   // 사이트: 판이 화면 밖이면 그리기를 멈춘다
   new IntersectionObserver(([en]) => { pnl3D.visible = en.isIntersecting; if (pnl3D.visible) start(); }).observe(pnl);
@@ -317,10 +322,10 @@ if (prodSec && plist && pnl) {
   setSol(0);
   solScroll();
 
-  // 3D — 영역이 가까워지면 three 를 한 번 불러온다. WebGL 이 없거나 움직임 줄이기면 SVG 그림을 둔다
+  // 3D — 움직임 줄이기면 같은 모델을 한 프레임만 그린다(모바일 포함). WebGL이 없으면 SVG를 둔다.
   const canGL = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch { return false; } })();
-  // 사이트: 3D 는 고정 트랙이 도는 데스크톱에서만 — 휴대폰에서는 124KB(압축) 묶음을 받지 않고 SVG 그림을 둔다 (16-tech-architecture §10 모바일 기준)
-  if (!reduce && canGL && stickyMQ.matches) {
+  // 움직이는 모델은 데스크톱에서만 로드한다. 정지 모델은 움직임 줄이기 설정일 때 화면 폭과 관계없이 로드한다.
+  if (canGL && (reduce || stickyMQ.matches)) {
     const io = new IntersectionObserver(([en]) => {
       if (!en.isIntersecting) return;
       io.disconnect();
