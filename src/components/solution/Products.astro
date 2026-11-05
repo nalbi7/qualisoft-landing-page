@@ -10,7 +10,7 @@ const s = Astro.props.sol.data;
 const loc = Astro.currentLocale;
 const t = useT(loc);
 ---
-<h2 class="sp2__h2">{t('solution.products.title')}</h2>
+<h2 class="sp2__h2 sp2__h2--products">{t('solution.products.title')}</h2>
 <div class="pcards" data-parity="sol-products">
   {s.products.map((p) => (
     <a class="pcard" href={msUrl(p.path, loc)} target="_blank" rel="noopener"><img src={url(p.icon)} alt="" width="48" height="48"><b>{p.name}</b><span>{t('solution.products.link')} <NewWindow /></span></a>
