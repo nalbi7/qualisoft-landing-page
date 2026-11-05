@@ -58,7 +58,7 @@ html[data-theme="dark"] .hero2::before{opacity:1}
 html[data-theme="dark"] .pnl, html[data-theme="dark"] #products .pnl{
   background:var(--pc, var(--s1)); color:#14142B; overflow:visible;
   box-shadow:inset 0 0 0 1px color-mix(in oklab, var(--pc, var(--s1)) 55%, white), inset 0 0 56px -6px color-mix(in oklab, var(--pc, var(--s1)) 45%, white)}
-html[data-theme="dark"] #products .pnl__l{color:#14142B}
+html[data-theme="dark"] #products :is(.pnl__l, .pnl__more){color:#14142B}
 html[data-theme="dark"] #products .pnl.pnl--cop{background:#B69CFF !important;
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.5), inset 0 0 56px -6px rgba(255,255,255,.45)}
 html[data-theme="dark"] #products .pnl::before{background:var(--s5-grad)}

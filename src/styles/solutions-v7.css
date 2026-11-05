@@ -109,6 +109,39 @@
   opacity: 0.88;
 }
 
+#products .pnl__more {
+  position: relative;
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--text, #14142b);
+  opacity: 0.78;
+  transition: opacity 0.2s ease;
+}
+
+#products .pnl__arrow {
+  display: inline-block;
+  transition: transform 0.2s var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #products .pnl:hover .pnl__more {
+    opacity: 1;
+  }
+  #products .pnl:hover .pnl__arrow {
+    transform: translateX(3px);
+  }
+}
+
 @media (min-width: 900px) and (min-height: 600px) {
   #products.qlab-v7-scroll .prod2 {
     position: sticky;
@@ -296,7 +329,7 @@
 #products .pnl::before{content:""; position:absolute; inset:0; border-radius:inherit; background:var(--s5-grad); opacity:0; transition:opacity .45s ease; pointer-events:none}
 #products .pnl.pnl--cop{background:color-mix(in oklab, #B69CFF 55%, white) !important}
 #products .pnl.pnl--cop::before{opacity:1}
-@media (prefers-reduced-motion:reduce){ #products .pnl, #products .pnl::before{transition:none} }
+@media (prefers-reduced-motion:reduce){ #products .pnl, #products .pnl::before, #products .pnl__more, #products .pnl__arrow{transition:none} }
 
 /* 고정 트랙이 없는 폭(900px 아래 또는 낮은 창) — 판을 목록 아래가 아니라 오른쪽에 (BD-025).
    제목 · 안내는 두 칸을 가로지르고, 목록(왼쪽)과 판(오른쪽)을 나란히 둔다. 판 · 이름 글자를 줄여 좁은 폭에 맞춘다 */
@@ -313,6 +346,7 @@
   #products .pnl__ic { top: var(--sp-4); left: var(--sp-4); width: 40px; height: 40px; }
   #products .pnl__n { font-size: clamp(18px, 4.6vw, 28px); }
   #products .pnl__l { font-size: 12.5px; line-height: 1.4; }
+  #products .pnl__more { font-size: 12px; margin-top: 2px; }
   #products .pnl.qlab-products-3d .pnl__art, #products .pnl__art { width: 64%; top: 10%; }
   #products .plist { gap: 2px; }
   #products .prow { min-height: 42px; padding: 6px 4px; gap: 8px; }

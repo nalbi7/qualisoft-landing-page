@@ -36,6 +36,7 @@ const href = (id: string) => lurl(ROUTES.solution(id as SolutionSlug), loc);
       <div class="pnl__art" aria-hidden="true" set:html={art} />
       <img class="pnl__ic" id="pnl-ic" src={url(first.data.icon)} alt="" width="88" height="88">
       <b class="pnl__n" id="pnl-n" translate="no">{first.data.name}</b><span class="pnl__l" id="pnl-l">{tx(first.data.short, loc)}</span>
+      <span class="pnl__more" aria-hidden="true">{t('home.products.more')} <span class="pnl__arrow">→</span></span>
       <a class="pnl__link" id="pnl-link" href={href(first.id)} data-label={t('home.products.panel_link')} aria-label={`${first.data.name} — ${t('home.products.panel_link')}`}></a>
     </div>
   </div>
