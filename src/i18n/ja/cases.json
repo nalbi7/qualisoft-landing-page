@@ -31,6 +31,8 @@
   "ind.public": "公共・非営利",
   "customers.case.read": "詳しく見る",
   "customers.case.badge": "詳細",
+  "customers.more.show": "もっと見る",
+  "customers.more.hide": "閉じる",
   "customers.scope.more": "ほか{n}件",
   "customers.list.title": "導入事例",
   "customers.filter.industry": "業種",

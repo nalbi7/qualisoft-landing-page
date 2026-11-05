@@ -31,6 +31,8 @@
   "ind.public": "Public & nonprofit",
   "customers.case.read": "View details",
   "customers.case.badge": "Details",
+  "customers.more.show": "Show more",
+  "customers.more.hide": "Show less",
   "customers.scope.more": "+{n} more",
   "customers.list.title": "Implementations",
   "customers.filter.industry": "Industry",

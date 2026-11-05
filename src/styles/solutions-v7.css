@@ -316,7 +316,6 @@
   #products .pnl.qlab-products-3d .pnl__art, #products .pnl__art { width: 64%; top: 10%; }
   #products .plist { gap: 2px; }
   #products .prow { min-height: 42px; padding: 6px 4px; gap: 8px; }
-  #products .prow b { font-size: clamp(15px, 4.2vw, 17px); }
-  #products .prow[aria-current="true"] b { font-size: clamp(17px, 4.8vw, 19px) !important; }  /* 원본이 !important 라 같이 */
+  #products .prow b, #products .prow[aria-current="true"] b { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:clamp(12px, 3.2vw, 14px) !important; }
   #products .prow .pi { width: 20px; height: 20px; }
 }

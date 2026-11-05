@@ -31,6 +31,8 @@
   "ind.public": "공공 · 비영리",
   "customers.case.read": "자세히 보기",
   "customers.case.badge": "상세",
+  "customers.more.show": "더 보기",
+  "customers.more.hide": "접기",
   "customers.scope.more": "외 {n}개",
   "customers.list.title": "구축 사례",
   "customers.filter.industry": "산업",

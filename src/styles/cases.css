@@ -47,6 +47,9 @@ body{background:var(--surface)}
    기사가 있으면 카드 전체가 링크 — 「기사」 표시 · 아래 「사례 기사 읽기 →」 · 올림 */
 .scards{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--sp-4)}
 .scards > li{display:flex; scroll-margin-top:calc(var(--nav-h) + 24px)}
+.scards > li[hidden], .scards__controls[hidden]{display:none}
+.scards__controls{display:flex; justify-content:center; margin-top:var(--sp-6)}
+.scards__toggle{min-height:44px; padding:0 24px; border:1px solid var(--line); border-radius:var(--r-pill); background:var(--surface); color:var(--text); font:inherit; font-weight:600; cursor:pointer}
 .scard{flex:1; min-width:0; display:flex; flex-direction:column; gap:var(--sp-3); padding:var(--sp-5); border-radius:var(--r-case); background:var(--surface); box-shadow:0 0 0 1px var(--line); color:var(--text)}
 .scards > li:target .scard{box-shadow:0 0 0 2px var(--brand)}
 .scard--story{text-decoration:none; transition:transform .2s var(--ease-out), box-shadow .2s ease}
@@ -67,7 +70,12 @@ body{background:var(--surface)}
 .scard__go span{display:inline-block; transition:transform .2s var(--ease-out)}
 @media (hover:hover) and (pointer:fine){ .scard--story:hover .scard__go span{transform:translateX(4px)} }
 @media (max-width:1080px){ .scards{grid-template-columns:repeat(2,minmax(0,1fr))} }
-@media (max-width:640px){ .scards{grid-template-columns:1fr} }
+@media (max-width:640px){
+  .scards{grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px}
+  .scard{padding:14px; gap:10px} .scard__h{align-items:flex-start; flex-direction:column; gap:8px}
+  .scard__logo{width:64px; height:28px} .scard__t{font-size:15px; overflow-wrap:anywhere} .scard__tags{gap:4px}
+  .scard__p{font-size:12px; overflow-wrap:anywhere} .scard__l{font-size:13px; line-height:1.45; overflow-wrap:anywhere} .scard__go{font-size:13px}
+}
 /* 함께한 기업 — 산업별로 묶는다: 왼쪽 산업 이름, 오른쪽 로고 (D-029, 구 사이트 「Construction Case」) */
 .cogroups{display:grid; margin-bottom:var(--sp-5); box-shadow:0 -1px 0 var(--line)}
 .cogroup{display:grid; grid-template-columns:200px minmax(0,1fr); gap:var(--sp-5); align-items:center; padding-block:var(--sp-5); box-shadow:0 1px 0 var(--line)}

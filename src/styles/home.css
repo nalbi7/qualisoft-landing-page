@@ -91,7 +91,7 @@ body.has-cookie .dock{bottom:110px}
   .hero2{padding-block:var(--sp-6) var(--sp-8)} .hero__acts .btn{width:100%}
   .prow b{font-size:17px} .prow{min-height:56px}
   .pnl{display:none}
-  .dock{left:12px; right:12px; transform:none; justify-content:space-between} .dock__t,.dock__k,.dock .pi{display:none} .dock .btn{flex:1}
+  .dock{left:50%; right:auto; transform:translateX(-50%); width:max-content; max-width:calc(100% - 24px); padding:8px; justify-content:center} .dock__t,.dock__k,.dock .pi{display:none} .dock .btn{flex:none; max-width:min(240px, 100%)}
   .float{--float-lift:64px}
 }
 /* 소식 썸네일 — 받아 둔 그림을 판 가득, 출처 표시는 그 위 (BD-010) */
@@ -184,11 +184,19 @@ body.has-cookie .dock{bottom:110px}
 /* 정지 버튼을 누른 뒤에도 마우스 · 초점이 버튼에 남는다 — 멈춤 조건(올림 · 초점)은 로고 칸에만 걸어, 재생을 누르면 곧바로 흐른다 (BD-050) */
 .indcols.paused .indcol__track, .indcols__grid:hover .indcol__track, .indcols__grid:focus-within .indcol__track{animation-play-state:paused}
 .indcols__pause{justify-self:end; margin-top:var(--sp-3)}
+.indcols__mobile{display:none}
 @media (max-width:1080px){ .indcols__grid{grid-template-columns:repeat(3,minmax(0,1fr)); row-gap:var(--sp-6)} }
-@media (max-width:640px){ .indcols__grid{grid-template-columns:repeat(2,minmax(0,1fr))} .indcol__view{height:180px} .indcol li{height:60px} .indcol img{max-height:26px} }
+@media (max-width:640px){
+  .indcols__grid{display:none} .indcols__mobile{display:block; overflow:hidden; width:100%; mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  .indcols__mobile-track{display:flex; width:max-content; animation:ind-mobile 120s linear infinite}
+  .indcols__mobile ul{display:flex; flex:none} .indcols__mobile li{width:140px; height:60px} .indcols__mobile img{max-height:26px}
+  .indcols.paused .indcols__mobile-track, .indcols__mobile:hover .indcols__mobile-track{animation-play-state:paused}
+}
+@keyframes ind-mobile{to{transform:translateX(-50%)}}
 /* 움직임 줄이기 — 멈춘 채 칸마다 로고를 모두 보인다(복제 묶음은 숨김) */
 @media (prefers-reduced-motion:reduce){
   .indcol__view{height:auto; mask-image:none; -webkit-mask-image:none} .indcol__track{animation:none} .indcol ul[aria-hidden]{display:none} .indcols__pause{display:none}
+  .indcols__mobile{overflow-x:auto; mask-image:none} .indcols__mobile-track{animation:none}
 }
 /* 고객 사례 영역 등장 — 화면에 들어올 때 0.7초에 걸쳐 10px 위로 · 서서히 (BD-044). 클래스는 home.ts 가 붙인다 */
 #cases.rise{opacity:0; transform:translateY(10px); transition:opacity .7s var(--ease-out), transform .7s var(--ease-out)}

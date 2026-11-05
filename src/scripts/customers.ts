@@ -7,19 +7,29 @@
     const pills = [...bar.querySelectorAll<HTMLButtonElement>('.pill')];
     const count = document.getElementById('cfilter-n');
     const empty = document.getElementById('cfilter-empty');
+    const controls = document.querySelector<HTMLElement>('.scards__controls');
+    const toggle = document.querySelector<HTMLButtonElement>('.scards__toggle');
+    let expanded = false;
     const state: Record<string, string> = { ind: '', sol: '' };
     const has = (f: string, v: string) => pills.some((p) => p.dataset.f === f && p.dataset.v === v);
     const q = new URLSearchParams(location.search);
     for (const f of ['ind', 'sol']) { const v = q.get(f) ?? ''; if (v && has(f, v)) state[f] = v; }
+    const matches = (li: HTMLElement) => (!state.ind || li.dataset.ind === state.ind) && (!state.sol || (li.dataset.sol ?? '').split(' ').includes(state.sol));
+    const expandIfOnlyExtra = () => { if ((state.ind || state.sol) && !items.some((li) => li.dataset.story === 'true' && matches(li)) && items.some(matches)) expanded = true; };
+    expandIfOnlyExtra();
 
     const apply = (save: boolean, keepHash = false) => {
       pills.forEach((p) => p.setAttribute('aria-pressed', String(state[p.dataset.f ?? ''] === (p.dataset.v ?? ''))));
-      let n = 0;
+      let n = 0, extra = 0;
       items.forEach((li) => {
         const ok = (!state.ind || li.dataset.ind === state.ind) && (!state.sol || (li.dataset.sol ?? '').split(' ').includes(state.sol));
-        li.hidden = !ok;
+        const isExtra = li.dataset.story !== 'true';
+        li.hidden = !ok || (isExtra && !expanded);
         if (ok) n++;
+        if (ok && isExtra) extra++;
       });
+      if (controls) controls.hidden = extra === 0;
+      if (toggle) { toggle.setAttribute('aria-expanded', String(expanded)); toggle.textContent = expanded ? toggle.dataset.less ?? '' : toggle.dataset.more ?? ''; }
       if (count) count.textContent = (count.dataset.tpl ?? '{n}').replace('{n}', String(n));
       if (empty) empty.hidden = n > 0;
       if (save) {
@@ -29,7 +39,12 @@
         history.replaceState(null, '', u);
       }
     };
-    pills.forEach((p) => p.addEventListener('click', () => { state[p.dataset.f ?? ''] = p.dataset.v ?? ''; apply(true); }));
+    pills.forEach((p) => p.addEventListener('click', () => {
+      state[p.dataset.f ?? ''] = p.dataset.v ?? '';
+      expandIfOnlyExtra();
+      apply(true);
+    }));
+    toggle?.addEventListener('click', () => { expanded = !expanded; apply(false); });
     document.querySelector('[data-reset]')?.addEventListener('click', () => { state.ind = state.sol = ''; apply(true); });
 
     // 「함께한 기업」 로고나 주소의 #s-<로고 id> 로 왔는데 그 카드가 필터에 가려 있으면 필터를 풀고 보인다
@@ -37,6 +52,7 @@
       const li = location.hash.length > 1 ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
       if (!li || !li.hidden) return;
       state.ind = state.sol = '';
+      expanded = true;
       apply(true, true);
       li.scrollIntoView({ block: 'start' });
     };

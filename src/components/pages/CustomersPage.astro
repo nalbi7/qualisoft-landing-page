@@ -90,12 +90,13 @@ const hrefOf = (id: string) => {
           </Fragment>
         );
         return (
-          <li id={`s-${r.id}`} data-todo={r.pending} data-ind={r.logo.ind} data-sol={r.sols.join(' ')}>
+          <li id={`s-${r.id}`} data-todo={r.pending} data-ind={r.logo.ind} data-sol={r.sols.join(' ')} data-story={r.href ? 'true' : 'false'}>
             {r.href ? <a class="scard scard--story" href={r.href}>{body}</a> : <div class="scard">{body}</div>}
           </li>
         );
       })}
     </ul>
+    <div class="scards__controls" hidden><button type="button" class="scards__toggle" aria-expanded="false" data-more={t('customers.more.show')} data-less={t('customers.more.hide')}>{t('customers.more.show')}</button></div>
     <p class="cfilter__empty" id="cfilter-empty" hidden>{t('customers.filter.empty')} <button type="button" class="cfilter__reset" data-reset>{t('customers.filter.reset')}</button></p>
   </section>
   <section class="sec" id="companies" aria-labelledby="co-h">

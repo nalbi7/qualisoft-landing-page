@@ -20,14 +20,14 @@ const s = sol.data;
   </div>
   <nav class="sp2__nav" aria-label={t('nav.solutions')}><ul>
     {sols.map((x) => (
-      <li><a href={lurl(ROUTES.solution(x.id as SolutionSlug), loc)} aria-current={x.id === sol.id ? 'page' : undefined}><img class="pi" src={url(x.data.icon)} alt="" width="24" height="24"><span translate="no">{x.data.name}</span><span class="cur" aria-hidden="true">←</span></a></li>
+      <li class:list={[{ 'is-current': x.id === sol.id }]}><a href={lurl(ROUTES.solution(x.id as SolutionSlug), loc)} aria-current={x.id === sol.id ? 'page' : undefined}><img class="pi" src={url(x.data.icon)} alt="" width="24" height="24"><span translate="no">{x.data.name}</span><span class="cur" aria-hidden="true">←</span></a></li>
     ))}
   </ul></nav>
 </aside>
 <nav class="solution-bar" aria-label={t('nav.solutions')} hidden>
   <div class="wrap"><ul>
     {sols.map((x) => (
-      <li><a href={lurl(ROUTES.solution(x.id as SolutionSlug), loc)} aria-current={x.id === sol.id ? 'page' : undefined}><img src={url(x.data.icon)} alt="" width="24" height="24"><span translate="no">{x.data.name}</span></a></li>
+      <li class:list={[{ 'is-current': x.id === sol.id }]}><a href={lurl(ROUTES.solution(x.id as SolutionSlug), loc)} aria-current={x.id === sol.id ? 'page' : undefined}><img src={url(x.data.icon)} alt="" width="24" height="24"><span translate="no">{x.data.name}</span></a></li>
     ))}
   </ul></div>
 </nav>

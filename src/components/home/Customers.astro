@@ -27,6 +27,11 @@ const cases = (await casesFor(loc)).slice(0, 3);
           </div>
         ))}
       </div>
+      <div class="indcols__mobile indcol">
+        <div class="indcols__mobile-track">
+          {[false, true].map((duplicate) => <ul aria-hidden={duplicate ? 'true' : undefined}>{logosByIndustry().flatMap((g) => g.logos).map((l) => <li><img src={logoSrc(l)} width={l.w} height={l.h} alt={duplicate ? '' : logoName(l, loc)} class:list={{ 'on-dark': l.onDark }} loading="lazy"></li>)}</ul>)}
+        </div>
+      </div>
       <button class="icon-btn indcols__pause" type="button" data-pause="logos-home" aria-label={t('home.cases.logos_pause')} data-label-pause={t('home.cases.logos_pause')} data-label-play={t('home.cases.logos_play')}>❚❚</button>
     </div>
   </div>
