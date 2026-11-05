@@ -55,6 +55,9 @@ jobs:
       - name: 타입 검사
         run: npx astro check
 
+      - name: 국가별 언어 이동 테스트
+        run: node scripts/test-country-language.mjs
+
       - name: 빌드 · 빌드 뒤 검사
         shell: bash
         env:

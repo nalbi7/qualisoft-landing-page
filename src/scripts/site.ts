@@ -1,6 +1,7 @@
 // 모든 페이지의 공통 동작 — 시안 components.js 와 모바일 메뉴 스크립트를 옮겼다 (BD-001).
 // 스크립트가 없어도 본문 · 링크 · 데모 버튼은 그대로 동작한다. 떠 있는 창 · 배너 · 분석만 빠진다 (16-tech-architecture §4)
 const $ = <T extends Element = HTMLElement>(s: string) => document.querySelector<T>(s);
+import { countryLanguageRedirect } from './country-language';
 
 // 브라우저 저장소 — 사생활 보호 모드처럼 못 쓰는 환경에서도 페이지는 그대로 보인다
 const store = {
@@ -133,7 +134,8 @@ document.querySelectorAll<HTMLElement>('[data-lang-choice]').forEach((a) => a.ad
 // 첫 방문 배너 — 한국어 페이지에만 있다. 브라우저 언어 목록에서 처음 맞는 언어로, 한국어면 띄우지 않는다.
 // 번체 중국어(zh-TW · zh-HK · zh-MO · zh-Hant)와 그 밖의 외국어는 영어로 본다. 그 언어가 꺼져 있어도 영어 (IA §9 표)
 const bar = $('#langbar');
-if (bar && !store.get('lang-choice')) {
+async function suggestLanguage() {
+  if (!bar || await countryLanguageRedirect(bar) || store.get('lang-choice')) return;
   const has = (c: string) => !!bar.querySelector(`[data-for="${c}"]`);
   const want = (() => {
     for (const raw of navigator.languages ?? [navigator.language]) {
@@ -154,6 +156,7 @@ if (bar && !store.get('lang-choice')) {
     row.querySelector('[data-lang-close]')?.addEventListener('click', () => { store.set('lang-choice', 'ko'); bar.hidden = true; });
   }
 }
+void suggestLanguage();
 
 // 로고 띠 정지 · 재생 — 글자는 버튼의 data-label-play / data-label-pause 에서
 document.querySelectorAll<HTMLButtonElement>('[data-pause]').forEach((b) => {
