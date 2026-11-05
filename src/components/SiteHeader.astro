@@ -76,7 +76,7 @@ const cur = LOCALES.find((l) => l.code === loc) ?? LOCALES[0];
       {multiLang && (
         <dialog class="langdlg" id="lang-dlg" aria-labelledby="lang-dlg-h">
           <span class="langdlg__grip" aria-hidden="true"></span>
-          <div class="langdlg__head"><b id="lang-dlg-h"><Fragment set:html={globe} /><span lang="en">Language</span></b><button class="icon-btn" id="lang-dlg-x" type="button" aria-label={t('common.close')}>✕</button></div>
+          <div class="langdlg__head"><b id="lang-dlg-h"><Fragment set:html={globe} /><span lang="en">Language</span></b></div>
           <ul>{LOCALES.map((l) => <li><a href={lurl(page, l.code)} hreflang={l.hreflang} lang={l.lang} data-lang-choice={l.code} aria-current={l.code === cur.code ? 'true' : undefined}><span>{l.label}</span></a></li>)}</ul>
         </dialog>
       )}

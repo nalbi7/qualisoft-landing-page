@@ -33,10 +33,11 @@ html[data-theme="dark"]{
   --glow:0 0 0 1px rgba(140,135,255,.2), 0 0 36px -10px rgba(70,64,222,.3);   /* 다크 테크의 「은은한 빛」 — 카드 올림 · 상담 띠 */
 }
 
-/* 버튼 — 바탕은 원래 보라(#4640DE)로 둔다. 데모 버튼의 흰 원 속 화살표도 */
+/* 버튼 — 바탕은 원래 보라(#4640DE)로 둔다. 데모 버튼의 흰 원 속 화살표도. 보조 버튼은 호버 시 색상 변환 없음 (BD-090) */
 html[data-theme="dark"] .btn-primary{background:#4640DE}
 html[data-theme="dark"] .btn-primary:hover{background:#3631C4}
 html[data-theme="dark"] .btn-go .go{color:#4640DE}
+html[data-theme="dark"] .btn-secondary:hover{background:var(--surface); color:var(--text)}
 
 /* 떠 있는 면 — 흰 유리를 어두운 유리로 */
 html[data-theme="dark"] .nav{background:rgba(10,10,10,.9)}

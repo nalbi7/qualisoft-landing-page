@@ -57,14 +57,75 @@ toggler($('#dd-btn'), $('#dd-menu'), false, 'menu');
 toggler($('#support-btn'), $('#support-panel'), true, 'dialog');
 toggler($('#mnav-btn'), $('#mnav'), true, 'sheet');
 toggler($('#lang-btn'), $('#lang-menu'), false, 'menu');
-// 모바일 메뉴의 언어 — 화면 가운데 창(<dialog>)으로 고른다. 바깥을 누르거나 Esc · ✕ 로 닫는다 (BD-026)
+// 모바일 메뉴의 언어 — 화면 아래 바텀 시트(<dialog>)로 고른다. 바깥 터치 · 상단 그립 터치 · 아래로 스와이프 · Esc로 닫는다 (BD-026 · BD-091)
 const langDlg = $<HTMLDialogElement>('#lang-dlg');
 const mlangBtn = $('#mlang-btn');
+const closeLang = () => {
+  if (!langDlg?.open) return;
+  langDlg.close();
+  langDlg.style.transform = '';
+  langDlg.style.transition = '';
+  mlangBtn?.setAttribute('aria-expanded', 'false');
+};
 mlangBtn?.addEventListener('click', () => { langDlg?.showModal(); mlangBtn.setAttribute('aria-expanded', 'true'); });
 langDlg?.addEventListener('close', () => mlangBtn?.setAttribute('aria-expanded', 'false'));
-const closeLang = () => { langDlg?.close(); mlangBtn?.setAttribute('aria-expanded', 'false'); };
-$('#lang-dlg-x')?.addEventListener('click', closeLang);
-langDlg?.addEventListener('click', (e) => { if (e.target === langDlg) closeLang(); });
+$('#mnav-btn')?.addEventListener('click', () => { if (langDlg?.open) closeLang(); });
+
+// 바깥(Backdrop) 영역 터치/클릭 판정
+langDlg?.addEventListener('click', (e) => {
+  if (!langDlg) return;
+  const rect = langDlg.getBoundingClientRect();
+  const isInDialog = (
+    rect.top <= e.clientY && e.clientY <= rect.bottom &&
+    rect.left <= e.clientX && e.clientX <= rect.right
+  );
+  if (!isInDialog) closeLang();
+});
+
+// 상단 그립 바 터치/클릭으로 닫기
+langDlg?.querySelector('.langdlg__grip')?.addEventListener('click', closeLang);
+
+// 아래로 스와이프(drag down) 제스처로 닫기
+if (langDlg) {
+  let startY = 0;
+  let currentY = 0;
+  let isDragging = false;
+
+  langDlg.addEventListener('touchstart', (e) => {
+    if (langDlg.scrollTop <= 0) {
+      startY = e.touches[0].clientY;
+      currentY = startY;
+      isDragging = true;
+    }
+  }, { passive: true });
+
+  langDlg.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const diff = e.touches[0].clientY - startY;
+    if (diff > 0) {
+      currentY = e.touches[0].clientY;
+      langDlg.style.transform = `translateY(${diff}px)`;
+      langDlg.style.transition = 'none';
+    }
+  }, { passive: true });
+
+  const endDrag = () => {
+    if (!isDragging) return;
+    isDragging = false;
+    const diff = currentY - startY;
+    langDlg.style.transition = 'transform .2s var(--ease-out, ease)';
+    if (diff > 70) {
+      langDlg.style.transform = 'translateY(100%)';
+      setTimeout(closeLang, 180);
+    } else {
+      langDlg.style.transform = '';
+      setTimeout(() => { if (langDlg) langDlg.style.transition = ''; }, 200);
+    }
+  };
+
+  langDlg.addEventListener('touchend', endDrag);
+  langDlg.addEventListener('touchcancel', endDrag);
+}
 $('#support-x')?.addEventListener('click', () => $<HTMLButtonElement>('#support-btn')?.click());
 
 // 언어 — 메뉴 · 푸터 · 배너에서 고르거나 배너를 닫으면 기억해 배너를 다시 띄우지 않는다 (브라우저 저장소, 분석 쿠키가 아니다 — IA §9)
