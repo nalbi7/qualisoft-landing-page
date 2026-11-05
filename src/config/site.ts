@@ -13,6 +13,7 @@ export const COMPANY = {
   tel: '02-6925-1279',
   telIntl: '+82-2-6925-1279',
   telHref: 'tel:+82269251279',
+  privacyEmail: 'yushin@qualisoft.co.kr',
 } as const;
 
 // 언어별 표기 — 한국어는 국내 번호 · 한글 이름, 영 · 일 · 중은 국가 번호(+82)로 시작하는 번호 · 영문 이름 (D-051)
@@ -34,9 +35,8 @@ export const LINKS = {
 export const DEMO_URL: string = import.meta.env.PUBLIC_DEMO_URL ?? '';
 
 export const GA4_ID: string = import.meta.env.PUBLIC_GA4_ID ?? '';
-// 개인정보처리방침 — 지금은 숨긴다(사용자 지시 2026-11-04, D-055): 푸터 · 쿠키 배너의 링크를 빼고, 페이지는 빌드하지 않는다.
-// 다시 열려면 ① 이 값을 true ② src/pages/_privacy → privacy, src/pages/[locale]/_privacy → privacy 로 폴더 이름을 되돌린다(밑줄로 시작하면 Astro 가 빌드하지 않는다)
-export const SHOW_PRIVACY = false;
+// 개인정보처리방침 활성화 — 푸터 · 쿠키 배너 링크 표시 및 /privacy/ 페이지 빌드
+export const SHOW_PRIVACY = true;
 export const NOINDEX = import.meta.env.PUBLIC_NOINDEX === 'true';
 // 오픈일(YYYY-MM-DD) — 개인정보처리방침 시행일로 쓴다 (D-053). 비어 있으면 시행일이 미정으로 남아 공개 빌드가 멈춘다
 export const OPEN_DATE: string = (import.meta.env.PUBLIC_OPEN_DATE ?? '').trim();

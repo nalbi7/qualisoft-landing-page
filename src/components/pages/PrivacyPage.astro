@@ -1,66 +1,117 @@
 ---
-// 개인정보처리방침 본문 — 네 언어 한 틀 (pages/privacy/ · pages/[locale]/privacy/). 제목 · 시행일 · 목차 · 본문 · 쿠키 설정 다시 열기 (11-screen-spec 4-10, 시안 privacy-2an.html 2안 2차).
-// 법무 확인 끝(2026-11-04 사용자 전달, D-053) — 초안 안내 단락을 뺐다. 시행일은 오픈일이다: 빌드 변수 PUBLIC_OPEN_DATE(YYYY-MM-DD). 비어 있으면 data-todo 로 남아 공개 빌드를 막는다 (17-dev-standard §5)
-// 분석 쿠키(GA4) 절 · 거부와 철회 절은 GA4 를 켰을 때만 싣는다 — 아직 쓰지 않는다 (D-053). 절 번호는 실린 순서대로 매긴다
+// 개인정보처리방침 본문 — 네 언어 한 틀 (pages/privacy/ · pages/[locale]/privacy/).
+// 사용자 지정 개인정보 처리방침(제1조~제10조, 시행일 2019. 01. 23.)을 한·영·일·중 4개 언어로 표시한다.
 import Base from '../../layouts/Base.astro';
 import Crumb from '../Crumb.astro';
 import '../../styles/privacy.css';
 import { useT } from '../../i18n';
 import { ROUTES } from '../../config/routes';
-import { COMPANY, GA4_ID, OPEN_DATE, telFor, ceoFor } from '../../config/site';
+import { COMPANY, telFor, ceoFor } from '../../config/site';
 const loc = Astro.currentLocale;
 const t = useT(loc);
-const LANG: Record<string, string> = { ko: 'ko-KR', en: 'en-US', ja: 'ja-JP', 'zh-hans': 'zh-CN' };
-const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(OPEN_DATE);
-const effective = m ? new Intl.DateTimeFormat(LANG[loc ?? 'ko'] ?? 'ko-KR', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }).format(new Date(Date.UTC(+m[1], +m[2] - 1, +m[3]))) : '';
-const EFFECTIVE_TODO = '시행일 — 오픈일. 빌드 변수 PUBLIC_OPEN_DATE(YYYY-MM-DD)를 넣는다 (D-053)';
-const secs = (GA4_ID ? [1, 2, 3, 4, 5, 6] : [1, 4, 5, 6]).map((s, i) => ({ s, n: i + 1, title: t(`privacy.s${s}.title`) }));
-const no = (s: number) => secs.find((x) => x.s === s)!.n;
+const secs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((s) => ({ s, n: s, title: t(`privacy.s${s}.title`) }));
 ---
-<Base title={t('privacy.meta.title')} description={t(GA4_ID ? 'privacy.meta.description' : 'privacy.meta.description_nocookie')}>
+<Base title={t('privacy.meta.title')} description={t('privacy.meta.description')}>
   <Crumb items={[{ label: t('common.home'), href: ROUTES.home }, { label: t('privacy.head.title') }]} />
   <div class="wrap doc2">
-    <header class="doc2__head" data-parity="privacy-head"><h1>{t('privacy.head.title')}</h1><p class="doc__meta">{t('common.company')} · {t('privacy.head.effective')} {effective ? <time datetime={OPEN_DATE}>{effective}</time> : <span data-todo={EFFECTIVE_TODO}>{t('privacy.head.effective_pending')}</span>}</p></header>
-    <nav class="doc2__toc" aria-label={t('privacy.toc')}><ol>{secs.map((x) => <li><a href={`#p${x.s}`}>{x.title}</a></li>)}</ol></nav>
+    <header class="doc2__head" data-parity="privacy-head">
+      <h1>{t('privacy.head.title')}</h1>
+      <p class="doc__meta">{t('common.legal_name')} · {t('privacy.head.effective')} <time datetime="2019-01-23">{t('privacy.head.effective_date')}</time></p>
+      <p class="doc__intro">{t('privacy.intro')}</p>
+    </header>
+    <nav class="doc2__toc" aria-label={t('privacy.toc')}>
+      <ol>{secs.map((x) => <li><a href={`#p${x.s}`}>{x.title}</a></li>)}</ol>
+    </nav>
     <article class="doc2__body" data-parity="privacy-body">
-      <section class="pv" id="p1" aria-labelledby="p1-h"><h2 id="p1-h"><span class="pv__n">{no(1)}.</span> {t('privacy.s1.title')}</h2>
+      <section class="pv" id="p1" aria-labelledby="p1-h">
+        <h2 id="p1-h"><span class="pv__n">1.</span> {t('privacy.s1.title')}</h2>
         <p>{t('privacy.s1.body')}</p>
+        <ul class="pv__list">
+          <li>{t('privacy.s1.item1')}</li>
+        </ul>
       </section>
 
-      {GA4_ID && (
-        <section class="pv" id="p2" aria-labelledby="p2-h"><h2 id="p2-h"><span class="pv__n">{no(2)}.</span> {t('privacy.s2.title')}</h2>
-          <p>{t('privacy.s2.body')}</p>
-          <table class="pt"><tbody>
-            <tr><th scope="row">{t('privacy.s2.items_h')}</th><td>{t('privacy.s2.items')}</td></tr>
-            <tr><th scope="row">{t('privacy.s2.purpose_h')}</th><td>{t('privacy.s2.purpose')}</td></tr>
-            {/* 보관 기간은 GA4 를 켤 때 대표 확인을 받는다 (M-05) — 그때까지 공개 빌드를 막는다 */}
-            <tr><th scope="row">{t('privacy.s2.retention_h')}</th><td><span data-todo="GA4 보관 기간 대표 확인 (M-05)">{t('privacy.s2.retention')}</span> — {t('privacy.s2.retention_note')}</td></tr>
-            <tr><th scope="row">{t('privacy.s2.processor_h')}</th><td>{t('privacy.s2.processor')}</td></tr>
-          </tbody></table>
-        </section>
-      )}
+      <section class="pv" id="p2" aria-labelledby="p2-h">
+        <h2 id="p2-h"><span class="pv__n">2.</span> {t('privacy.s2.title')}</h2>
+        <p>{t('privacy.s2.p1')}</p>
+        <p>{t('privacy.s2.p2')}</p>
+        <ul class="pv__list">
+          <li>{t('privacy.s2.item1')}</li>
+          <li>{t('privacy.s2.item2')}</li>
+        </ul>
+      </section>
 
-      {GA4_ID && (
-        <section class="pv" id="p3" aria-labelledby="p3-h"><h2 id="p3-h"><span class="pv__n">{no(3)}.</span> {t('privacy.s3.title')}</h2>
-          <p>{t('privacy.s3.body')}</p>
-          <p><button class="btn btn-secondary btn-sm" type="button" data-cookie-open>{t('privacy.s3.cookie_open')}</button></p>
-        </section>
-      )}
+      <section class="pv" id="p3" aria-labelledby="p3-h">
+        <h2 id="p3-h"><span class="pv__n">3.</span> {t('privacy.s3.title')}</h2>
+        <p>{t('privacy.s3.body')}</p>
+      </section>
 
-      <section class="pv" id="p4" aria-labelledby="p4-h"><h2 id="p4-h"><span class="pv__n">{no(4)}.</span> {t('privacy.s4.title')}</h2>
+      <section class="pv" id="p4" aria-labelledby="p4-h">
+        <h2 id="p4-h"><span class="pv__n">4.</span> {t('privacy.s4.title')}</h2>
         <p>{t('privacy.s4.body')}</p>
+        <ol class="pv__olist">
+          <li>{t('privacy.s4.item1')}</li>
+          <li>{t('privacy.s4.item2')}</li>
+          <li>{t('privacy.s4.item3')}</li>
+          <li>{t('privacy.s4.item4')}</li>
+        </ol>
       </section>
 
-      <section class="pv" id="p5" aria-labelledby="p5-h"><h2 id="p5-h"><span class="pv__n">{no(5)}.</span> {t('privacy.s5.title')}</h2>
+      <section class="pv" id="p5" aria-labelledby="p5-h">
+        <h2 id="p5-h"><span class="pv__n">5.</span> {t('privacy.s5.title')}</h2>
+        <p>{t('privacy.s5.body')}</p>
+        <ul class="pv__list">
+          <li>{t('privacy.s5.item1')}</li>
+        </ul>
+      </section>
+
+      <section class="pv" id="p6" aria-labelledby="p6-h">
+        <h2 id="p6-h"><span class="pv__n">6.</span> {t('privacy.s6.title')}</h2>
+        <p>{t('privacy.s6.p1')}</p>
+        <p>{t('privacy.s6.p2')}</p>
+        <ul class="pv__list">
+          <li>{t('privacy.s6.item1')}</li>
+          <li>{t('privacy.s6.item2')}</li>
+        </ul>
+      </section>
+
+      <section class="pv" id="p7" aria-labelledby="p7-h">
+        <h2 id="p7-h"><span class="pv__n">7.</span> {t('privacy.s7.title')}</h2>
+        <p>{t('privacy.s7.body')}</p>
+        <ul class="pv__list">
+          <li>{t('privacy.s7.item1')}</li>
+          <li>{t('privacy.s7.item2')}</li>
+          <li>{t('privacy.s7.item3')}</li>
+        </ul>
+      </section>
+
+      <section class="pv" id="p8" aria-labelledby="p8-h">
+        <h2 id="p8-h"><span class="pv__n">8.</span> {t('privacy.s8.title')}</h2>
+        <p>{t('privacy.s8.p1')}</p>
+        <p>{t('privacy.s8.p2')}</p>
+        <ul class="pv__list pv__list--plain">
+          <li>{t('privacy.s8.item1')}</li>
+          <li>{t('privacy.s8.item2')}</li>
+          <li>{t('privacy.s8.item3')}</li>
+        </ul>
+        <p class="pv__act"><button class="btn btn-secondary btn-sm" type="button" data-cookie-open>{t('privacy.s8.cookie_open')}</button></p>
+      </section>
+
+      <section class="pv" id="p9" aria-labelledby="p9-h">
+        <h2 id="p9-h"><span class="pv__n">9.</span> {t('privacy.s9.title')}</h2>
+        <p>{t('privacy.s9.body')}</p>
+        <p class="pv__sub">{t('privacy.s9.sub')}</p>
         <table class="pt"><tbody>
-          <tr><th scope="row">{t('privacy.s5.name_h')}</th><td>{ceoFor(loc)} · {t('privacy.s5.role')}</td></tr>
-          {/* 대표 전화로 둔다 — 보호책임자용 번호를 따로 받으면 바꾼다 (시안 메모, D-016) */}
-          <tr><th scope="row">{t('privacy.s5.contact_h')}</th><td><a href={COMPANY.telHref} data-ev="phone_click">{telFor(loc)}</a></td></tr>
+          <tr><th scope="row">{t('privacy.s9.name_h')}</th><td>{ceoFor(loc)}</td></tr>
+          <tr><th scope="row">{t('privacy.s9.role_h')}</th><td>{t('privacy.s9.role')}</td></tr>
+          <tr><th scope="row">{t('privacy.s9.contact_h')}</th><td><a href={COMPANY.telHref} data-ev="phone_click">{telFor(loc)}</a></td></tr>
+          <tr><th scope="row">{t('privacy.s9.email_h')}</th><td>{COMPANY.privacyEmail}</td></tr>
         </tbody></table>
       </section>
 
-      <section class="pv" id="p6" aria-labelledby="p6-h"><h2 id="p6-h"><span class="pv__n">{no(6)}.</span> {t('privacy.s6.title')}</h2>
-        <p>{effective ? <time datetime={OPEN_DATE}>{effective}</time> : <span data-todo={EFFECTIVE_TODO}>{t('privacy.head.effective_pending')}</span>}</p>
+      <section class="pv" id="p10" aria-labelledby="p10-h">
+        <h2 id="p10-h"><span class="pv__n">10.</span> {t('privacy.s10.title')}</h2>
+        <p>{t('privacy.s10.body')}</p>
       </section>
     </article>
   </div>
