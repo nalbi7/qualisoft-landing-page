@@ -22,14 +22,15 @@ export type FaqItem = {
 };
 
 const fill = (s: string, v: Record<string, string | number>) => s.replace(/\{(\w+)\}/g, (_, k) => String(v[k] ?? `{${k}}`));
-// 사례 한 줄 — 「고객사 — 산업 대표 솔루션」으로 짧게 (D-044, 예: LS전선 — 제조산업 Project Operations). 긴 제목은 기사 안에 있다.
+// 홈은 「고객사 — 산업 대표 솔루션」, 솔루션 상세는 「고객사 — 산업」으로 표시한다.
 // 산업은 고객 로고의 산업(config/customer-logos.json ind — 고객 사례 목록의 산업 묶음과 같다), 이름은 i18n faq.ind.*
-async function caseLabeler(loc: string) {
+async function caseLabeler(loc: string, includeSolution = true) {
   const t = useT(loc);
   const names = new Map((await getCollection('solutions')).map((s) => [s.id, s.data.name]));
   return (c: CollectionEntry<'cases'>) => {
     const logo = logoById(c.data.customer);
-    return `${logoName(logo, loc)} — ${t(`faq.ind.${logo.ind}`)} ${names.get(c.data.solutions[0]) ?? ''}`.trim();
+    const solution = includeSolution ? ` ${names.get(c.data.solutions[0]) ?? ''}` : '';
+    return `${logoName(logo, loc)} — ${t(`faq.ind.${logo.ind}`)}${solution}`.trim();
   };
 }
 // 사례를 숫자로 세어 말하는 것은 다섯 곳을 넘을 때만 (D-044) — 적은 수를 내세우지 않는다
@@ -58,7 +59,7 @@ export async function solutionFaq(sol: CollectionEntry<'solutions'>, locale?: st
   // 「함께한 기업」과 같은 셈 — 이 솔루션의 사례 기사 고객 + 솔루션 파일의 고객 (components/solution/Customers.astro)
   const related = (await casesFor(loc)).filter((c) => (c.data.solutions as string[]).includes(sol.id));
   const count = new Set([...related.map((c) => c.data.customer), ...(s.customers ?? [])]).size;
-  const caseLabel = await caseLabeler(loc);
+  const caseLabel = await caseLabeler(loc, false);
   if (count > 0) items.push({
     q: fill(t('faq.sol.cases.q'), { name }), a: fill(t(count >= COUNT_FROM ? 'faq.sol.cases.a' : 'faq.sol.cases.a_few'), { name, count }),
     ...(related.length ? { after: t('faq.sol.cases.read'), list: related.map((c) => ({ text: caseLabel(c), href: lurl(ROUTES.case(c.id), loc) })) } : {}),
