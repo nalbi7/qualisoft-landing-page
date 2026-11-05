@@ -69,6 +69,8 @@ const dup = (key) => {
   const seen = new Map();
   for (const p of pages.filter((x) => !x.noindex || noindexAll)) {
     if (!p[key]) { errors.push(`${p.rel} — ${key} 이 없다`); continue; }
+    const sharedHomeTitle = key === 'title' && p[key] === 'Dynamics 365 Implementation' && /^(en|ja|zh-hans)[\\/]index\.html$/.test(p.rel);
+    if (sharedHomeTitle) continue; // 사용자 요청으로 세 언어의 메인 제목은 동일하다
     if (seen.has(p[key])) errors.push(`${p.rel} — ${key} 가 ${seen.get(p[key])} 와 같다: ${p[key]}`); else seen.set(p[key], p.rel);
   }
 };
