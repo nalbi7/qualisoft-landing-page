@@ -1,0 +1,47 @@
+---
+// 이용약관 본문 — 네 언어 한 틀 (pages/terms/ · pages/[locale]/terms/).
+// 사용자 지정 이용약관(제1조~제4조)을 한·영·일·중 4개 언어로 표시한다.
+import Base from '../../layouts/Base.astro';
+import Crumb from '../Crumb.astro';
+import '../../styles/privacy.css';
+import { useT } from '../../i18n';
+import { ROUTES } from '../../config/routes';
+const loc = Astro.currentLocale;
+const t = useT(loc);
+const secs = [1, 2, 3, 4].map((s) => ({ s, n: s, title: t(`terms.s${s}.toc`) }));
+---
+<Base title={t('terms.meta.title')} description={t('terms.meta.description')}>
+  <Crumb items={[{ label: t('common.home'), href: ROUTES.home }, { label: t('terms.head.title') }]} />
+  <div class="wrap doc2">
+    <header class="doc2__head" data-parity="terms-head">
+      <h1>{t('terms.head.title')}</h1>
+      <p class="doc__meta">{t('common.legal_name')}</p>
+    </header>
+    <nav class="doc2__toc" aria-label={t('terms.toc')}>
+      <ol>{secs.map((x) => <li><a href={`#t${x.s}`}>{x.title}</a></li>)}</ol>
+    </nav>
+    <article class="doc2__body" data-parity="terms-body">
+      <section class="pv" id="t1" aria-labelledby="t1-h">
+        <h2 id="t1-h">{t('terms.s1.title')}</h2>
+        <p>{t('terms.s1.body')}</p>
+      </section>
+
+      <section class="pv" id="t2" aria-labelledby="t2-h">
+        <h2 id="t2-h">{t('terms.s2.title')}</h2>
+        <p>{t('terms.s2.p1')}</p>
+        <p>{t('terms.s2.p2')}</p>
+      </section>
+
+      <section class="pv" id="t3" aria-labelledby="t3-h">
+        <h2 id="t3-h">{t('terms.s3.title')}</h2>
+        <p>{t('terms.s3.p1')}</p>
+        <p>{t('terms.s3.p2')}</p>
+      </section>
+
+      <section class="pv" id="t4" aria-labelledby="t4-h">
+        <h2 id="t4-h">{t('terms.s4.title')}</h2>
+        <p>{t('terms.s4.body')}</p>
+      </section>
+    </article>
+  </div>
+</Base>

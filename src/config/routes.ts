@@ -37,6 +37,7 @@ export const ROUTES = {
   home: '/',
   products: '/#products',
   privacy: '/privacy/',
+  terms: '/terms/',
   customers: '/customers/',
   case: (slug: string) => `/customers/${slug}/`,
   solution: (slug: SolutionSlug) => `/solutions/${slug}/`,

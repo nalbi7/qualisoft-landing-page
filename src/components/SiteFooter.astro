@@ -33,7 +33,7 @@ const sols = (await getCollection('solutions')).sort((a, b) => a.data.order - b.
         <li><a href={LINKS.blog} target="_blank" rel="noopener">{t('footer.blog')} <NewWindow /></a></li>
         <li><a href={LINKS.kakao} target="_blank" rel="noopener" data-ev="kakao_click">{t('footer.kakao')} <NewWindow /></a></li>
       </ul></div>
-      <div><h3>{t('footer.notice')}</h3><ul>{SHOW_PRIVACY && <li><a href={lurl(ROUTES.privacy, loc)}><b>{t('footer.privacy')}</b></a></li>}<li><button class="foot__btn" type="button" data-cookie-open>{t('footer.cookie')}</button></li></ul></div>
+      <div><h3>{t('footer.notice')}</h3><ul>{SHOW_PRIVACY && <li><a href={lurl(ROUTES.privacy, loc)}><b>{t('footer.privacy')}</b></a></li>}<li><a href={lurl(ROUTES.terms, loc)}>{t('footer.terms')}</a></li><li><button class="foot__btn" type="button" data-cookie-open>{t('footer.cookie')}</button></li></ul></div>
     </div>
     <div class="foot__bottom">
       <span>© {t('common.company')}</span>
