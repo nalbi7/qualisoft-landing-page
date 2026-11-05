@@ -27,7 +27,7 @@ const abs = (p: string) => new URL(lurl(p, loc), Astro.site).href;
 const orgId = new URL(url('/#org'), Astro.site).href;
 // 공유 그림 — 대표 솔루션의 그림 (scripts/make-og.mjs)
 const ogImage = `/assets/og/${d.solutions[0]}.png`;
-// <title> — 「고객사 + 대표 솔루션 + 구축 사례」로 짧게 (D-040, 국문 15~32자 안팎 권고). 긴 문장 제목은 h1 · 설명 · og:description 이 그대로 싣는다
+// <title> — 「고객사 + 대표 솔루션 + 구축 사례」로 짧게 (D-040). 긴 문장 제목은 h1 · 일반 설명에 싣는다
 const metaTitle = t('case.meta.title').replaceAll('{customer}', logoName(logo, loc)).replaceAll('{solution}', sols[0]?.data.name ?? '');
 const article = {
   '@context': 'https://schema.org', '@type': 'Article',
