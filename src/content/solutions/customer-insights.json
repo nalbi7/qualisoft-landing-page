@@ -132,12 +132,7 @@
   ],
   "products": [
     {
-      "name": "Customer Insights – Data",
-      "icon": "/assets/ms/d365-customer-insights.svg",
-      "path": "dynamics-365/products/customer-insights"
-    },
-    {
-      "name": "Customer Insights – Journeys",
+      "name": "Customer Insights",
       "icon": "/assets/ms/d365-customer-insights.svg",
       "path": "dynamics-365/products/customer-insights"
     }

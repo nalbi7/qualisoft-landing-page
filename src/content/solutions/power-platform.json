@@ -29,7 +29,7 @@
     "ja": "標準にない業務は\nアプリで",
     "zh-hans": "标准功能之外的业务，\n用应用来实现"
   },
-  "family": "Microsoft Power Platform",
+  "family": "Microsoft",
   "mark": "Power Platform",
   "lead": {
     "ko": "Power Apps로 현장·업무 앱을, Power Automate로 결재·알림 같은 반복 업무를, Power Pages로 고객·파트너용 웹 포털을 만듭니다. Copilot Studio로는 사내 데이터에 답하는 에이전트를 만듭니다. 모두 Dynamics 365와 같은 Dataverse 위에서 움직여 데이터와 권한을 한곳에서 관리합니다.",

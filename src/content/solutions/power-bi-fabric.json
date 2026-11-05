@@ -29,7 +29,7 @@
     "ja": "散在するデータを\n一画面に",
     "zh-hans": "将分散的数据\n汇于一屏"
   },
-  "family": "Power BI · Microsoft Fabric",
+  "family": "Microsoft",
   "mark": "Power BI · Fabric",
   "lead": {
     "ko": "Microsoft Fabric의 OneLake와 레이크하우스에 CRM·ERP·현장 시스템의 데이터를 모으고, 의미 체계 모델로 지표를 정리해 Power BI 보고서와 대시보드로 보여 줍니다. 부서·역할별로 볼 수 있는 데이터를 나누고, Teams와 CRM 화면 안에서도 보고서를 씁니다.",
