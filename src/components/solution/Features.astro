@@ -27,27 +27,19 @@ const pick = (sh: Shot) => {
 };
 ---
 <h2 class="sp2__h2 sp2__h2--features">{t(cop ? 'solution.features.copilot_title' : 'solution.features.title')}</h2>
-<div class="feat-split">
-  <ul class="accs" data-parity="sol-features">
-    {s.features.map((f, i) => (
-      <li>
-        <details class="acc__item" name="solution-features" open={i === 0} data-feat-idx={i}>
-          <summary class="acc">{tx(f.title, loc)}<span class="acc__plus" aria-hidden="true">+</span></summary>
-          <div class="acc__body"><p>{tx(f.text, loc)}</p></div>
-        </details>
-      </li>
-    ))}
-  </ul>
-  <div class="feat-stage">
-    {s.features.map((_, i) => {
-      const sh = shots[i];
-      return sh && (
-        <figure class="shot" data-shot={i} hidden={i !== 0}>
-          <div class="shot__frame"><Image src={pick(sh)} alt={tx(sh.alt, loc)} widths={[640, 960, 1280]} sizes="(max-width: 900px) calc(100vw - 32px), 560px" format="webp" quality={82} /></div>
-          <figcaption>{t('solution.shot.source')} · <a href={learnPage(sh.page, loc)} target="_blank" rel="noopener">Microsoft Learn <NewWindow /></a> · © Microsoft</figcaption>
-        </figure>
-      );
-    })}
-  </div>
-</div>
+<ul class="accs" data-parity="sol-features">
+  {s.features.map((f, i) => {
+    const sh = shots[i];
+    return (
+      <li><details class="acc__item" name="solution-features" open={i === 0}><summary class="acc">{tx(f.title, loc)}<span class="acc__plus" aria-hidden="true">+</span></summary><div class="acc__body"><p>{tx(f.text, loc)}</p>
+        {sh && (
+          <figure class="shot">
+            <div class="shot__frame"><Image src={pick(sh)} alt={tx(sh.alt, loc)} widths={[640, 960, 1280]} sizes="(max-width: 760px) calc(100vw - 32px), 580px" format="webp" quality={82} /></div>
+            <figcaption>{t('solution.shot.source')} · <a href={learnPage(sh.page, loc)} target="_blank" rel="noopener">Microsoft Learn <NewWindow /></a> · © Microsoft</figcaption>
+          </figure>
+        )}
+      </div></details></li>
+    );
+  })}
+</ul>
 {cop && <p class="muted-p">{t('solution.features.copilot_note')}</p>}
