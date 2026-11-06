@@ -22,9 +22,9 @@ const consult = t.has('common.consult') ? t('common.consult') : '';
 ---
 <section class="hero2" aria-labelledby="hero-h" data-parity="hero">
   <div class="wrap">
-    <p class="ms-mark rv" style="--i:0"><span class="ms-logo"><img class="ms-logo__l" src={url('/assets/ms/microsoft-logo.svg')} alt="Microsoft" width="113" height="24"><img class="ms-logo__d" src={url('/assets/ms/microsoft-logo-white.svg')} alt="" aria-hidden="true" width="113" height="24"></span><span class="ms-mark__p">{t('home.hero.partner')}</span></p>
+    <p class="ms-mark rv" style="--i:0"><span class="ms-logo"><img class="ms-logo__l" src={url('/assets/ms/microsoft-logo.svg')} alt="Microsoft" width="113" height="24"><img class="ms-logo__d" src={url('/assets/ms/microsoft-logo-white.svg')} alt="Microsoft" aria-hidden="true" width="113" height="24"></span><span class="ms-mark__p">{t('home.hero.partner')}</span></p>
     <div class="hook rv" id="hook" aria-hidden="true" style={`--i:1; --hc:${first.data.color}`} data-parity="hook">
-      <div class="hook__name"><span class="swap"><img class="hook__ic" id="hook-ic" src={url(first.data.icon)} alt="" width="48" height="48"><span class="hook__nm" id="hook-name" translate="no">{first.data.name}</span></span></div>
+      <div class="hook__name"><span class="swap"><img class="hook__ic" id="hook-ic" src={url(first.data.icon)} alt={first.data.name} width="48" height="48"><span class="hook__nm" id="hook-name" translate="no">{first.data.name}</span></span></div>
       <div class="hook__line"><span class="swap" id="hook-line">{(first.data.hook ? tx(first.data.hook, loc) : "")}</span></div>
     </div>
     <!-- 제목 한 줄 — 옛 랜딩 「기업의 핵심 프로세스 … CRM은 핵심 솔루션」의 의도를 잇는다. 강조 없이 (BD-019 · BD-021) -->
@@ -43,7 +43,7 @@ const consult = t.has('common.consult') ? t('common.consult') : '';
           {scenes.map((s, i) => (
             <button type="button" aria-current={i === 0 ? 'true' : undefined} data-go={i} style={`--sc: ${s.data.color}`}
               data-name={s.data.name} data-line={(s.data.hook ? tx(s.data.hook, loc) : "")} data-color={s.data.color} data-icon={url(s.data.icon)}
-              data-href={lurl(ROUTES.solution(s.id as SolutionSlug), loc)}><b><img src={url(s.data.icon)} alt="" width="16" height="16">{String(i + 1).padStart(2, '0')}</b><span>{s.data.step}</span></button>
+              data-href={lurl(ROUTES.solution(s.id as SolutionSlug), loc)}><b><img src={url(s.data.icon)} alt={s.data.name} width="16" height="16">{String(i + 1).padStart(2, '0')}</b><span>{s.data.step}</span></button>
           ))}
         </div>
       </div>

@@ -23,7 +23,7 @@ const tags = (n: (typeof NEWS)[number]) => (n.tags as Record<string, string[]>)[
       <div class="newses">
         {NEWS.map((n) => (
           <a class="news" href={n.href} target="_blank" rel="noopener">
-            <span class="news__thumb"><img src={url(`/assets/news/${n.thumb}`)} alt="" loading="lazy" width="480" height="270"><span class="tag">{t(`home.news.${n.source}`)}</span></span>
+            <span class="news__thumb"><img src={url(`/assets/news/${n.thumb}`)} alt={tx(n.title, loc)} loading="lazy" width="480" height="270"><span class="tag">{t(`home.news.${n.source}`)}</span></span>
             <span class="news__t"><span>{tx(n.title, loc)}</span><NewWindow /></span>
             <span class="news__d">{tags(n).join(' ')}{foreign && <Fragment> · {t('home.news.in_korean')}</Fragment>}</span>
           </a>

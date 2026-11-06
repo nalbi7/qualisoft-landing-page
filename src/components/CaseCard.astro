@@ -16,7 +16,7 @@ const sol = await getEntry('solutions', d.solutions[0]);
 const logo = logoById(d.customer);
 ---
 <a class="case" href={lurl(ROUTES.case(c.id), loc)} data-todo={d.pending}>
-  <div class="tags"><span class="tag">{tx(d.industry, loc)}</span>{sol && <span class="tag"><img class="pi" src={url(sol.data.icon)} alt="" width="24" height="24">{sol.data.name}</span>}</div>
+  <div class="tags"><span class="tag">{tx(d.industry, loc)}</span>{sol && <span class="tag"><img class="pi" src={url(sol.data.icon)} alt={sol.data.name} width="24" height="24">{sol.data.name}</span>}</div>
   <img class:list={['case__co', { 'on-dark': logo.onDark }]} src={logoSrc(logo)} width={logo.w} height={logo.h} alt={logoName(logo, loc)} loading="lazy">
   <h3>{tx(d.title, loc).replace('\n', ' ')}</h3>
   <dl class="flow"><dt>{t('case.task')}</dt><dd>{tx(d.card.task, loc)}</dd><dt>{t('case.result')}</dt><dd>{tx(d.card.result, loc)}</dd></dl>

@@ -20,7 +20,7 @@ const sols = (await getCollection('solutions')).sort((a, b) => a.data.order - b.
       <p class="nf__l">{t('notfound.lead')}</p>
       <div class="nf__acts"><DemoButton /><a class="btn btn-secondary" href={url(ROUTES.home)}>{t('notfound.home')}</a></div>
       <ul class="nf__sols">
-        {sols.map((s) => <li><a href={url(ROUTES.solution(s.id as SolutionSlug))}><img class="pi" src={url(s.data.icon)} alt="" width="24" height="24"><span>{s.data.name}</span></a></li>)}
+        {sols.map((s) => <li><a href={url(ROUTES.solution(s.id as SolutionSlug))}><img class="pi" src={url(s.data.icon)} alt={s.data.name} width="24" height="24"><span>{s.data.name}</span></a></li>)}
       </ul>
     </div>
   </section>

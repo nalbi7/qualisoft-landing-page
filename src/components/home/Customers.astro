@@ -22,14 +22,14 @@ const cases = (await casesFor(loc)).slice(0, 3);
             <h3 class="indcol__h">{t(`ind.${g.ind}`)}</h3>
             <div class="indcol__view"><div class="indcol__track">
               <ul>{g.logos.map((l) => <li><img src={logoSrc(l)} width={l.w} height={l.h} alt={logoName(l, loc)} class:list={{ 'on-dark': l.onDark }} loading="lazy"></li>)}</ul>
-              <ul aria-hidden="true">{g.logos.map((l) => <li><img src={logoSrc(l)} width={l.w} height={l.h} alt="" class:list={{ 'on-dark': l.onDark }} loading="lazy"></li>)}</ul>
+              <ul aria-hidden="true">{g.logos.map((l) => <li><img src={logoSrc(l)} width={l.w} height={l.h} alt={logoName(l, loc)} class:list={{ 'on-dark': l.onDark }} loading="lazy"></li>)}</ul>
             </div></div>
           </div>
         ))}
       </div>
       <div class="indcols__mobile indcol">
         <div class="indcols__mobile-track">
-          {[false, true].map((duplicate) => <ul aria-hidden={duplicate ? 'true' : undefined}>{logosByIndustry().flatMap((g) => g.logos).map((l) => <li><img src={logoSrc(l)} width={l.w} height={l.h} alt={duplicate ? '' : logoName(l, loc)} class:list={{ 'on-dark': l.onDark }} loading="lazy"></li>)}</ul>)}
+          {[false, true].map((duplicate) => <ul aria-hidden={duplicate ? 'true' : undefined}>{logosByIndustry().flatMap((g) => g.logos).map((l) => <li><img src={logoSrc(l)} width={l.w} height={l.h} alt={logoName(l, loc)} class:list={{ 'on-dark': l.onDark }} loading="lazy"></li>)}</ul>)}
         </div>
       </div>
       <button class="icon-btn indcols__pause" type="button" data-pause="logos-home" aria-label={t('home.cases.logos_pause')} data-label-pause={t('home.cases.logos_pause')} data-label-play={t('home.cases.logos_play')}>❚❚</button>

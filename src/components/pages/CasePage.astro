@@ -57,7 +57,7 @@ const secs = [
   <Crumb items={[{ label: t('common.home'), href: ROUTES.home }, { label: t('customers.title'), href: ROUTES.customers }, { label: logoName(logo, loc) }]} />
   <article class="c2" data-todo={d.pending}>
     <header class="c2__hero wrap">
-      <div class="tags"><span class="tag">{tx(d.industry, loc)}</span>{sols.map((s) => <span class="tag"><img class="pi" src={url(s.data.icon)} alt="" width="24" height="24">{s.data.name}</span>)}</div>
+      <div class="tags"><span class="tag">{tx(d.industry, loc)}</span>{sols.map((s) => <span class="tag"><img class="pi" src={url(s.data.icon)} alt={s.data.name} width="24" height="24">{s.data.name}</span>)}</div>
       <h1>{title.split('\n').map((l, i) => <Fragment>{i > 0 && <br>}{l}</Fragment>)}</h1>
       <p class="c2__sub">{tx(d.sub, loc)}</p>
       <dl class="c2__meta">
@@ -76,7 +76,7 @@ const secs = [
         </div></section>
       ))}
       <aside class="c2__rel" aria-labelledby="rel-h"><h2 id="rel-h">{t('case.rel.solutions')}</h2>
-        <div class="c2__cards">{sols.map((s) => <a class="pcard" href={lurl(ROUTES.solution(s.id as SolutionSlug), loc)}><img src={url(s.data.icon)} alt="" width="48" height="48"><b translate="no">{s.data.name}</b><span>{tx(s.data.short, loc)} <span aria-hidden="true">→</span></span></a>)}</div>
+        <div class="c2__cards">{sols.map((s) => <a class="pcard" href={lurl(ROUTES.solution(s.id as SolutionSlug), loc)}><img src={url(s.data.icon)} alt={s.data.name} width="48" height="48"><b translate="no">{s.data.name}</b><span>{tx(s.data.short, loc)} <span aria-hidden="true">→</span></span></a>)}</div>
       </aside>
       {others.length > 0 && (
         <aside class="c2__others" aria-labelledby="others-h"><h2 id="others-h">{t('case.rel.others')}</h2>

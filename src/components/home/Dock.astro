@@ -7,4 +7,4 @@ import { url } from '../../config/routes';
 const loc = Astro.currentLocale;
 const t = useT(loc);
 ---
-<div class="dock on-dark" id="dock" hidden><img class="pi" src={url('/assets/ms/d365.svg')} alt="" width="20" height="20"><span class="dock__t">{t('home.dock.title')}</span><DemoButton small /><KakaoButton small class="dock__k" /></div>
+<div class="dock on-dark" id="dock" hidden><img class="pi" src={url('/assets/ms/d365.svg')} alt="Microsoft Dynamics 365" width="20" height="20"><span class="dock__t">{t('home.dock.title')}</span><DemoButton small /><KakaoButton small class="dock__k" /></div>

@@ -25,7 +25,7 @@ const href = (id: string) => lurl(ROUTES.solution(id as SolutionSlug), loc);
             <li>
               <button type="button" class="prow" aria-current={i === 0 ? 'true' : undefined} aria-controls="pnl" data-p={i}
                 data-name={s.data.name} data-line={tx(s.data.short, loc)} data-color={s.data.color} data-icon={url(s.data.icon)} data-href={href(s.id)}>
-                <img class="pi pi--md" src={url(s.data.icon)} alt="" width="24" height="24"><b translate="no">{s.data.name}</b>
+                <img class="pi pi--md" src={url(s.data.icon)} alt={s.data.name} width="24" height="24"><b translate="no">{s.data.name}</b>
               </button>
             </li>
           ))}
@@ -34,7 +34,7 @@ const href = (id: string) => lurl(ROUTES.solution(id as SolutionSlug), loc);
     </div>
     <div class="pnl" id="pnl" style={`--pc:${first.data.color}`} data-parity="panel">
       <div class="pnl__art" aria-hidden="true" set:html={art} />
-      <img class="pnl__ic" id="pnl-ic" src={url(first.data.icon)} alt="" width="88" height="88">
+      <img class="pnl__ic" id="pnl-ic" src={url(first.data.icon)} alt={first.data.name} width="88" height="88">
       <b class="pnl__n" id="pnl-n" translate="no">{first.data.name}</b><span class="pnl__l" id="pnl-l">{tx(first.data.short, loc)}</span>
       <span class="pnl__more" aria-hidden="true">{t('home.products.more')} <span class="pnl__arrow">→</span></span>
       <a class="pnl__link" id="pnl-link" href={href(first.id)} data-label={t('home.products.panel_link')} aria-label={`${first.data.name} — ${t('home.products.panel_link')}`}></a>

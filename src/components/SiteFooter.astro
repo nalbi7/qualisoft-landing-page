@@ -17,7 +17,7 @@ const sols = (await getCollection('solutions')).sort((a, b) => a.data.order - b.
   <div class="wrap">
     <div class="foot">
       <div>
-        <img src={url('/assets/brand/ver1-logo.png')} alt={t('common.company')} width="106" height="30" loading="lazy">
+        <img src={url('/assets/brand/ver1-logo.png')} alt={loc === 'ko' ? 'Microsoft 파트너' : 'Microsoft Partner'} width="106" height="30" loading="lazy">
         <div class="foot__co">
           <span>{t('common.company')} · {t('footer.ceo')} {ceoFor(loc)}</span>
           <span>{t('footer.biz_reg_no')} {COMPANY.bizRegNo}</span>

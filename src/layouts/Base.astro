@@ -64,12 +64,15 @@ const org = {
   <meta property="og:locale" content={L.og}>
   {langs && LOCALES.filter((l) => l.code !== loc).map((l) => <meta property="og:locale:alternate" content={l.og}>)}
   <meta property="og:title" content={fullTitle}>
+  {description && <meta property="og:description" content={description}>}
   {!(noindex || NOINDEX) && <meta property="og:url" content={canonical}>}
   <meta property="og:image" content={ogAbs}>
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content={ogImageAlt ?? homeTitle}>
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={fullTitle}>
+  {description && <meta name="twitter:description" content={description}>}
   <meta name="twitter:image" content={ogAbs}>
   {/* 파비콘 — 구 랜딩(dynamics365.co.kr)의 favicon.ico 그대로 (D-040, Microsoft 로고 — 상표 점검 M-08).
       Bing·Yahoo 등 검색 크롤러 호환을 위해 type·sizes·PNG·SVG·구버전 경로(/images/favicon.ico 사본)를 함께 둔다 (BD-104) */}

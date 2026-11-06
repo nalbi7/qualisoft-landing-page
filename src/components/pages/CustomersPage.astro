@@ -71,7 +71,7 @@ const hrefOf = (id: string) => {
       </div>
       <div class="cfilter__row" role="group" aria-labelledby="cf-sol"><span class="cfilter__k" id="cf-sol">{t('customers.filter.solution')}</span>
         <button type="button" class="pill" data-f="sol" data-v="" aria-pressed="true">{t('customers.filter.all')}</button>
-        {solOpts.map((x) => <button type="button" class="pill" data-f="sol" data-v={x.id} aria-pressed="false"><img src={url(x.data.icon)} alt="" width="16" height="16"><span translate="no">{x.data.name}</span></button>)}
+        {solOpts.map((x) => <button type="button" class="pill" data-f="sol" data-v={x.id} aria-pressed="false"><img src={url(x.data.icon)} alt={x.data.name} width="16" height="16"><span translate="no">{x.data.name}</span></button>)}
       </div>
       <p class="cfilter__n" id="cfilter-n" aria-live="polite" data-tpl={t('customers.filter.count')}></p>
     </div>
@@ -81,7 +81,7 @@ const hrefOf = (id: string) => {
         const body = (
           <Fragment>
             <div class="scard__h">
-              <img class:list={['scard__logo', { 'on-dark': r.logo.onDark }]} src={logoSrc(r.logo)} width={r.logo.w} height={r.logo.h} alt="" loading="lazy">
+              <img class:list={['scard__logo', { 'on-dark': r.logo.onDark }]} src={logoSrc(r.logo)} width={r.logo.w} height={r.logo.h} alt={logoName(r.logo, loc)} loading="lazy">
               <div><h2 class="scard__t">{r.name}</h2><span class="scard__tags"><span class="tag">{r.industry}</span>{r.href && <span class="tag tag--story">{t('customers.case.badge')}</span>}</span></div>
             </div>
             <p class="scard__p">{r.product}{r.period && ` · ${r.period}`}</p>

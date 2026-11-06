@@ -14,20 +14,20 @@ const s = sol.data;
 ---
 <aside class="sp2__side" data-parity="sol-side">
   <div class:list={['sp2__panel', { 'sp2__panel--cop': s.art === 'cop' }]} style={`--c:${s.color}`}>
-    <img class="sp2__ic" src={url(s.icon)} alt="" width="72" height="72">
+    <img class="sp2__ic" src={url(s.icon)} alt={s.name} width="72" height="72">
     {s.family && <p class="sp2__fam">{s.family}</p>}
     <p class:list={['sp2__name', { 'sp2__name--long': s.mark.includes(' ') }]} aria-hidden="true">{s.mark}</p>
   </div>
   <nav class="sp2__nav" aria-label={t('nav.solutions')}><ul>
     {sols.map((x) => (
-      <li class:list={[{ 'is-current': x.id === sol.id }]}><a href={lurl(ROUTES.solution(x.id as SolutionSlug), loc)} aria-current={x.id === sol.id ? 'page' : undefined}><img class="pi" src={url(x.data.icon)} alt="" width="24" height="24"><span translate="no">{x.data.name}</span><span class="cur" aria-hidden="true">←</span></a></li>
+      <li class:list={[{ 'is-current': x.id === sol.id }]}><a href={lurl(ROUTES.solution(x.id as SolutionSlug), loc)} aria-current={x.id === sol.id ? 'page' : undefined}><img class="pi" src={url(x.data.icon)} alt={x.data.name} width="24" height="24"><span translate="no">{x.data.name}</span><span class="cur" aria-hidden="true">←</span></a></li>
     ))}
   </ul></nav>
 </aside>
 <nav class="solution-bar" aria-label={t('nav.solutions')} hidden>
   <div class="wrap"><ul>
     {sols.map((x) => (
-      <li class:list={[{ 'is-current': x.id === sol.id }]}><a href={lurl(ROUTES.solution(x.id as SolutionSlug), loc)} aria-current={x.id === sol.id ? 'page' : undefined}><img src={url(x.data.icon)} alt="" width="24" height="24"><span translate="no">{x.data.name}</span></a></li>
+      <li class:list={[{ 'is-current': x.id === sol.id }]}><a href={lurl(ROUTES.solution(x.id as SolutionSlug), loc)} aria-current={x.id === sol.id ? 'page' : undefined}><img src={url(x.data.icon)} alt={x.data.name} width="24" height="24"><span translate="no">{x.data.name}</span></a></li>
     ))}
   </ul></div>
 </nav>
