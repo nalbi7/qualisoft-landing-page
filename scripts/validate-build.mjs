@@ -38,9 +38,9 @@ for (const f of html) {
   const s = readFileSync(f, 'utf8');
   for (const w of FORBIDDEN) if (s.includes(w)) errors.push(`${relative(dist, f)} — 남으면 안 되는 글자 「${w}」`);
   for (const [, why] of s.matchAll(/data-todo="([^"]*)"/g)) (allowTodo ? warnings : errors).push(`${relative(dist, f)} — 정해지지 않은 값: ${why}`);
-  const isPrivacy = /(?:^|[\\/])privacy[\\/]index\.html$/.test(relative(dist, f));
-  const mail = textOf(s).match(EMAIL);
-  if (mail && !(isPrivacy && mail[0] === 'yushin@qualisoft.co.kr')) errors.push(`${relative(dist, f)} — 이메일 주소 ${mail[0]} (R-09)`);
+  for (const [m] of textOf(s).matchAll(new RegExp(EMAIL.source, 'g'))) {
+    if (m !== 'yushin@qualisoft.co.kr') errors.push(`${relative(dist, f)} — 이메일 주소 ${m} (R-09)`);
+  }
   if (s.includes('href="#demo"')) warnings.push(`${relative(dist, f)} — 데모 신청 주소가 시안용 #demo 다 (PUBLIC_DEMO_URL, H-01)`);
 
   // ③ 내부 링크 · 파일

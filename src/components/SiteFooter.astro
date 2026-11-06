@@ -23,6 +23,7 @@ const sols = (await getCollection('solutions')).sort((a, b) => a.data.order - b.
           <span>{t('footer.biz_reg_no')} {COMPANY.bizRegNo}</span>
           <span>{t('footer.address')} {address}</span>
           <span>{t('footer.tel')} <a href={COMPANY.telHref} data-ev="phone_click">{telFor(loc)}</a></span>
+          <span>{t('footer.email')} {COMPANY.privacyEmail}</span>
           <span>{t('footer.partner')}</span>
         </div>
       </div>
