@@ -193,9 +193,10 @@ body.has-cookie .dock{bottom:110px}
   .indcols.paused .indcols__mobile-track, .indcols__mobile:hover .indcols__mobile-track{animation-play-state:paused}
 }
 @keyframes ind-mobile{to{transform:translateX(-50%)}}
-/* 움직임 줄이기 — 멈춘 채 칸마다 로고를 모두 보인다(복제 묶음은 숨김) */
+/* 움직임 줄이기 — 멈춘 채 칸마다 로고를 세로 4줄까지만 가지런히 보인다(복제 묶음은 숨김, BD-101) */
 @media (prefers-reduced-motion:reduce){
   .indcol__view{height:auto; mask-image:none; -webkit-mask-image:none} .indcol__track{animation:none} .indcol ul[aria-hidden]{display:none} .indcols__pause{display:none}
+  .indcols__grid .indcol li:nth-child(n+5){display:none}
   .indcols__mobile{overflow-x:auto; mask-image:none} .indcols__mobile-track{animation:none}
 }
 /* 고객 사례 영역 등장 — 화면에 들어올 때 0.7초에 걸쳐 10px 위로 · 서서히 (BD-044). 클래스는 home.ts 가 붙인다 */
