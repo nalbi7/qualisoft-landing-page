@@ -170,9 +170,9 @@ body.has-cookie .dock{bottom:110px}
 .journey .win__bar .win__ic{margin-left:0}
 /* 고객사 로고 — 산업별 칸. 칸 위에 산업 이름, 그 아래 로고가 위아래로 흐른다(칸마다 방향을 번갈아). 구 사이트 「Construction Case」 (D-029) */
 .indcols{display:grid; margin-top:var(--sp-7)}
-.indcols__grid{display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:var(--sp-4)}
-.indcol{display:grid; gap:var(--sp-3); justify-items:center; min-width:0}
-.indcol__h{margin:0; padding:5px 12px; border-radius:var(--r-pill); background:var(--surface); box-shadow:0 0 0 1px var(--line); font-size:var(--text-tag); font-weight:650; white-space:nowrap}
+.indcols__grid{display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:var(--sp-4); align-items:start}
+.indcol{display:grid; align-content:start; gap:var(--sp-3); justify-items:center; min-width:0}
+.indcol__h{margin:0; padding:5px 12px; border-radius:var(--r-pill); background:var(--surface); box-shadow:0 0 0 1px var(--line); font-size:var(--text-tag); font-weight:650; white-space:nowrap; align-self:start}
 .indcol__view{width:100%; height:216px; overflow:hidden;
   mask-image:linear-gradient(transparent, #000 18%, #000 82%, transparent); -webkit-mask-image:linear-gradient(transparent, #000 18%, #000 82%, transparent)}
 .indcol__track{animation:indcol var(--dur,24s) linear infinite}

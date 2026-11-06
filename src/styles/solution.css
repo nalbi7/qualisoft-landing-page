@@ -31,11 +31,12 @@ body{background:var(--surface)}
 .sp2__h2--features{margin-top:var(--sp-8)}
 .accs{list-style:none; margin:0; padding:0; box-shadow:0 -1px 0 var(--line)}
 .accs li{box-shadow:0 1px 0 var(--line)}
-.acc{width:100%; display:flex; align-items:center; min-height:64px; padding:0 4px; border:0; background:none; font:inherit; font-size:19px; font-weight:650; letter-spacing:-.02em; color:var(--text); cursor:pointer; text-align:left; list-style:none}
+.acc{width:100%; display:flex; align-items:center; gap:8px; min-height:60px; padding:0 4px; border:0; background:none; font:inherit; font-size:19px; font-weight:650; letter-spacing:-.02em; color:var(--text); cursor:pointer; text-align:left; list-style:none}
 .acc::-webkit-details-marker{display:none}
-.acc__plus{margin-left:auto; font-size:22px; color:var(--muted); transition:transform .2s var(--ease-out)}
-.acc__item[open] .acc__plus{transform:rotate(45deg)}
-.acc__body p{margin:0 4px var(--sp-5); color:var(--muted); line-height:1.7}
+.acc__chev{flex:none; color:var(--muted); transition:transform .2s var(--ease-out), color .2s ease}
+.acc__item[open] .acc__chev{transform:rotate(180deg); color:var(--text)}
+.acc__body{overflow:hidden; padding:0 4px var(--sp-4)}
+.acc__body p{margin:0; color:var(--muted); line-height:1.7}
 .we2{list-style:none; margin:0; padding:0; display:grid; gap:var(--sp-4)}
 .we2 li{display:grid; grid-template-columns:56px 1fr; gap:var(--sp-3); align-items:baseline; font-size:18px; font-weight:600; letter-spacing:-.01em}
 .we2__n{font-family:var(--mono); font-size:var(--text-tag); color:var(--brand); font-weight:500}
@@ -93,7 +94,7 @@ body{background:var(--surface)}
 .feat-stage{position:sticky; top:calc(var(--nav-h) + 68px)}
 .feat-stage[hidden], .shot[hidden]{display:none}
 .shot{margin:0; display:grid; gap:10px; animation:shot-in .24s var(--ease-out) both}
-.acc__body .shot{margin:0 4px var(--sp-5)}
+.acc__body .shot{margin:var(--sp-3) 0 var(--sp-2)}
 @keyframes shot-in{from{opacity:0; transform:translateY(4px)}}
 .shot__frame{border-radius:12px; overflow:hidden; background:var(--bg); box-shadow:0 0 0 1px var(--hair), 0 12px 32px rgba(20,20,43,.10)}
 .shot__frame img{display:block; width:100%; height:auto; max-height:min(640px, 76vh); object-fit:contain}
@@ -105,7 +106,7 @@ body{background:var(--surface)}
 }
 @supports (interpolate-size:allow-keywords){
   .accs{interpolate-size:allow-keywords}
-  .acc__item::details-content{block-size:0; overflow:clip; transition:block-size .28s var(--ease-out), content-visibility .28s allow-discrete}
+  .acc__item::details-content{block-size:0; overflow:clip; transition:block-size .24s var(--ease-out), content-visibility .24s allow-discrete}
   .acc__item[open]::details-content{block-size:auto}
 }
-@media (prefers-reduced-motion:reduce){ .acc__plus{transition:none} .acc__item::details-content{transition:none} .shot{animation:none} }
+@media (prefers-reduced-motion:reduce){ .acc__chev{transition:none} .acc__item::details-content{transition:none} .shot{animation:none} }
