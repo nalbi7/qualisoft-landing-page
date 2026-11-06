@@ -5,14 +5,14 @@ import KakaoButton from './KakaoButton.astro';
 import { useT, type Key } from '../i18n';
 import { COMPANY, telFor } from '../config/site';
 // vars — 제목 문구의 {이름} 자리를 채운다 (솔루션 상세 「{name}, 화면으로 먼저 보세요」)
-interface Props { title: Key; kakao?: boolean; vars?: Record<string, string> }
-const { title, kakao = true, vars = {} } = Astro.props;
+interface Props { title: Key; kakao?: boolean; vars?: Record<string, string>; sol?: string }
+const { title, kakao = true, vars = {}, sol } = Astro.props;
 const loc = Astro.currentLocale;
 const t = useT(loc);
 const heading = Object.entries(vars).reduce((s, [k, v]) => s.replaceAll(`{${k}}`, v), t(title));
 ---
 <section class="band on-dark" aria-labelledby="band-h" data-parity="band">
   <div class="wrap"><div class="band__box"><h2 id="band-h">{heading}</h2>
-    <div class="band__acts"><DemoButton />{kakao && <KakaoButton />}<a class="band__tel" href={COMPANY.telHref} data-ev="phone_click"><small>{t('common.tel')}</small>{telFor(loc)}</a></div>
+    <div class="band__acts"><DemoButton sol={sol} />{kakao && <KakaoButton />}<a class="band__tel" href={COMPANY.telHref} data-ev="phone_click"><small>{t('common.tel')}</small>{telFor(loc)}</a></div>
     {t.has('common.consult') && <p class="band__consult">{t('common.consult')}</p>}</div></div>
 </section>

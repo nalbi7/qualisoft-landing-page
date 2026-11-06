@@ -37,11 +37,27 @@ export const LINKS = {
 export const DEMO_URL: string = import.meta.env.PUBLIC_DEMO_URL ?? '';
 
 // 언어별 데모 신청 URL — 한국어는 기존 DEMO_URL 우선, 영·일·중은 자체 데모 페이지(/en/demo/ 등)로 연결 (A2)
-export const demoUrlFor = (loc?: string): string => {
-  if (isKo(loc)) {
-    return DEMO_URL || lurl(ROUTES.demo, loc);
-  }
-  return lurl(ROUTES.demo, loc);
+// 솔루션 상세에서 진입 시 ?sol= 파라미터를 붙여 맞춤 예시 문장과 자동완성을 유도한다
+const SOL_KEY_MAP: Record<string, string> = {
+  'dynamics-365-crm': 'crm',
+  crm: 'crm',
+  'project-operations': 'po',
+  po: 'po',
+  'customer-insights': 'ci',
+  ci: 'ci',
+  'power-bi-fabric': 'bi',
+  bi: 'bi',
+  'power-platform': 'pp',
+  pp: 'pp',
+  copilot: 'copilot',
+};
+
+export const demoUrlFor = (loc?: string, sol?: string): string => {
+  const base = isKo(loc) ? (DEMO_URL || lurl(ROUTES.demo, loc)) : lurl(ROUTES.demo, loc);
+  if (!sol) return base;
+  const solKey = SOL_KEY_MAP[sol] ?? sol;
+  const sep = base.includes('?') ? '&' : '?';
+  return `${base}${sep}sol=${encodeURIComponent(solKey)}`;
 };
 
 export const GA4_ID: string = import.meta.env.PUBLIC_GA4_ID ?? '';

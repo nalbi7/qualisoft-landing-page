@@ -3,11 +3,11 @@
 // 데모 주소가 없으면 같은 자리에 전화 상담을 둔다 — 동작하지 않는 버튼을 두지 않는다 (16-tech-architecture §7 · H-01)
 import { useT, type Key } from '../i18n';
 import { COMPANY, demoUrlFor, telFor } from '../config/site';
-interface Props { small?: boolean; label?: Key; class?: string }
-const { small = false, label = 'common.demo', class: extra = '' } = Astro.props;
+interface Props { small?: boolean; label?: Key; class?: string; sol?: string }
+const { small = false, label = 'common.demo', class: extra = '', sol } = Astro.props;
 const loc = Astro.currentLocale;
 const t = useT(loc);
-const demoUrl = demoUrlFor(loc);
+const demoUrl = demoUrlFor(loc, sol);
 const cls = ['btn', 'btn-primary', small && 'btn-sm', extra].filter(Boolean).join(' ');
 const arrow = '<svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M6 4.5h5.5V10" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 ---

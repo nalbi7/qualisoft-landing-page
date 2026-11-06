@@ -127,6 +127,7 @@ const points = t('demo.hero.points', true);
         <form
           id="demo-request-form"
           class="demo-form"
+          data-locale={loc}
           data-api-url={apiUrl}
           data-token-secret={tokenSecret}
           data-token-client={tokenClient}
@@ -164,20 +165,43 @@ const points = t('demo.hero.points', true);
             <div class="demo-field-error" id="company-error"></div>
           </div>
 
-          {/* 이름 */}
-          <div class="demo-form-item">
-            <label class="form-label" for="name">
-              {t('demo.form.name.label')}<span class="required-mark">*</span>
-            </label>
-            <input
-              class="demo-input"
-              id="name"
-              name="name"
-              type="text"
-              placeholder={t('demo.form.name.placeholder')}
-              required
-            />
-            <div class="demo-field-error" id="name-error"></div>
+          {/* 이름 / 국가 (2열) */}
+          <div class="demo-form-row">
+            <div class="demo-form-item">
+              <label class="form-label" for="name">
+                {t('demo.form.name.label')}<span class="required-mark">*</span>
+              </label>
+              <input
+                class="demo-input"
+                id="name"
+                name="name"
+                type="text"
+                placeholder={t('demo.form.name.placeholder')}
+                required
+              />
+              <div class="demo-field-error" id="name-error"></div>
+            </div>
+            <div class="demo-form-item">
+              <label class="form-label" for="country-search">
+                {t('demo.form.country.label')}
+              </label>
+              <div class="demo-country-select" id="country-select-wrapper">
+                <input
+                  class="demo-input demo-country-input"
+                  id="country-search"
+                  type="text"
+                  placeholder={t('demo.form.country.placeholder')}
+                  autocomplete="off"
+                  role="combobox"
+                  aria-expanded="false"
+                  aria-controls="country-list"
+                />
+                <input type="hidden" id="country" name="country" />
+                <button type="button" class="demo-country-clear" id="country-clear" aria-label="Clear country" hidden>&times;</button>
+                <ul class="demo-country-list" id="country-list" role="listbox" hidden></ul>
+              </div>
+              <div class="demo-field-error" id="country-error"></div>
+            </div>
           </div>
 
           {/* 직함 / 부서 2열 */}
@@ -264,13 +288,20 @@ const points = t('demo.hero.points', true);
             <label class="form-label" for="message">
               {t('demo.form.message.label')}
             </label>
-            <textarea
-              class="demo-textarea"
-              id="message"
-              name="message"
-              rows="5"
-              placeholder={t('demo.form.message.placeholder')}
-            ></textarea>
+            <div class="ghost-wrap" id="ghost-wrap">
+              <textarea
+                class="demo-textarea"
+                id="message"
+                name="message"
+                rows="5"
+                placeholder={t('demo.form.message.placeholder')}
+              ></textarea>
+              <div class="ghost-text" id="ghost-text" aria-hidden="true" hidden></div>
+              <button type="button" class="ghost-hint" id="ghost-hint" hidden>
+                <kbd>Tab ⇥</kbd>
+                <span>{t('demo.form.ghost_hint')}</span>
+              </button>
+            </div>
           </div>
 
           {/* 제출 버튼 */}

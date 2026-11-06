@@ -292,6 +292,170 @@ html, body {
   border-color: #000;
 }
 
+/* 검색 가능한 국가 드롭다운 */
+.demo-country-select {
+  position: relative;
+  width: 100%;
+}
+
+.demo-country-input {
+  cursor: pointer;
+  padding-right: 32px;
+}
+
+.demo-country-clear {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: #9ca3af;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.demo-country-clear:hover {
+  color: #000;
+}
+
+.demo-country-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  max-height: 240px;
+  overflow-y: auto;
+  margin: 4px 0 0;
+  padding: 6px 0;
+  list-style: none;
+  background: #fff;
+  border: 1px solid #d8e2ea;
+  border-radius: 6px;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.1);
+}
+
+.demo-country-list[hidden] {
+  display: none;
+}
+
+.demo-country-item {
+  padding: 8px 14px;
+  color: #1e293b;
+  font-size: 13.5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background-color 0.15s ease;
+}
+
+.demo-country-item:hover,
+.demo-country-item.is-active {
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
+.demo-country-item.is-selected {
+  font-weight: 600;
+  color: #2563eb;
+  background-color: #eff6ff;
+}
+
+.demo-country-code {
+  color: #94a3b8;
+  font-size: 12px;
+  font-family: monospace;
+}
+
+.demo-country-divider {
+  height: 1px;
+  margin: 6px 0;
+  background: #e2e8f0;
+}
+
+.demo-country-empty {
+  padding: 12px 14px;
+  color: #94a3b8;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* 예시 문장 ghost 레이어 및 Tab 힌트 버튼 */
+.ghost-wrap {
+  position: relative;
+  display: block;
+}
+
+.ghost-wrap.on textarea {
+  min-height: 136px;
+  padding-bottom: 48px;
+}
+
+.ghost-text {
+  position: absolute;
+  inset: 1px;
+  padding: 12px;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #9ca3af;
+  pointer-events: none;
+  white-space: pre-wrap;
+  overflow: hidden;
+}
+
+.ghost-text[hidden] {
+  display: none;
+}
+
+.ghost-hint {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 30px;
+  padding: 0 12px 0 4px;
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.ghost-hint:hover {
+  background: #dbeafe;
+  border-color: #93c5fd;
+}
+
+.ghost-hint kbd {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: #fff;
+  color: #1d4ed8;
+  font-family: monospace;
+  font-size: 11.5px;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(29, 78, 216, 0.12);
+}
+
 .demo-field-error {
   min-height: 0;
   margin-top: 6px;

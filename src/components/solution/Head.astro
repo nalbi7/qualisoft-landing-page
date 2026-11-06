@@ -18,7 +18,7 @@ const lines = tx(s.headline, loc).split('\n');
 <Crumb wrap={false} items={[{ label: t('common.home'), href: ROUTES.home }, { label: t('nav.solutions'), href: ROUTES.products }, { label: s.name }]} />
 <h1 class="sp2__h" data-parity="sol-hero"><span class="sp2__k" translate="no">{s.name}</span><Pending why={s.pending?.headline}>{lines.map((l, i) => <Fragment>{i > 0 && <br>}{l}</Fragment>)}</Pending></h1>
 <div class="sp2__acts">
-  <DemoButton label="solution.hero.ask" />
+  <DemoButton label="solution.hero.ask" sol={s.art || Astro.props.sol.id} />
   <a class="btn btn-secondary" href={msUrl(s.official, loc)} target="_blank" rel="noopener"><span class="ms-logo"><img class="ms-logo__l" src={url('/assets/ms/microsoft-logo.svg')} alt="Microsoft" width="66" height="14" style="height:14px;width:auto"><img class="ms-logo__d" src={url('/assets/ms/microsoft-logo-white.svg')} alt="" aria-hidden="true" width="66" height="14" style="height:14px;width:auto"></span>{t('solution.hero.official')} <NewWindow /></a>
 </div>
 <p class="sp2__lead"><Pending why={s.pending?.lead}>{tx(s.lead, loc)}</Pending></p>
