@@ -4,7 +4,7 @@ body{background:var(--surface)}
 .sp2{display:grid; grid-template-columns:minmax(300px, .82fr) 1.18fr; gap:var(--sp-8); padding-block:var(--sp-6) var(--sp-8); align-items:start}
 .sp2 > *, .sp2__side > *{min-width:0}
 .sp2__side{display:grid; gap:var(--sp-4)}
-.sp2__content{grid-column:1 / -1; width:100%; max-width:960px; margin-inline:auto}
+.sp2__content{grid-column:1 / -1; width:100%; max-width:1080px; margin-inline:auto}
 .solution-bar{position:fixed; inset:var(--nav-h) 0 auto; z-index:40; background:var(--surface); box-shadow:0 1px 0 var(--line), var(--e3)}
 .solution-bar[hidden]{display:none}
 .solution-bar ul{display:flex; gap:var(--sp-2); list-style:none; margin:0; padding:var(--sp-2) 0; overflow-x:auto; overscroll-behavior-x:contain}
@@ -85,22 +85,27 @@ body{background:var(--surface)}
 ::view-transition-group(sol-panel), ::view-transition-old(sol-panel), ::view-transition-new(sol-panel){animation-duration:.3s; animation-timing-function:var(--ease-in-out)}   /* D-028 — 이전 .45s ease */
 ::view-transition-old(root), ::view-transition-new(root){animation-duration:.25s}
 
-/* 핵심 기능의 화면 그림 (BD-034 · BD-098) — 기존 아코디언 구조 안에서 펼친 줄의 왼쪽에 설명 글, 오른쪽에 Microsoft Learn 화면 그림을 나란히 둔다.
-   760px 이하 모바일에서는 글 아래에 그림이 세로로 쌓인다. 한 번에 한 줄만 펼치고 FAQ와 같은 높이 전환을 쓴다 */
-.acc__body{display:grid; grid-template-columns:minmax(220px, .72fr) 1.28fr; gap:var(--sp-6); align-items:start; padding:var(--sp-2) 4px var(--sp-6)}
-.acc__body > *{min-width:0}
-.acc__body p{margin:0; color:var(--muted); line-height:1.75}
-.shot{margin:0; display:grid; gap:10px}
+/* 핵심 기능 — 좌측 아코디언 목록(제목+설명 글) · 우측 화면 그림 2단 배치 (BD-034 · BD-097 · BD-099).
+   우측 화면 그림이 더 넓고 선명하게 보이도록 좌·우 비율을 .58fr : 1.42fr 로 배분하고,
+   900px 이하 모바일·태블릿에서는 각 아코디언 항목 내부(글 아래)에 그림이 펼쳐진다 */
+.feat-split{display:grid; grid-template-columns:minmax(260px, .58fr) 1.42fr; gap:var(--sp-6); align-items:start}
+.feat-split > *{min-width:0}
+.feat-stage{position:sticky; top:calc(var(--nav-h) + 68px)}
+.feat-stage[hidden], .shot[hidden]{display:none}
+.shot{margin:0; display:grid; gap:10px; animation:shot-in .24s var(--ease-out) both}
+.acc__body .shot{margin:0 4px var(--sp-5)}
+@keyframes shot-in{from{opacity:0; transform:translateY(4px)}}
 .shot__frame{border-radius:12px; overflow:hidden; background:var(--bg); box-shadow:0 0 0 1px var(--hair), 0 12px 32px rgba(20,20,43,.10)}
-.shot__frame img{display:block; width:100%; height:auto; max-height:min(560px, 70vh); object-fit:contain}
+.shot__frame img{display:block; width:100%; height:auto; max-height:min(640px, 76vh); object-fit:contain}
 .shot figcaption{font-size:13px; color:var(--muted)}
 .shot figcaption a{color:inherit; text-underline-offset:3px}
-@media (max-width:760px){
-  .acc__body{grid-template-columns:1fr; gap:var(--sp-4); padding-bottom:var(--sp-5)}
+@media (max-width:900px){
+  .feat-split{grid-template-columns:1fr; gap:var(--sp-5)}
+  .feat-stage{position:static}
 }
 @supports (interpolate-size:allow-keywords){
   .accs{interpolate-size:allow-keywords}
   .acc__item::details-content{block-size:0; overflow:clip; transition:block-size .28s var(--ease-out), content-visibility .28s allow-discrete}
   .acc__item[open]::details-content{block-size:auto}
 }
-@media (prefers-reduced-motion:reduce){ .acc__plus{transition:none} .acc__item::details-content{transition:none} }
+@media (prefers-reduced-motion:reduce){ .acc__plus{transition:none} .acc__item::details-content{transition:none} .shot{animation:none} }
