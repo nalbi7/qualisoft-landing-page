@@ -68,9 +68,15 @@ const org = {
   <meta property="og:image:alt" content={ogImageAlt ?? homeTitle}>
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content={ogAbs}>
-  {/* 파비콘 — 구 랜딩(dynamics365.co.kr)의 favicon.ico 그대로 (D-040, Microsoft 로고 — 상표 점검 M-08). 홈 화면용은 같은 그림을 흰 바탕 180px 로 */}
-  <link rel="icon" href={url('/favicon.ico')} sizes="any">
-  <link rel="apple-touch-icon" href={url('/apple-touch-icon.png')}>
+  {/* 파비콘 — 구 랜딩(dynamics365.co.kr)의 favicon.ico 그대로 (D-040, Microsoft 로고 — 상표 점검 M-08).
+      Bing·Yahoo 등 검색 크롤러 호환을 위해 type·sizes·PNG·SVG·구버전 경로(/images/favicon.ico 사본)를 함께 둔다 (BD-104) */}
+  <link rel="icon" type="image/x-icon" href={url('/favicon.ico')} sizes="16x16 24x24 32x32 48x48 72x72 128x128">
+  <link rel="shortcut icon" type="image/x-icon" href={url('/favicon.ico')}>
+  <link rel="icon" type="image/png" sizes="48x48" href={url('/favicon-48x48.png')}>
+  <link rel="icon" type="image/png" sizes="32x32" href={url('/favicon-32x32.png')}>
+  <link rel="icon" type="image/png" sizes="16x16" href={url('/favicon-16x16.png')}>
+  <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')}>
+  <link rel="apple-touch-icon" sizes="180x180" href={url('/apple-touch-icon.png')}>
   {VERIFICATION.google && <meta name="google-site-verification" content={VERIFICATION.google}>}
   {VERIFICATION.naver && <meta name="naver-site-verification" content={VERIFICATION.naver}>}
   {VERIFICATION.bing && <meta name="msvalidate.01" content={VERIFICATION.bing}>}
