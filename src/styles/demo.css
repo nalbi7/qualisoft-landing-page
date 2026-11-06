@@ -400,10 +400,15 @@ html, body {
   padding-bottom: 48px;
 }
 
+.ghost-wrap.on textarea::placeholder {
+  color: transparent !important;
+  opacity: 0 !important;
+}
+
 .ghost-text {
   position: absolute;
   inset: 1px;
-  padding: 12px;
+  padding: 12px 12px 48px;
   font-family: inherit;
   font-size: 14px;
   line-height: 1.5;
@@ -411,6 +416,8 @@ html, body {
   pointer-events: none;
   white-space: pre-wrap;
   overflow: hidden;
+  box-sizing: border-box;
+  user-select: none;
 }
 
 .ghost-text[hidden] {
@@ -829,6 +836,9 @@ html, body {
   }
   .demo-textarea {
     padding: 10px;
+  }
+  .ghost-text {
+    padding: 10px 10px 48px;
   }
   .privacy-consent-section {
     margin-top: 18px;

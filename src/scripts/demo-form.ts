@@ -393,14 +393,16 @@ function initGhostText(locale: string) {
   const text = ghostMap[solKey];
   if (!text) return;
 
+  const originalPlaceholder = msgEl.placeholder;
   let timer: number | null = null;
-  let activeText: string | null = text;
+  let activeText: string | null = null;
 
   function showGhost(str: string, animate: boolean) {
     activeText = str;
     ghostEl.hidden = false;
     ghostBtn.hidden = false;
     ghostWrap.classList.add('on');
+    msgEl.placeholder = '';
     if (timer) clearInterval(timer);
 
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -428,6 +430,7 @@ function initGhostText(locale: string) {
     ghostBtn.hidden = true;
     ghostEl.textContent = '';
     ghostWrap.classList.remove('on');
+    msgEl.placeholder = originalPlaceholder;
   }
 
   function acceptGhost() {
@@ -443,6 +446,27 @@ function initGhostText(locale: string) {
     if (activeText && e.key === 'Tab' && !e.shiftKey && !msgEl.value) {
       e.preventDefault();
       acceptGhost();
+    } else if (activeText && (e.key === 'Escape' || e.key === 'Esc')) {
+      e.preventDefault();
+      clearGhost();
+    }
+  });
+
+  ghostBtn.addEventListener('keydown', (e) => {
+    if (activeText && (e.key === 'Escape' || e.key === 'Esc')) {
+      e.preventDefault();
+      clearGhost();
+      msgEl.focus();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (activeText && (e.key === 'Escape' || e.key === 'Esc')) {
+      const openModal = document.querySelector('.demo-modal-backdrop:not([hidden])');
+      if (!openModal) {
+        e.preventDefault();
+        clearGhost();
+      }
     }
   });
 
@@ -453,13 +477,10 @@ function initGhostText(locale: string) {
   ghostBtn.addEventListener('pointerdown', (e) => e.preventDefault());
   ghostBtn.addEventListener('click', () => acceptGhost());
 
-  // 페이지 로드 후 400ms 뒤에 예시 텍스트 표시 및 포커스
+  // 페이지 로드 후 400ms 뒤에 예시 텍스트 표시
   setTimeout(() => {
     if (!msgEl.value) {
       showGhost(text, true);
-      if (window.matchMedia('(pointer: fine)').matches) {
-        msgEl.focus({ preventScroll: true });
-      }
     }
   }, 400);
 }
