@@ -57,7 +57,7 @@ const org = {
   {langs && <link rel="alternate" hreflang="x-default" href={alt(X_DEFAULT)}>}
   {(noindex || NOINDEX) && <meta name="robots" content="noindex">}
   <meta property="og:type" content={ogType}>
-  <meta property="og:site_name" content={t('common.company')}>
+  <meta property="og:site_name" content={homeTitle}>
   <meta property="og:locale" content={L.og}>
   {langs && LOCALES.filter((l) => l.code !== loc).map((l) => <meta property="og:locale:alternate" content={l.og}>)}
   <meta property="og:title" content={fullTitle}>
@@ -65,7 +65,7 @@ const org = {
   <meta property="og:image" content={ogAbs}>
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content={ogImageAlt ?? t('common.company')}>
+  <meta property="og:image:alt" content={ogImageAlt ?? homeTitle}>
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content={ogAbs}>
   {/* 파비콘 — 구 랜딩(dynamics365.co.kr)의 favicon.ico 그대로 (D-040, Microsoft 로고 — 상표 점검 M-08). 홈 화면용은 같은 그림을 흰 바탕 180px 로 */}

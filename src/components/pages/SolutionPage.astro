@@ -31,7 +31,7 @@ const self = abs(ROUTES.solution(sol.id as SolutionSlug));
 const service = {
   '@context': 'https://schema.org', '@type': 'Service',
   name: topic, serviceType: s.name, description, url: self,
-  provider: { '@type': 'Organization', '@id': new URL(url('/#org'), Astro.site).href, name: t('common.company') },
+  provider: { '@type': 'Organization', '@id': new URL(url('/#org'), Astro.site).href },
 };
 const faq = await solutionFaq(sol, loc);
 const breadcrumb = {

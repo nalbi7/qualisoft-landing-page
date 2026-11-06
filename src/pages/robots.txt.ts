@@ -6,7 +6,7 @@ import { url } from '../config/routes';
 export const GET: APIRoute = ({ site }) => {
   const sitemap = new URL(url('/sitemap-index.xml'), site).href;
   const body = [
-    '# Qualisoft — all crawlers welcome, including AI search, answer and training bots',
+    '# All crawlers welcome, including AI search, answer and training bots',
     '# (GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended, Bingbot, Yeti ...)',
     'User-agent: *',
     'Allow: /',

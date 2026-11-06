@@ -67,10 +67,10 @@
   ],
   "work": [
     {
-      "ko": "퀄리소프트는 Dynamics 365 Project Operations의 표준 기능을 바탕에 두고, 그 위에 시공 업무에 맞춘 화면을 더했습니다. 공정 계획과 예산, 구매는 승인을 거쳐 SAP와 오가고, 실적은 SAP에서 자동으로 들어옵니다.",
-      "en": "Qualisoft built on the standard capabilities of Dynamics 365 Project Operations and added screens shaped around construction work. Schedules, budgets and purchasing pass through approvals and flow to and from SAP, while actuals arrive from SAP automatically.",
-      "ja": "クオリソフトは Dynamics 365 Project Operations の標準機能を土台に、施工業務に合わせた画面を加えました。工程計画、予算、購買は承認を経て SAP とやり取りし、実績は SAP から自動で取り込まれます。",
-      "zh-hans": "Qualisoft 以 Dynamics 365 Project Operations 的标准功能为基础，增加了贴合施工业务的界面。工程计划、预算与采购经审批后与 SAP 往来，实绩则从 SAP 自动导入。"
+      "ko": "Dynamics 365 Project Operations의 표준 기능을 바탕에 두고, 그 위에 시공 업무에 맞춘 화면을 더했습니다. 공정 계획과 예산, 구매는 승인을 거쳐 SAP와 오가고, 실적은 SAP에서 자동으로 들어옵니다.",
+      "en": "We built on the standard capabilities of Dynamics 365 Project Operations and added screens shaped around construction work. Schedules, budgets and purchasing pass through approvals and flow to and from SAP, while actuals arrive from SAP automatically.",
+      "ja": "Dynamics 365 Project Operations の標準機能を土台に、施工業務に合わせた画面を加えました。工程計画、予算、購買は承認を経て SAP とやり取りし、実績は SAP から自動で取り込まれます。",
+      "zh-hans": "以 Dynamics 365 Project Operations 的标准功能为基础，增加了贴合施工业务的界面。工程计划、预算与采购经审批后与 SAP 往来，实绩则从 SAP 自动导入。"
     },
     {
       "ko": "프로젝트가 만들어지면 산출물을 보관할 문서 폴더도 함께 준비돼, 현장의 결과물이 정해진 자리에 모입니다.",

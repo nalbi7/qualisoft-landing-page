@@ -53,10 +53,10 @@
     }
   },
   "description": {
-    "ko": "스위스 치과 장비 제조사 EMS가 본사에서 운영하는 Dynamics 365를 퀄리소프트가 APAC-IMEA 지역 CRM 파트너로서 영업 · 마케팅 저니 · 보고까지 지원한 사례입니다.",
-    "en": "How Qualisoft, as EMS’s CRM agency for APAC-IMEA, supported the Swiss dental equipment maker’s headquarters Dynamics 365 across sales, marketing journeys and reporting.",
-    "ja": "スイスの歯科機器メーカー EMS が本社で運用する Dynamics 365 を、クオリソフトが APAC-IMEA 地域の CRM パートナーとして営業・マーケティングジャーニー・レポートまで支援した事例です。",
-    "zh-hans": "Qualisoft 作为瑞士牙科设备制造商 EMS 在亚太及 IMEA 地区的 CRM 合作伙伴，支持其总部运营的 Dynamics 365，涵盖销售、营销旅程与报表。"
+    "ko": "스위스 치과 장비 제조사 EMS가 본사에서 운영하는 Dynamics 365를 APAC-IMEA 지역 CRM 파트너로서 영업 · 마케팅 저니 · 보고까지 지원한 사례입니다.",
+    "en": "How we, as EMS’s CRM agency for APAC-IMEA, supported the Swiss dental equipment maker’s headquarters Dynamics 365 across sales, marketing journeys and reporting.",
+    "ja": "スイスの歯科機器メーカー EMS が本社で運用する Dynamics 365 を、APAC-IMEA 地域の CRM パートナーとして営業・マーケティングジャーニー・レポートまで支援した事例です。",
+    "zh-hans": "作为瑞士牙科设备制造商 EMS 在亚太及 IMEA 地区的 CRM 合作伙伴，支持其总部运营的 Dynamics 365，涵盖销售、营销旅程与报表。"
   },
   "challenge": [
     {
@@ -68,10 +68,10 @@
   ],
   "work": [
     {
-      "ko": "퀄리소프트는 EMS의 APAC-IMEA 지역 CRM 파트너로서 한국에서 시작해 지원 지역을 넓혀 왔습니다. 요청은 티켓으로 받고, 본사 · 각 지역과 정기적으로 소통합니다.",
-      "en": "As EMS’s CRM partner for APAC-IMEA, Qualisoft started in Korea and has steadily widened the regions it supports. Requests come in as tickets, and the team keeps in regular contact with headquarters and each region.",
-      "ja": "クオリソフトは EMS の APAC-IMEA 地域 CRM パートナーとして、韓国から始めて支援地域を広げてきました。依頼はチケットで受け付け、本社や各地域と定期的にやり取りしています。",
-      "zh-hans": "Qualisoft 作为 EMS 的 APAC-IMEA 地区 CRM 合作伙伴，从韩国起步并逐步扩大支持地区。需求通过工单受理，并与总部及各地区保持定期沟通。"
+      "ko": "EMS의 APAC-IMEA 지역 CRM 파트너로서 한국에서 시작해 지원 지역을 넓혀 왔습니다. 요청은 티켓으로 받고, 본사 · 각 지역과 정기적으로 소통합니다.",
+      "en": "As EMS’s CRM partner for APAC-IMEA, we started in Korea and have steadily widened the regions we support. Requests come in as tickets, and the team keeps in regular contact with headquarters and each region.",
+      "ja": "EMS の APAC-IMEA 地域 CRM パートナーとして、韓国から始めて支援地域を広げてきました。依頼はチケットで受け付け、本社や各地域と定期的にやり取りしています。",
+      "zh-hans": "作为 EMS 的 APAC-IMEA 地区 CRM 合作伙伴，我们从韩国起步并逐步扩大支持地区。需求通过工单受理，并与总部及各地区保持定期沟通。"
     },
     {
       "ko": "마케팅에서는 Customer Insights로 고객 여정을 자동화하고, 영업 현황은 대시보드와 Power BI 보고서로 보이게 했습니다.",
@@ -108,10 +108,10 @@
   ],
   "result": [
     {
-      "ko": "여러 나라의 서로 다른 요청이 하나의 본사 시스템 안에서 처리됩니다. 퀄리소프트는 지역에서 생긴 문제를 풀고, 본사가 결정할 일은 근거와 함께 전달합니다.",
-      "en": "Different requests from many countries are now handled inside the one headquarters system. Qualisoft resolves issues in the region and passes decisions that belong to headquarters along with the evidence behind them.",
-      "ja": "多くの国から寄せられる異なる要望が、ひとつの本社システムの中で処理されています。クオリソフトは地域で起きた問題を解決し、本社が判断すべきことは根拠とともに伝えています。",
-      "zh-hans": "来自多个国家的不同需求，如今都在同一套总部系统中处理。Qualisoft 解决地区内出现的问题，需要总部决定的事项则附上依据一并转交。"
+      "ko": "여러 나라의 서로 다른 요청이 하나의 본사 시스템 안에서 처리됩니다. 지역에서 생긴 문제는 전담 팀이 풀고, 본사가 결정할 일은 근거와 함께 전달합니다.",
+      "en": "Different requests from many countries are now handled inside the one headquarters system. Our team resolves issues in the region and passes decisions that belong to headquarters along with the evidence behind them.",
+      "ja": "多くの国から寄せられる異なる要望が、ひとつの本社システムの中で処理されています。地域で起きた問題を解決し、本社が判断すべきことは根拠とともに伝えています。",
+      "zh-hans": "来自多个国家的不同需求，如今都在同一套总部系统中处理。我们解决地区内出现的问题，需要总部决定的事项则附上依据一并转交。"
     }
   ]
 }

@@ -34,8 +34,8 @@ const article = {
   headline: flat, description: tx(d.description, loc), url: abs(ROUTES.case(c.id)),
   about: { '@type': 'Organization', name: logoName(logo, loc) },
   // 쓴 회사 · 낸 회사 — 같은 회사 id 로 잇는다 (D-040). 날짜는 콘텐츠에 없어 넣지 않는다 — 지어내지 않는다
-  author: { '@type': 'Organization', '@id': orgId, name: t('common.company') },
-  publisher: { '@type': 'Organization', '@id': orgId, name: t('common.company') },
+  author: { '@type': 'Organization', '@id': orgId },
+  publisher: { '@type': 'Organization', '@id': orgId },
   image: new URL(url(ogImage), Astro.site).href,
 };
 const breadcrumb = {

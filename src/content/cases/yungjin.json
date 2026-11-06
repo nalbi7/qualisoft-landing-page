@@ -49,7 +49,7 @@
   },
   "description": {
     "ko": "제약사 영진약품의 방문 영업과 월간 계획, ERP 실적 조회, 영업 분석을 Dynamics CRM으로 구축하고 운영을 지원하는 사례입니다.",
-    "en": "How Yungjin Pharm runs field sales visits, monthly plans, ERP sales lookups and sales analysis on Dynamics CRM, with ongoing support from Qualisoft.",
+    "en": "How Yungjin Pharm runs field sales visits, monthly plans, ERP sales lookups and sales analysis on Dynamics CRM, with ongoing operational support.",
     "ja": "製薬会社の永進薬品の訪問営業と月間計画、ERP 実績の照会、営業分析を Dynamics CRM で構築し、運用を支援している事例です。",
     "zh-hans": "为制药企业 Yungjin Pharm 基于 Dynamics CRM 构建拜访销售、月度计划、ERP 业绩查询与销售分析，并持续提供运营支持的案例。"
   },
@@ -64,7 +64,7 @@
   "work": [
     {
       "ko": "영업 담당자가 휴대폰으로 방문을 기록하는 모바일 방문 관리와 월간 계획을 Dynamics CRM에 만들었습니다. ERP의 판매 실적은 CRM에서 거래처별로 조회하게 하고, 영업 분석과 보고서도 함께 마련했습니다.",
-      "en": "Qualisoft built mobile visit management, where reps log visits on their phones, and monthly planning in Dynamics CRM. ERP sales results can be looked up by account in the CRM, alongside sales analysis and reports.",
+      "en": "We built mobile visit management, where reps log visits on their phones, and monthly planning in Dynamics CRM. ERP sales results can be looked up by account in the CRM, alongside sales analysis and reports.",
       "ja": "営業担当者が携帯電話で訪問を記録するモバイル訪問管理と月間計画を Dynamics CRM に構築しました。ERP の販売実績は CRM で取引先別に照会できるようにし、営業分析とレポートもあわせて用意しました。",
       "zh-hans": "在 Dynamics CRM 中构建了销售代表用手机记录拜访的移动拜访管理与月度计划。ERP 中的销售业绩可在 CRM 中按客户查询，同时提供销售分析与报表。"
     }
@@ -97,10 +97,10 @@
   ],
   "result": [
     {
-      "ko": "영업 담당자는 현장에서 방문 활동을 바로 남기고, 팀장은 거래처별 실적을 CRM에서 확인합니다. 퀄리소프트는 지금도 운영을 함께하고 있습니다.",
-      "en": "Reps record their visits on the spot, and team leaders check results by account in the CRM. Qualisoft continues to support the system in operation.",
-      "ja": "営業担当者は現場で訪問活動をすぐに残し、チーム長は取引先別の実績を CRM で確認しています。クオリソフトは今も運用を支援しています。",
-      "zh-hans": "销售代表在现场即可记录拜访活动，团队负责人在 CRM 中查看各客户业绩。Qualisoft 至今仍在支持系统运营。"
+      "ko": "영업 담당자는 현장에서 방문 활동을 바로 남기고, 팀장은 거래처별 실적을 CRM에서 확인합니다. 구축 이후에도 운영을 지속적으로 함께하고 있습니다.",
+      "en": "Reps record their visits on the spot, and team leaders check results by account in the CRM. We continue to support the system in operation.",
+      "ja": "営業担当者は現場で訪問活動をすぐに残し、チーム長は取引先別の実績を CRM で確認しています。構築後も継続して運用を支援しています。",
+      "zh-hans": "销售代表在现场即可记录拜访活动，团队负责人在 CRM 中查看各客户业绩。我们至今仍在持续支持系统运营。"
     }
   ]
 }

@@ -64,7 +64,7 @@
   "work": [
     {
       "ko": "장학생 접수와 심사, 지급, 멘토링, 재단 사업 관리를 Dynamics CRM에 구축했습니다. 웹 신청서는 CRM과 바로 연결했고, 고촌홀 예약과 교육 신청을 위한 포털도 함께 만들었습니다.",
-      "en": "Qualisoft built scholar applications, screening, payments, mentoring and programme management in Dynamics CRM. Online application forms feed straight into the CRM, and a portal was added for Gochon Hall bookings and course registration.",
+      "en": "We built scholar applications, screening, payments, mentoring and programme management in Dynamics CRM. Online application forms feed straight into the CRM, and a portal was added for Gochon Hall bookings and course registration.",
       "ja": "奨学生の受付と審査、支給、メンタリング、財団事業の管理を Dynamics CRM に構築しました。ウェブ申請書は CRM と直接つなぎ、高村ホールの予約と講座申し込みのためのポータルもあわせて作りました。",
       "zh-hans": "在 Dynamics CRM 中构建了奖学生受理与评审、发放、导师辅导以及基金会项目管理。在线申请表直接连接 CRM，并同时开发了高村会馆预约与课程报名门户。"
     }

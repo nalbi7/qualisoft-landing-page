@@ -97,9 +97,6 @@ export async function homeFaq(locale?: string): Promise<FaqItem[]> {
     { text: `${t('common.tel')} ${ko ? COMPANY.tel : COMPANY.telIntl}`, href: COMPANY.telHref },
     ...(ko ? [{ text: t('support.kakao'), href: LINKS.kakao, ext: true }] : []),
   ];
-  // 회사 소개 — 구 사이트의 회사 소개 문장 그대로 (사용자 지시 D-044). 사명 · 주소 · 전화 목록은 뺐다 — 푸터에 있다.
-  // 자리는 상담 바로 위 (사용자 지시 2026-11-04, BD-074 — 처음에는 맨 앞이었다)
-  items.push({ q: t('faq.home.who.q'), a: t('faq.home.who.a') });
   items.push({
     q: t('faq.home.contact.q'), a: t('faq.home.contact.a'), list: channels,
     // 일 · 중 화면의 상담 언어 안내 — 히어로 · 마감 띠와 같은 글. 한국어 · 영어 상담 확인(H-06 해소, D-053)

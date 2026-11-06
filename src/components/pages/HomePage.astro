@@ -22,7 +22,8 @@ import NEWS from '../../config/news.json';
 const loc = Astro.currentLocale;
 const t = useT(loc);
 const L = LOCALES.find((l) => l.code === loc) ?? LOCALES[0];
-const website = { '@context': 'https://schema.org', '@type': 'WebSite', name: t('common.company'), url: new URL(lurl('/', loc), Astro.site).href, inLanguage: L.lang, publisher: { '@id': new URL(url('/#org'), Astro.site).href } };
+const homeTitle = loc === 'ko' || !loc ? '마이크로소프트 Dynamics 365 공식사이트' : 'Dynamics 365 Implementation';
+const website = { '@context': 'https://schema.org', '@type': 'WebSite', name: homeTitle, url: new URL(lurl('/', loc), Astro.site).href, inLanguage: L.lang, publisher: { '@id': new URL(url('/#org'), Astro.site).href } };
 // 자주 묻는 질문 (AEO, D-040) — 회사 · 솔루션 · 진행 방식 · 사례 · 상담. 마지막 행동 띠 바로 위
 const faq = await homeFaq(loc);
 // 「CRM 알아보기」의 유튜브 카드 — 동영상 구조화 데이터 (VideoObject, D-047). 값은 카드와 같은 config/news.json 에서만:

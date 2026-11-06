@@ -16,9 +16,9 @@ export const GET: APIRoute = async ({ site }) => {
   const sols = (await getCollection('solutions')).sort((a, b) => a.data.order - b.data.order);
   const cases = await casesFor(loc);
   const lines = [
-    `# ${t('common.company')} (${t('common.legal_name')})`,
+    `# ${t('home.meta.title')}`,
     '',
-    `> ${t('common.company')}는 ${t('footer.partner')}입니다. ${t('home.hero.title')}.`,
+    `> ${t('footer.partner')}입니다. ${t('home.hero.title')}.`,
     '',
     `- ${t('footer.address')}: ${COMPANY.address}`,
     `- ${t('footer.tel')}: ${COMPANY.tel} (${COMPANY.telIntl})`,

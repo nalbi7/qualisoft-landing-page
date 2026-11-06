@@ -64,7 +64,7 @@
   "work": [
     {
       "ko": "부서별 업무를 살펴 서비스 종류에 맞게 Dynamics CRM을 구성하고, 실험 정보 시스템(LIMS)과 ERP 같은 사내 시스템을 연결했습니다.",
-      "en": "After reviewing how each department worked, Qualisoft set up Dynamics CRM around Macrogen’s service lines and connected in-house systems such as the lab information system (LIMS) and ERP.",
+      "en": "After reviewing how each department worked, we set up Dynamics CRM around Macrogen’s service lines and connected in-house systems such as the lab information system (LIMS) and ERP.",
       "ja": "部署ごとの業務を確認してサービスの種類に合わせて Dynamics CRM を構成し、実験情報システム（LIMS）や ERP などの社内システムとつなぎました。",
       "zh-hans": "在梳理各部门业务后，按服务类型配置了 Dynamics CRM，并连接了实验信息系统（LIMS）与 ERP 等内部系统。"
     },
