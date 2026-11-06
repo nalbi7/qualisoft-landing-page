@@ -50,6 +50,9 @@ const org = {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  {VERIFICATION.bing && <meta name="msvalidate.01" content={VERIFICATION.bing}>}
+  {VERIFICATION.google && <meta name="google-site-verification" content={VERIFICATION.google}>}
+  {VERIFICATION.naver && <meta name="naver-site-verification" content={VERIFICATION.naver}>}
   <title>{fullTitle}</title>
   <meta name="description" content={description}>
   {!(noindex || NOINDEX) && <link rel="canonical" href={canonical}>}
@@ -77,9 +80,6 @@ const org = {
   <link rel="icon" type="image/png" sizes="16x16" href={url('/favicon-16x16.png')}>
   <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')}>
   <link rel="apple-touch-icon" sizes="180x180" href={url('/apple-touch-icon.png')}>
-  {VERIFICATION.google && <meta name="google-site-verification" content={VERIFICATION.google}>}
-  {VERIFICATION.naver && <meta name="naver-site-verification" content={VERIFICATION.naver}>}
-  {VERIFICATION.bing && <meta name="msvalidate.01" content={VERIFICATION.bing}>}
   <script type="application/ld+json" set:html={JSON.stringify([org, ...jsonld])} />
   {/* 새로고침은 처음 연 것처럼 (D-038) — 이 탭에서 기억한 테마 · 다크 버튼 · 히어로 등장을 지우고, 주소에 #이 없으면 맨 위에서 연다.
       페이지를 옮기거나 뒤로 가기는 그대로 이어진다.
