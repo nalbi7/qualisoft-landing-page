@@ -1,0 +1,88 @@
+---
+// 데모 전용 레이아웃 — 현행 cdnquali 독립 폼 화면 느낌 유지 (A1)
+// 표준 메타 · canonical · hreflang · JSON-LD(Organization) · 파비콘을 갖추고 메인 사이트 헤더·푸터 없이 독립 화면으로 구성
+import '../styles/tokens.css';
+import '../styles/demo.css';
+import { useT } from '../i18n';
+import { COMPANY, GA4_ID, NOINDEX, VERIFICATION } from '../config/site';
+import { DEFAULT_LOCALE, LOCALES, X_DEFAULT } from '../config/locales.mjs';
+import { url, lurl, pagePath } from '../config/routes';
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+}
+
+const { title, description, noindex = false } = Astro.props;
+const loc = Astro.currentLocale ?? DEFAULT_LOCALE;
+const t = useT(loc);
+const L = LOCALES.find((l) => l.code === loc) ?? LOCALES[0];
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const homeTitle = loc === 'ko' ? '마이크로소프트 Dynamics 365 공식사이트' : 'Dynamics 365 Implementation';
+const fullTitle = `${homeTitle} | ${title}`;
+const page = pagePath(Astro.url.pathname);
+const alt = (code: string) => new URL(lurl(page, code), Astro.site).href;
+const langs = !noindex && LOCALES.length > 1;
+
+const orgId = new URL(url('/#org'), Astro.site).href;
+const ogAbs = new URL(url('/assets/og/default.png'), Astro.site).href;
+const org = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': orgId,
+  name: t('common.company'),
+  legalName: t('common.legal_name'),
+  url: new URL(lurl('/', loc), Astro.site).href,
+  logo: new URL(url('/assets/brand/ver1-logo.png'), Astro.site).href,
+  telephone: COMPANY.telIntl,
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'KR',
+    addressRegion: COMPANY.addressParts.region,
+    addressLocality: COMPANY.addressParts.locality,
+    streetAddress: COMPANY.addressParts.street,
+  },
+};
+---
+<!doctype html>
+<html lang={L.lang} data-ga4={GA4_ID || undefined}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{fullTitle}</title>
+  <meta name="description" content={description}>
+  {!(noindex || NOINDEX) && <link rel="canonical" href={canonical}>}
+  {langs && LOCALES.map((l) => <link rel="alternate" hreflang={l.hreflang} href={alt(l.code)}>)}
+  {langs && <link rel="alternate" hreflang="x-default" href={alt(X_DEFAULT)}>}
+  {(noindex || NOINDEX) && <meta name="robots" content="noindex">}
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content={homeTitle}>
+  <meta property="og:locale" content={L.og}>
+  {langs && LOCALES.filter((l) => l.code !== loc).map((l) => <meta property="og:locale:alternate" content={l.og}>)}
+  <meta property="og:title" content={fullTitle}>
+  {!(noindex || NOINDEX) && <meta property="og:url" content={canonical}>}
+  <meta property="og:image" content={ogAbs}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content={homeTitle}>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content={ogAbs}>
+  <link rel="icon" type="image/x-icon" href={url('/favicon.ico')} sizes="16x16 24x24 32x32 48x48 72x72 128x128">
+  <link rel="shortcut icon" type="image/x-icon" href={url('/favicon.ico')}>
+  <link rel="icon" type="image/png" sizes="48x48" href={url('/favicon-48x48.png')}>
+  <link rel="icon" type="image/png" sizes="32x32" href={url('/favicon-32x32.png')}>
+  <link rel="icon" type="image/png" sizes="16x16" href={url('/favicon-16x16.png')}>
+  <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')}>
+  <link rel="apple-touch-icon" sizes="180x180" href={url('/apple-touch-icon.png')}>
+  {VERIFICATION.google && <meta name="google-site-verification" content={VERIFICATION.google}>}
+  {VERIFICATION.naver && <meta name="naver-site-verification" content={VERIFICATION.naver}>}
+  {VERIFICATION.bing && <meta name="msvalidate.01" content={VERIFICATION.bing}>}
+  <script type="application/ld+json" set:html={JSON.stringify([org])} />
+  <slot name="head" />
+</head>
+<body>
+  <slot />
+  <script>import '../scripts/demo-form.ts';</script>
+</body>
+</html>

@@ -67,6 +67,7 @@ jobs:
           # 검색 제외 미리보기(PUBLIC_NOINDEX 가 false 가 아님)면 기본 1 — 저장소 변수를 따로 두지 않아도 미리보기가 빌드된다 (D-052). 공개 빌드는 지금처럼 막힌다
           ALLOW_TODO: ${{ vars.ALLOW_TODO || (vars.PUBLIC_NOINDEX != 'false' && '1' || '') }}
           PUBLIC_DEMO_URL: ${{ vars.PUBLIC_DEMO_URL }}
+          PUBLIC_CRM_TOKEN_SECRET: ${{ secrets.PUBLIC_CRM_TOKEN_SECRET || vars.PUBLIC_CRM_TOKEN_SECRET }}
           SITE_LOCALES: ${{ vars.SITE_LOCALES }}
           PUBLIC_OPEN_DATE: ${{ vars.PUBLIC_OPEN_DATE }}
           PUBLIC_GA4_ID: ${{ vars.PUBLIC_GA4_ID }}

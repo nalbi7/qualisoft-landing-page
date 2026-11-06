@@ -1,3 +1,5 @@
+import { lurl, ROUTES } from './routes';
+
 // 회사 정보 한 곳 — 푸터와 JSON-LD가 같이 읽는다 (Docs/16-tech-architecture.md §5 · D-014 · D-016)
 export const COMPANY = {
   name: '퀄리소프트',
@@ -33,6 +35,14 @@ export const LINKS = {
 // 데모 신청 — 방식 A, 기존 데모 신청 페이지로 이동 (D-005). 주소는 빌드 변수로만 받는다 — 값은 저장소에 쓰지 않는다 (H-01).
 // 비어 있으면 데모 버튼 자리에 전화 상담을 둔다: 동작하지 않는 버튼을 두지 않는다 (16-tech-architecture §7)
 export const DEMO_URL: string = import.meta.env.PUBLIC_DEMO_URL ?? '';
+
+// 언어별 데모 신청 URL — 한국어는 기존 DEMO_URL 우선, 영·일·중은 자체 데모 페이지(/en/demo/ 등)로 연결 (A2)
+export const demoUrlFor = (loc?: string): string => {
+  if (isKo(loc)) {
+    return DEMO_URL || lurl(ROUTES.demo, loc);
+  }
+  return lurl(ROUTES.demo, loc);
+};
 
 export const GA4_ID: string = import.meta.env.PUBLIC_GA4_ID ?? '';
 // 개인정보처리방침 활성화 — 푸터 · 쿠키 배너 링크 표시 및 /privacy/ 페이지 빌드

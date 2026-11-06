@@ -1,0 +1,370 @@
+---
+// 데모 신청 페이지 본문 — 현행 cdnquali /crm/management/demo 레이아웃 재현
+import DemoBase from '../../layouts/DemoBase.astro';
+import { useT } from '../../i18n';
+import { COMPANY, telFor, ceoFor } from '../../config/site';
+import { url } from '../../config/routes';
+
+const loc = Astro.currentLocale;
+const t = useT(loc);
+
+// CRM 연동 환경 변수
+const apiUrl = import.meta.env.PUBLIC_CRM_API_URL ?? 'https://qapi-hmg.azurewebsites.net/api/';
+const tokenSecret = import.meta.env.PUBLIC_CRM_TOKEN_SECRET ?? '';
+const tokenClient = import.meta.env.PUBLIC_CRM_TOKEN_CLIENT ?? 'quali';
+const crmUrl = import.meta.env.PUBLIC_CRM_DATAVERSE_URL ?? 'https://quali.api.crm5.dynamics.com/api/data/v9.2';
+
+// 개인정보 처리방침 텍스트 구성 (해당 언어)
+const privacyText = [
+  t('privacy.intro'),
+  '',
+  `1. ${t('privacy.s1.title')}`,
+  t('privacy.s1.body'),
+  `- ${t('privacy.s1.item1')}`,
+  '',
+  `2. ${t('privacy.s2.title')}`,
+  t('privacy.s2.p1'),
+  t('privacy.s2.p2'),
+  `- ${t('privacy.s2.item1')}`,
+  `- ${t('privacy.s2.item2')}`,
+  '',
+  `3. ${t('privacy.s3.title')}`,
+  t('privacy.s3.body'),
+  '',
+  `4. ${t('privacy.s4.title')}`,
+  t('privacy.s4.body'),
+  `1. ${t('privacy.s4.item1')}`,
+  `2. ${t('privacy.s4.item2')}`,
+  `3. ${t('privacy.s4.item3')}`,
+  `4. ${t('privacy.s4.item4')}`,
+  '',
+  `5. ${t('privacy.s5.title')}`,
+  t('privacy.s5.body'),
+  `- ${t('privacy.s5.item1')}`,
+  '',
+  `6. ${t('privacy.s6.title')}`,
+  t('privacy.s6.p1'),
+  t('privacy.s6.p2'),
+  `- ${t('privacy.s6.item1')}`,
+  `- ${t('privacy.s6.item2')}`,
+  '',
+  `7. ${t('privacy.s7.title')}`,
+  t('privacy.s7.body'),
+  `- ${t('privacy.s7.item1')}`,
+  `- ${t('privacy.s7.item2')}`,
+  `- ${t('privacy.s7.item3')}`,
+  '',
+  `8. ${t('privacy.s8.title')}`,
+  t('privacy.s8.p1'),
+  t('privacy.s8.p2'),
+  `${t('privacy.s8.item1')}`,
+  `${t('privacy.s8.item2')}`,
+  `${t('privacy.s8.item3')}`,
+  '',
+  `9. ${t('privacy.s9.title')}`,
+  t('privacy.s9.body'),
+  t('privacy.s9.sub'),
+  `${t('privacy.s9.name_h')} : ${ceoFor(loc)}  ${t('privacy.s9.role_h')} : ${t('privacy.s9.role')}  ${t('privacy.s9.contact_h')} : ${telFor(loc)}  ${t('privacy.s9.email_h')} : ${COMPANY.privacyEmail}`,
+  '',
+  `10. ${t('privacy.s10.title')}`,
+  t('privacy.s10.body'),
+].join('\n');
+
+// 이용약관 텍스트 구성 (해당 언어)
+const termsText = [
+  t('terms.s1.title'),
+  t('terms.s1.body'),
+  '',
+  t('terms.s2.title'),
+  t('terms.s2.p1'),
+  t('terms.s2.p2'),
+  '',
+  t('terms.s3.title'),
+  t('terms.s3.p1'),
+  t('terms.s3.p2'),
+  '',
+  t('terms.s4.title'),
+  t('terms.s4.body'),
+].join('\n');
+
+const msPartnerLogo = url('/assets/demo/microsoft-partner.png');
+const qualiLogo = url('/assets/demo/quali-logo.png');
+const points = t('demo.hero.points', true);
+---
+<DemoBase title={t('demo.meta.title')} description={t('demo.meta.description')}>
+  <main class="demo-page">
+    <div class="demo-container">
+      {/* 상단 히어로 배너 */}
+      <section class="trial-hero" aria-labelledby="trial-hero-title">
+        <div class="trial-hero-main">
+          <div class="trial-hero-kicker">{t('demo.hero.kicker')}</div>
+          <h1 id="trial-hero-title" class="trial-hero-title">{t('demo.hero.title')}</h1>
+          <p class="trial-hero-description">{t('demo.hero.description')}</p>
+          <div class="trial-hero-actions">
+            <a class="trial-hero-secondary" href="https://www.dynamics365.co.kr/" target="_blank" rel="noopener noreferrer">
+              {t('demo.hero.cta')}
+            </a>
+          </div>
+        </div>
+        <div class="trial-hero-aside" aria-label={t('demo.hero.aside_aria')}>
+          <div class="trial-hero-brand-row">
+            <img src={msPartnerLogo} alt="Microsoft Partner" width="168" height="32" />
+          </div>
+          <div class="trial-hero-points">
+            {points.map((p) => <span>{p}</span>)}
+          </div>
+        </div>
+      </section>
+
+      {/* 폼 헤더 */}
+      <header class="demo-header">
+        <h2 class="demo-title">{t('demo.header.title')}</h2>
+        <p class="demo-subtitle">{t('demo.header.subtitle')}</p>
+      </header>
+
+      {/* 폼 본문 */}
+      <div id="demo-form" class="demo-form-wrapper">
+        <form
+          id="demo-request-form"
+          class="demo-form"
+          data-api-url={apiUrl}
+          data-token-secret={tokenSecret}
+          data-token-client={tokenClient}
+          data-crm-url={crmUrl}
+          data-topic={t('demo.header.title')}
+          data-submit-text={t('demo.form.submit')}
+          data-submitting-text={t('demo.form.submitting')}
+          data-err-company={t('demo.form.company.error')}
+          data-err-name={t('demo.form.name.error')}
+          data-err-email-required={t('demo.form.email.error_required')}
+          data-err-email-invalid={t('demo.form.email.error_invalid')}
+          data-err-email-personal={t('demo.form.email.error_personal')}
+          data-err-phone-required={t('demo.form.phone.error_required')}
+          data-err-phone-pattern={t('demo.form.phone.error_pattern')}
+          data-err-phone-length={t('demo.form.phone.error_length')}
+          data-err-privacy={t('demo.form.privacy.error')}
+          data-err-modal-body={t('demo.modal.error_body')}
+          novalidate
+        >
+          <div class="required-notice">{t('demo.form.required_notice')}</div>
+
+          {/* 회사명 */}
+          <div class="demo-form-item">
+            <label class="form-label" for="company">
+              {t('demo.form.company.label')}<span class="required-mark">*</span>
+            </label>
+            <input
+              class="demo-input"
+              id="company"
+              name="company"
+              type="text"
+              placeholder={t('demo.form.company.placeholder')}
+              required
+            />
+            <div class="demo-field-error" id="company-error"></div>
+          </div>
+
+          {/* 이름 */}
+          <div class="demo-form-item">
+            <label class="form-label" for="name">
+              {t('demo.form.name.label')}<span class="required-mark">*</span>
+            </label>
+            <input
+              class="demo-input"
+              id="name"
+              name="name"
+              type="text"
+              placeholder={t('demo.form.name.placeholder')}
+              required
+            />
+            <div class="demo-field-error" id="name-error"></div>
+          </div>
+
+          {/* 직함 / 부서 2열 */}
+          <div class="demo-form-row">
+            <div class="demo-form-item">
+              <label class="form-label" for="title">
+                {t('demo.form.title.label')}
+              </label>
+              <input
+                class="demo-input"
+                id="title"
+                name="title"
+                type="text"
+                placeholder={t('demo.form.title.placeholder')}
+              />
+            </div>
+            <div class="demo-form-item">
+              <label class="form-label" for="department">
+                {t('demo.form.department.label')}
+              </label>
+              <input
+                class="demo-input"
+                id="department"
+                name="department"
+                type="text"
+                placeholder={t('demo.form.department.placeholder')}
+              />
+            </div>
+          </div>
+
+          {/* 회사 이메일 */}
+          <div class="demo-form-item">
+            <label class="form-label" for="email">
+              {t('demo.form.email.label')}<span class="required-mark">*</span>
+            </label>
+            <input
+              class="demo-input"
+              id="email"
+              name="email"
+              type="email"
+              placeholder={t('demo.form.email.placeholder')}
+              required
+            />
+            <div class="demo-field-error" id="email-error"></div>
+          </div>
+
+          {/* 전화번호 */}
+          <div class="demo-form-item">
+            <label class="form-label" for="phone">
+              {t('demo.form.phone.label')}<span class="required-mark">*</span>
+            </label>
+            <input
+              class="demo-input"
+              id="phone"
+              name="phone"
+              type="tel"
+              placeholder={t('demo.form.phone.placeholder')}
+              required
+            />
+            <div class="demo-field-error" id="phone-error"></div>
+          </div>
+
+          {/* 개인정보 처리방침 동의 */}
+          <section class="privacy-consent-section">
+            <div class="privacy-title">{t('demo.form.privacy.title')}</div>
+            <div class="demo-privacy-scroll">
+              <pre>{privacyText}</pre>
+            </div>
+            <label class="privacy-checkbox-label" for="privacyConsent">
+              <input
+                class="privacy-checkbox-input"
+                id="privacyConsent"
+                name="privacyConsent"
+                type="checkbox"
+                required
+              />
+              <span>{t('demo.form.privacy.consent')} <span class="required-mark">*</span></span>
+            </label>
+            <div class="demo-field-error" id="privacyConsent-error"></div>
+          </section>
+
+          {/* 기타 문의사항 */}
+          <div class="demo-form-item">
+            <label class="form-label" for="message">
+              {t('demo.form.message.label')}
+            </label>
+            <textarea
+              class="demo-textarea"
+              id="message"
+              name="message"
+              rows="5"
+              placeholder={t('demo.form.message.placeholder')}
+            ></textarea>
+          </div>
+
+          {/* 제출 버튼 */}
+          <div class="submit-button-item">
+            <button class="submit-button demo-submit-button" id="submit-btn" type="submit">
+              {t('demo.form.submit')}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    {/* 하단 푸터 */}
+    <footer class="inquiry-footer">
+      <div class="inquiry-footer-content">
+        <div class="inquiry-footer-content-left">
+          <div class="inquiry-footer-row">
+            <div class="inquiry-footer-links">
+              <a class="inquiry-footer-link" href="https://www.dynamics365.co.kr/" target="_blank" rel="noopener noreferrer">
+                {t('demo.footer.about')}
+              </a>
+              <button class="inquiry-footer-link inquiry-footer-link-button" type="button" data-open-terms>
+                {t('demo.footer.terms')}
+              </button>
+              <button class="inquiry-footer-link inquiry-footer-link-button" type="button" data-open-privacy>
+                {t('demo.footer.privacy')}
+              </button>
+            </div>
+          </div>
+          <div class="inquiry-footer-row">
+            <div class="inquiry-footer-contact">
+              <span class="inquiry-footer-contact-label">{t('demo.footer.support_label')}</span>
+              <a class="inquiry-footer-contact-phone" href={COMPANY.telHref}>
+                {telFor(loc)}
+              </a>
+            </div>
+          </div>
+          <div class="inquiry-footer-copyright">
+            © Qualisoft Inc. All rights reserved.
+          </div>
+        </div>
+        <div class="inquiry-footer-content-logos" aria-label="Partners">
+          <img class="inquiry-footer-logo" src={msPartnerLogo} alt="Microsoft Partner" width="168" height="32" />
+          <img class="inquiry-footer-logo" src={qualiLogo} alt="Qualisoft" width="108" height="32" />
+        </div>
+      </div>
+    </footer>
+
+    {/* 이용약관 모달 */}
+    <div class="demo-modal-backdrop" id="terms-modal" hidden>
+      <div class="demo-modal-card">
+        <div class="demo-modal-header">
+          <h3 class="demo-modal-title">{t('terms.head.title')}</h3>
+          <button class="demo-modal-close" type="button" data-modal-close aria-label={t('demo.modal.close')}>&times;</button>
+        </div>
+        <pre class="demo-modal-pre">{termsText}</pre>
+      </div>
+    </div>
+
+    {/* 개인정보처리방침 모달 */}
+    <div class="demo-modal-backdrop" id="privacy-modal" hidden>
+      <div class="demo-modal-card">
+        <div class="demo-modal-header">
+          <h3 class="demo-modal-title">{t('privacy.head.title')}</h3>
+          <button class="demo-modal-close" type="button" data-modal-close aria-label={t('demo.modal.close')}>&times;</button>
+        </div>
+        <pre class="demo-modal-pre">{privacyText}</pre>
+      </div>
+    </div>
+
+    {/* 접수 완료 모달 */}
+    <div class="demo-modal-backdrop" id="complete-modal" hidden>
+      <div class="demo-modal-card is-alert">
+        <div class="demo-modal-header">
+          <h3 class="demo-modal-title">{t('demo.modal.complete_title')}</h3>
+        </div>
+        <p class="complete-modal-message">{t('demo.modal.complete_body')}</p>
+        <div class="demo-modal-actions">
+          <button class="demo-modal-ok" type="button" data-modal-close>{t('demo.modal.ok')}</button>
+        </div>
+      </div>
+    </div>
+
+    {/* 접수 실패 모달 */}
+    <div class="demo-modal-backdrop" id="error-modal" hidden>
+      <div class="demo-modal-card is-alert">
+        <div class="demo-modal-header">
+          <h3 class="demo-modal-title">{t('demo.modal.error_title')}</h3>
+        </div>
+        <p class="complete-modal-message" id="error-modal-message">{t('demo.modal.error_body')}</p>
+        <div class="demo-modal-actions">
+          <button class="demo-modal-ok" type="button" data-modal-close>{t('demo.modal.ok')}</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</DemoBase>

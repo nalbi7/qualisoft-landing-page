@@ -1,0 +1,10 @@
+---
+// 데모 신청 페이지 — 영 · 일 · 중 (IA §9)
+import DemoPage from '../../../components/pages/DemoPage.astro';
+import { DEFAULT_LOCALE, LOCALES } from '../../../config/locales.mjs';
+
+export function getStaticPaths() {
+  return LOCALES.filter((l) => l.code !== DEFAULT_LOCALE).map((l) => ({ params: { locale: l.code } }));
+}
+---
+<DemoPage />

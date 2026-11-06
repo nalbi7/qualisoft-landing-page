@@ -4,7 +4,7 @@
 // 같은 항목으로 본문(components/Faq.astro)과 FAQPage 구조화 데이터를 함께 만든다 — 사람이 보는 답과 기계가 읽는 답이 어긋나지 않는다
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { useT, tx } from '../i18n';
-import { COMPANY, LINKS, DEMO_URL } from './site';
+import { COMPANY, LINKS, demoUrlFor } from './site';
 import { DEFAULT_LOCALE } from './locales.mjs';
 import { lurl, ROUTES, type SolutionSlug } from './routes';
 import { casesFor } from './cases';
@@ -92,8 +92,9 @@ export async function homeFaq(locale?: string): Promise<FaqItem[]> {
     list: cases.map((c) => ({ text: caseLabel(c), href: lurl(ROUTES.case(c.id), loc) })),
     more: { text: t('faq.home.cases.more'), href: lurl(ROUTES.customers, loc) },
   });
+  const demoUrl = demoUrlFor(loc);
   const channels: FaqLink[] = [
-    ...(DEMO_URL ? [{ text: t('common.demo'), href: DEMO_URL, ext: true }] : []),
+    ...(demoUrl ? [{ text: t('common.demo'), href: demoUrl, ext: true }] : []),
     { text: `${t('common.tel')} ${ko ? COMPANY.tel : COMPANY.telIntl}`, href: COMPANY.telHref },
     ...(ko ? [{ text: t('support.kakao'), href: LINKS.kakao, ext: true }] : []),
   ];
