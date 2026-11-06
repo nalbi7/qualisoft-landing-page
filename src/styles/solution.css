@@ -85,16 +85,26 @@ body{background:var(--surface)}
 ::view-transition-group(sol-panel), ::view-transition-old(sol-panel), ::view-transition-new(sol-panel){animation-duration:.3s; animation-timing-function:var(--ease-in-out)}   /* D-028 — 이전 .45s ease */
 ::view-transition-old(root), ::view-transition-new(root){animation-duration:.25s}
 
-/* 핵심 기능의 화면 그림 (BD-034) — 펼친 줄의 설명 아래에 Microsoft Learn 화면을 둔다.
-   한 번에 한 줄만 펼치고 FAQ와 같은 높이 전환을 쓴다. 세로로 긴 그림은 화면 높이 안에 들게 줄인다 */
-.shot{margin:0 4px var(--sp-6); display:grid; gap:10px}
+/* 핵심 기능 — 좌측 아코디언 목록(제목+설명 글) · 우측 화면 그림 2단 배치 (BD-034 · BD-097).
+   900px 이하 모바일·태블릿에서는 각 아코디언 항목 내부(글 아래)에 그림이 펼쳐진다 */
+.feat-split{display:grid; grid-template-columns:minmax(300px, .82fr) 1.18fr; gap:var(--sp-7); align-items:start}
+.feat-split > *{min-width:0}
+.feat-stage{position:sticky; top:calc(var(--nav-h) + 68px)}
+.feat-stage[hidden], .shot[hidden]{display:none}
+.shot{margin:0; display:grid; gap:10px; animation:shot-in .24s var(--ease-out) both}
+.acc__body .shot{margin:0 4px var(--sp-5)}
+@keyframes shot-in{from{opacity:0; transform:translateY(4px)}}
 .shot__frame{border-radius:12px; overflow:hidden; background:var(--bg); box-shadow:0 0 0 1px var(--hair), 0 12px 32px rgba(20,20,43,.10)}
 .shot__frame img{display:block; width:100%; height:auto; max-height:min(560px, 70vh); object-fit:contain}
 .shot figcaption{font-size:13px; color:var(--muted)}
 .shot figcaption a{color:inherit; text-underline-offset:3px}
+@media (max-width:900px){
+  .feat-split{grid-template-columns:1fr; gap:var(--sp-5)}
+  .feat-stage{position:static}
+}
 @supports (interpolate-size:allow-keywords){
   .accs{interpolate-size:allow-keywords}
   .acc__item::details-content{block-size:0; overflow:clip; transition:block-size .28s var(--ease-out), content-visibility .28s allow-discrete}
   .acc__item[open]::details-content{block-size:auto}
 }
-@media (prefers-reduced-motion:reduce){ .acc__plus{transition:none} .acc__item::details-content{transition:none} }
+@media (prefers-reduced-motion:reduce){ .acc__plus{transition:none} .acc__item::details-content{transition:none} .shot{animation:none} }
