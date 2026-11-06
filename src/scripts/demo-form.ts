@@ -494,7 +494,6 @@ function initDemoForm() {
   const tokenSecret = form.dataset.tokenSecret || '';
   const tokenClient = form.dataset.tokenClient || 'quali';
   const crmUrl = form.dataset.crmUrl || 'https://quali.api.crm5.dynamics.com/api/data/v9.2';
-  const topicLabel = form.dataset.topic || 'Demo Inquiry';
 
   // 서브 기능 초기화
   initCountrySelect(locale);
@@ -653,7 +652,7 @@ function initDemoForm() {
       const note = [finalMessage, noteMeta].filter((s) => s && s.trim().length > 0).join('\n\n');
 
       const payload: Record<string, unknown> = {
-        new_name: `[${company || 'Company'}] ${topicLabel}`,
+        new_name: `[${company || '미지정'}] 데모 문의`,
         new_chk_demo: true,
         new_txt_from: '데모 신청',
         new_txt_q1: company || '',
