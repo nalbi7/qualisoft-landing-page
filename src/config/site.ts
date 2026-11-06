@@ -53,5 +53,5 @@ export const OPEN_DATE: string = (import.meta.env.PUBLIC_OPEN_DATE ?? '').trim()
 export const VERIFICATION = {
   google: import.meta.env.PUBLIC_GSC_VERIFICATION ?? '',
   naver: import.meta.env.PUBLIC_NAVER_VERIFICATION ?? '',
-  bing: import.meta.env.PUBLIC_BING_VERIFICATION ?? '',
+  bing: import.meta.env.PUBLIC_BING_VERIFICATION || '91A8071C6A9015EFA613A570297FEB56',
 };
