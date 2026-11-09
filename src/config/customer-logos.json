@@ -111,6 +111,22 @@
   "h": 144
  },
  {
+  "file": "hyundaicorp.svg",
+  "name": "현대코퍼레이션",
+  "en": "Hyundai Corporation",
+  "ind": "retail",
+  "w": 373,
+  "h": 120
+ },
+ {
+  "file": "bbq.svg",
+  "name": "제너시스BBQ",
+  "en": "Genesis BBQ",
+  "ind": "retail",
+  "w": 276,
+  "h": 120
+ },
+ {
   "file": "gccell.png",
   "name": "지씨셀",
   "en": "GC Cell",
@@ -167,6 +183,22 @@
   "ind": "pharma",
   "w": 463,
   "h": 133
+ },
+ {
+  "file": "mirae.svg",
+  "name": "미래아이앤텍",
+  "en": "Mirae I&T",
+  "ind": "mfg",
+  "w": 405,
+  "h": 120
+ },
+ {
+  "file": "vitzro.png",
+  "name": "비츠로일렉트릭",
+  "en": "Vitzro Electric",
+  "ind": "mfg",
+  "w": 1071,
+  "h": 95
  },
  {
   "file": "sba.png",
@@ -263,14 +295,6 @@
   "ind": "chem",
   "w": 872,
   "h": 346
- },
- {
-  "file": "cosmocos.png",
-  "name": "코스모코스",
-  "en": "Cosmocos",
-  "ind": "chem",
-  "w": 196,
-  "h": 25
  },
  {
   "file": "warevalley.svg",

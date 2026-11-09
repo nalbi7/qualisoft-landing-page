@@ -1,4 +1,4 @@
-// 고객 로고 목록 읽기 — config/customer-logos.json (시안 v7 고객 43곳에서 인포유앤컴퍼니 명의 수행 4곳을 뺀 39곳, BD-035)
+// 고객 로고 목록 읽기 — config/customer-logos.json (시안 v7 고객 43곳에서 코스모코스를 뺀 42곳 — 인포유앤컴퍼니 명의로 수행한 4곳도 싣는다, D-057 · BD-112. 이전 BD-035 는 그 4곳을 뺀 39곳)
 // w · h 는 원본 그림 크기 — <img> 의 width · height 로 넣어 그림이 오기 전에 자리를 잡는다 (BD-041).
 // 이름은 그 언어로(없으면 영어), 흰 로고(onDark)는 밝은 바탕에서 어둡게 칠한다(layout.css img.on-dark). 바탕 상자가 있는 흰 로고(알트소프트 · 해맑음)는 칠하지 않는다 — 검은 상자가 된다
 import LOGOS from './customer-logos.json';
