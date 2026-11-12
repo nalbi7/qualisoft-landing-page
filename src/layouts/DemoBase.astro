@@ -4,7 +4,7 @@
 import '../styles/tokens.css';
 import '../styles/demo.css';
 import { useT } from '../i18n';
-import { COMPANY, GA4_ID, NOINDEX, VERIFICATION } from '../config/site';
+import { COMPANY, GA4_ID, NOINDEX, VERIFICATION, homeTitleFor } from '../config/site';
 import { DEFAULT_LOCALE, LOCALES, X_DEFAULT } from '../config/locales.mjs';
 import { url, lurl, pagePath } from '../config/routes';
 
@@ -19,7 +19,7 @@ const loc = Astro.currentLocale ?? DEFAULT_LOCALE;
 const t = useT(loc);
 const L = LOCALES.find((l) => l.code === loc) ?? LOCALES[0];
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
-const homeTitle = loc === 'ko' ? '마이크로소프트 Dynamics 365 공식사이트' : 'Dynamics 365 Implementation';
+const homeTitle = homeTitleFor(loc);
 const fullTitle = `${homeTitle} | ${title}`;
 const page = pagePath(Astro.url.pathname);
 const alt = (code: string) => new URL(lurl(page, code), Astro.site).href;

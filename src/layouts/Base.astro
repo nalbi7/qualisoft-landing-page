@@ -11,7 +11,7 @@ import CookieBanner from '../components/CookieBanner.astro';
 import LangBanner from '../components/LangBanner.astro';
 import { getCollection } from 'astro:content';
 import { useT } from '../i18n';
-import { COMPANY, LINKS, GA4_ID, NOINDEX, VERIFICATION } from '../config/site';
+import { COMPANY, LINKS, GA4_ID, NOINDEX, VERIFICATION, homeTitleFor } from '../config/site';
 import { DEFAULT_LOCALE, LOCALES, X_DEFAULT } from '../config/locales.mjs';
 import { url, lurl, pagePath } from '../config/routes';
 
@@ -23,7 +23,7 @@ const t = useT(loc);
 const L = LOCALES.find((l) => l.code === loc) ?? LOCALES[0];
 // 검색 제외(404 · 출시 전 미리보기) 페이지는 대표 주소를 내지 않는다 — 404 는 자기 주소가 없다
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
-const homeTitle = loc === 'ko' ? '마이크로소프트 Dynamics 365 공식사이트' : 'Dynamics 365 Implementation';
+const homeTitle = homeTitleFor(loc);
 const fullTitle = isHome ? homeTitle : `${homeTitle} | ${title}`;
 // 같은 페이지의 언어판 — 404 처럼 자기 주소가 없는 페이지는 잇지 않는다 (19-seo-spec §3 hreflang · IA §9)
 const page = pagePath(Astro.url.pathname);
