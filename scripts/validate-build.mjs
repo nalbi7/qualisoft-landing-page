@@ -20,7 +20,9 @@ catch (e) { errors.push(`디자인 복사본이 원본과 다르다 — npm run 
 
 const walk = (d) => readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirectory() ? walk(join(d, f)) : [join(d, f)]));
 const files = walk(dist);
-const html = files.filter((f) => f.endsWith('.html'));
+// 검색엔진 소유 확인 파일(google<코드>.html · naver<코드>.html)은 페이지가 아니다 — 내용이 한 줄로 정해져 있어 검사에서 뺀다 (BD-114)
+const VERIFY_FILE = /(^|[\\/])(google[0-9a-f]{16}|naver[0-9a-f]{32})\.html$/;
+const html = files.filter((f) => f.endsWith('.html') && !VERIFY_FILE.test(f));
 const kb = (n) => `${(n / 1024).toFixed(1)}KB`;
 const gz = (f) => gzipSync(readFileSync(f)).length;
 

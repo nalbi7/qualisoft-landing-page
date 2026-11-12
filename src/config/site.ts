@@ -63,7 +63,9 @@ export const demoUrlFor = (loc?: string, sol?: string): string => {
   return `${base}${sep}sol=${encodeURIComponent(solKey)}`;
 };
 
-export const GA4_ID: string = import.meta.env.PUBLIC_GA4_ID ?? '';
+// GA4 — 사용자 지시로 켠다(2026-11-12, D-059 · BD-114). 속성 「qualisoft_dynamics365 page - GA4」(www.dynamics365.co.kr 웹 스트림)의 측정 ID — HTML 에 실리는 공개값이다.
+// 쿠키 배너에서 「동의」한 뒤에만 불러온다(scripts/site.ts). 빌드 변수 PUBLIC_GA4_ID 가 있으면 그 값이 앞선다
+export const GA4_ID: string = import.meta.env.PUBLIC_GA4_ID || 'G-DFCX33Q3S2';
 // 개인정보처리방침 활성화 — 푸터 · 쿠키 배너 링크 표시 및 /privacy/ 페이지 빌드
 export const SHOW_PRIVACY = true;
 export const NOINDEX = import.meta.env.PUBLIC_NOINDEX === 'true';

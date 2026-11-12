@@ -178,9 +178,25 @@ function readConsent(): 'yes' | 'no' | null {
   } catch { return null; }
 }
 // 분석 — 동의한 뒤에만 GA4 를 부른다. 향상된 측정의 이탈 클릭 수집은 끈다(데모 주소를 통째로 보내지 않게, 20-release-ops §14)
+// 같은 페이지에서 동의를 철회하면 GA4 를 멈추고(ga-disable 플래그 · consent denied) 이미 생긴 _ga 쿠키를 지운다. 다시 동의하면 이어서 잰다 (BD-114)
 let gaLoaded = false;
+const gaWin = window as unknown as Record<string, unknown> & { gtag?: (...a: unknown[]) => void };
+function stopAnalytics() {
+  if (!ga4) return;
+  gaWin[`ga-disable-${ga4}`] = true;
+  gaWin.gtag?.('consent', 'update', { analytics_storage: 'denied' });
+  // GA 쿠키(_ga · _ga_<ID>)는 상위 도메인에 생긴다 — 경로 · 도메인 후보마다 지운다
+  const host = location.hostname;
+  const parts = host.split('.');
+  const domains = ['', host, ...parts.map((_, i) => '.' + parts.slice(i).join('.')).filter((d) => d.split('.').length > 2)];
+  document.cookie.split(';').map((c) => c.split('=')[0].trim()).filter((n) => n === '_ga' || n.startsWith('_ga_')).forEach((n) => {
+    domains.forEach((d) => { document.cookie = `${n}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/${d ? `; domain=${d}` : ''}`; });
+  });
+}
 function loadAnalytics() {
-  if (gaLoaded || !ga4) return;
+  if (!ga4) return;
+  gaWin[`ga-disable-${ga4}`] = false;
+  if (gaLoaded) { gaWin.gtag?.('consent', 'update', { analytics_storage: 'granted' }); return; }
   gaLoaded = true;
   const s = document.createElement('script');
   s.async = true;
@@ -200,7 +216,7 @@ if (ck) {
       const v = b.dataset.consent === 'yes' ? 'yes' : 'no';
       store.set('consent', JSON.stringify({ v, at: Date.now() }));
       show(false);
-      if (v === 'yes') loadAnalytics();
+      if (v === 'yes') loadAnalytics(); else stopAnalytics();
     });
   });
   // 「쿠키 설정」 — 푸터 · 개인정보처리방침에서 동의를 다시 고른다
@@ -223,8 +239,8 @@ document.querySelectorAll<HTMLDetailsElement>('.faq__i').forEach((d) => {
 // 클릭 이벤트 — 데모 · 카카오 · 전화 링크를 문서 한 곳에서 잡는다. 이름은 20-release-ops §14. 개인정보를 담지 않는다
 document.addEventListener('click', (e) => {
   const a = (e.target as Element).closest<HTMLElement>('[data-ev]');
-  const g = (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag;
-  if (a && g) g('event', a.dataset.ev, { page_path: location.pathname });
+  // 동의가 「예」이고 GA4 를 불러온 뒤에만 보낸다 — 같은 페이지에서 철회했으면 보내지 않는다 (BD-114)
+  if (a && gaLoaded && readConsent() === 'yes') gaWin.gtag?.('event', a.dataset.ev, { page_path: location.pathname });
 });
 
 // 마지막 행동 띠 — 아치형 포털이 화면에 들어오며 풀폭 띠로 펼쳐진다 (Arch Portal Reveal, 디자인 원본 components.js · BD-011, 2026-11-02 14:01 판 BD-016).
