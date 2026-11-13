@@ -22,9 +22,12 @@ export const COMPANY = {
 const isKo = (loc?: string) => !loc || loc === 'ko';
 export const telFor = (loc?: string) => (isKo(loc) ? COMPANY.tel : COMPANY.telIntl);
 export const ceoFor = (loc?: string) => (isKo(loc) ? COMPANY.ceo : COMPANY.ceoEn);
-// 사이트 제목(검색 결과 제목 · og:site_name · WebSite 이름) — 한국어는 대표님 지시로 「Microsoft D365」(2026-11-12, D-058 · BD-113, 이전 「마이크로소프트 Dynamics 365 공식사이트」), 외국어는 그대로.
+// 사이트 제목(검색 결과 제목 줄 · og:title) — 한국어 「마이크로소프트 Dynamics 365 공식사이트」, 외국어 「Dynamics 365 Implementation」.
 // 다른 페이지 제목은 「사이트 제목 | 페이지명」 (Base.astro · DemoBase.astro)
-export const homeTitleFor = (loc?: string) => (isKo(loc) ? 'Microsoft D365' : 'Dynamics 365 Implementation');
+// 2026-11-12 D-058 에서 「Microsoft D365」로 바꿨다가, 대표님 뜻이 제목이 아니라 결과 위쪽 사이트 이름 줄이었음을 확인해 되돌렸다(2026-11-13, D-061 · BD-117)
+export const homeTitleFor = (loc?: string) => (isKo(loc) ? '마이크로소프트 Dynamics 365 공식사이트' : 'Dynamics 365 Implementation');
+// 사이트 이름(검색 결과 위쪽 이름 줄 · og:site_name · WebSite 구조화 데이터 name) — 한국어는 대표님 지시로 「Microsoft D365」(D-061). 외국어는 제목과 같다
+export const siteNameFor = (loc?: string) => (isKo(loc) ? 'Microsoft D365' : homeTitleFor(loc));
 
 // 바깥 채널 — 구 사이트에 공개된 주소 (Docs/14-information-architecture.md §5)
 export const LINKS = {
