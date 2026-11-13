@@ -41,7 +41,7 @@ const videos = NEWS.filter((n) => n.source === 'youtube').map((n) => {
   };
 });
 ---
-<Base title={t('home.meta.title')} description={loc === 'ko' ? '데모신청,컨설팅 문의, Dynamics365는 영업, 고객 서비스 및 마케팅 등 전 직무에 사용 가능하며, 기업 내 임직원들이 영업 활동, 계약성사, 사후 서비스에 이르는 모든 단계에서 고객을 총제적으로 관리할 수 있도록 합니다.' : t('home.meta.description')} isHome ogImage="/assets/og/legacy-home.png" ogImageAlt="Dynamics 365" jsonld={[website, faqJsonLd(faq), ...videos]}>
+<Base title={t('home.meta.title')} description={loc === 'ko' ? '데모신청,컨설팅 문의, Dynamics365는 영업, 고객 서비스 및 마케팅 등 전 직무에 사용 가능하며, 기업 내 임직원들이 영업 활동, 계약성사, 사후 서비스에 이르는 모든 단계에서 고객을 총체적으로 관리할 수 있도록 합니다.' : t('home.meta.description')} isHome ogImage="/assets/og/legacy-home.png" ogImageAlt="Dynamics 365" jsonld={[website, faqJsonLd(faq), ...videos]}>
   <!-- 첫 방문 등장 효과 — 그리기 전에 붙여야 깜빡이지 않아 head 에 둔다. 세션마다 한 번, 움직임 줄이기면 없음 (D-020 ④ · M-10) -->
   <script slot="head" is:inline>try{if(!sessionStorage.getItem('hero-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('intro');sessionStorage.setItem('hero-intro','1')}}catch(e){}</script>
   <Hero />
