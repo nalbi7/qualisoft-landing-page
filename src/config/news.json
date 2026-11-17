@@ -1,5 +1,23 @@
 [
   {
+    "source": "blog",
+    "title": {
+      "ko": "Dynamics 365는 무엇을 하는 제품일까",
+      "en": "What does Dynamics 365 actually do?",
+      "ja": "Dynamics 365 はどんな製品なのか",
+      "zh-hans": "Dynamics 365 是做什么的产品？"
+    },
+    "tags": {
+      "ko": ["#Dynamics365", "#다이나믹스365", "#CRM"],
+      "en": ["#Dynamics365", "#CRM", "#ERP"],
+      "ja": ["#Dynamics365", "#CRM", "#ERP"],
+      "zh-hans": ["#Dynamics365", "#CRM", "#ERP"]
+    },
+    "date": "2026-11-17",
+    "href": "https://blog.naver.com/dynamics365/224480265516",
+    "thumb": "blog-224480265516.jpg"
+  },
+  {
     "source": "youtube",
     "title": {
       "ko": "[CRM 속성강의 EP. 08] Excel 데이터 연동하기",
@@ -34,23 +52,5 @@
     "date": "2023-03-10",
     "href": "https://blog.naver.com/dynamics365/223040594721",
     "thumb": "blog-223040594721.jpg"
-  },
-  {
-    "source": "blog",
-    "title": {
-      "ko": "[Dynamics 365 Sales] 링크드인의 스마트한 CRM 활용 사례",
-      "en": "[Dynamics 365 Sales] How LinkedIn uses CRM smartly",
-      "ja": "[Dynamics 365 Sales] LinkedIn のスマートな CRM 活用事例",
-      "zh-hans": "[Dynamics 365 Sales] LinkedIn 巧用 CRM 的案例"
-    },
-    "tags": {
-      "ko": ["#Dynamics365Sales", "#링크드인", "#CRM활용사례"],
-      "en": ["#Dynamics365Sales", "#LinkedIn", "#CRMusecase"],
-      "ja": ["#Dynamics365Sales", "#LinkedIn", "#CRM活用事例"],
-      "zh-hans": ["#Dynamics365Sales", "#LinkedIn", "#CRM应用案例"]
-    },
-    "date": "2023-02-23",
-    "href": "https://blog.naver.com/dynamics365/223025281697",
-    "thumb": "blog-223025281697.jpg"
   }
 ]
