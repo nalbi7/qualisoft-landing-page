@@ -15,7 +15,9 @@
     const q = new URLSearchParams(location.search);
     for (const f of ['ind', 'sol']) { const v = q.get(f) ?? ''; if (v && has(f, v)) state[f] = v; }
     const matches = (li: HTMLElement) => (!state.ind || li.dataset.ind === state.ind) && (!state.sol || (li.dataset.sol ?? '').split(' ').includes(state.sol));
-    const expandIfOnlyExtra = () => { if ((state.ind || state.sol) && !items.some((li) => li.dataset.story === 'true' && matches(li)) && items.some(matches)) expanded = true; };
+    // 필터를 고르면 맞는 카드를 모두 펼친다 — 로고만 있는 고객(짧은 카드)도 「더 보기」 없이 바로 보이게 (2026-11-19 사용자 요청).
+    // 이전에는 상세 카드가 하나도 안 맞을 때만 펼쳤다
+    const expandIfOnlyExtra = () => { if (state.ind || state.sol) { if (items.some(matches)) expanded = true; } else expanded = false; };
     expandIfOnlyExtra();
 
     const apply = (save: boolean, keepHash = false) => {

@@ -35,6 +35,16 @@ const rows: Row[] = [
     product: s.product, period: s.period && tx(s.period, loc), scope: s.scope.map((x) => tx(x, loc)), sols: solsOf(s.customer),
   })),
 ];
+// 로고만 있는 고객도 솔루션 필터에 걸리게 — 사례 · 구축 범위 카드가 없어도 솔루션 파일의 customers 에 연결된 고객은
+// 로고 · 이름 · 산업 · 솔루션 이름만 있는 짧은 카드로 잇는다 (2026-11-19 사용자 요청, 근거 Docs/_discovery/고객사-솔루션-매핑-전달-프롬프트.txt)
+const carded = new Set(rows.map((r) => r.id));
+rows.push(...logosByIndustry().flatMap((g) => g.logos)
+  .filter((l) => !carded.has(logoId(l)) && solsOf(logoId(l)).length > 0)
+  .map((l) => {
+    const sols = solsOf(logoId(l));
+    return { id: logoId(l), name: logoName(l, loc), logo: l, industry: t(`ind.${l.ind}`),
+      product: SOLS.filter((x) => sols.includes(x.id)).map((x) => x.data.name).join(' · '), scope: [], sols };
+  }));
 // 필터 알약 — 카드가 하나라도 있는 산업 · 솔루션만, 순서는 INDUSTRIES · 솔루션 order
 const indOpts = INDUSTRIES.filter((ind) => rows.some((r) => r.logo.ind === ind));
 const solOpts = SOLS.filter((x) => rows.some((r) => r.sols.includes(x.id)));
@@ -85,7 +95,7 @@ const hrefOf = (id: string) => {
               <div><h2 class="scard__t">{r.name}</h2><span class="scard__tags"><span class="tag">{r.industry}</span>{r.href && <span class="tag tag--story">{t('customers.case.badge')}</span>}</span></div>
             </div>
             <p class="scard__p">{r.product}{r.period && ` · ${r.period}`}</p>
-            <ul class="scard__l">{r.scope.slice(0, SHOW).map((x) => <li>{x}</li>)}{more > 0 && <li class="scard__more">{t('customers.scope.more').replace('{n}', String(more))}</li>}</ul>
+            {r.scope.length > 0 && <ul class="scard__l">{r.scope.slice(0, SHOW).map((x) => <li>{x}</li>)}{more > 0 && <li class="scard__more">{t('customers.scope.more').replace('{n}', String(more))}</li>}</ul>}
             {r.href && <span class="scard__go">{t('customers.case.read')} <span aria-hidden="true">→</span></span>}
           </Fragment>
         );
