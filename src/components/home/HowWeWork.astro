@@ -5,6 +5,8 @@
 // 모양은 home.css .howmap, 움직임은 scripts/how-path.ts.
 // 스크립트가 없으면 지금 같은 네 칸 목록 그대로다 — 그림 · 점은 꾸밈이라 화면 낭독에서 숨긴다
 import { useT } from '../../i18n';
+import { lurl, ROUTES } from '../../config/routes';
+import { DEFAULT_LOCALE } from '../../config/locales.mjs';
 const loc = Astro.currentLocale;
 const t = useT(loc);
 const GLYPH = [
@@ -20,7 +22,14 @@ const desc = t('home.how.desc', true);
 ---
 <section class="sec sec--flat" id="how" aria-labelledby="how-h" data-parity="how">
   <div class="wrap">
-    <div class="sec-head"><h2 id="how-h">{t('home.how.title')}</h2></div>
+    <div class="sec-head">
+      <h2 id="how-h">{t('home.how.title')}</h2>
+      {(loc ?? DEFAULT_LOCALE) === 'ko' && (
+        <a class="more" href={lurl(ROUTES.customers + '?sol=dynamics-365-crm', loc)}>
+          CRM {t('home.cases.more')} <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      )}
+    </div>
     <div class="howmap" id="howmap">
       <svg class="howmap__svg" viewBox="0 0 1000 240" preserveAspectRatio="none" aria-hidden="true">
         <defs><mask id="howmap-mask" maskUnits="userSpaceOnUse" x="0" y="-20" width="1000" height="280"><path class="howmap__mask" fill="none" stroke="#fff" stroke-width="60" /></mask></defs>
