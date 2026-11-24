@@ -1,6 +1,6 @@
 ---
 // 개인정보처리방침 본문 — 네 언어 한 틀 (pages/privacy/ · pages/[locale]/privacy/).
-// 사용자 지정 개인정보 처리방침(제1조~제11조)을 한·영·일·중 4개 언어로 표시한다. 시행일 2019. 01. 23. → 2026. 11. 12.(GA4 안내 추가, D-060 · BD-115) → 2026. 11. 24.(제11조 Meta 앱, D-062 · BD-120)
+// 사용자 지정 개인정보 처리방침(제1조~제11조)을 한·영·일·중 4개 언어로 표시한다. 시행일 2019. 01. 23. → 2026. 11. 12.(GA4 안내 추가, D-060 · BD-115) → 2026. 11. 24.(제11조 Meta 앱, D-062 · BD-120 · 제4조 행사방법 보완, D-064 · BD-123)
 // 제11조 「Meta 앱 「Qualisoft Social Publishing」」 — Meta 앱 게시 요건(개인정보처리방침 URL · 데이터 삭제 안내 URL). 문안 정본은 Quali-Marketing content/publishing/meta-app/개인정보처리방침-추가안.md
 //   앵커는 번호와 상관없이 고정 — 절 #meta-app, 삭제 안내 #meta-data-deletion (Meta 앱 기본 설정에 등록하는 주소라 바꾸면 안 된다)
 //   Facebook 페이지 이름은 한글이라 lang="ko" 로 감싼다(외국어 쪽 한글 검사 예외, D-024)
@@ -16,6 +16,7 @@ const loc = Astro.currentLocale;
 const t = useT(loc);
 const secs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((s) => ({ s, href: s === 11 ? '#meta-app' : `#p${s}`, title: t(`privacy.s${s}.title`) }));
 const [introA, introB] = t('privacy.s11.intro').split('{page}');
+const [s4MetaA, s4MetaB] = t('privacy.s4.meta').split('{link}');   // 제4조 끝 줄 — 「11. 바.」를 #meta-data-deletion 으로 잇는다(D-064)
 ---
 <Base title={t('privacy.meta.title')} description={t('privacy.meta.description')}>
   <Crumb items={[{ label: t('common.home'), href: ROUTES.home }, { label: t('privacy.head.title') }]} />
@@ -44,6 +45,7 @@ const [introA, introB] = t('privacy.s11.intro').split('{page}');
         <ul class="pv__list">
           <li>{t('privacy.s2.item1')}</li>
           <li>{t('privacy.s2.item2')}</li>
+          <li>{t('privacy.s2.item3')}</li>
         </ul>
       </section>
 
@@ -61,6 +63,8 @@ const [introA, introB] = t('privacy.s11.intro').split('{page}');
           <li>{t('privacy.s4.item3')}</li>
           <li>{t('privacy.s4.item4')}</li>
         </ol>
+        {[2, 3, 4, 5, 6].map((n) => <p>{t(`privacy.s4.p${n}`)}</p>)}
+        <p>{s4MetaA}<a href="#meta-data-deletion">{t('privacy.s4.meta_link')}</a>{s4MetaB}</p>
       </section>
 
       <section class="pv" id="p5" aria-labelledby="p5-h">
@@ -68,6 +72,7 @@ const [introA, introB] = t('privacy.s11.intro').split('{page}');
         <p>{t('privacy.s5.body')}</p>
         <ul class="pv__list">
           <li>{t('privacy.s5.item1')}</li>
+          <li>{t('privacy.s5.item2')}</li>
         </ul>
       </section>
 
@@ -162,6 +167,7 @@ const [introA, introB] = t('privacy.s11.intro').split('{page}');
           <li>{t('privacy.s11.f.s2_min')}
             <ul class="pv__list">{t('privacy.s11.f.s2_min_items', true).map((x) => <li>{x}</li>)}</ul>
           </li>
+          <li>{t('privacy.s11.f.s2_agent')}</li>
           <li><strong>{t('privacy.s11.f.s2_warn')}</strong></li>
         </ul>
         <p class="pv__step">{t('privacy.s11.f.s3')}</p>
