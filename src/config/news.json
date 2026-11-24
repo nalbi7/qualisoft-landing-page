@@ -2,6 +2,24 @@
   {
     "source": "blog",
     "title": {
+      "ko": "Microsoft Fabric과 Power BI는 무엇을 하는 제품일까",
+      "en": "What do Microsoft Fabric and Power BI actually do?",
+      "ja": "Microsoft Fabric と Power BI はどんな製品なのか",
+      "zh-hans": "Microsoft Fabric 和 Power BI 是做什么的产品？"
+    },
+    "tags": {
+      "ko": ["#MicrosoftFabric", "#Fabric", "#PowerBI"],
+      "en": ["#MicrosoftFabric", "#Fabric", "#PowerBI"],
+      "ja": ["#MicrosoftFabric", "#Fabric", "#PowerBI"],
+      "zh-hans": ["#MicrosoftFabric", "#Fabric", "#PowerBI"]
+    },
+    "date": "2026-11-23",
+    "href": "https://blog.naver.com/dynamics365/224488414883",
+    "thumb": "blog-224488414883.jpg"
+  },
+  {
+    "source": "blog",
+    "title": {
       "ko": "Dynamics 365는 무엇을 하는 제품일까",
       "en": "What does Dynamics 365 actually do?",
       "ja": "Dynamics 365 はどんな製品なのか",
@@ -34,23 +52,5 @@
     "date": "2023-06-26",
     "href": "https://www.youtube.com/watch?v=UiCZqEO5URM",
     "thumb": "yt-UiCZqEO5URM.jpg"
-  },
-  {
-    "source": "blog",
-    "title": {
-      "ko": "[Dynamics 365 Sales] 편리한 영업 관리, 맞춤 CRM과 함께!",
-      "en": "[Dynamics 365 Sales] Easier sales management with a tailored CRM",
-      "ja": "[Dynamics 365 Sales] 便利な営業管理を、自社に合わせた CRM で",
-      "zh-hans": "[Dynamics 365 Sales] 借助定制 CRM，轻松管理销售"
-    },
-    "tags": {
-      "ko": ["#Dynamics365Sales", "#영업관리", "#맞춤CRM"],
-      "en": ["#Dynamics365Sales", "#SalesManagement", "#CustomCRM"],
-      "ja": ["#Dynamics365Sales", "#営業管理", "#カスタムCRM"],
-      "zh-hans": ["#Dynamics365Sales", "#销售管理", "#定制CRM"]
-    },
-    "date": "2023-03-10",
-    "href": "https://blog.naver.com/dynamics365/223040594721",
-    "thumb": "blog-223040594721.jpg"
   }
 ]
