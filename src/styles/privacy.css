@@ -30,3 +30,11 @@ body{background:var(--surface)}
 .doc2__body .pv h2{font-size:clamp(20px,1.8vw,24px)}
 @media (max-width:1080px){ .doc2{grid-template-columns:1fr} .doc2__toc{position:static} .doc2__toc ol{grid-template-columns:1fr 1fr} }
 @media (max-width:640px){ .doc2__toc ol{grid-template-columns:1fr} }
+/* 제11조 Meta 앱 (BD-120) — 소절 제목 · 단계 제목 · 세 칸 표. 모바일에서는 칸마다 머리글을 앞에 붙인다 */
+h3.pv__sub{font-size:1em; letter-spacing:0; margin-top:var(--sp-5)}
+.pv__step{font-weight:600; margin:var(--sp-4) 0 var(--sp-2)}
+.pv__list .pv__list{margin:6px 0 0}
+.pt--cols{margin-bottom:var(--sp-3)}
+.pt--cols thead th{width:auto; font-weight:600}
+.pt--cols tbody th{width:auto; color:var(--text); font-weight:600}
+@media (max-width:640px){ .pt--cols thead{display:none} .pt--cols td::before{content:attr(data-label) " · "; color:var(--muted)} }

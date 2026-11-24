@@ -3,7 +3,7 @@
   "privacy.meta.description": "Qualisoft株式会社个人信息处理方针 — 说明个人信息的处理目的、处理及保存期限、向第三方提供、信息主体的权利与义务、销毁、安全性保障措施及个人信息保护负责人。",
   "privacy.head.title": "个人信息处理方针",
   "privacy.head.effective": "施行日期",
-  "privacy.head.effective_date": "2026. 11. 12.",
+  "privacy.head.effective_date": "2026. 11. 24.",
   "privacy.intro": "Qualisoft株式会社（以下简称“公司”）根据韩国《个人信息保护法》第30条之规定，为保护信息主体（客户）的个人信息并迅速、妥善地处理相关苦情与申诉，特制定并公开如下个人信息处理方针。",
   "privacy.toc": "目录",
   "privacy.s1.title": "个人信息的处理目的",
@@ -67,5 +67,61 @@
   "privacy.s9.contact_h": "联系方式",
   "privacy.s9.email_h": "电子邮箱",
   "privacy.s10.title": "个人信息处理方针的变更",
-  "privacy.s10.body": "本个人信息处理方针自 2026. 11. 12. 起适用。（原方针：2019. 01. 23. 施行）"
+  "privacy.s10.body": "本个人信息处理方针自 2026. 11. 24. 起适用。（原方针：2026. 11. 12. 施行；更早方针：2019. 01. 23. 施行）",
+  "privacy.s11.title": "Meta 应用「Qualisoft Social Publishing」的个人信息处理",
+  "privacy.s11.intro": "公司为将公司制作的内容（卡片新闻、Reels 短视频）发布到公司 Facebook 主页「{page}」和 Instagram 账号 @qualisoft_official，运营 Meta 应用「Qualisoft Social Publishing」（应用 ID 1822043052409589）。该应用仅由公司员工中被授予应用角色的发布负责人使用。普通用户无法登录该应用，也没有输入信息的功能。",
+  "privacy.s11.a.title": "a. 处理的信息及目的",
+  "privacy.s11.a.col_data": "处理的信息",
+  "privacy.s11.a.col_purpose": "目的",
+  "privacy.s11.a.col_source": "获取途径",
+  "privacy.s11.a.r1_data": "发布负责人向应用授权的访问令牌（公司主页令牌、Instagram 发布令牌）",
+  "privacy.s11.a.r1_purpose": "向公司主页和账号发布内容并确认结果",
+  "privacy.s11.a.r1_source": "负责人在 Meta 登录界面直接授权",
+  "privacy.s11.a.r2_data": "公司主页及 Instagram 账号的 ID 和名称",
+  "privacy.s11.a.r2_purpose": "确认发布对象为公司账号",
+  "privacy.s11.a.r2_source": "Meta Graph API",
+  "privacy.s11.a.r3_data": "公司所发布帖子的 ID、说明文字、链接、发布状态、版权检查结果，以及 Instagram 发布额度",
+  "privacy.s11.a.r3_purpose": "确认发布完成、防止重复发布、保留发布记录",
+  "privacy.s11.a.r3_source": "Meta Graph API",
+  "privacy.s11.a.note": "负责人授权时使用的 Facebook 用户令牌仅用于获取公司主页令牌，不予保存。",
+  "privacy.s11.b.title": "b. 不处理的信息",
+  "privacy.s11.b.body": "该应用不获取主页访客、粉丝、评论者、发送消息者的信息，也不获取广告及统计（洞察）数据。如该范围发生变化，我们将先修改本方针。",
+  "privacy.s11.c.title": "c. 保管位置及保护",
+  "privacy.s11.c.items": [
+    "访问令牌仅保存在发布负责人工作电脑的 Windows 凭据管理器（操作系统的加密存储）中，不会转存到文件、文档或即时通讯工具。",
+    "发布记录（帖子 ID、链接）保存在发布负责人工作电脑的工作文件夹中。",
+    "不存储在其他服务器上，也不向第三方提供。"
+  ],
+  "privacy.s11.d.title": "d. 保存期限",
+  "privacy.s11.d.items": [
+    "访问令牌：更换为新令牌时、负责人解除应用权限时或不再担任发布负责人时立即删除。在 Meta 的数据访问期限（约 90 天）届满前更换为新令牌。",
+    "发布记录：在相关帖子公开期间保存，帖子撤下满 1 年后销毁。"
+  ],
+  "privacy.s11.e.title": "e. 与 Meta 的关系",
+  "privacy.s11.e.p1": "该应用将公司制作的内容和说明文字发送给 Meta。在此过程中，公司不会向 Meta 新提供个人信息。",
+  "privacy.s11.e.p2": "负责人账号的登录和权限授权由 Meta 依据 Meta 隐私政策处理。",
+  "privacy.s11.e.link": "Meta 隐私政策",
+  "privacy.s11.f.title": "f. Meta 应用数据删除请求",
+  "privacy.s11.f.s1": "① 自行解除权限（立即生效）",
+  "privacy.s11.f.s1_items": [
+    "Facebook：设置和隐私 → 设置 → 应用和网站，移除「Qualisoft Social Publishing」。",
+    "Instagram：设置 → 网站权限 → 应用和网站，进行移除。",
+    "移除后，该应用将无法再访问您的账号。如需删除公司保存的信息，请按 ② 提出请求。"
+  ],
+  "privacy.s11.f.s2": "② 向公司提出删除请求",
+  "privacy.s11.f.s2_channel": "请求渠道：第 9 条个人信息保护负责人的电子邮箱。邮件标题请写「[Meta 应用数据删除请求]」。",
+  "privacy.s11.f.s2_min": "请至少提供以下信息：",
+  "privacy.s11.f.s2_min_items": [
+    "姓名，或 Facebook、Instagram 显示名称",
+    "相关账号（Facebook 个人资料或主页名称，或 Instagram 用户名）",
+    "希望删除的信息（访问令牌、发布记录等；不确定时请写「全部」）"
+  ],
+  "privacy.s11.f.s2_warn": "请勿发送密码、访问令牌或身份证件复印件。公司不会索取这些信息。",
+  "privacy.s11.f.s3": "③ 本人确认",
+  "privacy.s11.f.s3_body": "公司将回复至您提出请求的电子邮箱。为确认该账号属于您本人，我们会请您从该 Facebook 或 Instagram 账号，向公司主页或账号以消息形式发送回复邮件中的确认编号。已确认身份的公司员工提出的请求可省略此步骤。",
+  "privacy.s11.f.s4": "④ 处理结果通知",
+  "privacy.s11.f.s4_items": [
+    "自完成本人确认之日起 10 日内删除，并通过您提出请求的电子邮箱告知结果。结果中包括已删除的项目、删除时间及受理编号。",
+    "如因法律规定须保存的信息而无法删除，我们将一并告知原因及保存期限。"
+  ]
 }

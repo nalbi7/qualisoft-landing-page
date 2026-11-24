@@ -3,7 +3,7 @@
   "privacy.meta.description": "Privacy Policy of Qualisoft Co., Ltd. — Purpose of processing personal information, retention period, third-party provision, rights of data subjects, destruction, safety measures, and Chief Privacy Officer.",
   "privacy.head.title": "Privacy Policy",
   "privacy.head.effective": "Effective Date",
-  "privacy.head.effective_date": "November 12, 2026",
+  "privacy.head.effective_date": "November 24, 2026",
   "privacy.intro": "Qualisoft Co., Ltd. (hereinafter referred to as the “Company”) establishes and discloses the following Privacy Policy in accordance with Article 30 of the Personal Information Protection Act of the Republic of Korea to protect the personal information of data subjects (customers) and to handle related grievances promptly and smoothly.",
   "privacy.toc": "Contents",
   "privacy.s1.title": "Purpose of Processing Personal Information",
@@ -67,5 +67,61 @@
   "privacy.s9.contact_h": "Contact",
   "privacy.s9.email_h": "Email",
   "privacy.s10.title": "Changes to the Privacy Policy",
-  "privacy.s10.body": "This Privacy Policy is effective from November 12, 2026. (Previous version: effective January 23, 2019.)"
+  "privacy.s10.body": "This Privacy Policy is effective from November 24, 2026. (Previous version: effective November 12, 2026; earlier version: effective January 23, 2019.)",
+  "privacy.s11.title": "Personal data processed by the Meta app \"Qualisoft Social Publishing\"",
+  "privacy.s11.intro": "Qualisoft operates the Meta app \"Qualisoft Social Publishing\" (App ID 1822043052409589) to publish content created by the company (card news and reels) to its Facebook Page \"{page}\" and its Instagram account @qualisoft_official. Only company staff who hold a role on the app use it. The app has no feature that lets members of the public log in or submit information.",
+  "privacy.s11.a.title": "A. Data we process and why",
+  "privacy.s11.a.col_data": "Data",
+  "privacy.s11.a.col_purpose": "Purpose",
+  "privacy.s11.a.col_source": "Source",
+  "privacy.s11.a.r1_data": "Access tokens granted to the app by the publishing staff member (company Page token, Instagram publishing token)",
+  "privacy.s11.a.r1_purpose": "Publishing to the company Page and account, and checking the result",
+  "privacy.s11.a.r1_source": "Granted by the staff member through Meta's login dialog",
+  "privacy.s11.a.r2_data": "ID and name of the company Page and Instagram account",
+  "privacy.s11.a.r2_purpose": "Confirming that the publishing target is the company's own account",
+  "privacy.s11.a.r2_source": "Meta Graph API",
+  "privacy.s11.a.r3_data": "ID, caption, link, publishing status, and copyright-check result of posts the company published; Instagram publishing quota",
+  "privacy.s11.a.r3_purpose": "Confirming publication, preventing duplicate posts, keeping a publishing record",
+  "privacy.s11.a.r3_source": "Meta Graph API",
+  "privacy.s11.a.note": "The Facebook user token used while granting permissions is used only to obtain the company Page token and is not stored.",
+  "privacy.s11.b.title": "B. Data we do not process",
+  "privacy.s11.b.body": "The app does not retrieve information about Page visitors, followers, commenters, or people who send messages, nor advertising or Insights data. If this scope changes, we will update this policy first.",
+  "privacy.s11.c.title": "C. Storage and protection",
+  "privacy.s11.c.items": [
+    "Access tokens are kept only in Windows Credential Manager (the operating system's encrypted store) on the publishing staff member's work PC. They are never copied into files, documents, or messengers.",
+    "Publishing records (post IDs and links) are kept in a working folder on the publishing staff member's work PC.",
+    "We do not store this data on a separate server and do not provide it to third parties."
+  ],
+  "privacy.s11.d.title": "D. Retention",
+  "privacy.s11.d.items": [
+    "Access tokens: deleted immediately when replaced with a new token, or when the staff member revokes the app's permission or leaves the publishing role. Tokens are replaced before Meta's data access period (about 90 days) ends.",
+    "Publishing records: kept while the post is public, and destroyed 1 year after the post is taken down."
+  ],
+  "privacy.s11.e.title": "E. Relationship with Meta",
+  "privacy.s11.e.p1": "The app sends company-created content and captions to Meta. The company does not newly provide personal data to Meta in this process.",
+  "privacy.s11.e.p2": "Staff login and permission grants are processed by Meta under the Meta Privacy Policy.",
+  "privacy.s11.e.link": "Meta Privacy Policy",
+  "privacy.s11.f.title": "F. Meta app data deletion requests",
+  "privacy.s11.f.s1": "1. Remove the app yourself (takes effect immediately)",
+  "privacy.s11.f.s1_items": [
+    "Facebook: Settings & privacy → Settings → Apps and websites → remove \"Qualisoft Social Publishing\".",
+    "Instagram: Settings → Website permissions → Apps and websites → remove.",
+    "After removal, the app can no longer access your account. To have the company delete data it keeps, please also send a request under 2."
+  ],
+  "privacy.s11.f.s2": "2. Ask the company to delete your data",
+  "privacy.s11.f.s2_channel": "Channel: the email address of the Chief Privacy Officer in Section 9. Please use the subject \"[Meta App Data Deletion Request]\".",
+  "privacy.s11.f.s2_min": "Minimum information:",
+  "privacy.s11.f.s2_min_items": [
+    "Your name or Facebook/Instagram display name",
+    "The related account (Facebook profile/Page name or Instagram username)",
+    "The data you want deleted (access tokens, publishing records, etc.; \"all\" if unsure)"
+  ],
+  "privacy.s11.f.s2_warn": "Do not send passwords, access tokens, or copies of ID documents. We never ask for them.",
+  "privacy.s11.f.s3": "3. Identity check",
+  "privacy.s11.f.s3_body": "We will reply to the email address you used. To confirm that the account is yours, we will ask you to send the confirmation number from our reply as a message from that Facebook/Instagram account to the company Page or account. This step may be skipped for requests from verified company staff.",
+  "privacy.s11.f.s4": "4. Result",
+  "privacy.s11.f.s4_items": [
+    "We will delete the data within 10 days of completing the identity check and notify you by email of the deleted items, the date and time of deletion, and a request number.",
+    "If any data must be retained by law and cannot be deleted, we will tell you the reason and the retention period."
+  ]
 }
