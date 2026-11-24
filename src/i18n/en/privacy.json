@@ -83,6 +83,9 @@
   "privacy.s11.a.r3_data": "ID, caption, link, publishing status, and copyright-check result of posts the company published; Instagram publishing quota",
   "privacy.s11.a.r3_purpose": "Confirming publication, preventing duplicate posts, keeping a publishing record",
   "privacy.s11.a.r3_source": "Meta Graph API",
+  "privacy.s11.a.r4_data": "Deletion requester's email address, name (or display name), related account name, identity-check message, and the outcome",
+  "privacy.s11.a.r4_purpose": "Handling the deletion request, notifying the outcome, and keeping a record that it was handled",
+  "privacy.s11.a.r4_source": "Sent directly by the requester by email or message",
   "privacy.s11.a.note": "The Facebook user token used while granting permissions is used only to obtain the company Page token and is not stored.",
   "privacy.s11.b.title": "B. Data we do not process",
   "privacy.s11.b.body": "The app does not retrieve information about Page visitors, followers, commenters, or people who send messages, nor advertising or Insights data. If this scope changes, we will update this policy first.",
@@ -94,8 +97,9 @@
   ],
   "privacy.s11.d.title": "D. Retention",
   "privacy.s11.d.items": [
-    "Access tokens: deleted immediately when replaced with a new token, or when the staff member revokes the app's permission or leaves the publishing role. Tokens are replaced before Meta's data access period (about 90 days) ends.",
-    "Publishing records: kept while the post is public, and destroyed 1 year after the post is taken down."
+    "Access tokens: deleted immediately when replaced with a new token, or when the staff member revokes the app's permission or leaves the publishing role. The Facebook Page token is replaced before Meta's data access period (about 90 days) ends.",
+    "Publishing records: kept while the post is public, and destroyed 1 year after the post is taken down.",
+    "Deletion request records: kept for 1 year from the date we notify you of the outcome, then destroyed."
   ],
   "privacy.s11.e.title": "E. Relationship with Meta",
   "privacy.s11.e.p1": "The app sends company-created content and captions to Meta. The company does not newly provide personal data to Meta in this process.",
@@ -121,7 +125,7 @@
   "privacy.s11.f.s3_body": "We will reply to the email address you used. To confirm that the account is yours, we will ask you to send the confirmation number from our reply as a message from that Facebook/Instagram account to the company Page or account. This step may be skipped for requests from verified company staff.",
   "privacy.s11.f.s4": "4. Result",
   "privacy.s11.f.s4_items": [
-    "We will delete the data within 10 days of completing the identity check and notify you by email of the deleted items, the date and time of deletion, and a request number.",
-    "If any data must be retained by law and cannot be deleted, we will tell you the reason and the retention period."
+    "We will notify you of the outcome by email within 10 days of receiving your request, including the deleted items, the date and time of deletion, and a request number. If the identity check is not completed within that period, we will tell you within the same period why the data could not yet be deleted and what confirmation is needed.",
+    "If any data must be retained by law and cannot be deleted, we will tell you the reason, the retention period, and how to object. You may raise an objection with the Chief Privacy Officer in Section 9."
   ]
 }

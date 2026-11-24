@@ -138,7 +138,7 @@ const [introA, introB] = t('privacy.s11.intro').split('{page}');
         <table class="pt pt--cols">
           <thead><tr><th scope="col">{t('privacy.s11.a.col_data')}</th><th scope="col">{t('privacy.s11.a.col_purpose')}</th><th scope="col">{t('privacy.s11.a.col_source')}</th></tr></thead>
           <tbody>
-            {[1, 2, 3].map((r) => (
+            {[1, 2, 3, 4].map((r) => (
               <tr><th scope="row">{t(`privacy.s11.a.r${r}_data`)}</th><td data-label={t('privacy.s11.a.col_purpose')}>{t(`privacy.s11.a.r${r}_purpose`)}</td><td data-label={t('privacy.s11.a.col_source')}>{t(`privacy.s11.a.r${r}_source`)}</td></tr>
             ))}
           </tbody>
