@@ -1,5 +1,9 @@
 import { lurl, ROUTES } from './routes';
 
+// 구조화 데이터(Organization) 의 이름 — 대표님 지시로 「Dynamics 365」(2026-11-25, D-067 · BD-126). 법인명(legalName)은 사실대로 「(주)퀄리소프트」 그대로.
+// 화면의 사업자 정보 줄 · © · 개인정보처리방침은 common.company(퀄리소프트)를 그대로 쓴다
+export const ORG_NAME = 'Dynamics 365';
+
 // 회사 정보 한 곳 — 푸터와 JSON-LD가 같이 읽는다 (Docs/16-tech-architecture.md §5 · D-014 · D-016)
 export const COMPANY = {
   name: '퀄리소프트',
@@ -34,7 +38,6 @@ const HOME_TITLE: Record<string, string> = {
 export const homeTitleFor = (loc?: string) => HOME_TITLE[loc ?? 'ko'] ?? HOME_TITLE.en;
 // 사이트 이름(검색 결과 위쪽 이름 줄 · og:site_name · WebSite 구조화 데이터 name) — 한국어는 대표님 지시로 「Microsoft D365」(D-061). 외국어는 제목과 같다
 export const siteNameFor = (loc?: string) => (isKo(loc) ? 'Microsoft D365' : homeTitleFor(loc));
-
 // 바깥 채널 — 구 사이트에 공개된 주소 (Docs/14-information-architecture.md §5)
 export const LINKS = {
   kakao: 'https://pf.kakao.com/_yyefT/chat',

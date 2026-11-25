@@ -4,7 +4,7 @@
 import '../styles/tokens.css';
 import '../styles/demo.css';
 import { useT } from '../i18n';
-import { COMPANY, GA4_ID, NOINDEX, VERIFICATION, homeTitleFor, siteNameFor } from '../config/site';
+import { COMPANY, GA4_ID, NOINDEX, VERIFICATION, homeTitleFor, siteNameFor, ORG_NAME } from '../config/site';
 import { DEFAULT_LOCALE, LOCALES, X_DEFAULT } from '../config/locales.mjs';
 import { url, lurl, pagePath } from '../config/routes';
 
@@ -31,7 +31,7 @@ const org = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   '@id': orgId,
-  name: t('common.company'),
+  name: ORG_NAME,
   legalName: t('common.legal_name'),
   url: new URL(lurl('/', loc), Astro.site).href,
   logo: new URL(url('/assets/brand/ver1-logo.png'), Astro.site).href,

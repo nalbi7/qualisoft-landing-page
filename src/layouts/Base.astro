@@ -11,7 +11,7 @@ import CookieBanner from '../components/CookieBanner.astro';
 import LangBanner from '../components/LangBanner.astro';
 import { getCollection } from 'astro:content';
 import { useT } from '../i18n';
-import { COMPANY, LINKS, GA4_ID, NOINDEX, VERIFICATION, homeTitleFor, siteNameFor } from '../config/site';
+import { COMPANY, LINKS, GA4_ID, NOINDEX, VERIFICATION, homeTitleFor, siteNameFor, ORG_NAME } from '../config/site';
 import { DEFAULT_LOCALE, LOCALES, X_DEFAULT } from '../config/locales.mjs';
 import { url, lurl, pagePath } from '../config/routes';
 
@@ -37,7 +37,7 @@ const solNames = (await getCollection('solutions')).sort((a, b) => a.data.order 
 const ogAbs = new URL(url(ogImage), Astro.site).href;
 const org = {
   '@context': 'https://schema.org', '@type': 'Organization', '@id': orgId,
-  name: t('common.company'), legalName: t('common.legal_name'), url: new URL(lurl('/', loc), Astro.site).href,
+  name: ORG_NAME, legalName: t('common.legal_name'), url: new URL(lurl('/', loc), Astro.site).href,
   logo: new URL(url('/assets/brand/ver1-logo.png'), Astro.site).href,
   telephone: COMPANY.telIntl,
   sameAs: [LINKS.youtube, LINKS.blog, LINKS.kakao.replace(/\/chat$/, '')],

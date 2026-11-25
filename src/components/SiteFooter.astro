@@ -17,7 +17,7 @@ const sols = (await getCollection('solutions')).sort((a, b) => a.data.order - b.
   <div class="wrap">
     <div class="foot">
       <div>
-        <img src={url('/assets/brand/ver1-logo.png')} alt={loc === 'ko' ? 'Microsoft 파트너' : 'Microsoft Partner'} width="106" height="30" loading="lazy">
+        {/* 퀄리소프트 로고 · 셋째 칸 제목 「퀄리소프트」는 대표님 지시로 뺐다(2026-11-25, D-067 · BD-126). 사업자 정보 줄 · © 은 그대로 */}
         <div class="foot__co">
           <span>{t('common.company')} · {t('footer.ceo')} {ceoFor(loc)}</span>
           <span>{t('footer.biz_reg_no')} {COMPANY.bizRegNo}</span>
@@ -28,7 +28,7 @@ const sols = (await getCollection('solutions')).sort((a, b) => a.data.order - b.
         </div>
       </div>
       <div><h3>{t('footer.solutions')}</h3><ul>{sols.map((s) => <li><a href={lurl(ROUTES.solution(s.id as SolutionSlug), loc)} translate="no">{s.data.name}</a></li>)}</ul></div>
-      <div><h3>{t('footer.company')}</h3><ul>
+      <div><div class="foot__h" aria-hidden="true"></div><ul>
         {HAS_CASES && <li><a href={lurl(ROUTES.customers, loc)}>{t('nav.customers')}</a></li>}
         <li><a href={LINKS.youtube} target="_blank" rel="noopener">{t('footer.youtube')} <NewWindow /></a></li>
         <li><a href={LINKS.blog} target="_blank" rel="noopener">{t('footer.blog')} <NewWindow /></a></li>
